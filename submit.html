@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>爆料投稿｜好康網</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<a class="brand" href="index.html" aria-label="好康網首頁">
+<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 22c0-3.3 2.7-6 6-6h22l16 16-16 16H16c-3.3 0-6-2.7-6-6V22z" fill="#fff"/><circle cx="21" cy="28" r="4.2" fill="#d81b60"/><text x="37.5" y="40.5" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-weight="900" font-size="19" fill="#d81b60">好</text></svg>
+<span class="wm"><b>好康網</b><small>HOWKANG.COM.TW</small></span>
+</a>
+<p class="tagline">爆料投稿・審核通過即上架</p>
+</header>
+<div class="formpage">
+  <h2 style="border:none;padding:0;margin:0 0 6px">📮 爆料投稿</h2>
+  <p class="hint">看到標錯價、快閃優惠、清倉特賣？填一填送出，審核通過就會出現在網站上！</p>
+  <label>商品名稱 *</label>
+  <input id="f_title" placeholder="例：小米氣炸鍋 5.5L">
+  <label>賣場連結 *</label>
+  <input id="f_url" type="url" placeholder="https://…">
+  <label>優惠價（元）*</label>
+  <input id="f_price" type="number" min="1" placeholder="例：2799">
+  <label>市價（元，選填）</label>
+  <input id="f_market" type="number" min="0" placeholder="例：3295">
+  <label>賣場 / 店家</label>
+  <input id="f_store" placeholder="例：PChome、蝦皮賣場名">
+  <label>補充說明</label>
+  <textarea id="f_note" rows="3" placeholder="為什麼划算？限時到何時？"></textarea>
+  <button class="btn" onclick="doSubmit()">送出爆料 →</button>
+  <div class="err" id="err"></div>
+  <p class="hint"><a href="my.html" style="color:#c2185b">看我的投稿狀態 →</a>　<a href="index.html" style="color:#c2185b">← 回首頁</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+let _sb = null;
+function sb(){
+  if(!(window.HK_SUPABASE_URL && window.HK_SUPABASE_ANON_KEY)){ err('投稿系統建置中，敬請期待！'); return null; }
+  if(!_sb) _sb = window.supabase.createClient(window.HK_SUPABASE_URL, window.HK_SUPABASE_ANON_KEY);
+  return _sb;
+}
+function err(m){ document.getElementById('err').textContent = m; }
+sb() && sb().auth.getSession().then(({data}) => {
+  if (!data.session) location.href = 'login.html?next=' + encodeURIComponent('submit.html');
+});
+async function doSubmit(){
+  const c = sb(); if(!c) return;
+  const { data: { session } } = await c.auth.getSession();
+  if (!session){ location.href = 'login.html?next=' + encodeURIComponent('submit.html'); return; }
+  const title = f_title.value.trim(), url = f_url.value.trim(), price = Number(f_price.value);
+  if (!title || !url || !price){ err('商品名稱、賣場連結、優惠價都要填喔'); return; }
+  const { error } = await c.from('tips').insert({
+    user_id: session.user.id,
+    title, url, price,
+    market_price: Number(f_market.value) || null,
+    store: f_store.value.trim() || null,
+    note: f_note.value.trim() || null
+  });
+  if (error) err('送出失敗：' + error.message);
+  else { alert('爆料已送出！審核通過就會上架。'); location.href = 'my.html'; }
+}
+</script>
+</body>
+</html>

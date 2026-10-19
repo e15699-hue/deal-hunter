@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>會員中心｜好康網</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<a class="brand" href="index.html" aria-label="好康網首頁">
+<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 22c0-3.3 2.7-6 6-6h22l16 16-16 16H16c-3.3 0-6-2.7-6-6V22z" fill="#fff"/><circle cx="21" cy="28" r="4.2" fill="#d81b60"/><text x="37.5" y="40.5" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-weight="900" font-size="19" fill="#d81b60">好</text></svg>
+<span class="wm"><b>好康網</b><small>HOWKANG.COM.TW</small></span>
+</a>
+<p class="tagline">會員中心</p>
+</header>
+<div class="formpage" style="max-width:640px">
+  <h2 style="border:none;padding:0;margin:0 0 6px">👤 會員中心</h2>
+  <p class="hint" id="who"></p>
+  <p><a class="btn" href="submit.html" style="text-decoration:none;display:block;text-align:center">📮 我要爆料投稿</a></p>
+  <h2>📮 我的投稿</h2>
+  <div id="tips"><p class="hint">載入中…</p></div>
+  <h2>🔔 我的追蹤</h2>
+  <div id="watches"><p class="hint">載入中…</p></div>
+  <p style="margin-top:20px"><button class="watchbtn" style="width:100%" onclick="doLogout()">登出</button></p>
+  <p class="hint"><a href="index.html" style="color:#c2185b">← 回首頁</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+let _sb = null, _uid = null;
+function sb(){
+  if(!(window.HK_SUPABASE_URL && window.HK_SUPABASE_ANON_KEY)){ document.getElementById('tips').innerHTML = '<p class="hint">會員系統建置中，敬請期待！</p>'; document.getElementById('watches').innerHTML=''; return null; }
+  if(!_sb) _sb = window.supabase.createClient(window.HK_SUPABASE_URL, window.HK_SUPABASE_ANON_KEY);
+  return _sb;
+}
+const ST = {pending:'<span class="st pending">審核中</span>', approved:'<span class="st approved">已上架</span>', rejected:'<span class="st rejected">未通過</span>'};
+async function load(){
+  const c = sb(); if(!c) return;
+  const { data: { session } } = await c.auth.getSession();
+  if (!session){ location.href = 'login.html?next=' + encodeURIComponent('my.html'); return; }
+  _uid = session.user.id;
+  document.getElementById('who').textContent = '登入中：' + session.user.email;
+  const { data: tips } = await c.from('tips').select('title,price,status,created_at').eq('user_id', _uid).order('created_at', {ascending:false}).limit(20);
+  document.getElementById('tips').innerHTML = tips && tips.length
+    ? tips.map(t => `<div class="tiplist"><div>${t.title}</div><div class="hint">$${Number(t.price).toLocaleString()}・${t.created_at.slice(0,10)} ${ST[t.status]||''}</div></div>`).join('')
+    : '<p class="hint">還沒有投稿，看到好康快來爆料！</p>';
+  const { data: ws } = await c.from('watchlist').select('title,price_now,created_at').eq('user_id', _uid).order('created_at', {ascending:false}).limit(20);
+  document.getElementById('watches').innerHTML = ws && ws.length
+    ? ws.map(w => `<div class="tiplist"><div>${w.title}</div><div class="hint">追蹤時 $${Number(w.price_now).toLocaleString()}・<a href="#" onclick="unwatch('${w.title.replace(/'/g,"")}');return false" style="color:#c2185b">取消追蹤</a></div></div>`).join('')
+    : '<p class="hint">還沒追蹤任何商品，看到卡片上的 🔔 按下去就對了！</p>';
+}
+async function unwatch(title){
+  const c = sb(); if(!c) return;
+  await c.from('watchlist').delete().eq('user_id', _uid).eq('title', title);
+  load();
+}
+async function doLogout(){ const c = sb(); if(c) await c.auth.signOut(); location.href = 'index.html'; }
+load();
+</script>
+</body>
+</html>

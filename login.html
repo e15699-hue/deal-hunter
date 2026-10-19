@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>會員登入｜好康網</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<a class="brand" href="index.html" aria-label="好康網首頁">
+<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 22c0-3.3 2.7-6 6-6h22l16 16-16 16H16c-3.3 0-6-2.7-6-6V22z" fill="#fff"/><circle cx="21" cy="28" r="4.2" fill="#d81b60"/><text x="37.5" y="40.5" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-weight="900" font-size="19" fill="#d81b60">好</text></svg>
+<span class="wm"><b>好康網</b><small>HOWKANG.COM.TW</small></span>
+</a>
+<p class="tagline">登入會員・投稿爆料＋追蹤降價</p>
+</header>
+<div class="formpage">
+  <h2 style="border:none;padding:0;margin:0 0 6px">👤 會員登入 / 註冊</h2>
+  <p class="hint">一組帳號搞定：爆料投稿、追蹤商品降價通知。註冊不用驗證手機，Email 即可。</p>
+  <label>Email</label>
+  <input id="email" type="email" placeholder="you@example.com" autocomplete="email">
+  <label>密碼</label>
+  <input id="pw" type="password" placeholder="至少 6 碼" autocomplete="current-password">
+  <button class="btn" onclick="doLogin()">登入</button>
+  <button class="btn" style="background:#fff;color:#d81b60;border:2px solid #f8bbd0" onclick="doSignup()">註冊新帳號</button>
+  <div class="err" id="err"></div>
+  <p class="hint">登入後可：📮 爆料投稿（審核通過即上架）、🔔 追蹤商品（降價通知）。<br><a href="index.html" style="color:#c2185b">← 回首頁</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+function sb(){
+  if(!(window.HK_SUPABASE_URL && window.HK_SUPABASE_ANON_KEY)){ err('會員系統建置中，敬請期待！'); return null; }
+  return window.supabase.createClient(window.HK_SUPABASE_URL, window.HK_SUPABASE_ANON_KEY);
+}
+function err(m){ document.getElementById('err').textContent = m; }
+function nextUrl(){
+  const n = new URLSearchParams(location.search).get('next');
+  return n || 'my.html';
+}
+async function doLogin(){
+  const c = sb(); if(!c) return;
+  const { error } = await c.auth.signInWithPassword({ email: email.value.trim(), password: pw.value });
+  if (error) err('登入失敗：' + error.message);
+  else location.href = nextUrl();
+}
+async function doSignup(){
+  const c = sb(); if(!c) return;
+  if (pw.value.length < 6){ err('密碼至少 6 碼'); return; }
+  const { error } = await c.auth.signUp({ email: email.value.trim(), password: pw.value });
+  if (error) err('註冊失敗：' + error.message);
+  else { alert('註冊成功！已自動登入。'); location.href = nextUrl(); }
+}
+sb() && sb().auth.getSession().then(({data}) => { if (data.session) location.href = nextUrl(); });
+</script>
+</body>
+</html>

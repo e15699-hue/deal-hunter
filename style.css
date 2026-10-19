@@ -30,6 +30,8 @@ section h2{font-size:1.12rem;margin:16px 4px 10px;padding-left:10px;border-left:
 .price .was{color:#999;text-decoration:line-through;font-size:.82rem;margin-left:8px}
 .meta{font-size:.78rem;color:#888;margin-bottom:10px}
 .meta span{margin-right:8px}
+.hist{font-size:.75rem;color:#7b8d9e;margin:-4px 0 8px}
+.hist b{color:#2e7d32}
 .btn{display:inline-block;background:#ec407a;color:#fff;text-decoration:none;border-radius:8px;padding:10px 22px;font-size:.9rem;font-weight:bold}
 .btn:active{background:#d81b60}
 footer{text-align:center;color:#b76e8a;font-size:.75rem;padding:24px 16px 40px;line-height:2}
@@ -61,25 +63,78 @@ section.flash-sec h2{color:#e53935;border-left-color:#e53935}
 .hero-inner p{font-size:clamp(.85rem,2vw,1.05rem);opacity:.92;margin-bottom:18px;position:relative}
 .hero-inner .btn{background:#fff;color:#d81b60;font-size:1rem;padding:12px 34px;position:relative}
 .hero-inner .btn:active{background:#fce4ec}
-/* RWD：平板 2 欄、桌面 3 欄滿版（排除 hero、快訊、靜態區） */
+/* ===== 左右欄版面（桌面）：左=快報+投稿引流，右=產品情報 ===== */
+.layout{max-width:680px;margin:0 auto}
+.layout section{margin-bottom:20px}
+@media (min-width:1024px){
+  .layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:24px;max-width:1400px;margin:0 auto 22px;padding:0 28px;align-items:start}
+  .layout section{max-width:none;padding:0}
+  .sidebar{position:sticky;top:66px;min-width:0}
+  .sidebar .news-sec{margin-bottom:18px}
+  .content{min-width:0}
+}
+/* ===== 產品卡片格線（deal-sec 專用） ===== */
 @media (min-width:768px){
   section{max-width:960px}
-  section:not(.hero):not(.flash-sec):not(.static-sec):not(.news-sec){display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  section:not(.hero):not(.flash-sec):not(.static-sec):not(.news-sec)>h2{grid-column:1/-1}
+  section.deal-sec{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  section.deal-sec>h2{grid-column:1/-1}
   section .morebtn{grid-column:1/-1}
   .card{margin-bottom:0}
   .grid{max-width:960px;grid-template-columns:repeat(auto-fit,minmax(100px,1fr))}
 }
 @media (min-width:1200px){
   section{max-width:1400px;padding:0 28px}
-  section:not(.hero):not(.flash-sec):not(.static-sec):not(.news-sec){display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  section:not(.hero):not(.flash-sec):not(.static-sec):not(.news-sec)>h2{grid-column:1/-1}
   section.flash-sec{max-width:1400px;padding:0 28px}
   section.static-sec{max-width:1400px;padding:0 28px}
   .grid{max-width:1400px;padding:0 28px}
   .hero-inner{min-height:340px}
   .page{max-width:900px}
 }
+@media (min-width:1400px){
+  section.deal-sec{grid-template-columns:repeat(3,1fr);gap:16px}
+}
+/* ===== 手機緊湊列表（參考 BigGo）：一屏多看幾則 ===== */
+@media (max-width:767px){
+  section.deal-sec .card{padding:10px;margin-bottom:10px}
+  section.deal-sec .card .row{gap:10px}
+  section.deal-sec .card .pic{width:88px;height:88px}
+  section.deal-sec .card h3{font-size:.82rem}
+  section.deal-sec .card .price .now{font-size:1.08rem}
+  section.deal-sec .card .price .was{font-size:.72rem}
+  section.deal-sec .card .meta{font-size:.68rem;margin-bottom:6px}
+  section.deal-sec .card .hist{font-size:.68rem;margin-bottom:6px}
+  section.deal-sec .card .btnrow{display:flex;gap:8px}
+  section.deal-sec .card .btn{flex:1;padding:9px 0;font-size:.82rem;text-align:center}
+  section.deal-sec .card .watchbtn{flex:none;width:42px;padding:9px 0;font-size:.9rem}
+}
+/* ===== 會員列（header 右上） ===== */
+.userbar{max-width:680px;margin:0 auto;padding:8px 12px 0;text-align:right;font-size:.8rem}
+.userbar a{color:#c2185b;text-decoration:none;font-weight:bold}
+@media (min-width:1024px){.userbar{max-width:1400px;padding:8px 28px 0}}
+/* ===== 追蹤按鈕 ===== */
+.btnrow{display:flex;gap:8px}
+.btnrow .btn{flex:1}
+.watchbtn{flex:none;background:#fff;color:#d81b60;border:2px solid #f8bbd0;border-radius:10px;padding:10px 12px;font-size:.85rem;cursor:pointer;font-weight:bold}
+.watchbtn.on{background:#fce4ec;border-color:#d81b60}
+/* ===== 搜尋頁 ===== */
+.searchbox{max-width:680px;margin:14px auto;padding:0 12px}
+.searchbox input{width:100%;font-size:1rem;padding:12px 14px;border:2px solid #f8bbd0;border-radius:12px;outline:none}
+.searchbox input:focus{border-color:#d81b60}
+.chips{display:flex;gap:8px;flex-wrap:wrap;max-width:680px;margin:0 auto 8px;padding:0 12px}
+.chips button{border:1px solid #f8bbd0;background:#fff;color:#c2185b;border-radius:16px;padding:6px 14px;font-size:.8rem;cursor:pointer}
+.chips button.on{background:#d81b60;color:#fff;border-color:#d81b60}
+#searchMeta{max-width:680px;margin:6px auto;padding:0 12px;color:#b76e8a;font-size:.82rem}
+/* ===== 會員表單頁 ===== */
+.formpage{max-width:480px;margin:0 auto;padding:20px 16px 40px}
+.formpage label{display:block;font-size:.85rem;color:#ad1457;font-weight:bold;margin:12px 0 4px}
+.formpage input,.formpage textarea,.formpage select{width:100%;font-size:.95rem;padding:10px 12px;border:2px solid #f8bbd0;border-radius:10px;outline:none;box-sizing:border-box}
+.formpage input:focus,.formpage textarea:focus{border-color:#d81b60}
+.formpage .btn{width:100%;margin-top:16px;border:none;cursor:pointer;font-size:1rem}
+.formpage .hint{font-size:.78rem;color:#b76e8a;margin-top:10px;line-height:1.6}
+.formpage .err{color:#d32f2f;font-size:.85rem;margin-top:8px}
+.tiplist{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 1px 4px rgba(216,27,96,.1)}
+.tiplist .st{font-size:.75rem;font-weight:bold;padding:3px 10px;border-radius:12px}
+.st.pending{background:#fff3e0;color:#e65100}.st.approved{background:#e8f5e9;color:#2e7d32}.st.rejected{background:#ffebee;color:#c62828}
 /* 靜態內容頁 */
 .page{max-width:680px;margin:0 auto;padding:20px 16px 40px}
 /* 好康快報（新聞區） */

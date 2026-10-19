@@ -20,8 +20,9 @@
 <span class="wm"><b>好康網</b><small>HOWKANG.COM.TW</small></span>
 </a>
 <p class="tagline">每天幫你挖好康・全品項優惠情報</p>
-<div class="searchbar"><input type="search" placeholder="🔍 搜尋優惠：iPhone、面膜、衛生紙…" onkeydown="if(event.key==='Enter'){alert('站內搜尋建置中，敬請期待！')}"></div>
+<div class="searchbar"><input id="q" type="search" placeholder="🔍 搜尋優惠：iPhone、面膜、衛生紙…" onkeydown="if(event.key==='Enter'){location.href='search.html?q='+encodeURIComponent(this.value)}"></div>
 </header>
+<div class="userbar"><a id="userLink" href="login.html">👤 登入 / 註冊</a></div>
 
 <section class="hero">
 <div class="hero-inner">
@@ -48,15 +49,25 @@
 <div class="note">💡 價格為情報整理僅供參考，下單前請再次確認賣場價格與商品狀況。二手商品建議面交驗貨。</div>
 
 <span id="deals"></span>
+<div class="layout">
+  <aside class="sidebar">
+    
+    <section class="static-sec"><h2>📮 爆料投稿</h2>
+    <div class="partners">看到標錯價、快閃優惠？投稿讓大家一起撿！<br>
+    <small>審核通過就會出現在快訊區</small><br><br>
+    <a class="btn" href="mailto:swiftfixpc@gmail.com?subject=【好康爆料】&body=商品名稱：%0A賣場連結：%0A價格：%0A備註：">我要爆料 →</a></div>
+    </section>
+  </aside>
+  <main class="content">
+    
 
-
-<section><h2>美妝保養<span class="dealcount">2 則</span></h2>
+    <section class="deal-sec"><h2>美妝保養<span class="dealcount">2 則</span></h2>
 <div class="card">
 <div class="row"><div class="pic"><img loading="lazy" src="https://img.pchome.com.tw/cs/items/DDABG8A900AS3FE/000001_1746432296.jpg" alt="" onerror="this.closest('.pic').style.display='none'"></div><div class="body">
 <div class="top"><h3>我的美麗日記 暢銷補水明星組玻尿酸保濕超能補水面膜28片組</h3><span class="badge">便宜 20%</span></div>
 <div class="price"><span class="now">$639</span><span class="was">市價 $799</span></div>
 <div class="meta"><span>📦 pchome</span><span>👤 PChome 24h購物</span><br><span>📝 28片平均一片23元</span></div>
-<a class="btn" href="https://24h.pchome.com.tw/prod/DDABG8-A900AS3FE" target="_blank" rel="noopener">去看看 →</a>
+<div class="btnrow"><a class="btn" href="https://24h.pchome.com.tw/prod/DDABG8-A900AS3FE" target="_blank" rel="noopener">去看看 →</a><button class="watchbtn" data-key="https://24h.pchome.com.tw/prod/DDABG8-A900AS3FE" data-title="我的美麗日記 暢銷補水明星組玻尿酸保濕超能補水面膜28片組" data-price="639" onclick="watchDeal(this)" title="追蹤降價通知">🔔</button></div>
 </div></div>
 </div>
 <div class="card">
@@ -64,24 +75,12 @@
 <div class="top"><h3>ROHTO 樂敦【肌研】極潤保濕化妝水 大容量 400ml</h3><span class="badge">便宜 19%</span></div>
 <div class="price"><span class="now">$419</span><span class="was">市價 $520</span></div>
 <div class="meta"><span>📦 pchome</span><span>👤 PChome 24h購物</span><br><span>📝 開架保養天后大容量</span></div>
-<a class="btn" href="https://24h.pchome.com.tw/prod/DDCBE8-A900B8PJY" target="_blank" rel="noopener">去看看 →</a>
+<div class="btnrow"><a class="btn" href="https://24h.pchome.com.tw/prod/DDCBE8-A900B8PJY" target="_blank" rel="noopener">去看看 →</a><button class="watchbtn" data-key="https://24h.pchome.com.tw/prod/DDCBE8-A900B8PJY" data-title="ROHTO 樂敦【肌研】極潤保濕化妝水 大容量 400ml" data-price="419" onclick="watchDeal(this)" title="追蹤降價通知">🔔</button></div>
 </div></div>
 </div>
 </section>
-
-
-
-<!-- 招商區（流量達標後啟用）
-<section class="static-sec"><h2>🤝 合作店家</h2>
-<div class="partners">廣告版位招商中<br><small>您的店家可以出現在這裡，接觸每天找便宜的精準客群（全品項皆可）</small><br><br><a class="btn" href="../partner.html">了解商務合作 →</a></div>
-</section>
--->
-
-<section class="static-sec"><h2>📮 爆料投稿</h2>
-<div class="partners">看到標錯價、快閃優惠？投稿讓大家一起撿！<br>
-<small>審核通過就會出現在快訊區</small><br><br>
-<a class="btn" href="mailto:swiftfixpc@gmail.com?subject=&body=商品名稱：%0A賣場連結：%0A價格：%0A備註：">我要爆料 →</a></div>
-</section>
+  </main>
+</div>
 
 <footer>
 <nav class="fnav">
@@ -90,5 +89,8 @@
 <div class="disclosure">聯盟行銷揭露：本站部分「去看看」連結為聯盟行銷推廣連結，透過該連結完成購買，本站可獲得分潤獎金，您的購買價格不受影響。我們只收錄通過詐騙過濾與價格查核的情報。</div>
 © 2026 好康網 howkang.com.tw・每日自動更新
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase-config.js"></script>
+<script src="../app.js"></script>
 </body>
 </html>
