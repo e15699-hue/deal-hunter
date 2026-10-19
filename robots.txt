@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://howkan.tw/sitemap.xml
+Sitemap: https://howkang.com.tw/sitemap.xml
