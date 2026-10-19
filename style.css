@@ -53,8 +53,43 @@ section.flash-sec h2{color:#e53935;border-left-color:#e53935}
 .crumb a{color:#d81b60;text-decoration:none}
 .morebtn{display:block;text-align:center;margin:4px 0 8px}
 .morebtn a{display:inline-block;background:#fff;color:#d81b60;border:2px solid #f8bbd0;border-radius:20px;padding:8px 24px;text-decoration:none;font-size:.85rem;font-weight:bold}
+/* 16:9 滿版 hero */
+.hero{max-width:none!important;padding:0!important;margin:0 auto 22px!important}
+.hero-inner{position:relative;aspect-ratio:16/9;max-height:62vh;min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;background:linear-gradient(135deg,#ad1457 0%,#d81b60 45%,#f06292 100%);overflow:hidden;padding:24px 16px}
+.hero-inner::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 20%,rgba(255,255,255,.14) 0 90px,transparent 91px),radial-gradient(circle at 85% 75%,rgba(255,255,255,.1) 0 130px,transparent 131px),radial-gradient(circle at 70% 15%,rgba(255,255,255,.08) 0 60px,transparent 61px)}
+.hero-inner h2{font-size:clamp(1.6rem,4.5vw,2.8rem);font-weight:900;letter-spacing:4px;margin:0 0 10px;position:relative;border:none;padding:0;color:#fff}
+.hero-inner p{font-size:clamp(.85rem,2vw,1.05rem);opacity:.92;margin-bottom:18px;position:relative}
+.hero-inner .btn{background:#fff;color:#d81b60;font-size:1rem;padding:12px 34px;position:relative}
+.hero-inner .btn:active{background:#fce4ec}
+/* RWD：平板 2 欄、桌面 3 欄滿版（排除 hero、快訊、靜態區） */
+@media (min-width:768px){
+  section{max-width:960px}
+  section:not(.hero):not(.flash-sec):not(.static-sec):not(.news-sec){display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  section:not(.hero):not(.flash-sec):not(.static-sec):not(.news-sec)>h2{grid-column:1/-1}
+  section .morebtn{grid-column:1/-1}
+  .card{margin-bottom:0}
+  .grid{max-width:960px;grid-template-columns:repeat(auto-fit,minmax(100px,1fr))}
+}
+@media (min-width:1200px){
+  section{max-width:1400px;padding:0 28px}
+  section:not(.hero):not(.flash-sec):not(.static-sec):not(.news-sec){display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  section:not(.hero):not(.flash-sec):not(.static-sec):not(.news-sec)>h2{grid-column:1/-1}
+  section.flash-sec{max-width:1400px;padding:0 28px}
+  section.static-sec{max-width:1400px;padding:0 28px}
+  .grid{max-width:1400px;padding:0 28px}
+  .hero-inner{min-height:340px}
+  .page{max-width:900px}
+}
 /* 靜態內容頁 */
 .page{max-width:680px;margin:0 auto;padding:20px 16px 40px}
+/* 好康快報（新聞區） */
+.news-item{display:flex;gap:12px;background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 1px 4px rgba(216,27,96,.1);text-decoration:none;color:#333}
+.news-item .ndate{flex:none;width:56px;text-align:center;background:#fce4ec;border-radius:8px;padding:8px 4px;color:#ad1457;font-weight:900;font-size:.8rem;line-height:1.4;align-self:flex-start}
+.news-item .nbody{flex:1;min-width:0}
+.news-item h3{font-size:.92rem;line-height:1.45;margin-bottom:4px;color:#333}
+.news-item .nmeta{font-size:.75rem;color:#999}
+.news-item .nmeta span{margin-right:8px}
+section.news-sec h2{color:#c2185b;border-left-color:#c2185b}
 .page h1{font-size:1.4rem;color:#ad1457;margin-bottom:14px}
 .page h2{font-size:1.05rem;color:#ad1457;margin:20px 0 8px;padding-left:10px;border-left:4px solid #ec407a}
 .page p,.page li{font-size:.92rem;color:#555;margin-bottom:10px}
