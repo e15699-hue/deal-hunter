@@ -118,7 +118,7 @@
     }
     var img = String(d.image || '').trim();
     var pic = /^https?:/.test(img)
-      ? '<div class="pic"><img loading="lazy" src="' + esc(img) + '" alt="" onerror="this.closest(\'.pic\').style.display=\'none\'"></div>'
+      ? '<div class="pic"><img loading="lazy" src="' + esc(img) + '" alt="' + esc(d.name) + '" onerror="this.closest(\'.pic\').style.display=\'none\'"></div>'
       : '';
     var nowTxt = '$' + price.toLocaleString();
     return '<div class="card"><div class="row">' + pic + '<div class="body">'

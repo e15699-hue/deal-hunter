@@ -163,6 +163,7 @@ footer nav.fnav.cats a{font-weight:normal}
 /* 好康快報（新聞區） */
 .news-item{display:flex;gap:12px;background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 1px 4px rgba(216,27,96,.1);text-decoration:none;color:#333}
 .news-item .ndate{flex:none;width:56px;text-align:center;background:#fce4ec;border-radius:8px;padding:8px 4px;color:#ad1457;font-weight:900;font-size:.8rem;line-height:1.4;align-self:flex-start}
+.news-item .ndate .nago{display:block;font-size:.62rem;font-weight:700;opacity:.72;margin-top:2px}
 .news-item .nbody{flex:1;min-width:0}
 .news-item h3{font-size:.92rem;line-height:1.45;margin-bottom:4px;color:#333}
 .news-item .nmeta{font-size:.75rem;color:#999}
