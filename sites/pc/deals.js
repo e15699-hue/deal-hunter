@@ -101,7 +101,7 @@
       var save = market - price;
       // 蝦皮/momo 式：折扣 % 大標籤＋現省金額
       badge = '<span class="badge">-' + off + '%</span>';
-      was = '<span class="was">市價 $' + market.toLocaleString() + '</span>';
+      was = '<span class="was">對照 $' + market.toLocaleString() + '</span>';
       saveHtml = '<span class="save">現省 $' + save.toLocaleString() + '</span>';
     } else {
       badge = '<span class="badge good">好價</span>';
