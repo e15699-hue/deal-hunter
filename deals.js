@@ -101,7 +101,7 @@
       var save = market - price;
       // 蝦皮/momo 式：折扣 % 大標籤＋現省金額
       badge = '<span class="badge">-' + off + '%</span>';
-      was = '<span class="was">市價 $' + market.toLocaleString() + '</span>';
+      was = '<span class="was">對照 $' + market.toLocaleString() + '</span>';
       saveHtml = '<span class="save">現省 $' + save.toLocaleString() + '</span>';
     } else {
       badge = '<span class="badge good">好價</span>';
@@ -200,7 +200,7 @@
       var fhtml = '<section class="flash-sec"><h2>⚡ 限時特賣會場（手刀要快）</h2>\n' + flash.map(flashHTML).join('\n') + '\n</section>';
       if (flashSec) flashSec.outerHTML = fhtml;
       else main.insertAdjacentHTML('afterbegin', fhtml);
-    } else if (flashSec) { flashSec.remove(); }
+    } /* 抓到的資料無快閃時保留靜態快照的快閃區（同步延遲時也不讓快閃消失，2026-10-20 事故防呆） */
 
     // 分組（不含 flash；stockup／推薦／贊助一律回到所屬樓層，與靜態快照一致）
     var order = [], byCat = {};
