@@ -51,6 +51,30 @@ footer{background:#2c3e50;color:#aaa;text-align:center;padding:1.6rem 1rem;font-
     .price-chip{background:#ffb703;color:#5b4300}
     .divider{text-align:center;margin:.2rem 0 1rem;font-size:1.2rem}
     
+
+.qty{display:flex;align-items:center;gap:.45rem;margin-top:.45rem}
+.qty button{width:30px;height:30px;border-radius:50%;border:1.5px solid #06c755;background:#fff;color:#06c755;font-size:1.05rem;font-weight:bold;cursor:pointer;line-height:1}
+.qty button:active{background:#06c755;color:#fff}
+.qty .n{min-width:1.4rem;text-align:center;font-weight:bold}
+.orderbar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:#fff;box-shadow:0 -3px 14px rgba(0,0,0,.18);padding:.7rem 1rem;display:none;align-items:center;gap:.8rem}
+.orderbar.on{display:flex}
+.orderbar .sum{flex:1;font-weight:bold;font-size:.95rem}
+.orderbar .sum small{display:block;color:#888;font-weight:normal;font-size:.78rem}
+.line-send{background:#06c755;color:#fff;border:none;border-radius:24px;padding:.7rem 1.2rem;font-weight:bold;font-size:.95rem;cursor:pointer}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;display:none;align-items:flex-end;justify-content:center}
+.modal.on{display:flex}
+.line-win{background:#8cabd9;width:100%;max-width:430px;height:82vh;border-radius:18px 18px 0 0;display:flex;flex-direction:column;overflow:hidden}
+.line-head{background:#06c755;color:#fff;padding:.85rem 1rem;font-weight:bold;display:flex;justify-content:space-between;align-items:center}
+.line-head .tag{background:rgba(255,255,255,.25);font-size:.7rem;padding:2px 9px;border-radius:12px}
+.line-body{flex:1;overflow-y:auto;padding:1rem .8rem;display:flex;flex-direction:column;gap:.55rem}
+.bubble{max-width:82%;padding:.65rem .85rem;border-radius:16px;font-size:.9rem;white-space:pre-wrap;line-height:1.55}
+.bubble.me{align-self:flex-end;background:#a4e68a;border-bottom-right-radius:4px}
+.bubble.shop{align-self:flex-start;background:#fff;border-bottom-left-radius:4px}
+.line-form{background:#fff;padding:.9rem 1rem;border-top:1px solid #eee}
+.line-form label{font-size:.8rem;color:#666;display:block;margin-top:.5rem}
+.line-form input,.line-form select{width:100%;padding:.55rem;border:1px solid #ddd;border-radius:8px;font-size:.95rem;margin-top:.25rem}
+.line-form .send{width:100%;margin-top:.8rem;background:#06c755;color:#fff;border:none;border-radius:10px;padding:.8rem;font-weight:bold;font-size:1rem;cursor:pointer}
+.demo-note{background:#fff3cd;color:#856404;font-size:.75rem;text-align:center;padding:.45rem}
 </style></head><body>
 <div class="demo-badge">📌 這是範例網站｜貴店做好會長這樣（店名・電話・地址・照片全換成你們的）</div>
 <div class="hero"><div class="hero-txt">
@@ -77,5 +101,85 @@ footer{background:#2c3e50;color:#aaa;text-align:center;padding:1.6rem 1rem;font-
 <script>
 const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('on')),{threshold:.1});
 document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+
+<div class="orderbar" id="orderbar">
+  <div class="sum" id="ordersum"></div>
+  <button class="line-send" onclick="openLine()">💬 LINE 預訂送出</button>
+</div>
+<div class="modal" id="lineModal">
+  <div class="line-win">
+    <div class="line-head"><span>小確幸手搖飲（官方帳號）</span><span class="tag">示範模式</span></div>
+    <div class="line-body" id="lineBody">
+      <div class="bubble shop">您好！歡迎使用 LINE 預訂飲料，先訂先做好、不用現場等 🧋</div>
+    </div>
+    <div class="line-form" id="lineForm">
+      <div style="font-size:.85rem;color:#555">您的預訂內容：</div>
+      <div id="orderPreview" style="white-space:pre-wrap;font-size:.9rem;background:#f6f6f6;border-radius:8px;padding:.6rem .8rem;margin-top:.4rem"></div>
+      <label>取餐時間</label>
+      <select id="fTime"><option>今天 12:00</option><option>今天 12:30</option><option>今天 15:00</option><option>今天 17:30</option></select>
+      <label>姓名</label><input id="fName" placeholder="例：陳小筑">
+      <label>電話</label><input id="fPhone" placeholder="例：0912-345-678">
+      <button class="send" onclick="sendLine()">💬 送出預訂</button>
+    </div>
+    <div class="demo-note">⚠️ 這是功能示範：正式版送出後，訊息會真的進到店家的 LINE 官方帳號</div>
+    <button onclick="closeLine()" style="background:#fff;border:none;padding:.7rem;font-size:.9rem;color:#666;cursor:pointer">✕ 關閉示範</button>
+  </div>
+</div>
+
+<script>
+const cart = {};
+document.querySelectorAll('.svc').forEach((card, i) => {
+  const name = card.querySelector('b').textContent.trim();
+  const price = parseInt(card.querySelector('.price-chip').textContent.replace(/[^0-9]/g, '')) || 0;
+  cart[i] = {name, price, qty: 0};
+  const q = document.createElement('div');
+  q.className = 'qty';
+  q.innerHTML = `<button onclick="chg(${i},-1)">−</button><span class="n" id="n${i}">0</span><button onclick="chg(${i},1)">＋</button><span style="font-size:.8rem;color:#888"> 加入預訂</span>`;
+  card.querySelector('.t').appendChild(q);
+});
+function chg(i, d) {
+  cart[i].qty = Math.max(0, Math.min(30, cart[i].qty + d));
+  document.getElementById('n' + i).textContent = cart[i].qty;
+  refreshBar();
+}
+function totals() {
+  let n = 0, sum = 0;
+  Object.values(cart).forEach(it => { n += it.qty; sum += it.qty * it.price; });
+  return {n, sum};
+}
+function refreshBar() {
+  const {n, sum} = totals();
+  const bar = document.getElementById('orderbar');
+  bar.classList.toggle('on', n > 0);
+  document.getElementById('ordersum').innerHTML = `已點 ${n} 杯・合計 $${sum}<small>點右邊按鈕，用 LINE 把預訂送給店家</small>`;
+}
+function openLine() {
+  document.getElementById('lineModal').classList.add('on');
+  const {sum} = totals();
+  const lines = Object.values(cart).filter(it => it.qty > 0).map(it => `・${it.name} ×${it.qty}`).join('\n');
+  document.getElementById('orderPreview').textContent = lines + `\n合計 $${sum}`;
+}
+function closeLine() { document.getElementById('lineModal').classList.remove('on'); }
+function sendLine() {
+  const time = document.getElementById('fTime').value;
+  const nm = document.getElementById('fName').value.trim() || '（未填）';
+  const ph = document.getElementById('fPhone').value.trim() || '（未填）';
+  const {sum} = totals();
+  const lines = Object.values(cart).filter(it => it.qty > 0).map(it => `・${it.name} ×${it.qty}`).join('\n');
+  const msg = `您好，我想預訂飲料：\n${lines}\n合計 $${sum}\n取餐時間：${time}\n姓名：${nm}\n電話：${ph}`;
+  const body = document.getElementById('lineBody');
+  const me = document.createElement('div');
+  me.className = 'bubble me'; me.textContent = msg;
+  body.appendChild(me);
+  document.getElementById('lineForm').style.display = 'none';
+  body.scrollTop = body.scrollHeight;
+  setTimeout(() => {
+    const shop = document.createElement('div');
+    shop.className = 'bubble shop';
+    shop.textContent = `收到囉 ${nm}！${time} 幫您做好，到店報電話末三碼取餐 🧋`;
+    body.appendChild(shop); body.scrollTop = body.scrollHeight;
+  }, 1200);
+}
 </script>
 </body></html>
