@@ -210,3 +210,16 @@ section.news-sec h2{color:#c2185b;border-left-color:#c2185b}
 .page table{width:100%;border-collapse:collapse;font-size:.85rem;margin:10px 0}
 .page th,.page td{border:1px solid #f8bbd0;padding:8px 10px;text-align:left}
 .page th{background:#fce4ec;color:#ad1457}
+/* ===== 百貨樓層制（2026-10-20 改版）：樓層索引＋樓層招牌 ===== */
+html{scroll-behavior:smooth}
+section.floor-sec{scroll-margin-top:70px}
+.floornav a{background:#fff;border:1.5px solid #f8bbd0}
+.floornav a b{color:#d81b60;margin-right:2px}
+.floor-head{display:flex;align-items:center;gap:14px;margin:18px 4px 12px;padding:12px 14px;background:linear-gradient(135deg,#fff,#fce4ec);border:1px solid #f8bbd0;border-radius:12px;box-shadow:0 1px 4px rgba(216,27,96,.08)}
+.floor-no{font-size:2rem;font-weight:900;color:#d81b60;letter-spacing:1px;line-height:1;flex:none}
+.floor-tt{flex:1;min-width:0}
+.floor-tt h2{font-size:1.12rem;margin:0;padding:0;border:none;color:#ad1457}
+.floor-tt p{font-size:.75rem;color:#c66a8f;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.floor-head .dealcount{margin-left:0;flex:none}
+section.floor-sec>.floor-head{grid-column:1/-1}
+@media(max-width:767px){.floor-no{font-size:1.55rem}.floor-head{gap:10px;padding:10px 12px;margin-top:14px}}

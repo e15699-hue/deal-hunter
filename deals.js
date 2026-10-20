@@ -142,7 +142,7 @@
       + btn + '</div>';
   }
 
-  // 頁面類型：首頁（全部＋每類前3）或分類頁（data-cat 屬性）
+  // 頁面類型：首頁（百貨樓層，每層折扣最高前 8 筆）或分類頁（data-cat 屬性，整層全顯示）
   var _cache = null, _catFilter = null;
 
   async function refresh() {
@@ -162,64 +162,89 @@
     } catch (e) { /* 靜默：保留靜態快照 */ }
   }
 
+  // 百貨樓層對照（與 shared/categories.json 同步）：name＝資料分類名，fname＝樓層顯示名
+  var HK_FLOORS = [
+    { name: '美妝保養', slug: 'beauty', floor: '1F', fname: '美妝保養', desc: '保養・彩妝・香氛・身體護理' },
+    { name: '服飾鞋包', slug: 'fashion', floor: '2F', fname: '精品時尚', desc: '男女服飾・鞋・包・配件' },
+    { name: '3C數位', slug: '3c', floor: '3F', fname: '3C 數位', desc: '電腦・手機・相機・遊戲・穿戴' },
+    { name: '家電', slug: 'appliance', floor: '4F', fname: '家電', desc: '大家電・小家電・廚房家電' },
+    { name: '居家生活', slug: 'home', floor: '5F', fname: '居家生活', desc: '寢具・收納・修繕・居家佈置' },
+    { name: '母嬰玩具', slug: 'baby', floor: '6F', fname: '母嬰親子', desc: '奶粉尿布・童裝・玩具' },
+    { name: '運動戶外', slug: 'sports', floor: '7F', fname: '運動休閒', desc: '運動・健身・戶外・休閒' },
+    { name: '寵物生活', slug: 'pet', floor: '8F', fname: '寵物用品', desc: '飼料・用品・寵物保健' },
+    { name: '食品日用', slug: 'grocery', floor: 'B1', fname: '美食生鮮', desc: '零食・生鮮・保健・清潔日用' }
+  ];
+  var HK_FLOOR_BY_NAME = {};
+  HK_FLOORS.forEach(function (f) { HK_FLOOR_BY_NAME[f.name] = f; });
+
+  // 樓層招牌（與 render.py 靜態快照同結構）
+  function floorHeadHTML(fm, total) {
+    return '<div class="floor-head"><span class="floor-no">' + fm.floor + '</span>'
+      + '<div class="floor-tt"><h2>' + esc(fm.fname) + '</h2><p>' + esc(fm.desc) + '</p></div>'
+      + '<span class="dealcount">' + total + ' 則</span></div>';
+  }
+
   function renderAll() {
     var main = document.querySelector('main.content');
     if (!main || !_cache) return;
     var deals = _cache, catFilter = _catFilter, mode = getSortMode();
 
-    // 排序列（情報列表上方）：記住使用者偏好，點選即重排，不重抓資料
-    ensureSortbar(main);
+    // 排序列：只保留在分類頁（首頁改百貨樓層制，固定以折扣力度排序，不顯示排序列）
+    if (catFilter) ensureSortbar(main);
+    else { var oldBar = main.querySelector('.sortbar'); if (oldBar) oldBar.remove(); }
 
     // 快訊區（維持發現順序，不參與排序）
     var flash = deals.filter(function (d) { return d.flash; }).slice(0, 5);
     var flashSec = main.querySelector('.flash-sec');
     if (flash.length) {
-      var fhtml = '<section class="flash-sec"><h2>⚡ 限時快訊（手刀要快）</h2>\n' + flash.map(flashHTML).join('\n') + '\n</section>';
+      var fhtml = '<section class="flash-sec"><h2>⚡ 限時特賣會場（手刀要快）</h2>\n' + flash.map(flashHTML).join('\n') + '\n</section>';
       if (flashSec) flashSec.outerHTML = fhtml;
-      else {
-        var sbEl = main.querySelector('.sortbar');
-        if (sbEl) sbEl.insertAdjacentHTML('afterend', fhtml);
-        else main.insertAdjacentHTML('afterbegin', fhtml);
-      }
+      else main.insertAdjacentHTML('afterbegin', fhtml);
     } else if (flashSec) { flashSec.remove(); }
 
-    // 囤貨快報區（歷史低點消耗品）
-    var stockup = sortDeals(deals.filter(function (d) { return d.stockup && !d.flash; }), mode).slice(0, 6);
-    var oldStockup = main.querySelector('.stockup-sec');
-    if (oldStockup) oldStockup.remove();
-    if (stockup.length && !catFilter) {
-      var shead = '<section class="deal-sec stockup-sec"><h2>📦 囤貨快報（歷史低點）</h2>\n';
-      var shtml = shead + stockup.map(cardHTML).join('\n') + '</section>';
-      var anchor = main.querySelector('.flash-sec') || main.querySelector('.sortbar');
-      if (anchor && anchor.insertAdjacentHTML) anchor.insertAdjacentHTML('afterend', shtml);
-      else main.insertAdjacentHTML('afterbegin', shtml);
-    }
-
-    // 分類區：先依原順序分組（版塊順序不變），再在每組內依偏好排序
+    // 分組（不含 flash；stockup／推薦／贊助一律回到所屬樓層，與靜態快照一致）
     var order = [], byCat = {};
-    deals.filter(function (d) { return !d.flash && !d.stockup; }).forEach(function (d) {
+    deals.filter(function (d) { return !d.flash; }).forEach(function (d) {
       var c = d.category || '其他';
       if (!byCat[c]) { byCat[c] = []; order.push(c); }
       byCat[c].push(d);
     });
-    // 移除舊的 deal-sec（囤貨快報 stockup-sec 已另外重建，不可刪）
-    main.querySelectorAll('section.deal-sec:not(.stockup-sec)').forEach(function (s) { s.remove(); });
+    // 移除舊的 deal-sec（樓層與分類區全部重建）
+    main.querySelectorAll('section.deal-sec').forEach(function (s) { s.remove(); });
     var html = '';
-    order.forEach(function (c) {
-      var items = sortDeals(byCat[c], mode);
-      var show = catFilter ? items : items.slice(0, 3);
-      var cards = show.map(cardHTML).join('\n');
-      var count = '<span class="dealcount">' + items.length + ' 則</span>';
-      var more = '';
-      if (!catFilter && items.length > 3) {
-        var slug = (window.HK_CAT_SLUGS || {})[c];
-        if (slug) more = '<div class="morebtn"><a href="cat/' + slug + '.html">看更多' + esc(c) + '優惠 →</a></div>';
-      }
-      html += '<section class="deal-sec"><h2>' + esc(c) + count + '</h2>\n' + cards + '\n' + more + '</section>';
-    });
+    if (!catFilter) {
+      // 首頁：百貨樓層（1F→8F→B1），每層折扣力度最高前 8 筆＋「逛完整層」
+      var covered = {};
+      HK_FLOORS.forEach(function (fm) {
+        var items = byCat[fm.name];
+        if (!items || !items.length) return;
+        covered[fm.name] = true;
+        var show = sortDeals(items, 'off').slice(0, 8);
+        html += '<section class="deal-sec floor-sec" id="floor-' + fm.slug + '" aria-label="' + fm.floor + ' ' + fm.fname + '">\n'
+          + floorHeadHTML(fm, items.length) + '\n'
+          + show.map(cardHTML).join('\n')
+          + '\n<div class="morebtn"><a href="cat/' + fm.slug + '.html">逛完整層 →</a></div></section>';
+      });
+      // 不在樓層對照內的分類（保險：新分類未設樓層時仍露出）
+      order.forEach(function (c) {
+        if (covered[c]) return;
+        var items = sortDeals(byCat[c], 'off');
+        html += '<section class="deal-sec"><h2>' + esc(c) + '<span class="dealcount">' + items.length + ' 則</span></h2>\n'
+          + items.slice(0, 8).map(cardHTML).join('\n') + '\n</section>';
+      });
+    } else {
+      // 分類頁：整層全顯示，標題用樓層名，排序依使用者偏好
+      order.forEach(function (c) {
+        var items = sortDeals(byCat[c], mode);
+        var fm = HK_FLOOR_BY_NAME[c];
+        var label = fm ? fm.floor + ' ' + fm.fname : c;
+        html += '<section class="deal-sec"><h2>' + esc(label) + '<span class="dealcount">' + items.length + ' 則</span></h2>\n'
+          + items.map(cardHTML).join('\n') + '\n</section>';
+      });
+    }
     if (!html) html = '<section><h2>暫無情報</h2><div class="card"><div class="body">此分類尚無優惠情報，站長搜刮中，敬請期待！</div></div></section>';
-    // 插到囤貨快報後面（沒有時插到 flash 後面，再無 flash 插到排序列後面）
-    var ref = main.querySelector('.stockup-sec') || main.querySelector('.flash-sec') || main.querySelector('.sortbar');
+    // 插到特賣會場後面（沒有時插到排序列後面，再無則插到主欄最前）
+    var ref = main.querySelector('.flash-sec') || main.querySelector('.sortbar');
     if (ref) ref.insertAdjacentHTML('afterend', html);
     else main.insertAdjacentHTML('afterbegin', html);
 
