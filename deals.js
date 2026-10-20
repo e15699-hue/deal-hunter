@@ -197,8 +197,8 @@
       if (!byCat[c]) { byCat[c] = []; order.push(c); }
       byCat[c].push(d);
     });
-    // 移除舊的 deal-sec（保留 sponsored 結構則重建）
-    main.querySelectorAll('section.deal-sec').forEach(function (s) { s.remove(); });
+    // 移除舊的 deal-sec（囤貨快報區 stockup-sec 已另外重建，不可刪；保留 sponsored 結構則重建）
+    main.querySelectorAll('section.deal-sec:not(.stockup-sec)').forEach(function (s) { s.remove(); });
     var html = '';
     order.forEach(function (c) {
       var items = sortDeals(byCat[c], mode);
@@ -213,8 +213,8 @@
       html += '<section class="deal-sec"><h2>' + esc(c) + count + '</h2>\n' + cards + '\n' + more + '</section>';
     });
     if (!html) html = '<section><h2>暫無情報</h2><div class="card"><div class="body">此分類尚無優惠情報，站長搜刮中，敬請期待！</div></div></section>';
-    // 插到 flash 後面（無 flash 時插到排序列後面）
-    var ref = main.querySelector('.flash-sec') || main.querySelector('.sortbar');
+    // 插到囤貨快報後面（無囤貨時插到 flash 後面，再無 flash 插到排序列後面）
+    var ref = main.querySelector('.stockup-sec') || main.querySelector('.flash-sec') || main.querySelector('.sortbar');
     if (ref) ref.insertAdjacentHTML('afterend', html);
     else main.insertAdjacentHTML('afterbegin', html);
 
