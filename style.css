@@ -59,15 +59,13 @@ section.flash-sec h2{color:#e53935;border-left-color:#e53935}
 .morebtn{display:block;text-align:center;margin:4px 0 8px}
 .morebtn a{display:inline-block;background:#fff;color:#d81b60;border:2px solid #f8bbd0;border-radius:20px;padding:8px 24px;text-decoration:none;font-size:.85rem;font-weight:bold}
 /* 16:9 滿版 hero（不用 aspect-ratio＋max-height 混用，避免 Chrome 反推寬度） */
-.hero{max-width:none!important;padding:0!important;margin:0 auto 22px!important}
-.hero-inner{position:relative;width:100%;height:clamp(320px,44vw,560px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;background:linear-gradient(135deg,#ad1457 0%,#d81b60 45%,#f06292 100%);overflow:hidden;padding:24px 16px}
+.hero{max-width:none!important;padding:0!important;margin:0 auto 14px!important}
+.hero-inner{position:relative;width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;color:#fff;background:linear-gradient(135deg,#ad1457 0%,#d81b60 45%,#f06292 100%);overflow:hidden;padding:12px 24px}
 .hero-inner::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 20%,rgba(255,255,255,.14) 0 90px,transparent 91px),radial-gradient(circle at 85% 75%,rgba(255,255,255,.1) 0 130px,transparent 131px),radial-gradient(circle at 70% 15%,rgba(255,255,255,.08) 0 60px,transparent 61px)}
-.hero-inner h1,.hero-inner h2{font-size:clamp(1.6rem,4.5vw,2.8rem);font-weight:900;letter-spacing:4px;margin:0 0 10px;position:relative;border:none;padding:0;color:#fff}
-.hero-inner p{font-size:clamp(.85rem,2vw,1.05rem);opacity:.92;margin-bottom:18px;position:relative}
-.hero-inner .btn{background:#fff;color:#d81b60;font-size:1rem;padding:12px 34px;position:relative}
-.hero-inner .btn:active{background:#fce4ec}
-.hero-stats{position:relative;display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:20px;font-size:.8rem;opacity:.95}
+.hero-title{font-size:1.12rem;font-weight:800;letter-spacing:2px;position:relative;white-space:nowrap;color:#fff}
+.hero-stats{position:relative;display:flex;gap:8px 22px;flex-wrap:wrap;font-size:.82rem;opacity:.96}
 .hero-stats b{font-size:.95rem}
+@media(max-width:767px){.hero-inner{padding:10px 14px;gap:6px 16px}.hero-title{font-size:1rem;letter-spacing:1px}.hero-stats{font-size:.76rem}}
 /* ===== 左右欄版面（桌面）：左=快報+投稿引流，右=產品情報 ===== */
 .layout{max-width:680px;margin:0 auto}
 .layout section{margin-bottom:20px}
