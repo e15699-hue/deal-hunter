@@ -59,7 +59,7 @@ async function load(){
     : '<p class="hint">還沒有投稿，看到好康快來爆料！</p>';
   const { data: ws } = await c.from('watchlist').select('title,price_now,created_at').eq('user_id', _uid).order('created_at', {ascending:false}).limit(20);
   document.getElementById('watches').innerHTML = ws && ws.length
-    ? ws.map(w => `<div class="tiplist"><div>${w.title}</div><div class="hint">追蹤時 $${Number(w.price_now).toLocaleString()}・<a href="#" onclick="unwatch('${w.title.replace(/'/g,"")}');return false" style="color:#c2185b">取消追蹤</a></div></div>`).join('')
+    ? ws.map(w => `<div class="tiplist"><div>${w.title}</div><div class="hint">追蹤時 $${Number(w.price_now).toLocaleString()}・<a href="search.html?q=${encodeURIComponent(w.title)}" style="color:#c2185b">🔍 查最新價</a>・<a href="#" onclick="unwatch('${w.title.replace(/'/g,"")}');return false" style="color:#c2185b">取消追蹤</a></div></div>`).join('')
     : '<p class="hint">還沒追蹤任何商品，看到卡片上的 🔔 按下去就對了！</p>';
 }
 async function unwatch(title){
