@@ -112,7 +112,7 @@
     var btn = '';
     if (/^https?:/.test(url)) {
       var key = esc(dealKey(url)), title = esc(d.name);
-      btn = '<div class="btnrow"><a class="btn" href="' + esc(url) + '" target="_blank" rel="noopener">去看看 →</a>'
+      btn = '<div class="btnrow"><a class="btn" href="' + esc(url) + '" target="_blank" rel="noopener">' + (price === 0 ? '免費領取 →' : '去看看 →') + '</a>'
         + '<button class="watchbtn" data-key="' + key + '" data-title="' + title + '" data-price="' + price
         + '" onclick="watchDeal(this)" title="追蹤降價通知">🔔</button></div>';
     }
@@ -120,9 +120,10 @@
     var pic = /^https?:/.test(img)
       ? '<div class="pic"><img loading="lazy" src="' + esc(img) + '" alt="" onerror="this.closest(\'.pic\').style.display=\'none\'"></div>'
       : '';
+    var nowTxt = price === 0 ? '🎁 免費' : '$' + price.toLocaleString();
     return '<div class="card"><div class="row">' + pic + '<div class="body">'
       + '<div class="top"><h3>' + esc(d.name) + '</h3>' + badge + '</div>'
-      + '<div class="price"><span class="now">$' + price.toLocaleString() + '</span>' + was + saveHtml + '</div>'
+      + '<div class="price"><span class="now">' + nowTxt + '</span>' + was + saveHtml + '</div>'
       + '<div class="meta"><span>📦 ' + esc(d.source) + '</span><span>👤 ' + esc(d.seller) + '</span><br><span>📝 ' + esc(d.note) + '</span></div>'
       + btn + '</div></div></div>';
   }
@@ -194,15 +195,28 @@
       else main.insertAdjacentHTML('afterbegin', shtml);
     }
 
+    // 限時免費專區（category=限時免費；首頁獨立版塊，分類頁走一般分組）
+    var freebies = deals.filter(function (d) { return d.category === '限時免費' && !d.flash; });
+    var oldFree = main.querySelector('.free-sec');
+    if (oldFree) oldFree.remove();
+    if (freebies.length && !catFilter) {
+      var fhead = '<section class="deal-sec free-sec"><h2>🎁 限時免費（錯過要等下次）</h2>\n';
+      var fhtml2 = fhead + sortDeals(freebies, mode).slice(0, 8).map(cardHTML).join('\n')
+        + '<div class="morebtn"><a href="cat/free.html">看全部限時免費 →</a></div></section>';
+      var fanchor = main.querySelector('.stockup-sec') || main.querySelector('.flash-sec') || main.querySelector('.sortbar');
+      if (fanchor && fanchor.insertAdjacentHTML) fanchor.insertAdjacentHTML('afterend', fhtml2);
+      else main.insertAdjacentHTML('afterbegin', fhtml2);
+    }
+
     // 分類區：先依原順序分組（版塊順序不變），再在每組內依偏好排序
     var order = [], byCat = {};
-    deals.filter(function (d) { return !d.flash && !d.stockup; }).forEach(function (d) {
+    deals.filter(function (d) { return !d.flash && !d.stockup && (catFilter || d.category !== '限時免費'); }).forEach(function (d) {
       var c = d.category || '其他';
       if (!byCat[c]) { byCat[c] = []; order.push(c); }
       byCat[c].push(d);
     });
-    // 移除舊的 deal-sec（囤貨快報區 stockup-sec 已另外重建，不可刪；保留 sponsored 結構則重建）
-    main.querySelectorAll('section.deal-sec:not(.stockup-sec)').forEach(function (s) { s.remove(); });
+    // 移除舊的 deal-sec（囤貨快報 stockup-sec、限時免費 free-sec 已另外重建，不可刪）
+    main.querySelectorAll('section.deal-sec:not(.stockup-sec):not(.free-sec)').forEach(function (s) { s.remove(); });
     var html = '';
     order.forEach(function (c) {
       var items = sortDeals(byCat[c], mode);
@@ -217,8 +231,8 @@
       html += '<section class="deal-sec"><h2>' + esc(c) + count + '</h2>\n' + cards + '\n' + more + '</section>';
     });
     if (!html) html = '<section><h2>暫無情報</h2><div class="card"><div class="body">此分類尚無優惠情報，站長搜刮中，敬請期待！</div></div></section>';
-    // 插到囤貨快報後面（無囤貨時插到 flash 後面，再無 flash 插到排序列後面）
-    var ref = main.querySelector('.stockup-sec') || main.querySelector('.flash-sec') || main.querySelector('.sortbar');
+    // 插到限時免費／囤貨快報後面（都沒有時插到 flash 後面，再無 flash 插到排序列後面）
+    var ref = main.querySelector('.free-sec') || main.querySelector('.stockup-sec') || main.querySelector('.flash-sec') || main.querySelector('.sortbar');
     if (ref) ref.insertAdjacentHTML('afterend', html);
     else main.insertAdjacentHTML('afterbegin', html);
 
@@ -231,7 +245,8 @@
   window.HK_CAT_SLUGS = {
     '3C數位': '3c', '家電': 'appliance', '美妝保養': 'beauty',
     '服飾鞋包': 'fashion', '食品日用': 'grocery', '母嬰玩具': 'baby',
-    '運動戶外': 'sports', '居家生活': 'home', '寵物生活': 'pet'
+    '運動戶外': 'sports', '居家生活': 'home', '寵物生活': 'pet',
+    '限時免費': 'free'
   };
 
   document.addEventListener('DOMContentLoaded', function () {
