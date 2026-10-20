@@ -59,7 +59,7 @@ section.flash-sec h2{color:#e53935;border-left-color:#e53935}
 .hero{max-width:none!important;padding:0!important;margin:0 auto 22px!important}
 .hero-inner{position:relative;width:100%;height:clamp(320px,44vw,560px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;background:linear-gradient(135deg,#ad1457 0%,#d81b60 45%,#f06292 100%);overflow:hidden;padding:24px 16px}
 .hero-inner::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 20%,rgba(255,255,255,.14) 0 90px,transparent 91px),radial-gradient(circle at 85% 75%,rgba(255,255,255,.1) 0 130px,transparent 131px),radial-gradient(circle at 70% 15%,rgba(255,255,255,.08) 0 60px,transparent 61px)}
-.hero-inner h2{font-size:clamp(1.6rem,4.5vw,2.8rem);font-weight:900;letter-spacing:4px;margin:0 0 10px;position:relative;border:none;padding:0;color:#fff}
+.hero-inner h1,.hero-inner h2{font-size:clamp(1.6rem,4.5vw,2.8rem);font-weight:900;letter-spacing:4px;margin:0 0 10px;position:relative;border:none;padding:0;color:#fff}
 .hero-inner p{font-size:clamp(.85rem,2vw,1.05rem);opacity:.92;margin-bottom:18px;position:relative}
 .hero-inner .btn{background:#fff;color:#d81b60;font-size:1rem;padding:12px 34px;position:relative}
 .hero-inner .btn:active{background:#fce4ec}
@@ -68,6 +68,11 @@ section.flash-sec h2{color:#e53935;border-left-color:#e53935}
 /* ===== 左右欄版面（桌面）：左=快報+投稿引流，右=產品情報 ===== */
 .layout{max-width:680px;margin:0 auto}
 .layout section{margin-bottom:20px}
+/* 手機/平板：優惠情報優先（快報與投稿移到情報下方），桌機左右欄不變 */
+@media (max-width:1023px){
+  .layout{display:flex;flex-direction:column}
+  .layout .content{order:-1}
+}
 @media (min-width:1024px){
   .layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:24px;max-width:1400px;margin:0 auto 22px;padding:0 28px;align-items:start}
   .layout section{max-width:none;padding:0}
@@ -115,8 +120,8 @@ footer nav.fnav.cats a{font-weight:normal}
   section.deal-sec .card .meta{font-size:.68rem;margin-bottom:6px}
   section.deal-sec .card .hist{font-size:.68rem;margin-bottom:6px}
   section.deal-sec .card .btnrow{display:flex;gap:8px}
-  section.deal-sec .card .btn{flex:1;padding:9px 0;font-size:.82rem;text-align:center}
-  section.deal-sec .card .watchbtn{flex:none;width:42px;padding:9px 0;font-size:.9rem}
+  section.deal-sec .card .btn{flex:1;padding:11px 0;font-size:.82rem;text-align:center}
+  section.deal-sec .card .watchbtn{flex:none;width:42px;padding:11px 0;font-size:.9rem}
 }
 /* ===== 會員列（header 右上角，白字融入粉紅 header） ===== */
 .userbar{position:absolute;top:12px;right:14px;margin:0;padding:0;font-size:.8rem}
