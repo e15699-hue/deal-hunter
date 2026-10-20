@@ -112,7 +112,7 @@
     var btn = '';
     if (/^https?:/.test(url)) {
       var key = esc(dealKey(url)), title = esc(d.name);
-      btn = '<div class="btnrow"><a class="btn" href="' + esc(url) + '" target="_blank" rel="noopener">' + '去看看 →' + '</a>'
+      btn = '<div class="btnrow"><a class="btn" href="' + esc(url) + '" target="_blank" rel="noopener" title="跳到 momo、PChome、蝦皮等大網站結帳，本站不經手付款">' + '去看看 →' + '</a>'
         + '<button class="watchbtn" data-key="' + key + '" data-title="' + title + '" data-price="' + price
         + '" onclick="watchDeal(this)" title="追蹤降價通知">🔔</button></div>';
     }
@@ -124,7 +124,11 @@
     return '<div class="card"><div class="row">' + pic + '<div class="body">'
       + '<div class="top"><h3>' + esc(d.name) + '</h3>' + badge + '</div>'
       + '<div class="price"><span class="now">' + nowTxt + '</span>' + was + saveHtml + '</div>'
-      + '<div class="meta"><span>📦 ' + esc(d.source) + '</span><span>👤 ' + esc(d.seller) + '</span><br><span>📝 ' + esc(d.note) + '</span></div>'
+    // 來源/賣家去重：相同時只顯示來源（與 render.py 同步）
+    var src = String(d.source || '').trim(), sel = String(d.seller || '').trim();
+    var norm = function(s){ return s.toLowerCase().replace(/[\s　]/g, ''); };
+    var sellerHtml = (!sel || norm(sel) === norm(src)) ? '' : '<span>👤 ' + esc(sel) + '</span>';
+      + '<div class="meta"><span>📦 ' + esc(src) + '</span>' + sellerHtml + '<br><span>📝 ' + esc(d.note) + '</span></div>'
       + btn + '</div></div></div>';
   }
 
@@ -133,7 +137,7 @@
     var off = market > price ? '下殺 ' + Math.round((1 - price / market) * 100) + '%' : 'Bug 價';
     var url = String(d.url || '').trim();
     var btn = /^https?:/.test(url)
-      ? '<div style="margin-top:10px"><a class="btn" style="background:#fff;color:#e53935" href="' + esc(url) + '" target="_blank" rel="noopener">手刀去搶 →</a></div>'
+      ? '<div style="margin-top:10px"><a class="btn" style="background:#fff;color:#e53935" href="' + esc(url) + '" target="_blank" rel="noopener" title="跳到 momo 等大網站結帳，本站不經手付款">手刀去搶 →</a></div>'
       : '';
     return '<div class="flash"><h3>⚡ ' + esc(d.name) + '</h3>'
       + '<div style="font-size:1.4rem;font-weight:bold;margin:6px 0">$' + price.toLocaleString()
