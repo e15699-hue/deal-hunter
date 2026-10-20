@@ -36,7 +36,8 @@
 <script src="app.js"></script>
 <script>
 let INDEX = [];
-const CATS = ["全部","3C數位","家電","美妝保養","服飾鞋包","食品日用","母嬰玩具","運動戶外","居家生活","寵物生活"];
+const CATS = [["全部","全部"],["美妝保養","1F 美妝保養"],["服飾鞋包","2F 精品時尚"],["3C數位","3F 3C 數位"],["家電","4F 家電"],["居家生活","5F 居家生活"],["母嬰玩具","6F 母嬰親子"],["運動戶外","7F 運動休閒"],["寵物生活","8F 寵物用品"],["食品日用","B1 美食生鮮"]];
+const FL = {}; CATS.forEach(([v,l]) => FL[v] = l);
 let activeCat = "全部";
 function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function cardHTML(d){
@@ -53,7 +54,7 @@ function cardHTML(d){
   return `<div class="card"><div class="row">${pic}<div class="body">
   <div class="top"><h3>${esc(d.t)}</h3>${badge}</div>
   <div class="price"><span class="now">$${p.toLocaleString()}</span>${was}${saveHtml}</div>
-  <div class="meta"><span>📦 ${esc(d.s)}</span><span>🏷️ ${esc(d.c)}</span></div>
+  <div class="meta"><span>📦 ${esc(d.s)}</span><span>🏷️ ${esc(FL[d.c] || d.c)}</span></div>
   <div class="btnrow"><a class="btn" href="${esc(d.u)}" target="_blank" rel="noopener">去看看 →</a>
   <button class="watchbtn" data-key="${esc(key)}" data-title="${esc(d.t)}" data-price="${p}" onclick="watchDeal(this)" title="追蹤降價通知">🔔</button></div>
   </div></div></div>`;
@@ -102,8 +103,8 @@ function doSearch(){
     : "<h2>🔍 搜尋結果</h2><div class='card'><div class='body'>沒有找到相關優惠，換個關鍵字試試！</div></div>";
 }
 function buildChips(){
-  document.getElementById('chips').innerHTML = CATS.map(c =>
-    `<button class="${c===activeCat?'on':''}" data-c="${c}">${c}</button>`).join("");
+  document.getElementById('chips').innerHTML = CATS.map(([v, l]) =>
+    `<button class="${v===activeCat?'on':''}" data-c="${v}">${l}</button>`).join("");
   document.querySelectorAll('#chips button').forEach(b => b.onclick = () => {
     activeCat = b.dataset.c; buildChips(); doSearch();
   });
