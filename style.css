@@ -23,11 +23,12 @@ section h2{font-size:1.12rem;margin:16px 4px 10px;padding-left:10px;border-left:
 .card .body{flex:1;min-width:0}
 .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .card h3{font-size:.95rem;flex:1;line-height:1.45}
-.badge{background:#e53935;color:#fff;font-size:.72rem;font-weight:bold;border-radius:20px;padding:3px 10px;white-space:nowrap}
+.badge{background:#e53935;color:#fff;font-size:.78rem;font-weight:bold;border-radius:6px;padding:4px 11px;white-space:nowrap;letter-spacing:.5px}
 .badge.good{background:#43a047}
 .price{margin:6px 0 4px}
-.price .now{font-size:1.3rem;font-weight:bold;color:#e53935}
+.price .now{font-size:1.45rem;font-weight:900;color:#e53935}
 .price .was{color:#999;text-decoration:line-through;font-size:.82rem;margin-left:8px}
+.price .save{display:inline-block;background:#ffebee;color:#e53935;font-size:.72rem;font-weight:bold;border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
 .meta{font-size:.78rem;color:#888;margin-bottom:10px}
 .meta span{margin-right:8px}
 .hist{font-size:.75rem;color:#7b8d9e;margin:-4px 0 8px}
@@ -42,8 +43,10 @@ footer .disclosure{max-width:640px;margin:10px auto 0;font-size:.72rem;color:#c9
 .ad-slot{max-width:680px;margin:14px auto 0;padding:16px 12px;text-align:center;background:linear-gradient(135deg,#fce4ec,#f8bbd0);border:2px dashed #ec407a;border-radius:12px;color:#ad1457;font-size:.9rem}
 .ad-slot small{color:#c66a8f;font-size:.75rem}
 .partners{background:#fff;border-radius:12px;padding:14px;margin-bottom:12px;box-shadow:0 1px 4px rgba(216,27,96,.1);text-align:center;color:#b76e8a;font-size:.85rem}
-.flash{background:linear-gradient(135deg,#ff5252,#ff9800);border-radius:12px;padding:14px;margin-bottom:12px;color:#fff;box-shadow:0 2px 8px rgba(255,82,82,.35)}
-.flash h3{font-size:1rem}
+.flash{background:linear-gradient(135deg,#ff5252,#ff9800);border-radius:12px;padding:14px;margin-bottom:12px;color:#fff;box-shadow:0 2px 8px rgba(255,82,82,.35);position:relative;overflow:hidden;animation:flashPulse 2.4s ease-in-out infinite}
+.flash::after{content:"限時";position:absolute;top:12px;right:-30px;background:#fff;color:#e53935;font-size:.65rem;font-weight:900;letter-spacing:3px;padding:3px 36px;transform:rotate(35deg)}
+@keyframes flashPulse{0%,100%{box-shadow:0 2px 8px rgba(255,82,82,.35)}50%{box-shadow:0 4px 18px rgba(255,82,82,.65)}}
+.flash h3{font-size:1rem;padding-right:44px}
 .flash .time{font-size:.75rem;opacity:.9}
 section.flash-sec h2{color:#e53935;border-left-color:#e53935}
 .dealcount{display:inline-block;background:#fff;color:#d81b60;font-size:.75rem;border-radius:12px;padding:2px 10px;margin-left:6px;vertical-align:middle}
@@ -115,7 +118,7 @@ footer nav.fnav.cats a{font-weight:normal}
   section.deal-sec .card .row{gap:10px}
   section.deal-sec .card .pic{width:88px;height:88px}
   section.deal-sec .card h3{font-size:.82rem}
-  section.deal-sec .card .price .now{font-size:1.08rem}
+  section.deal-sec .card .price .now{font-size:1.15rem}
   section.deal-sec .card .price .was{font-size:.72rem}
   section.deal-sec .card .meta{font-size:.68rem;margin-bottom:6px}
   section.deal-sec .card .hist{font-size:.68rem;margin-bottom:6px}
@@ -167,6 +170,41 @@ footer nav.fnav.cats a{font-weight:normal}
 .news-item .nmeta{font-size:.75rem;color:#999}
 .news-item .nmeta span{margin-right:8px}
 section.news-sec h2{color:#c2185b;border-left-color:#c2185b}
+/* ===== v2 重設計（2026-10-20）：快報搬到最上方全寬橫列＋購物網式卡片 ===== */
+/* 好康快報：hero 下方全寬，最新在最前（render 已依日期新→舊排序） */
+.newswire{max-width:none!important;padding:0!important;margin:0 auto 24px!important}
+.newswire .nhead{max-width:680px;margin:0 auto;padding:2px 12px 0;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.newswire .nhead h2{font-size:1.15rem;color:#c2185b;border-left:4px solid #ec407a;padding-left:10px;margin:0}
+.newswire .nhead span{font-size:.78rem;color:#b76e8a}
+.news-row{display:flex;gap:10px;overflow-x:auto;padding:12px 12px 10px;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.news-row::-webkit-scrollbar{display:none}
+.news-row .news-item{position:relative;flex:0 0 252px;scroll-snap-align:start;flex-direction:column;gap:8px;margin-bottom:0}
+.news-row .news-item .ndate{align-self:flex-start}
+.news-row .news-item h3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.nnew{position:absolute;top:10px;right:10px;background:#e53935;color:#fff;font-size:.62rem;font-weight:900;letter-spacing:1.5px;border-radius:4px;padding:3px 7px}
+@media(min-width:768px){
+  .newswire .nhead{max-width:960px}
+  .news-row{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);overflow:visible;scroll-snap-type:none}
+  .news-row .news-item{flex:none}
+}
+@media(min-width:1200px){
+  .newswire .nhead{max-width:1400px;padding:2px 28px 0}
+  .news-row{max-width:1400px;padding:12px 28px 10px}
+}
+/* 卡片 hover 浮起（桌面，購物網式） */
+@media(min-width:768px){
+  .card{transition:transform .15s ease,box-shadow .15s ease}
+  .card:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(216,27,96,.16)}
+  .news-item{transition:transform .15s ease,box-shadow .15s ease}
+  .news-item:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(216,27,96,.16)}
+}
+/* 左欄：熱門搜尋＋安心保證（快報搬出後補上，不留空洞） */
+.hotsec{display:flex;flex-wrap:wrap;gap:8px;background:#fff;border-radius:12px;padding:14px;box-shadow:0 1px 4px rgba(216,27,96,.1)}
+.hotsec a{display:inline-block;padding:7px 14px;border-radius:16px;background:#fce4ec;color:#c2185b;text-decoration:none;font-size:.8rem;font-weight:bold}
+.hotsec a:active{background:#f8bbd0}
+.trustbox{background:#fff;border-radius:12px;padding:14px;box-shadow:0 1px 4px rgba(216,27,96,.1);color:#555;font-size:.85rem;line-height:1.7}
+.trustbox small{color:#b76e8a}
+.trustbox a{color:#d81b60;font-weight:bold}
 .page h1{font-size:1.4rem;color:#ad1457;margin-bottom:14px}
 .page h2{font-size:1.05rem;color:#ad1457;margin:20px 0 8px;padding-left:10px;border-left:4px solid #ec407a}
 .page p,.page li{font-size:.92rem;color:#555;margin-bottom:10px}

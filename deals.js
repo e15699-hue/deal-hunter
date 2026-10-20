@@ -95,14 +95,18 @@
   function cardHTML(d) {
     var price = Number(d.price) || 0;
     var market = Number(d.market_price) || 0;
-    var badge, was;
+    var badge, was, saveHtml;
     if (market > price) {
       var off = Math.round((1 - price / market) * 100);
-      badge = '<span class="badge">便宜 ' + off + '%</span>';
+      var save = market - price;
+      // 蝦皮/momo 式：折扣 % 大標籤＋現省金額
+      badge = '<span class="badge">-' + off + '%</span>';
       was = '<span class="was">市價 $' + market.toLocaleString() + '</span>';
+      saveHtml = '<span class="save">現省 $' + save.toLocaleString() + '</span>';
     } else {
       badge = '<span class="badge good">好價</span>';
       was = '';
+      saveHtml = '';
     }
     var url = String(d.url || '').trim();
     var btn = '';
@@ -118,7 +122,7 @@
       : '';
     return '<div class="card"><div class="row">' + pic + '<div class="body">'
       + '<div class="top"><h3>' + esc(d.name) + '</h3>' + badge + '</div>'
-      + '<div class="price"><span class="now">$' + price.toLocaleString() + '</span>' + was + '</div>'
+      + '<div class="price"><span class="now">$' + price.toLocaleString() + '</span>' + was + saveHtml + '</div>'
       + '<div class="meta"><span>📦 ' + esc(d.source) + '</span><span>👤 ' + esc(d.seller) + '</span><br><span>📝 ' + esc(d.note) + '</span></div>'
       + btn + '</div></div></div>';
   }
