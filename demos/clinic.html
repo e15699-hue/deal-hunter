@@ -4,36 +4,65 @@
 <title>安心中醫診所｜中醫診所</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif;color:#333;line-height:1.6}
-.demo-badge{background:#f39c12;color:#fff;text-align:center;font-size:.8rem;padding:6px}
-header{background:#27ae60;color:#fff;padding:2.2rem 1.2rem;text-align:center}
-header h1{font-size:1.7rem;margin-bottom:.3rem}
-header p{opacity:.9}
-.cta-bar{position:sticky;top:0;z-index:10;display:flex;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.12)}
-.cta-bar a{flex:1;text-align:center;padding:.9rem;font-weight:bold;text-decoration:none;font-size:1rem}
-.cta-call{color:#27ae60}
-.cta-line{background:#06c755;color:#fff}
-section{padding:1.6rem 1.2rem;max-width:640px;margin:0 auto}
-h2{font-size:1.2rem;color:#27ae60;margin-bottom:.8rem;border-left:4px solid #27ae60;padding-left:.6rem}
-.svc{display:flex;justify-content:space-between;align-items:center;padding:.8rem 0;border-bottom:1px dashed #ddd}
-.svc b{font-size:1.02rem}
-.svc .p{color:#27ae60;font-weight:bold;font-size:1.1rem;white-space:nowrap;margin-left:.6rem}
-.svc small{color:#888;display:block;font-size:.82rem}
-.info div{padding:.4rem 0}
-footer{background:#f5f5f5;text-align:center;padding:1.4rem 1rem;font-size:.85rem;color:#888}
-.map{background:#e8e8e8;border-radius:8px;height:150px;display:flex;align-items:center;justify-content:center;color:#999;margin-top:.6rem}
+body{font-family:-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif;color:#333;line-height:1.65;background:#fafafa}
+.demo-badge{background:#f39c12;color:#fff;text-align:center;font-size:.78rem;padding:7px 10px}
+.hero{position:relative;height:62vh;min-height:380px;background:url('https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=1200&q=80') center/cover;display:flex;align-items:flex-end;color:#fff}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75),rgba(0,0,0,.15) 60%)}
+.hero-txt{position:relative;z-index:1;padding:1.4rem;width:100%;max-width:640px;margin:0 auto}
+.hero-txt .ind{display:inline-block;background:#1e7e46;font-size:.78rem;padding:3px 12px;border-radius:20px;margin-bottom:.5rem}
+.hero-txt h1{font-size:2rem;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.hero-txt p{opacity:.92;margin:.3rem 0 .6rem}
+.stars{color:#a8d5a2;font-size:1rem}
+.cta-bar{position:sticky;top:0;z-index:20;display:flex;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.14)}
+.cta-bar a{flex:1;text-align:center;padding:1rem;font-weight:bold;text-decoration:none;font-size:1.05rem}
+.cta-call{color:#1e7e46}.cta-line{background:#06c755;color:#fff}
+section{padding:1.8rem 1.2rem;max-width:640px;margin:0 auto}
+h2{font-size:1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+h2::before{content:'';width:5px;height:1.3em;background:#1e7e46;border-radius:3px}
+.badge-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.badge{background:#fff;border:1.5px solid #1e7e46;color:#1e7e46;font-size:.8rem;padding:4px 12px;border-radius:20px}
+.svc{background:#fff;border-radius:12px;overflow:hidden;margin-bottom:1rem;box-shadow:0 2px 10px rgba(0,0,0,.07);display:flex}
+.svc img{width:110px;height:110px;object-fit:cover;flex-shrink:0}
+.svc .t{padding:.8rem .9rem;flex:1}
+.svc .t b{font-size:1.02rem}
+.svc .t .p{color:#1e7e46;font-weight:bold;font-size:1.15rem;float:right}
+.svc small{color:#888;font-size:.82rem;display:block;margin-top:2px}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.gal img{width:100%;height:110px;object-fit:cover;border-radius:8px}
+.rev{background:#fff;border-radius:12px;padding:1rem;margin-bottom:.8rem;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.rev .who{font-weight:bold;font-size:.92rem}
+.rev .st{color:#f5a623;font-size:.85rem;margin:2px 0}
+.rev p{font-size:.9rem;color:#555}
+.info{background:#fff;border-radius:12px;padding:1.1rem;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.info div{padding:.45rem 0;border-bottom:1px solid #f0f0f0}
+.info div:last-child{border:none}
+.map{background:#e8e8e8;border-radius:8px;height:140px;display:flex;align-items:center;justify-content:center;color:#999;margin-top:.8rem;font-size:.9rem}
+footer{background:#2c3e50;color:#aaa;text-align:center;padding:1.6rem 1rem;font-size:.82rem}
+.fade{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.fade.on{opacity:1;transform:none}
 </style></head><body>
-<div class="demo-badge">📌 這是範例網站｜貴店做好會長這樣（含店名・電話・地址都換成你們的）</div>
-<header><h1>安心中醫診所</h1><p>健保中醫・調理體質找安心</p></header>
+<div class="demo-badge">📌 這是範例網站｜貴店做好會長這樣（店名・電話・地址・照片全換成你們的）</div>
+<div class="hero"><div class="hero-txt">
+<span class="ind">中醫診所</span>
+<h1>安心中醫診所</h1><p>健保中醫・調理體質找安心</p>
+<div class="stars">★ 4.9 <span style="color:#ddd;font-size:.85rem">（968 則 Google 評價）</span></div>
+</div></div>
 <div class="cta-bar">
 <a class="cta-call" href="tel:0467890123">📞 打電話</a>
 <a class="cta-line" href="#">💬 LINE 諮詢</a>
 </div>
-<section><h2>關於我們</h2><p>院長林醫師執業 18 年，看診仔細不趕時間。很多媽媽帶小孩來看轉骨，阿公阿嬤來針灸痠痛，都是附近鄰居。</p></section>
-<section><h2>服務項目</h2><div class="svc"><div><b>內科調理</b><small>感冒・腸胃・失眠</small></div><span class="p">健保</span></div><div class="svc"><div><b>痠痛針灸</b><small>肩頸・腰背・五十肩</small></div><span class="p">健保</span></div><div class="svc"><div><b>婦科調理</b><small>經期・更年期</small></div><span class="p">健保</span></div><div class="svc"><div><b>轉骨調理</b><small>青少年成長</small></div><span class="p">自費諮詢</span></div></section>
-<section class="info"><h2>營業資訊</h2>
+<section class="fade"><div class="badge-row"><span class="badge">✓ 18 年執業醫師</span><span class="badge">✓ 看診不趕時間</span><span class="badge">✓ 健保給付</span></div>
+<h2>關於我們</h2><p>院長林醫師執業 18 年，看診仔細不趕時間。很多媽媽帶小孩來看轉骨，阿公阿嬤來針灸痠痛，都是附近鄰居。</p></section>
+<section class="fade"><h2>服務項目</h2><div class="svc"><img loading="lazy" src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=600&q=80" alt="" onerror="this.style.display='none'"><div class="t"><span class="p">健保</span><b>內科調理</b><small>感冒・腸胃・失眠</small></div></div><div class="svc"><img loading="lazy" src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&q=80" alt="" onerror="this.style.display='none'"><div class="t"><span class="p">健保</span><b>痠痛針灸</b><small>肩頸・腰背・五十肩</small></div></div><div class="svc"><img loading="lazy" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80" alt="" onerror="this.style.display='none'"><div class="t"><span class="p">健保</span><b>婦科調理</b><small>經期・更年期</small></div></div><div class="svc"><img loading="lazy" src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=600&q=80" alt="" onerror="this.style.display='none'"><div class="t"><span class="p">自費諮詢</span><b>轉骨調理</b><small>青少年成長</small></div></div></section>
+<section class="fade"><h2>店內實景</h2><div class="gal"><img loading="lazy" src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=600&q=80" alt="" onerror="this.style.display='none'"><img loading="lazy" src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&q=80" alt="" onerror="this.style.display='none'"><img loading="lazy" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80" alt="" onerror="this.style.display='none'"></div></section>
+<section class="fade"><h2>客人怎麼說</h2><div class="rev"><div class="who">王媽媽</div><div class="st">★★★★★</div><p>小孩轉骨調理半年長高很多，醫師很親切。</p></div><div class="rev"><div class="who">阿伯</div><div class="st">★★★★★</div><p>腰痛針幾次就好很多，不會一直要你來。</p></div><div class="rev"><div class="who">小琪</div><div class="st">★★★★★</div><p>經期不順調了三個月，現在很穩定。</p></div></section>
+<section class="fade"><h2>營業資訊</h2><div class="info">
 <div>🕐 09:00–12:00・14:00–18:00・19:00–21:00（週日休診）</div><div>📍 台中市南區復興路987號</div><div>📞 04-67890123</div>
-<div class="map">🗺️ 地圖（正式版會嵌入 Google 地圖）</div>
-</section>
-<footer>安心中醫診所・中醫診所一頁式網站範例<br>由 胖兔工作室 製作</footer>
+<div class="map">🗺️ 地圖（正式版嵌入 Google 地圖＋導航按鈕）</div>
+</div></section>
+<footer>安心中醫診所・中醫診所一頁式網站範例<br>手機開啟效果最佳</footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('on')),{threshold:.12});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
 </body></html>
