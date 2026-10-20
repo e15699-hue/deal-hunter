@@ -39,12 +39,20 @@ function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&l
 function cardHTML(d){
   const pic = d.img ? `<div class="pic"><img loading="lazy" src="${esc(d.img)}" alt="" onerror="this.closest('.pic').style.display='none'"></div>` : "";
   const key = d.u.split(/[?#]/)[0];
+  const p = snum(d.p), m = snum(d.m);
+  let badge = `<span class="badge good">好價</span>`, was = "", saveHtml = "";
+  if (m > p) {
+    const off = Math.round((1 - p / m) * 100);
+    badge = `<span class="badge">-${off}%</span>`;
+    was = `<span class="was">市價 $${m.toLocaleString()}</span>`;
+    saveHtml = `<span class="save">現省 $${(m - p).toLocaleString()}</span>`;
+  }
   return `<div class="card"><div class="row">${pic}<div class="body">
-  <div class="top"><h3>${esc(d.t)}</h3></div>
-  <div class="price"><span class="now">$${d.p.toLocaleString()}</span></div>
+  <div class="top"><h3>${esc(d.t)}</h3>${badge}</div>
+  <div class="price"><span class="now">$${p.toLocaleString()}</span>${was}${saveHtml}</div>
   <div class="meta"><span>📦 ${esc(d.s)}</span><span>🏷️ ${esc(d.c)}</span></div>
   <div class="btnrow"><a class="btn" href="${esc(d.u)}" target="_blank" rel="noopener">去看看 →</a>
-  <button class="watchbtn" data-key="${esc(key)}" data-title="${esc(d.t)}" data-price="${d.p}" onclick="watchDeal(this)" title="追蹤降價通知">🔔</button></div>
+  <button class="watchbtn" data-key="${esc(key)}" data-title="${esc(d.t)}" data-price="${p}" onclick="watchDeal(this)" title="追蹤降價通知">🔔</button></div>
   </div></div></div>`;
 }
 // ===== 商品排序（與首頁/分類頁共用 localStorage hk_sort） =====
