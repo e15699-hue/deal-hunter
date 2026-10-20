@@ -19,6 +19,7 @@
 <div class="userbar"><a id="userLink" href="login.html">👤 登入 / 註冊</a></div>
 <div class="searchbox"><input id="q" type="search" placeholder="🔍 搜尋優惠：iPhone、面膜、衛生紙…" autocomplete="off"></div>
 <div class="chips" id="chips"></div>
+<div class="sortbar" id="sortChips"></div>
 <div id="searchMeta"></div>
 <section class="deal-sec" id="results" style="max-width:680px"></section>
 <footer>
@@ -46,15 +47,44 @@ function cardHTML(d){
   <button class="watchbtn" data-key="${esc(key)}" data-title="${esc(d.t)}" data-price="${d.p}" onclick="watchDeal(this)" title="追蹤降價通知">🔔</button></div>
   </div></div></div>`;
 }
+// ===== 商品排序（與首頁/分類頁共用 localStorage hk_sort） =====
+const SORTS = [
+  {k:'rec',label:'推薦'},{k:'off',label:'折扣力度'},{k:'plow',label:'價格↑'},
+  {k:'phigh',label:'價格↓'},{k:'new',label:'最新上架'}
+];
+function getSort(){ try{ const v = localStorage.getItem('hk_sort'); if (SORTS.some(s => s.k === v)) return v; }catch(e){} return 'rec'; }
+function snum(v){ const n = Number(v); return isFinite(n) ? n : 0; }
+function sts(d){ const t = Date.parse(String(d.fa || "").replace(/\//g, "-")); return isFinite(t) ? t : 0; }
+function sortHits(hits){
+  const mode = getSort(); const a = hits.slice(); if (mode === 'rec') return a;
+  const disc = d => { const p = snum(d.p), m = snum(d.m); return m > 0 ? (m - p) / m : -9999; };
+  a.sort((x, y) =>
+    mode === 'off' ? disc(y) - disc(x) :
+    mode === 'plow' ? snum(x.p) - snum(y.p) :
+    mode === 'phigh' ? snum(y.p) - snum(x.p) :
+    mode === 'new' ? sts(y) - sts(x) : 0);
+  return a;
+}
+function buildSortChips(){
+  const el = document.getElementById('sortChips'); if (!el) return;
+  const cur = getSort();
+  el.innerHTML = '<span class="sortcap">排序</span>' + SORTS.map(s =>
+    `<button class="${s.k===cur?'on':''}" data-k="${s.k}">${s.label}</button>`).join("");
+  el.querySelectorAll('button').forEach(b => b.onclick = () => {
+    try{ localStorage.setItem('hk_sort', b.dataset.k); }catch(e){}
+    buildSortChips(); doSearch();
+  });
+}
 function doSearch(){
   const q = document.getElementById('q').value.trim().toLowerCase();
   const kw = q.split(/\s+/).filter(Boolean);
-  const hits = INDEX.filter(d => {
+  const raw = INDEX.filter(d => {
     if (activeCat !== "全部" && d.c !== activeCat) return false;
     if (!kw.length) return true;
     const hay = (d.t + " " + d.s + " " + d.c).toLowerCase();
     return kw.every(k => hay.includes(k));
   });
+  const hits = sortHits(raw);
   document.getElementById('searchMeta').textContent = q || activeCat !== "全部" ? `找到 ${hits.length} 則` : `共 ${hits.length} 則優惠情報`;
   document.getElementById('results').innerHTML = hits.length
     ? "<h2>🔍 搜尋結果</h2>" + hits.map(cardHTML).join("")
@@ -68,7 +98,7 @@ function buildChips(){
   });
 }
 fetch('search_index.json').then(r => r.json()).then(j => {
-  INDEX = j; buildChips();
+  INDEX = j; buildChips(); buildSortChips();
   const q0 = new URLSearchParams(location.search).get('q');
   if (q0) document.getElementById('q').value = q0;
   doSearch();

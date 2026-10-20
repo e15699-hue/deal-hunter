@@ -132,6 +132,12 @@ footer nav.fnav.cats a{font-weight:normal}
 .btnrow .btn{flex:1}
 .watchbtn{flex:none;background:#fff;color:#d81b60;border:2px solid #f8bbd0;border-radius:10px;padding:10px 12px;font-size:.85rem;cursor:pointer;font-weight:bold}
 .watchbtn.on{background:#fce4ec;border-color:#d81b60}
+/* ===== 排序列（首頁／分類頁／搜尋頁共用） ===== */
+.sortbar{display:flex;gap:8px;align-items:center;overflow-x:auto;flex-wrap:nowrap;padding:2px 2px 12px;margin:0 auto 4px;max-width:680px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.sortbar::-webkit-scrollbar{display:none}
+.sortcap{flex:none;font-size:.82rem;color:#b76e8a;font-weight:bold;padding:6px 2px}
+.sortbar button{flex:none;border:1px solid #f8bbd0;background:#fff;color:#c2185b;border-radius:16px;padding:6px 14px;font-size:.8rem;cursor:pointer;white-space:nowrap}
+.sortbar button.on{background:#d81b60;color:#fff;border-color:#d81b60;font-weight:bold}
 /* ===== 搜尋頁 ===== */
 .searchbox{max-width:680px;margin:14px auto;padding:0 12px}
 .searchbox input{width:100%;font-size:1rem;padding:12px 14px;border:2px solid #f8bbd0;border-radius:12px;outline:none}
