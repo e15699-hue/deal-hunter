@@ -298,3 +298,73 @@ section.floor-sec>.floor-head{grid-column:1/-1}
 .btn-block{display:block;text-align:center}
 .logoutbtn{width:100%}
 @media(max-width:767px){.userbar{position:static;text-align:center;margin:-8px 0 10px}.userbar small{display:inline;margin-left:8px}}
+
+/* ===== v3 框架重設計（2026-10-21 使用者指示：框架太亂、電腦與手機要分開設計）=====
+   斷點系統：手機 ≤767／平板 768–1023／桌面 ≥1024。容器統一 1280。
+   桌面：橫式頁首（品牌左・搜尋中・會員右）＋左側欄＋直式購物卡多欄格線。
+   手機：精簡頁首＋商品優先排序＋底部固定導覽列（隱藏上方功能導覽與側欄）。 */
+:root{--hk-pink:#d81b60;--hk-pink-d:#ad1457;--hk-pink-l:#fce4ec;--hk-line:#f8bbd0;--hk-ink:#333;--hk-sub:#b76e8a;--hk-wrap:1280px}
+/* ---- 手機底部導覽列（全裝置先隱藏，手機才顯示） ---- */
+.tabbar{display:none}
+@media(max-width:767px){
+  body{padding-bottom:64px}
+  .tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:90;background:#fff;border-top:1px solid var(--hk-line);box-shadow:0 -2px 12px rgba(173,20,87,.14);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+  .tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;text-decoration:none;color:#96707f;font-size:.68rem;font-weight:700;padding:5px 0 3px;border-radius:10px}
+  .tabbar a .ti{font-size:1.3rem;line-height:1.15}
+  .tabbar a.on{color:var(--hk-pink);background:#fff0f4}
+  .tabbar a:active{background:var(--hk-pink-l)}
+  /* 手機：上方功能導覽由底部列取代；側欄與分類格重複，一併隱藏 */
+  .feature-nav{display:none}
+  .sidebar{display:none}
+  .grid{display:none}
+  /* 手機：內容排序改為「分類 chips→今日必搶→優惠情報→快報」商品優先 */
+  .flow{display:flex;flex-direction:column}
+  .flow>nav.cats{order:0}
+  .flow>.pickbar{order:1}
+  .flow>.layout{order:2}
+  .flow>.newswire{order:3}
+  .flow>.updated{order:4}
+  .flow>.note{order:5}
+  .layout{display:block;max-width:none}
+  /* 手機頁首精簡 */
+  header{padding:14px 12px 12px}
+  .brand svg{width:44px;height:44px}
+  .brand .wm b{font-size:1.4rem}
+  header p.tagline{font-size:.8rem;margin-top:5px}
+  .searchbar{margin-top:9px;padding:0 4px}
+}
+/* ---- 平板：側欄隱藏（與手機一致，內容為主），卡片維持橫式 2 欄 ---- */
+@media(min-width:768px) and (max-width:1023px){
+  .sidebar{display:none}
+  .layout{display:block;max-width:960px;margin:0 auto;padding:0 12px}
+}
+/* ---- 桌面 ≥1024：橫式頁首＋直式購物卡 ---- */
+@media(min-width:1024px){
+  header{display:flex;align-items:center;gap:10px 26px;text-align:left;padding:16px 28px}
+  .brand{order:1;flex:none}
+  header p.tagline{display:none}
+  .searchbar{order:2;flex:1;max-width:620px;margin:0 auto;padding:0}
+  .userbar{order:3;position:static;margin-left:auto;text-align:right;flex:none}
+  .feature-nav{max-width:var(--hk-wrap);padding:4px 28px}
+  section{max-width:var(--hk-wrap);padding:0 28px}
+  section.flash-sec,section.static-sec{max-width:var(--hk-wrap);padding:0 28px}
+  .newswire .nhead{max-width:var(--hk-wrap);padding:2px 28px 0}
+  .news-row{max-width:var(--hk-wrap);padding:12px 28px 10px}
+  .grid{max-width:var(--hk-wrap);padding:0 28px}
+  .note{max-width:calc(var(--hk-wrap) - 56px)}
+  .layout{max-width:var(--hk-wrap);padding:0 28px;grid-template-columns:280px minmax(0,1fr)}
+  /* 直式購物卡：圖在上（4:3）、資訊在下、按鈕貼底 */
+  section.deal-sec .card .row{flex-direction:column;gap:10px}
+  section.deal-sec .card .pic{width:100%;height:auto;aspect-ratio:4/3;border-radius:10px}
+  section.deal-sec .card h3{font-size:1rem}
+  section.deal-sec .card .price .now{font-size:1.55rem}
+  /* 快訊／即期：桌面 2 欄 */
+  section.flash-sec{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  section.flash-sec>h2{grid-column:1/-1}
+  section.flash-sec .flash{margin-bottom:0}
+  section.flash-sec .expmore{grid-column:1/-1}
+  .content section h2{font-size:1.25rem}
+}
+@media(min-width:1280px){
+  section.deal-sec{grid-template-columns:repeat(3,1fr)}
+}

@@ -113,3 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
   else mount();
 })();
+
+/* 底部導覽列目前頁面高亮（v3 框架，2026-10-21） */
+(function(){try{var p=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('.tabbar a').forEach(function(a){var h=(a.getAttribute('href')||'').split('/').pop();if(h&&h===p)a.classList.add('on');});}catch(e){}})();
