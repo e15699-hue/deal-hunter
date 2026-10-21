@@ -24,6 +24,28 @@
   function flashSlugOf(d) { return hkHash(dealKey(d.url || '')); }
 
   // ===== 商品排序（客戶端純函式，不影響靜態快照順序） =====
+  // 歷史價格（3C 玩家視角：靜態快照有「📉 歷史低價」標示，前端重繪時要一併保留，
+  // 否則卡片重繪後標示消失、3C 客少了判斷依據）
+  var HK_HIST = null;
+  function loadHist() {
+    if (HK_HIST !== null) return Promise.resolve(HK_HIST);
+    return fetch('/price_history.json').then(function (r) {
+      return r && r.ok ? r.json() : null;
+    }).then(function (j) {
+      HK_HIST = j || null;
+      if (HK_HIST) renderAll(); // 歷史價格載入後重繪一次補上標示
+    }).catch(function () { HK_HIST = null; });
+  }
+  function histHTML(d, price) {
+    if (!HK_HIST) return '';
+    var recs = HK_HIST[dealKey(d.url || '')];
+    if (!recs || !recs.length) return '';
+    var lows = recs.map(function (r) { return Number(r.p) || 0; }).filter(function (p) { return p > 0; });
+    var low = lows.length ? Math.min.apply(null, lows) : 0;
+    if (low > 0 && low < price) return '<div class="hist">📉 歷史低 <b>$' + low.toLocaleString() + '</b></div>';
+    if (recs.length >= 2) return '<div class="hist">📉 <b>歷史新低價</b></div>';
+    return '';
+  }
   var SORTS = [
     { k: 'rec',   label: '推薦' },
     { k: 'off',   label: '折扣力度' },
@@ -123,13 +145,17 @@
       ? '<div class="pic"><img loading="lazy" src="' + esc(img) + '" alt="' + esc(d.name) + '" onerror="this.closest(\'.pic\').style.display=\'none\'"></div>'
       : '';
     var nowTxt = '$' + price.toLocaleString();
+    // 免運標示（學生視角：低價小物先看有沒有免運；與 render.py 同步）
+    var shipTxt = String(d.name || '') + ' ' + String(d.note || '');
+    var shipHtml = shipTxt.indexOf('免運') >= 0 ? '<span class="badge ship">🚚 免運</span>' : '';
     // 來源/賣家去重：相同時只顯示來源（與 render.py 同步）
     var src = String(d.source || '').trim(), sel = String(d.seller || '').trim();
     var norm = function (s) { return s.toLowerCase().replace(/[\s　]/g, ''); };
     var sellerHtml = (!sel || norm(sel) === norm(src)) ? '' : '<span>👤 ' + esc(sel) + '</span>';
     return '<div class="card"><div class="row">' + pic + '<div class="body">'
-      + '<div class="top"><h3>' + esc(d.name) + '</h3>' + badge + '</div>'
+      + '<div class="top"><h3>' + esc(d.name) + '</h3>' + badge + shipHtml + '</div>'
       + '<div class="price"><span class="now">' + nowTxt + '</span>' + was + saveHtml + '</div>'
+      + histHTML(d, price)
       + '<div class="meta"><span>📦 ' + esc(src) + '</span>' + sellerHtml + '<br><span>📝 ' + esc(d.note) + '</span></div>'
       + btn + '</div></div></div>';
   }
@@ -164,6 +190,7 @@
       if (res.error || !res.data || !res.data.length) return;
       _cache = res.data;
       renderAll();
+      loadHist(); // 歷史價格到手後再重繪一次補上「📉 歷史低」標示
     } catch (e) { /* 靜默：保留靜態快照 */ }
   }
 
