@@ -191,6 +191,7 @@
   function renderAll() {
     var main = document.querySelector('main.content');
     if (!main || !_cache) return;
+    var _sy = window.scrollY || document.documentElement.scrollTop || 0; // 重繪前記住捲動位置，避免動態載入時版面跳動（午休滑動情境）
     var deals = _cache, catFilter = _catFilter, mode = getSortMode();
 
     // 排序列：只保留在分類頁（首頁改百貨樓層制，固定以折扣力度排序，不顯示排序列）
@@ -255,6 +256,7 @@
     // 更新 hero 計數
     var stat = document.querySelector('.hero-stats b');
     if (stat) stat.textContent = deals.length;
+    if (_sy) window.scrollTo(0, _sy); // 恢復捲動位置
   }
 
   // 分類 slug 對照（首頁「看更多」用）
