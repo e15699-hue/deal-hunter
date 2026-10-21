@@ -121,13 +121,13 @@
       ? '<div class="pic"><img loading="lazy" src="' + esc(img) + '" alt="' + esc(d.name) + '" onerror="this.closest(\'.pic\').style.display=\'none\'"></div>'
       : '';
     var nowTxt = '$' + price.toLocaleString();
+    // 來源/賣家去重：相同時只顯示來源（與 render.py 同步）
+    var src = String(d.source || '').trim(), sel = String(d.seller || '').trim();
+    var norm = function (s) { return s.toLowerCase().replace(/[\s　]/g, ''); };
+    var sellerHtml = (!sel || norm(sel) === norm(src)) ? '' : '<span>👤 ' + esc(sel) + '</span>';
     return '<div class="card"><div class="row">' + pic + '<div class="body">'
       + '<div class="top"><h3>' + esc(d.name) + '</h3>' + badge + '</div>'
       + '<div class="price"><span class="now">' + nowTxt + '</span>' + was + saveHtml + '</div>'
-    // 來源/賣家去重：相同時只顯示來源（與 render.py 同步）
-    var src = String(d.source || '').trim(), sel = String(d.seller || '').trim();
-    var norm = function(s){ return s.toLowerCase().replace(/[\s　]/g, ''); };
-    var sellerHtml = (!sel || norm(sel) === norm(src)) ? '' : '<span>👤 ' + esc(sel) + '</span>';
       + '<div class="meta"><span>📦 ' + esc(src) + '</span>' + sellerHtml + '<br><span>📝 ' + esc(d.note) + '</span></div>'
       + btn + '</div></div></div>';
   }
@@ -183,7 +183,7 @@
 
   // 樓層招牌（與 render.py 靜態快照同結構）
   function floorHeadHTML(fm, total) {
-    return '<div class="floor-head"><span class="floor-no">' + fm.floor + '</span>'
+    return '<div class="floor-head">'
       + '<div class="floor-tt"><h2>' + esc(fm.fname) + '</h2><p>' + esc(fm.desc) + '</p></div>'
       + '<span class="dealcount">' + total + ' 則</span></div>';
   }
@@ -215,7 +215,7 @@
       byCat[c].push(d);
     });
     // 移除舊的 deal-sec（樓層與分類區全部重建）
-    main.querySelectorAll('section.deal-sec').forEach(function (s) { s.remove(); });
+    main.querySelectorAll('section.deal-sec:not(.articles-sec)').forEach(function (s) { s.remove(); }); // 保留文章專區（2026-10-21 修正：原本會被一起清掉，使用者找不到文章入口）
     var html = '';
     if (!catFilter) {
       // 首頁：百貨樓層（1F→8F→B1），每層折扣力度最高前 8 筆＋「逛完整層」
@@ -225,10 +225,10 @@
         if (!items || !items.length) return;
         covered[fm.name] = true;
         var show = sortDeals(items, 'off').slice(0, 8);
-        html += '<section class="deal-sec floor-sec" id="floor-' + fm.slug + '" aria-label="' + fm.floor + ' ' + fm.fname + '">\n'
+        html += '<section class="deal-sec floor-sec" id="floor-' + fm.slug + '" aria-label="' + fm.fname + '">\n'
           + floorHeadHTML(fm, items.length) + '\n'
           + show.map(cardHTML).join('\n')
-          + '\n<div class="morebtn"><a href="cat/' + fm.slug + '.html">逛完整層 →</a></div></section>';
+          + '\n<div class="morebtn"><a href="cat/' + fm.slug + '.html">看全部優惠 →</a></div></section>';
       });
       // 不在樓層對照內的分類（保險：新分類未設樓層時仍露出）
       order.forEach(function (c) {
@@ -242,7 +242,7 @@
       order.forEach(function (c) {
         var items = sortDeals(byCat[c], mode);
         var fm = HK_FLOOR_BY_NAME[c];
-        var label = fm ? fm.floor + ' ' + fm.fname : c;
+        var label = fm ? fm.fname : c;
         html += '<section class="deal-sec"><h2>' + esc(label) + '<span class="dealcount">' + items.length + ' 則</span></h2>\n'
           + items.map(cardHTML).join('\n') + '\n</section>';
       });
