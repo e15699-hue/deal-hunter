@@ -9,18 +9,18 @@ header{background:linear-gradient(135deg,#d81b60,#f06292);color:#fff;padding:22p
 .brand .wm small{display:block;font-size:.68rem;letter-spacing:3px;opacity:.85;font-weight:700}
 header p.tagline{opacity:.92;font-size:.88rem;margin-top:8px}
 .searchbar{max-width:640px;margin:12px auto 0;padding:0 16px}
-.searchbar input{width:100%;border:none;border-radius:24px;padding:12px 20px;font-size:.95rem;outline:none;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.searchbar input{width:100%;border:none;border-radius:999px;padding:12px 20px;font-size:.95rem;outline:none;box-shadow:0 2px 8px rgba(173,20,87,.18)}
 nav.cats{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 2px 6px rgba(216,27,96,.12);overflow-x:auto;white-space:nowrap;padding:10px 12px;-webkit-overflow-scrolling:touch}
-nav.cats a{display:inline-block;margin-right:8px;padding:8px 14px;border-radius:20px;background:#fce4ec;color:#c2185b;text-decoration:none;font-size:.85rem;font-weight:bold}
+nav.cats a{display:inline-block;margin-right:8px;padding:8px 14px;border-radius:999px;background:#fce4ec;color:#c2185b;text-decoration:none;font-size:.85rem;font-weight:bold}
 nav.cats a:active{background:#f8bbd0}
 .updated{text-align:center;color:#b76e8a;font-size:.78rem;margin:10px 0}
 section{max-width:680px;margin:0 auto 22px;padding:0 12px}
 section h2{font-size:1.12rem;margin:16px 4px 10px;padding-left:10px;border-left:4px solid #ec407a;color:#ad1457}
-.card{background:#fff;border-radius:12px;padding:12px;margin-bottom:12px;box-shadow:0 1px 4px rgba(216,27,96,.1)}
-.card .row{display:flex;gap:12px}
+.card{background:#fff;border-radius:12px;padding:12px;margin-bottom:12px;box-shadow:0 1px 4px rgba(216,27,96,.1);display:flex;flex-direction:column}
+.card .row{display:flex;gap:12px;flex:1}
 .card .pic{width:96px;height:96px;flex:none;border-radius:8px;overflow:hidden;background:#fce4ec}
 .card .pic img{width:100%;height:100%;object-fit:cover}
-.card .body{flex:1;min-width:0}
+.card .body{flex:1;min-width:0;display:flex;flex-direction:column}
 .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .card h3{font-size:.95rem;flex:1;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .badge{background:#e53935;color:#fff;font-size:.78rem;font-weight:bold;border-radius:6px;padding:4px 11px;white-space:nowrap;letter-spacing:.5px}
@@ -28,18 +28,20 @@ section h2{font-size:1.12rem;margin:16px 4px 10px;padding-left:10px;border-left:
 .price{margin:6px 0 4px}
 .price .now{font-size:1.45rem;font-weight:900;color:#e53935}
 .price .was{color:#707070;text-decoration:line-through;font-size:.82rem;margin-left:8px}
-.price .save{display:inline-block;background:#ffebee;color:#e53935;font-size:.72rem;font-weight:bold;border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+.price .save{display:inline-block;background:#ffebee;color:#e53935;font-size:.72rem;font-weight:bold;border-radius:6px;padding:2px 7px;margin-left:8px;vertical-align:3px}
 .meta{font-size:.78rem;color:#888;margin-bottom:10px}
 .meta span{margin-right:8px}
-.hist{font-size:.75rem;color:#7b8d9e;margin:-4px 0 8px}
+.hist{font-size:.78rem;color:#7b8d9e;margin:-4px 0 8px}
 .hist b{color:#2e7d32}
-.btn{display:inline-block;background:#ec407a;color:#fff;text-decoration:none;border-radius:8px;padding:13px 26px;font-size:1rem;font-weight:bold;min-height:44px}
+.btn{display:inline-block;background:#ec407a;color:#fff;text-decoration:none;border-radius:8px;padding:13px 26px;font-size:1rem;font-weight:bold;min-height:44px;text-align:center}
 .btn:active{background:#d81b60}
 footer{text-align:center;color:#b76e8a;font-size:.75rem;padding:24px 16px 40px;line-height:2}
 footer nav.fnav{margin-bottom:10px}
 footer nav.fnav a{color:#c2185b;text-decoration:none;margin:0 8px;font-size:.82rem;font-weight:bold}
 footer .disclosure{max-width:640px;margin:10px auto 0;font-size:.72rem;color:#c99;line-height:1.7}
-.note{background:#fff;border:1px solid #f8bbd0;border-radius:12px;padding:12px 14px;font-size:.82rem;color:#ad1457;margin:0 12px 12px}
+.note{background:#fff;border:1px solid #f8bbd0;border-radius:12px;padding:12px 14px;font-size:.82rem;color:#ad1457;width:calc(100% - 24px);max-width:656px;margin:0 auto 12px}
+@media(min-width:768px){.note{max-width:936px}}
+@media(min-width:1200px){.note{max-width:1344px}}
 .ad-slot{max-width:680px;margin:14px auto 0;padding:16px 12px;text-align:center;background:linear-gradient(135deg,#fce4ec,#f8bbd0);border:2px dashed #ec407a;border-radius:12px;color:#ad1457;font-size:.9rem}
 .ad-slot small{color:#c66a8f;font-size:.75rem}
 .partners{background:#fff;border-radius:12px;padding:14px;margin-bottom:12px;box-shadow:0 1px 4px rgba(216,27,96,.1);text-align:center;color:#b76e8a;font-size:.85rem}
@@ -49,7 +51,7 @@ footer .disclosure{max-width:640px;margin:10px auto 0;font-size:.72rem;color:#c9
 .flash h3{font-size:1rem;padding-right:44px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .flash .time{font-size:.75rem;opacity:.9}
 section.flash-sec h2{color:#e53935;border-left-color:#e53935}
-.dealcount{display:inline-block;background:#fff;color:#d81b60;font-size:.75rem;border-radius:12px;padding:2px 10px;margin-left:6px;vertical-align:middle}
+.dealcount{display:inline-block;background:#fff;color:#d81b60;font-size:.75rem;border-radius:999px;padding:2px 10px;margin-left:6px;vertical-align:middle}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:680px;margin:0 auto 8px;padding:0 12px}
 .grid a{background:#fff;border-radius:12px;padding:14px 6px;text-align:center;text-decoration:none;color:#ad1457;font-size:.82rem;font-weight:bold;box-shadow:0 1px 4px rgba(216,27,96,.1)}
 .grid a .ic{font-size:1.6rem;display:block;margin-bottom:4px}
@@ -57,7 +59,7 @@ section.flash-sec h2{color:#e53935;border-left-color:#e53935}
 .crumb{max-width:680px;margin:10px auto 0;padding:0 12px;font-size:.82rem;color:#b76e8a}
 .crumb a{color:#d81b60;text-decoration:none}
 .morebtn{display:block;text-align:center;margin:4px 0 8px}
-.morebtn a{display:inline-block;background:#fff;color:#d81b60;border:2px solid #f8bbd0;border-radius:20px;padding:8px 24px;text-decoration:none;font-size:.85rem;font-weight:bold}
+.morebtn a{display:inline-block;background:#fff;color:#d81b60;border:2px solid #f8bbd0;border-radius:999px;padding:8px 24px;text-decoration:none;font-size:.85rem;font-weight:bold}
 /* 16:9 滿版 hero（不用 aspect-ratio＋max-height 混用，避免 Chrome 反推寬度） */
 .hero{max-width:none!important;padding:0!important;margin:0 auto 14px!important}
 .hero-inner{position:relative;width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;color:#fff;background:linear-gradient(135deg,#ad1457 0%,#d81b60 45%,#f06292 100%);overflow:hidden;padding:12px 24px}
@@ -121,7 +123,7 @@ footer nav.fnav.cats a{font-weight:normal}
   section.deal-sec .card .price .was{font-size:.72rem}
   section.deal-sec .card .meta{font-size:.74rem;margin-bottom:6px}
   section.deal-sec .card .hist{font-size:.74rem;margin-bottom:6px}
-  section.deal-sec .card .btnrow{display:flex;gap:8px}
+  section.deal-sec .card .btnrow{display:flex;gap:8px;margin-top:auto}
   section.deal-sec .card .btn{flex:1;padding:11px 0;font-size:.82rem;text-align:center}
   section.deal-sec .card .watchbtn{flex:none;width:42px;padding:11px 0;font-size:.9rem}
 }
@@ -132,31 +134,31 @@ footer nav.fnav.cats a{font-weight:normal}
 .userbar a:active{opacity:1;text-decoration:underline}
 /* ===== 銀髮友善：字體放大開關（2026-10-21 銀髮長輩視角）===== */
 html.font-lg{font-size:20px}
-.fontbtn{background:rgba(255,255,255,.92);color:#d81b60;border:2px solid #fff;border-radius:16px;padding:5px 12px;font-size:.8rem;font-weight:bold;cursor:pointer;margin-left:8px;font-family:inherit}
+.fontbtn{background:rgba(255,255,255,.92);color:#d81b60;border:2px solid #fff;border-radius:999px;padding:5px 12px;font-size:.8rem;font-weight:bold;cursor:pointer;margin-left:8px;font-family:inherit}
 html.font-lg .fontbtn{font-size:.9rem}
 /* ===== 追蹤按鈕 ===== */
-.btnrow{display:flex;gap:8px}
+.btnrow{display:flex;gap:8px;margin-top:auto}
 .btnrow .btn{flex:1}
-.watchbtn{flex:none;background:#fff;color:#d81b60;border:2px solid #f8bbd0;border-radius:10px;padding:10px 12px;font-size:.85rem;cursor:pointer;font-weight:bold}
+.watchbtn{flex:none;background:#fff;color:#d81b60;border:2px solid #f8bbd0;border-radius:8px;padding:10px 12px;font-size:.85rem;cursor:pointer;font-weight:bold}
 .watchbtn.on{background:#fce4ec;border-color:#d81b60}
 /* ===== 排序列（首頁／分類頁／搜尋頁共用） ===== */
 .sortbar{display:flex;gap:8px;align-items:center;overflow-x:auto;flex-wrap:nowrap;padding:2px 2px 12px;margin:0 auto 4px;max-width:680px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .sortbar::-webkit-scrollbar{display:none}
 .sortcap{flex:none;font-size:.82rem;color:#b76e8a;font-weight:bold;padding:6px 2px}
-.sortbar button{flex:none;border:1px solid #f8bbd0;background:#fff;color:#c2185b;border-radius:16px;padding:6px 14px;font-size:.8rem;cursor:pointer;white-space:nowrap}
+.sortbar button{flex:none;border:1px solid #f8bbd0;background:#fff;color:#c2185b;border-radius:999px;padding:6px 14px;font-size:.8rem;cursor:pointer;white-space:nowrap}
 .sortbar button.on{background:#d81b60;color:#fff;border-color:#d81b60;font-weight:bold}
 /* ===== 搜尋頁 ===== */
 .searchbox{max-width:680px;margin:14px auto;padding:0 12px}
 .searchbox input{width:100%;font-size:1rem;padding:12px 14px;border:2px solid #f8bbd0;border-radius:12px;outline:none}
 .searchbox input:focus{border-color:#d81b60}
 .chips{display:flex;gap:8px;flex-wrap:wrap;max-width:680px;margin:0 auto 8px;padding:0 12px}
-.chips button{border:1px solid #f8bbd0;background:#fff;color:#c2185b;border-radius:16px;padding:6px 14px;font-size:.8rem;cursor:pointer}
+.chips button{border:1px solid #f8bbd0;background:#fff;color:#c2185b;border-radius:999px;padding:6px 14px;font-size:.8rem;cursor:pointer}
 .chips button.on{background:#d81b60;color:#fff;border-color:#d81b60}
 #searchMeta{max-width:680px;margin:6px auto;padding:0 12px;color:#b76e8a;font-size:.82rem}
 /* ===== 會員表單頁 ===== */
 .formpage{max-width:480px;margin:0 auto;padding:20px 16px 40px}
 .formpage label{display:block;font-size:.85rem;color:#ad1457;font-weight:bold;margin:12px 0 4px}
-.formpage input,.formpage textarea,.formpage select{width:100%;font-size:.95rem;padding:10px 12px;border:2px solid #f8bbd0;border-radius:10px;outline:none;box-sizing:border-box}
+.formpage input,.formpage textarea,.formpage select{width:100%;font-size:.95rem;padding:10px 12px;border:2px solid #f8bbd0;border-radius:12px;outline:none;box-sizing:border-box}
 .formpage input:focus,.formpage textarea:focus{border-color:#d81b60}
 .formpage .btn{width:100%;margin-top:16px;border:none;cursor:pointer;font-size:1rem}
 .formpage .hint{font-size:.78rem;color:#b76e8a;margin-top:10px;line-height:1.6}
@@ -172,7 +174,7 @@ html.font-lg .fontbtn{font-size:.9rem}
 .news-item .ndate .nago{display:block;font-size:.62rem;font-weight:700;opacity:.72;margin-top:2px}
 .news-item .nbody{flex:1;min-width:0}
 .news-item h3{font-size:.92rem;line-height:1.45;margin-bottom:4px;color:#333}
-.news-item .nmeta{font-size:.75rem;color:#999}
+.news-item .nmeta{font-size:.75rem;color:#888}
 .news-item .nmeta span{margin-right:8px}
 section.news-sec h2{color:#c2185b;border-left-color:#c2185b}
 /* ===== v2 重設計（2026-10-20）：快報搬到最上方全寬橫列＋購物網式卡片 ===== */
@@ -248,12 +250,37 @@ section.floor-sec{scroll-margin-top:70px}
 @media(max-width:767px){.feature-nav{margin-top:8px}.pickbar{border-radius:18px;flex-wrap:wrap}.pick-name{flex-basis:calc(100% - 96px)}}
 .flash h3 a{color:#fff;text-decoration:none}
 .flash .fexc{font-size:.85rem;opacity:.95;margin-top:6px;line-height:1.55}
-.floornav a b{color:#d81b60;margin-right:2px}
 .floor-head{display:flex;align-items:center;gap:14px;margin:18px 4px 12px;padding:12px 14px;background:linear-gradient(135deg,#fff,#fce4ec);border:1px solid #f8bbd0;border-radius:12px;box-shadow:0 1px 4px rgba(216,27,96,.08)}
-.floor-no{font-size:2rem;font-weight:900;color:#d81b60;letter-spacing:1px;line-height:1;flex:none}
 .floor-tt{flex:1;min-width:0}
 .floor-tt h2{font-size:1.12rem;margin:0;padding:0;border:none;color:#ad1457}
 .floor-tt p{font-size:.75rem;color:#c66a8f;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .floor-head .dealcount{margin-left:0;flex:none}
 section.floor-sec>.floor-head{grid-column:1/-1}
-@media(max-width:767px){.floor-no{font-size:1.55rem}.floor-head{gap:10px;padding:10px 12px;margin-top:14px}}
+@media(max-width:767px){.floor-head{gap:10px;padding:10px 12px;margin-top:14px}}
+
+/* ===== 設計統一（2026-10-21 設計專項）：補齊共用 class、消滅各頁 inline style ===== */
+:focus-visible{outline:2px solid #d81b60;outline-offset:2px}
+.tag{display:inline-block;background:#d81b60;color:#fff;font-size:.72rem;font-weight:bold;padding:3px 10px;border-radius:999px}
+.articles-sec .card h3{margin:6px 0}
+.articles-sec .card p{color:#666;font-size:.88rem;line-height:1.6}
+.card.sponsored{border:2px solid #ff9800}
+.badge.spon{background:#ff9800}
+.btn.spon{background:#ff9800}
+.card>.btn.spon{align-self:flex-start;margin-top:auto}
+.flash .fprice{font-size:1.4rem;font-weight:bold;margin:6px 0}
+.flash .foff{font-size:.8rem;opacity:.85}
+.btn.flashbtn{background:#fff;color:#e53935}
+.flashwrap{max-width:860px;margin:0 auto;padding:16px}
+.flash-article{padding:20px}
+.flash-article h1{font-size:1.35rem;margin:10px 0;line-height:1.4;color:#ad1457}
+.flash-article h2{margin-top:18px;font-size:1.05rem;color:#ad1457}
+.flash-article .fbody{margin-top:12px;line-height:1.7}
+.flash-article ul{line-height:1.8;padding-left:1.4em}
+.flash-article .fnav{margin-top:18px}
+.flash-article .fnav a{color:#c2185b;font-weight:bold;text-decoration:none}
+.crumbline{font-size:.85rem;color:#b76e8a;margin-bottom:12px}
+.crumbline a{color:#c2185b;text-decoration:none;font-weight:bold}
+.pagetitle{font-size:1.25rem;color:#ad1457;margin:0 0 6px}
+.btn-block{display:block;text-align:center}
+.logoutbtn{width:100%}
+@media(max-width:767px){.userbar{position:static;text-align:center;margin:-8px 0 10px}.userbar small{display:inline;margin-left:8px}}

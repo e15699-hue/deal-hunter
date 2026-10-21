@@ -140,11 +140,11 @@
     var base = _catFilter ? '../' : '';
     var href = base + 'flash/' + flashSlugOf(d) + '.html';
     return '<article class="flash"><h3><a href="' + href + '">⚡ ' + esc(d.name) + '</a></h3>'
-      + '<div style="font-size:1.4rem;font-weight:bold;margin:6px 0">$' + price.toLocaleString()
-      + ' <span style="font-size:.8rem;opacity:.85">(' + off + ')</span></div>'
+      + '<div class="fprice">$' + price.toLocaleString()
+      + ' <span class="foff">(' + off + ')</span></div>'
       + '<div class="time">📰 來源：' + esc(d.source) + '・發現時間：' + esc(d.found_at) + '</div>'
       + '<p class="fexc">' + esc(d.note) + '</p>'
-      + '<div style="margin-top:8px"><a class="btn" style="background:#fff;color:#e53935" href="' + href + '">看消息 →</a></div></article>';
+      + '<div style="margin-top:8px"><a class="btn flashbtn" href="' + href + '">看消息 →</a></div></article>';
   }
 
   // 頁面類型：首頁（百貨樓層，每層折扣最高前 8 筆）或分類頁（data-cat 屬性，整層全顯示）
