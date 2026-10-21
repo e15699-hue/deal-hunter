@@ -518,3 +518,24 @@ footer .fine{color:#a58b97}
 .newsmore a:hover{text-decoration:underline}
 @media(min-width:768px){.newsmore{max-width:960px}}
 @media(min-width:1280px){.newsmore{max-width:1400px;padding:0 28px}}
+
+/* ===== 首頁改版（2026-10-22 使用者定版）：特賣會情報區＋搜尋好康統一區 ===== */
+.events-sec{margin-bottom:26px}
+.events-grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:768px){.events-grid{grid-template-columns:repeat(2,1fr)}}
+.event-card{display:flex;gap:12px;background:#fff;border-radius:12px;padding:14px;box-shadow:0 1px 4px rgba(216,27,96,.1)}
+.event-card .edate{flex:none;width:64px;text-align:center;background:#fce4ec;border-radius:8px;padding:8px 4px;color:#ad1457;align-self:flex-start;line-height:1.35}
+.event-card .edate b{display:block;font-size:.84rem;font-weight:900}
+.event-card .edate span{font-size:.64rem;font-weight:700;opacity:.75}
+.event-card .ebody{flex:1;min-width:0}
+.event-card .ebody h3{font-size:.95rem;margin-bottom:4px;color:#26282e;line-height:1.45}
+.event-card .emeta{font-size:.76rem;color:#8a6474;margin-bottom:4px}
+.event-card .emeta span{margin-right:8px}
+.event-card .ebody p{font-size:.82rem;color:#555;line-height:1.55;margin:0 0 8px}
+.alldeals{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:768px){.alldeals{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.alldeals{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1280px){.alldeals{grid-template-columns:repeat(4,1fr)}}
+.alldeals .cathead{grid-column:1/-1;display:flex;justify-content:space-between;align-items:baseline;font-size:1.02rem;color:#26282e;border-left:4px solid #ec407a;padding-left:9px;margin:12px 0 0}
+.alldeals .cathead a{font-size:.8rem;color:#c2185b;text-decoration:none;font-weight:800;white-space:nowrap}
+.alldeals-sec .morebtn{margin-top:14px}
