@@ -75,7 +75,7 @@ function cardHTML(d){
   <div class="top"><h3>${esc(d.t)}</h3>${badge}${d.sh ? '<span class="badge ship">🚚 免運</span>' : ""}</div>
   <div class="price"><span class="now">$${p.toLocaleString()}</span>${was}${saveHtml}</div>
   <div class="meta"><span>📦 ${esc(d.s)}</span><span>🏷️ ${esc(FL[d.c] || d.c)}</span></div>
-  <div class="btnrow"><a class="btn" href="${esc(d.u)}" target="_blank" rel="noopener">去看看 →</a>
+  <div class="btnrow"><a class="btn" href="${esc(d.u)}" target="_blank" rel="noopener" title="跳到 momo、PChome、蝦皮等大網站結帳，本站不經手付款">去看看 →</a>
   <button class="watchbtn" data-key="${esc(key)}" data-title="${esc(d.t)}" data-price="${p}" onclick="watchDeal(this)" title="追蹤降價通知">🔔</button></div>
   </div></div></div>`;
 }
