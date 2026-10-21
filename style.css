@@ -544,3 +544,12 @@ footer .fine{color:#a58b97}
 .alldeals .cathead{grid-column:1/-1;display:flex;justify-content:space-between;align-items:baseline;font-size:1.02rem;color:#26282e;border-left:4px solid #ec407a;padding-left:9px;margin:12px 0 0}
 .alldeals .cathead a{font-size:.8rem;color:#c2185b;text-decoration:none;font-weight:800;white-space:nowrap}
 .alldeals-sec .morebtn{margin-top:14px}
+/* ===== 新手三步驟（#guide） ===== */
+.guide-sec{background:#fff;border:1px solid #f3c6d8;border-radius:14px;padding:16px 18px;margin:0 0 18px;scroll-margin-top:140px}
+.guide-sec>h2{font-size:1rem;color:#ad1457;margin:0 0 10px}
+.guide-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.guide-steps li{background:#fdf2f6;border-radius:10px;padding:12px 14px;font-size:.85rem;line-height:1.7;color:#4a4e57}
+.guide-steps li b{color:#c2185b}
+.guide-steps .badge{font-size:.72rem}
+.guide-steps a{color:#c2185b;font-weight:700}
+@media(max-width:767px){.guide-steps{grid-template-columns:1fr}}
