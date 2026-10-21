@@ -317,8 +317,7 @@
     if (ref) ref.insertAdjacentHTML('afterend', html);
     else main.insertAdjacentHTML('afterbegin', html);
 
-    setupTabs(main);
-    setupFeatureTabs(main);
+    // 頁籤切換已移除（2026-10-22）：重畫後全部區塊直接顯示
     setupPagination(main);
     // 更新 hero 計數
     var stat = document.querySelector('.hero-stats b');
@@ -477,8 +476,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     var main0 = document.querySelector('main.content');
     if (main0) {
-      setupTabs(main0);
-      setupFeatureTabs(main0);
+      // 分類頁籤與主功能切換已移除（2026-10-22 使用者指示：頁籤列都拿掉）
       setupPagination(main0);
     }
     Array.prototype.forEach.call(document.querySelectorAll('.floornav a[href^="#floor-"]'), function (a) {
