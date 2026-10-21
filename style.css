@@ -484,3 +484,27 @@ footer .disclosure{color:#787f8a}
   section.deal-sec .card .badge{position:static;box-shadow:none}
   section.deal-sec .card .badge:not(.ship){position:absolute;top:10px;left:10px;z-index:2;box-shadow:0 2px 6px rgba(0,0,0,.25)}
 }
+
+/* ===== v6 照 4Gamers 框架、換品牌色（2026-10-22 使用者指示：整體風格一致、不要黑色、完全照抄只換顏色）=====
+   最上面一列＝固定品牌識別框（粉紅漸層，捲動不動）；左欄在品牌框下方固定（白色系）；
+   頁尾改淺色，全站統一粉紅＋白，不再出現黑色區塊。 */
+footer{background:#fdf7fa;color:#6b5560;border-top:1px solid #f3c3d3}
+footer a{color:#8a6474}
+.foot-brand b{color:#ad1457}
+footer .fine{color:#a58b97}
+@media(min-width:1024px){
+  body.has-rail{padding-top:64px}
+  body.has-rail header{position:fixed;top:0;left:0;right:0;height:64px;z-index:130;padding:0 28px;background:linear-gradient(90deg,#d81b60,#e6498a 55%,#f06292);box-shadow:0 2px 10px rgba(173,20,87,.18);display:flex;align-items:center;gap:18px}
+  body.has-rail header .brand{display:flex}
+  body.has-rail header .searchbar{flex:0 1 520px;margin:0 auto 0 6px;background:#fff}
+  body.has-rail header .searchbar button{background:#fff;color:#c2185b}
+  body.has-rail header .userbar{position:static}
+  .rail{top:64px;background:#fff;border-right:1px solid #f0dbe4;color:#3d3d44;box-shadow:none;padding-top:4px}
+  .rail a.rl{color:#4a4a52}
+  .rail a.rl:hover{background:#fdf0f5;color:#ad1457}
+  .rail a.rl.on{background:#fde7f0;color:#ad1457;border-left-color:#d81b60}
+  .rail-sec{color:#c08aa0}
+  .rail-note{color:#a58b97}
+  body.has-rail .layout .sidebar{top:80px}
+  body.has-rail .cattabs{top:64px}
+}
