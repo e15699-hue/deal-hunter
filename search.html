@@ -64,7 +64,7 @@ function cardHTML(d){
   const pic = d.img ? `<div class="pic"><img loading="lazy" src="${esc(d.img)}" alt="${esc(d.t)}" onerror="this.closest('.pic').style.display='none'"></div>` : "";
   const key = d.u.split(/[?#]/)[0];
   const p = snum(d.p), m = snum(d.m);
-  let badge = `<span class="badge good">好價</span>`, was = "", saveHtml = "";
+  let badge = `<span class="badge good" title="本站收錄優惠・多平台比價驗證中">好價</span>`, was = "", saveHtml = "";
   if (m > p && d.bv) {
     const off = Math.round((1 - p / m) * 100);
     badge = `<span class="badge">-${off}%</span>`;

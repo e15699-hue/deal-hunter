@@ -135,7 +135,7 @@
       was = '<span class="was">對照 $' + market.toLocaleString() + '</span>';
       saveHtml = '<span class="save">現省 $' + save.toLocaleString() + '</span>';
     } else {
-      badge = '<span class="badge good">好價</span>';
+      badge = '<span class="badge good" title="本站收錄優惠・多平台比價驗證中">好價</span>';
       was = '';
       saveHtml = '';
     }
