@@ -26,19 +26,31 @@
 </a>
 <p class="tagline">會員中心</p>
 </header>
+<nav class="feature-nav" aria-label="主要功能導覽">
+<a href="index.html">🏠 首頁</a><a href="search.html">🔍 搜尋好康</a><a href="articles/">📚 文章分享</a><a class="on" href="my.html">🔔 我的追蹤</a><a href="submit.html">📮 爆料投稿</a>
+</nav>
 <div class="formpage" style="max-width:640px">
   <h2 style="border:none;padding:0;margin:0 0 6px">👤 會員中心</h2>
   <p class="hint" id="who"></p>
   <p><a class="btn" href="submit.html" style="text-decoration:none;display:block;text-align:center">📮 我要爆料投稿</a></p>
-  <h2>📮 我的投稿</h2>
-  <div id="tips"><p class="hint">載入中…</p></div>
-  <h2>🔔 我的追蹤</h2>
-  <div id="watches"><p class="hint">載入中…</p></div>
+  <div class="member-tabs" role="tablist" aria-label="會員功能切換">
+    <button type="button" role="tab" data-member-tab="tips" class="on" aria-selected="true">📮 我的投稿</button>
+    <button type="button" role="tab" data-member-tab="watches" aria-selected="false">🔔 我的追蹤</button>
+  </div>
+  <section data-member-panel="tips">
+    <h2>📮 我的投稿</h2>
+    <div id="tips"><p class="hint">載入中…</p></div>
+  </section>
+  <section data-member-panel="watches">
+    <h2>🔔 我的追蹤</h2>
+    <div id="watches"><p class="hint">載入中…</p></div>
+  </section>
   <p style="margin-top:20px"><button class="watchbtn" style="width:100%" onclick="doLogout()">登出</button></p>
   <p class="hint"><a href="index.html" style="color:#c2185b">← 回首頁</a></p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
+<script src="app.js"></script>
 <script>
 let _sb = null, _uid = null;
 function sb(){

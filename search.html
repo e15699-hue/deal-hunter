@@ -27,12 +27,16 @@
 </a>
 <p class="tagline">站內搜尋・全部優惠情報</p>
 </header>
+<nav class="feature-nav" aria-label="主要功能導覽">
+<a href="index.html">🏠 首頁</a><a class="on" href="search.html">🔍 搜尋好康</a><a href="articles/">📚 文章分享</a><a href="my.html">🔔 我的追蹤</a><a href="submit.html">📮 爆料投稿</a>
+</nav>
 <div class="userbar"><a id="userLink" href="login.html">👤 登入 / 註冊</a><small>瀏覽免註冊・登入只開降價通知</small></div>
 <div class="searchbox"><input id="q" type="search" placeholder="🔍 搜尋優惠或型號：iPhone、EH-WNA9M、面膜…" autocomplete="off"></div>
 <div class="chips" id="chips"></div>
 <div class="sortbar" id="sortChips"></div>
 <div id="searchMeta"></div>
 <section class="deal-sec" id="results" style="max-width:680px"></section>
+<div class="pager" id="searchPager"></div>
 <footer>
 <nav class="fnav">
 <a href="about.html">關於我們</a><a href="privacy.html">隱私權政策</a><a href="terms.html">服務條款</a><a href="mailto:swiftfixpc@gmail.com">聯絡我們</a>
@@ -47,6 +51,8 @@ let INDEX = [];
 const CATS = [["全部","全部"],["美妝保養","美妝保養"],["服飾鞋包","精品時尚"],["3C數位","3C 數位"],["家電","家電"],["居家生活","居家生活"],["母嬰玩具","母嬰親子"],["運動戶外","運動休閒"],["寵物生活","寵物用品"],["食品日用","美食生鮮"]];
 const FL = {}; CATS.forEach(([v,l]) => FL[v] = l);
 let activeCat = "全部";
+let currentPage = 1;
+const PAGE_SIZE = 12;
 function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function cardHTML(d){
   const pic = d.img ? `<div class="pic"><img loading="lazy" src="${esc(d.img)}" alt="" onerror="this.closest('.pic').style.display='none'"></div>` : "";
@@ -95,7 +101,34 @@ function buildSortChips(){
     buildSortChips(); doSearch();
   });
 }
-function doSearch(){
+function buildPager(total){
+  const el = document.getElementById('searchPager');
+  const pages = Math.ceil(total / PAGE_SIZE);
+  if (!el) return;
+  if (pages <= 1) { el.innerHTML = ''; return; }
+  if (currentPage > pages) currentPage = pages;
+  const nums = [];
+  for (let n = 1; n <= pages; n++) {
+    if (pages <= 7 || n === 1 || n === pages || Math.abs(n - currentPage) <= 1) nums.push(n);
+    else if (nums[nums.length - 1] !== '…') nums.push('…');
+  }
+  el.innerHTML = `<button type="button" data-act="prev"${currentPage === 1 ? ' disabled' : ''}>← 上一頁</button>`
+    + nums.map(n => n === '…'
+      ? '<span class="pager-info">…</span>'
+      : `<button type="button" data-page="${n}"${n === currentPage ? ' class="on"' : ''}>${n}</button>`).join('')
+    + `<span class="pager-info">${currentPage} / ${pages} 頁・共 ${total} 則</span>`
+    + `<button type="button" data-act="next"${currentPage === pages ? ' disabled' : ''}>下一頁 →</button>`;
+  el.querySelectorAll('button').forEach(b => b.onclick = () => {
+    if (b.disabled) return;
+    if (b.dataset.act === 'prev') currentPage--;
+    else if (b.dataset.act === 'next') currentPage++;
+    else currentPage = Number(b.dataset.page);
+    doSearch(false);
+    document.getElementById('results').scrollIntoView({block:'start'});
+  });
+}
+function doSearch(resetPage){
+  if (resetPage !== false) currentPage = 1;
   const q = document.getElementById('q').value.trim().toLowerCase();
   const kw = q.split(/\s+/).filter(Boolean);
   const raw = INDEX.filter(d => {
@@ -105,10 +138,12 @@ function doSearch(){
     return kw.every(k => hay.includes(k));
   });
   const hits = sortHits(raw);
+  const pageHits = hits.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
   document.getElementById('searchMeta').textContent = q || activeCat !== "全部" ? `找到 ${hits.length} 則` : `共 ${hits.length} 則優惠情報`;
   document.getElementById('results').innerHTML = hits.length
-    ? "<h2>🔍 搜尋結果</h2>" + hits.map(cardHTML).join("")
+    ? "<h2>🔍 搜尋結果</h2>" + pageHits.map(cardHTML).join("")
     : "<h2>🔍 搜尋結果</h2><div class='card'><div class='body'>沒有找到相關優惠，換個關鍵字試試！</div></div>";
+  buildPager(hits.length);
 }
 function buildChips(){
   document.getElementById('chips').innerHTML = CATS.map(([v, l]) =>

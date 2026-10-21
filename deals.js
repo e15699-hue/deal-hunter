@@ -20,6 +20,8 @@
   }
 
   function dealKey(url) { return String(url || '').split('?')[0].split('#')[0].trim(); }
+  function hkHash(s) { var h = 5381; for (var i = 0; i < s.length; i++) { h = ((h * 33) + s.charCodeAt(i)) >>> 0; } return ('0000000' + h.toString(16)).slice(-8); }
+  function flashSlugOf(d) { return hkHash(dealKey(d.url || '')); }
 
   // ===== 商品排序（客戶端純函式，不影響靜態快照順序） =====
   var SORTS = [
@@ -135,15 +137,14 @@
   function flashHTML(d) {
     var price = Number(d.price) || 0, market = Number(d.market_price) || 0;
     var off = market > price ? '下殺 ' + Math.round((1 - price / market) * 100) + '%' : 'Bug 價';
-    var url = String(d.url || '').trim();
-    var btn = /^https?:/.test(url)
-      ? '<div style="margin-top:10px"><a class="btn" style="background:#fff;color:#e53935" href="' + esc(url) + '" target="_blank" rel="noopener" title="跳到 momo 等大網站結帳，本站不經手付款">手刀去搶 →</a></div>'
-      : '';
-    return '<div class="flash"><h3>⚡ ' + esc(d.name) + '</h3>'
+    var base = _catFilter ? '../' : '';
+    var href = base + 'flash/' + flashSlugOf(d) + '.html';
+    return '<article class="flash"><h3><a href="' + href + '">⚡ ' + esc(d.name) + '</a></h3>'
       + '<div style="font-size:1.4rem;font-weight:bold;margin:6px 0">$' + price.toLocaleString()
       + ' <span style="font-size:.8rem;opacity:.85">(' + off + ')</span></div>'
-      + '<div class="time">🕐 發現時間：' + esc(d.found_at) + '・' + esc(d.source) + '・' + esc(d.note) + '</div>'
-      + btn + '</div>';
+      + '<div class="time">📰 來源：' + esc(d.source) + '・發現時間：' + esc(d.found_at) + '</div>'
+      + '<p class="fexc">' + esc(d.note) + '</p>'
+      + '<div style="margin-top:8px"><a class="btn" style="background:#fff;color:#e53935" href="' + href + '">看消息 →</a></div></article>';
   }
 
   // 頁面類型：首頁（百貨樓層，每層折扣最高前 8 筆）或分類頁（data-cat 屬性，整層全顯示）
@@ -202,7 +203,7 @@
     var flash = deals.filter(function (d) { return d.flash; }).slice(0, 5);
     var flashSec = main.querySelector('.flash-sec');
     if (flash.length) {
-      var fhtml = '<section class="flash-sec"><h2>⚡ 限時特賣會場（手刀要快）</h2>\n' + flash.map(flashHTML).join('\n') + '\n</section>';
+      var fhtml = '<section class="flash-sec"><h2>⚡ 特賣消息・清場快訊</h2>\n' + flash.map(flashHTML).join('\n') + '\n</section>';
       if (flashSec) flashSec.outerHTML = fhtml;
       else main.insertAdjacentHTML('afterbegin', fhtml);
     } /* 抓到的資料無快閃時保留靜態快照的快閃區（同步延遲時也不讓快閃消失，2026-10-20 事故防呆） */
@@ -253,6 +254,9 @@
     if (ref) ref.insertAdjacentHTML('afterend', html);
     else main.insertAdjacentHTML('afterbegin', html);
 
+    setupTabs(main);
+    setupFeatureTabs(main);
+    setupPagination(main);
     // 更新 hero 計數
     var stat = document.querySelector('.hero-stats b');
     if (stat) stat.textContent = deals.length;
@@ -266,7 +270,161 @@
     '運動戶外': 'sports', '居家生活': 'home', '寵物生活': 'pet'
   };
 
+  // 首頁主功能切換：今日好康／特賣消息一次只顯示一區；文章、搜尋、會員走獨立導覽頁
+  function setupFeatureTabs(main) {
+    if (!main || main.getAttribute('data-cat')) return;
+    var switcher = main.querySelector('.feature-switcher');
+    if (!switcher) return;
+
+    function parts() {
+      return {
+        flash: main.querySelector('.flash-sec'),
+        catbar: main.querySelector('.cattabs'),
+        secs: Array.prototype.slice.call(main.querySelectorAll('section.deal-sec:not(.articles-sec)'))
+      };
+    }
+    function activate(key, scroll) {
+      var p = parts();
+      if (!p.flash && key === 'flash') key = 'deals';
+      Array.prototype.forEach.call(switcher.querySelectorAll('[data-feature-tab]'), function (b) {
+        var on = b.getAttribute('data-feature-tab') === key;
+        b.classList.toggle('on', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      if (key === 'flash') {
+        if (p.flash) p.flash.style.display = '';
+        if (p.catbar) p.catbar.style.display = 'none';
+        p.secs.forEach(function (sec) { sec.style.display = 'none'; });
+      } else {
+        if (p.flash) p.flash.style.display = 'none';
+        if (p.catbar) p.catbar.style.display = '';
+        var activeBtn = p.catbar ? p.catbar.querySelector('button.on') : null;
+        var activeId = activeBtn ? activeBtn.getAttribute('data-tab') : null;
+        p.secs.forEach(function (sec, i) {
+          sec.style.display = activeId ? (sec.id === activeId ? '' : 'none') : (i === 0 ? '' : 'none');
+        });
+      }
+      try { sessionStorage.setItem('hk_feature', key); } catch (e) {}
+      if (scroll) switcher.scrollIntoView({ block: 'start' });
+    }
+    if (!switcher._hkFeatureBound) {
+      switcher._hkFeatureBound = true;
+      switcher.addEventListener('click', function (e) {
+        var b = e.target.closest ? e.target.closest('[data-feature-tab]') : null;
+        if (b) activate(b.getAttribute('data-feature-tab'), true);
+      });
+    }
+    var flashBtn = switcher.querySelector('[data-feature-tab="flash"]');
+    if (flashBtn && !parts().flash) flashBtn.hidden = true;
+    var saved = null;
+    try { saved = sessionStorage.getItem('hk_feature'); } catch (e) {}
+    activate(saved === 'flash' ? 'flash' : 'deals', false);
+  }
+
+  // 分類頁分頁導覽：每頁 12 則，不再把 20–30 張卡片一次拉到底
+  function setupPagination(main) {
+    if (!main || !main.getAttribute('data-cat')) return;
+    Array.prototype.forEach.call(main.querySelectorAll('section.deal-sec'), function (sec) {
+      var old = sec.querySelector('.pager');
+      if (old) old.remove();
+      var cards = Array.prototype.slice.call(sec.querySelectorAll(':scope > .card'));
+      if (cards.length <= 12) {
+        cards.forEach(function (card) { card.style.display = ''; });
+        return;
+      }
+      var pageSize = 12;
+      var page = 1;
+      var pages = Math.ceil(cards.length / pageSize);
+      var pager = document.createElement('div');
+      pager.className = 'pager';
+      sec.appendChild(pager);
+      function draw() {
+        cards.forEach(function (card, i) {
+          card.style.display = i >= (page - 1) * pageSize && i < page * pageSize ? '' : 'none';
+        });
+        var nums = [];
+        for (var n = 1; n <= pages; n++) {
+          if (pages <= 7 || n === 1 || n === pages || Math.abs(n - page) <= 1) nums.push(n);
+          else if (nums[nums.length - 1] !== '…') nums.push('…');
+        }
+        pager.innerHTML = '<button type="button" data-act="prev"' + (page === 1 ? ' disabled' : '') + '>← 上一頁</button>'
+          + nums.map(function (n) {
+              return n === '…'
+                ? '<span class="pager-info">…</span>'
+                : '<button type="button" data-page="' + n + '"' + (n === page ? ' class="on"' : '') + '>' + n + '</button>';
+            }).join('')
+          + '<span class="pager-info">' + page + ' / ' + pages + ' 頁・共 ' + cards.length + ' 則</span>'
+          + '<button type="button" data-act="next"' + (page === pages ? ' disabled' : '') + '>下一頁 →</button>';
+      }
+      pager.addEventListener('click', function (e) {
+        var b = e.target.closest ? e.target.closest('button') : null;
+        if (!b || b.disabled) return;
+        if (b.getAttribute('data-act') === 'prev') page--;
+        else if (b.getAttribute('data-act') === 'next') page++;
+        else if (b.getAttribute('data-page')) page = Number(b.getAttribute('data-page'));
+        draw();
+        sec.scrollIntoView({ block: 'start' });
+      });
+      draw();
+    });
+  }
+
+  // 首頁分類頁籤切換（使用者定調：不要一頁長捲，用導航切轉）
+  function setupTabs(main) {
+    if (!main || main.getAttribute('data-cat')) return;
+    var secs = Array.prototype.slice.call(main.querySelectorAll('section.deal-sec:not(.articles-sec)'));
+    if (secs.length < 2) return;
+    var old = main.querySelector('.cattabs');
+    if (old) old.remove();
+    var bar = document.createElement('div');
+    bar.className = 'cattabs';
+    var saved = null;
+    try { saved = sessionStorage.getItem('hk_tab'); } catch (e) {}
+    var hasSaved = false;
+    secs.forEach(function (sec, i) {
+      if (!sec.id) sec.id = 'sec-' + i;
+      var h2 = sec.querySelector('h2');
+      var label = sec.getAttribute('aria-label') || (h2 ? h2.textContent.replace(/[0-9]+\s*則/g, '').trim() : ('分類' + (i + 1)));
+      var b = document.createElement('button');
+      b.textContent = label;
+      b.setAttribute('data-tab', sec.id);
+      b.addEventListener('click', function () { activate(sec.id, true); });
+      bar.appendChild(b);
+      if (saved === sec.id) hasSaved = true;
+    });
+    function activate(key, scroll) {
+      secs.forEach(function (sec) { sec.style.display = sec.id === key ? '' : 'none'; });
+      Array.prototype.forEach.call(bar.querySelectorAll('button'), function (b) {
+        b.classList.toggle('on', b.getAttribute('data-tab') === key);
+      });
+      try { sessionStorage.setItem('hk_tab', key); } catch (e) {}
+      if (scroll) bar.scrollIntoView({ block: 'start' });
+    }
+    secs[0].parentNode.insertBefore(bar, secs[0]);
+    activate(hasSaved ? saved : secs[0].id, false);
+  }
+  function activateTabById(id) {
+    var bar = document.querySelector('.cattabs');
+    if (!bar) return false;
+    var b = bar.querySelector('button[data-tab="' + id + '"]');
+    if (b) { b.click(); return true; }
+    return false;
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
+    var main0 = document.querySelector('main.content');
+    if (main0) {
+      setupTabs(main0);
+      setupFeatureTabs(main0);
+      setupPagination(main0);
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('.floornav a[href^="#floor-"]'), function (a) {
+      a.addEventListener('click', function (e) {
+        var dealsBtn = document.querySelector('[data-feature-tab="deals"]');
+        if (dealsBtn) dealsBtn.click();
+        if (activateTabById(a.getAttribute('href').slice(1))) e.preventDefault();
+      });
+    });
     // 等 supabase script 載入後再跑
     var tries = 0;
     (function wait() {

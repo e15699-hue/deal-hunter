@@ -38,3 +38,63 @@ async function watchDeal(btn) {
   alert('已加入追蹤！降價時會通知你。');
 }
 document.addEventListener('DOMContentLoaded', hkRefreshUserbar);
+
+/* ===== 導覽切轉：側欄功能與會員中心（一次只顯示一個面板） ===== */
+function hkInitSwitchGroup(buttonSelector, panelSelector, buttonKey, panelKey, defaultKey) {
+  const buttons = Array.from(document.querySelectorAll(buttonSelector));
+  const panels = Array.from(document.querySelectorAll(panelSelector));
+  if (!buttons.length || !panels.length) return;
+  function activate(key, updateHash) {
+    const target = panels.some(panel => panel.dataset[panelKey] === key)
+      ? key
+      : (panels[0].dataset[panelKey] || defaultKey);
+    panels.forEach(panel => { panel.hidden = panel.dataset[panelKey] !== target; });
+    buttons.forEach(button => {
+      const on = button.dataset[buttonKey] === target;
+      button.classList.toggle('on', on);
+      button.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    if (updateHash && target) history.replaceState(null, '', '#' + target);
+  }
+  buttons.forEach(button => button.addEventListener('click', () => activate(button.dataset[buttonKey], false)));
+  const fromHash = location.hash ? location.hash.slice(1) : '';
+  activate(panels.some(panel => panel.dataset[panelKey] === fromHash) ? fromHash : defaultKey, false);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  hkInitSwitchGroup('[data-side-tab]', '[data-side-panel]', 'sideTab', 'sidePanel', 'hot');
+  hkInitSwitchGroup('[data-member-tab]', '[data-member-panel]', 'memberTab', 'memberPanel', 'tips');
+});
+
+/* ===== 銀髮友善：字體放大開關（2026-10-21 銀髮長輩視角）=====
+   header .userbar 旁加「🔠 大字」按鈕；html.font-lg 把根字體 16px→20px
+   （全站多用 rem，整站文字等比放大）；localStorage 記憶偏好。 */
+(function hkFontToggle() {
+  var KEY = 'hk_fontlg';
+  function isLarge() { try { return localStorage.getItem(KEY) === '1'; } catch (e) { return false; } }
+  function apply() {
+    document.documentElement.classList.toggle('font-lg', isLarge());
+    var b = document.getElementById('fontToggle');
+    if (b) b.textContent = isLarge() ? '🔠 標準字' : '🔠 大字';
+  }
+  function mount() {
+    if (document.getElementById('fontToggle')) return;
+    var b = document.createElement('button');
+    b.id = 'fontToggle'; b.className = 'fontbtn'; b.type = 'button';
+    b.setAttribute('aria-label', '切換大字體');
+    b.addEventListener('click', function () {
+      try { localStorage.setItem(KEY, isLarge() ? '0' : '1'); } catch (e) {}
+      apply();
+    });
+    var ub = document.querySelector('.userbar');
+    if (ub) { ub.appendChild(b); }
+    else {
+      b.style.cssText = 'position:fixed;right:12px;bottom:12px;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,.25)';
+      document.body.appendChild(b);
+    }
+    apply();
+  }
+  try { if (isLarge()) document.documentElement.classList.add('font-lg'); } catch (e) {}
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
+  else mount();
+})();
