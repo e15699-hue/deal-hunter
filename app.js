@@ -119,3 +119,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* 左側導覽欄目前頁面高亮（v5，2026-10-22） */
 (function(){try{var p=location.pathname;document.querySelectorAll('.rail a.rl').forEach(function(a){var h=a.getAttribute('href')||'';if(h&&p.endsWith(h))a.classList.add('on');});}catch(e){}})();
+
+/* 特賣會情報地區過濾器（2026-10-22 使用者定版：ALL/北部/中部/南部 篩選，不改架構） */
+(function(){try{
+  var bar=document.querySelector('.evfilters');if(!bar)return;
+  var cards=[].slice.call(document.querySelectorAll('.events-sec .event-card'));
+  bar.addEventListener('click',function(ev){
+    var b=ev.target.closest('.evf');if(!b)return;
+    bar.querySelectorAll('.evf').forEach(function(x){x.classList.toggle('on',x===b);});
+    var f=b.getAttribute('data-f');
+    cards.forEach(function(c){c.style.display=(f==='ALL'||c.getAttribute('data-region')===f)?'':'none';});
+  });
+}catch(e){}})();
