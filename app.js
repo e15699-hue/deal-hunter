@@ -131,3 +131,21 @@ document.addEventListener('DOMContentLoaded', () => {
     cards.forEach(function(c){c.style.display=(f==='ALL'||c.getAttribute('data-region')===f)?'':'none';});
   });
 }catch(e){}})();
+
+/* 特賣會日期狀態（2026-10-22 使用者定版：進行中/即將開始/已結束由 JS 依今天判斷，不動主架構） */
+(function(){function run(){try{
+  var cards=document.querySelectorAll('.events-sec .event-card');if(!cards.length)return;
+  var n=new Date();
+  function p(x){return String(x).padStart(2,'0');}
+  var today=n.getFullYear()+'-'+p(n.getMonth()+1)+'-'+p(n.getDate());
+  function md(d){return d?d.slice(5).replace('-','/'):'';}
+  cards.forEach(function(c){
+    var s=c.getAttribute('data-start')||'', e=c.getAttribute('data-end')||'';
+    var ed=c.querySelector('.edate');if(!ed)return;
+    var b=ed.querySelector('b'), sp=ed.querySelector('span');if(!b||!sp)return;
+    if(e&&e<today){c.classList.add('ended');b.textContent='已結束';sp.textContent='至 '+md(e);}
+    else if(s&&s>today){b.textContent=md(s);sp.textContent='即將開始';}
+    else{b.textContent='進行中';sp.textContent='至 '+md(e);}
+  });
+}catch(err){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();})();

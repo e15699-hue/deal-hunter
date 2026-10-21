@@ -524,6 +524,8 @@ footer .fine{color:#a58b97}
 .evfilters{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 12px}
 .evf{appearance:none;border:1.5px solid #f48fb1;background:#fff;color:#ad1457;font-weight:800;font-size:.85rem;padding:7px 16px;border-radius:999px;cursor:pointer;min-height:38px}
 .evf.on{background:linear-gradient(135deg,#d81b60,#f06292);border-color:transparent;color:#fff;box-shadow:0 2px 8px rgba(216,27,96,.35)}
+.event-card.ended{opacity:.55;filter:grayscale(.7)}
+.event-card.ended .edate{background:#eceff1;color:#78909c}
 .events-grid{display:grid;grid-template-columns:1fr;gap:12px}
 @media(min-width:768px){.events-grid{grid-template-columns:repeat(2,1fr)}}
 .event-card{display:flex;gap:12px;background:#fff;border-radius:12px;padding:14px;box-shadow:0 1px 4px rgba(216,27,96,.1)}
