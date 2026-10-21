@@ -78,6 +78,14 @@
     return !!d && (d.benchmark_src === 'avg_others' || d.benchmark_src === 'history_avg');
   }
 
+  function listableDeal(d) {
+    // 上架閘門（2026-10-21 使用者嚴格定版）：沒跨平台比價證明、或比完沒有比較便宜的
+    // 商品一律不上架；快訊（flash）為即時驗證的標錯價／限時特價，獨立成立。
+    if (!d) return false;
+    if (d.flash) return true;
+    return verifiedBench(d) && num(d.market_price) > num(d.price);
+  }
+
   function sortDeals(list, mode) {
     var arr = list.slice();
     if (mode === 'rec') return arr;
@@ -227,7 +235,7 @@
     var main = document.querySelector('main.content');
     if (!main || !_cache) return;
     var _sy = window.scrollY || document.documentElement.scrollTop || 0; // 重繪前記住捲動位置，避免動態載入時版面跳動（午休滑動情境）
-    var deals = _cache, catFilter = _catFilter, mode = getSortMode();
+    var deals = _cache.filter(listableDeal), catFilter = _catFilter, mode = getSortMode();
 
     // 排序列：只保留在分類頁（首頁改百貨樓層制，固定以折扣力度排序，不顯示排序列）
     if (catFilter) ensureSortbar(main);
