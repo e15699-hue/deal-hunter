@@ -21,7 +21,7 @@
 </head>
 <body>
 <header>
-<div class="userbar"><a id="userLink" href="login.html">👤 登入 / 註冊</a><small>瀏覽免註冊・登入只開降價通知</small></div>
+<div class="userbar"><a id="userLink" href="login.html">👤 登入 / 註冊</a><small>瀏覽免註冊・登入開降價追蹤</small></div>
 <a class="brand" href="index.html" aria-label="好康網首頁">
 <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 22c0-3.3 2.7-6 6-6h22l16 16-16 16H16c-3.3 0-6-2.7-6-6V22z" fill="#fff"/><circle cx="21" cy="28" r="4.2" fill="#d81b60"/><text x="37.5" y="40.5" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-weight="900" font-size="19" fill="#d81b60">好</text></svg>
 <span class="wm"><b>好康網</b><small>HOWKANG.COM.TW</small></span>
@@ -76,7 +76,7 @@ function cardHTML(d){
   <div class="price"><span class="now">$${p.toLocaleString()}</span>${was}${saveHtml}</div>
   <div class="meta"><span>📦 ${esc(d.s)}</span><span>🏷️ ${esc(FL[d.c] || d.c)}</span></div>
   <div class="btnrow"><a class="btn" href="${esc(d.u)}" target="_blank" rel="noopener" title="跳到 momo、PChome、蝦皮等大網站結帳，本站不經手付款">去看看 →</a>
-  <button class="watchbtn" data-key="${esc(key)}" data-title="${esc(d.t)}" data-price="${p}" onclick="watchDeal(this)" title="追蹤降價通知">🔔</button></div>
+  <button class="watchbtn" data-key="${esc(key)}" data-title="${esc(d.t)}" data-price="${p}" onclick="watchDeal(this)" title="追蹤降價">🔔</button></div>
   </div></div></div>`;
 }
 // ===== 商品排序（與首頁/分類頁共用 localStorage hk_sort） =====
