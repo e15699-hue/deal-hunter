@@ -521,6 +521,9 @@ footer .fine{color:#a58b97}
 
 /* ===== 首頁改版（2026-10-22 使用者定版）：特賣會情報區＋搜尋好康統一區 ===== */
 .events-sec{margin-bottom:26px}
+.evregion{font-size:1rem;font-weight:900;color:#ad1457;margin:16px 0 10px;padding-bottom:6px;border-bottom:2px solid #f8bbd0;display:flex;align-items:baseline;gap:8px}
+.evregion span{font-size:.74rem;font-weight:700;color:#b06a82}
+.events-sec .evregion:first-of-type{margin-top:2px}
 .events-grid{display:grid;grid-template-columns:1fr;gap:12px}
 @media(min-width:768px){.events-grid{grid-template-columns:repeat(2,1fr)}}
 .event-card{display:flex;gap:12px;background:#fff;border-radius:12px;padding:14px;box-shadow:0 1px 4px rgba(216,27,96,.1)}
