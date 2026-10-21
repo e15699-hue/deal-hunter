@@ -508,3 +508,6 @@ footer .fine{color:#a58b97}
   body.has-rail .layout .sidebar{top:80px}
   body.has-rail .cattabs{top:64px}
 }
+
+/* 即期品專區改商品卡版式後，「看全部」連結跨整列（2026-10-22） */
+.deal-sec .expmore{grid-column:1/-1;text-align:center;margin:2px 0 0}

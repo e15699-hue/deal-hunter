@@ -181,18 +181,7 @@
       + btn + '</div></div></div>';
   }
 
-  function expiringHTML(d) {
-    var price = Number(d.price) || 0, market = Number(d.market_price) || 0;
-    var off = market > price ? '下殺 ' + Math.round((1 - price / market) * 100) + '%' : '即期特價';
-    var base = _catFilter ? '../' : '';
-    var href = base + 'flash/' + flashSlugOf(d) + '.html';
-    return '<article class="flash exp"><h3><a href="' + href + '">⏳ ' + esc(d.name) + '</a></h3>'
-      + '<div class="fprice">$' + price.toLocaleString()
-      + ' <span class="foff">(' + off + ')</span></div>'
-      + '<div class="time">📰 來源：' + esc(d.source) + '・發現時間：' + esc(d.found_at) + '</div>'
-      + '<p class="fexc">' + esc(d.note) + '</p>'
-      + '<div style="margin-top:8px"><a class="btn flashbtn" href="' + href + '">看消息 →</a></div></article>';
-  }
+  function expiringHTML(d) { return cardHTML(d); }
 
   function flashHTML(d) {
     var price = Number(d.price) || 0, market = Number(d.market_price) || 0;
@@ -273,9 +262,9 @@
     var exp = deals.filter(isExpiring);
     var expSec = main.querySelector('.expiring-sec');
     if (exp.length && !_catFilter) {
-      var ehtml = '<section class="flash-sec expiring-sec"><h2>⏳ 即期品專區</h2>\n'
-        + exp.slice(0, 5).map(expiringHTML).join('\n')
-        + (exp.length > 5 ? '\n<p class="expmore"><a href="expiring.html">看全部即期品 →</a></p>' : '')
+      var ehtml = '<section class="deal-sec expiring-sec"><h2>⏳ 即期品專區</h2>\n'
+        + exp.slice(0, 6).map(expiringHTML).join('\n')
+        + (exp.length > 6 ? '\n<p class="expmore"><a href="expiring.html">看全部即期品 →</a></p>' : '')
         + '\n</section>';
       if (expSec) expSec.outerHTML = ehtml;
       else if (flashSec) flashSec.insertAdjacentHTML('afterend', ehtml);
@@ -290,7 +279,7 @@
       byCat[c].push(d);
     });
     // 移除舊的 deal-sec（樓層與分類區全部重建）
-    main.querySelectorAll('section.deal-sec:not(.articles-sec)').forEach(function (s) { s.remove(); }); // 保留文章專區（2026-10-21 修正：原本會被一起清掉，使用者找不到文章入口）
+    main.querySelectorAll('section.deal-sec:not(.articles-sec):not(.expiring-sec)').forEach(function (s) { s.remove(); }); // 保留文章專區（2026-10-21 修正：原本會被一起清掉，使用者找不到文章入口）
     var html = '';
     if (!catFilter) {
       // 首頁：百貨樓層（1F→8F→B1），每層折扣力度最高前 8 筆＋「逛完整層」
