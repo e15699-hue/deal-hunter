@@ -511,3 +511,10 @@ footer .fine{color:#a58b97}
 
 /* 即期品專區改商品卡版式後，「看全部」連結跨整列（2026-10-22） */
 .deal-sec .expmore{grid-column:1/-1;text-align:center;margin:2px 0 0}
+
+/* 首頁快報只顯示一排：「看更多」文字連結（2026-10-22 使用者指示） */
+.newsmore{max-width:680px;margin:0 auto;padding:0 12px;text-align:right}
+.newsmore a{color:#c2185b;font-weight:800;font-size:.85rem;text-decoration:none}
+.newsmore a:hover{text-decoration:underline}
+@media(min-width:768px){.newsmore{max-width:960px}}
+@media(min-width:1280px){.newsmore{max-width:1400px;padding:0 28px}}
