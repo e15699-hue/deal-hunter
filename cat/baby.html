@@ -50,6 +50,10 @@
 </div>
 </section>
 
+<nav class="feature-nav" aria-label="主要功能導覽">
+<a href="../index.html">🏠 首頁</a><a href="../search.html">🔍 搜尋好康</a><a href="../articles/">📚 文章分享</a><a href="../my.html">🔔 我的追蹤</a><a href="../submit.html">📮 爆料投稿</a>
+</nav>
+
 <nav class="cats"><a href="../index.html">🏠 首頁</a><a href="../cat/beauty.html">美妝</a><a href="../cat/fashion.html">精品</a><a href="../cat/3c.html">3C</a><a href="../cat/appliance.html">家電</a><a href="../cat/home.html">居家</a><a href="../cat/baby.html">母嬰</a><a href="../cat/sports.html">運動</a><a href="../cat/pet.html">寵物</a><a href="../cat/grocery.html">美食</a><a href="../articles/">📚 文章分享</a></nav>
 
 
@@ -71,29 +75,34 @@
 <span id="deals"></span>
 <div class="layout">
   <aside class="sidebar">
-    <section class="static-sec"><h2>🔍 熱門搜尋</h2>
+    <div class="side-switcher" role="tablist" aria-label="側欄功能切換">
+    <button type="button" role="tab" data-side-tab="hot" class="on" aria-selected="true">🔍 熱門搜尋</button><button type="button" role="tab" data-side-tab="guide" aria-selected="false">🆕 新手指南</button><button type="button" role="tab" data-side-tab="trust" aria-selected="false">🛡️ 安心說明</button><button type="button" role="tab" data-side-tab="submit" aria-selected="false">📮 爆料投稿</button>
+    </div>
+    <section class="static-sec" data-side-panel="hot"><h2>🔍 熱門搜尋</h2>
     <div class="hotsec">
     <a href="search.html?q=iPhone">iPhone</a><a href="search.html?q=SSD">SSD</a><a href="search.html?q=耳機">耳機</a><a href="search.html?q=面膜">面膜</a><a href="search.html?q=衛生紙">衛生紙</a><a href="search.html?q=尿布">尿布</a><a href="search.html?q=洗衣精">洗衣精</a><a href="search.html?q=氣炸鍋">氣炸鍋</a><a href="search.html?q=貓砂">貓砂</a><a href="search.html?q=咖啡">咖啡</a><a href="search.html?q=Dyson">Dyson</a>
     </div>
     </section>
-    <section class="static-sec"><h2>🆕 第一次來？3 步撿便宜</h2>
+    <section class="static-sec" data-side-panel="guide"><h2>🆕 第一次來？3 步撿便宜</h2>
     <div class="trustbox">1️⃣ 用上方搜尋或分類導航，找到想買的東西<br>
     2️⃣ 點卡片上的「去看看」<br>
     3️⃣ 跳到 momo、PChome、蝦皮等大網站結帳——付款都在賣場完成，本站不經手、不會跟你要錢</div>
     </section>
-    <section class="static-sec"><h2>🛡️ 安心撿便宜</h2>
+    <section class="static-sec" data-side-panel="trust"><h2>🛡️ 安心撿便宜</h2>
     <div class="trustbox">每則情報都經過<strong>詐騙過濾＋價格查核</strong><br>
-    折扣不玩虛標：對照價＝全網實際售價的<strong>第二低價</strong>，不用廠商灌水的原價。<br>
+    折扣不玩虛標：對照價＝其他賣場的<strong>平均售價</strong>（或歷史均價），不用廠商灌水的原價。<br>
     💰 安心下單：點「去看看」是跳到 momo、PChome、蝦皮等大網站結帳，本站不經手付款、不用註冊會員、不會跟你要錢。<br>
     <small>價格不對勁？<a href="../login.html">登入</a>後按卡片 🔔，降價立刻通知你</small></div>
     </section>
-    <section class="static-sec"><h2>📮 爆料投稿</h2>
+    <section class="static-sec" data-side-panel="submit"><h2>📮 爆料投稿</h2>
     <div class="partners">看到標錯價、快閃優惠？投稿讓大家一起撿！<br>
     <small>審核通過就會出現在快訊區</small><br><br>
     <a class="btn" href="mailto:swiftfixpc@gmail.com?subject=【好康爆料】&body=商品名稱：%0A賣場連結：%0A價格：%0A備註：">我要爆料 →</a></div>
     </section>
   </aside>
   <main class="content" data-cat="母嬰玩具">
+    
+
     
 
     <section class="deal-sec"><h2>母嬰親子<span class="dealcount">22 則</span></h2>
