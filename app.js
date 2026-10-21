@@ -35,7 +35,7 @@ async function watchDeal(btn) {
   const { error } = await sb.from('watchlist').upsert(row, { onConflict: 'user_id,deal_key' });
   if (error) { alert('追蹤失敗：' + error.message); return; }
   btn.classList.add('on');
-  alert('已加入追蹤！降價時會通知你。');
+  alert('已加入追蹤！降價會顯示在「我的追蹤」。');
 }
 document.addEventListener('DOMContentLoaded', hkRefreshUserbar);
 
@@ -64,6 +64,21 @@ function hkInitSwitchGroup(buttonSelector, panelSelector, buttonKey, panelKey, d
 document.addEventListener('DOMContentLoaded', () => {
   hkInitSwitchGroup('[data-side-tab]', '[data-side-panel]', 'sideTab', 'sidePanel', 'hot');
   hkInitSwitchGroup('[data-member-tab]', '[data-member-panel]', 'memberTab', 'memberPanel', 'tips');
+  // hero 新手引導：同頁 #guide 等 hash 變化時切到側欄對應 tab 並捲過去
+  function hkSideTabFromHash(scroll) {
+    const k = (location.hash || '').slice(1);
+    const btn = document.querySelector('[data-side-tab="' + k + '"]');
+    if (!btn) return;
+    btn.click();
+    if (scroll) {
+      const sb = document.querySelector('.sidebar');
+      if (sb) sb.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  window.addEventListener('hashchange', () => hkSideTabFromHash(true));
+  document.querySelectorAll('a.hero-newbie').forEach(a => {
+    a.addEventListener('click', () => setTimeout(() => hkSideTabFromHash(true), 60));
+  });
 });
 
 /* ===== 銀髮友善：字體放大開關（2026-10-21 銀髮長輩視角）=====

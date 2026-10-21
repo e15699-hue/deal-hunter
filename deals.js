@@ -145,7 +145,7 @@
       var key = esc(dealKey(url)), title = esc(d.name);
       btn = '<div class="btnrow"><a class="btn" href="' + esc(url) + '" target="_blank" rel="noopener" title="跳到 momo、PChome、蝦皮等大網站結帳，本站不經手付款">' + '去看看 →' + '</a>'
         + '<button class="watchbtn" data-key="' + key + '" data-title="' + title + '" data-price="' + price
-        + '" onclick="watchDeal(this)" title="追蹤降價通知">🔔</button></div>';
+        + '" onclick="watchDeal(this)" title="追蹤降價">🔔</button></div>';
     }
     var img = String(d.image || '').trim();
     var pic = /^https?:/.test(img)
