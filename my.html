@@ -81,9 +81,24 @@ async function load(){
   document.getElementById('tips').innerHTML = tips && tips.length
     ? tips.map(t => `<div class="tiplist"><div>${t.title}</div><div class="hint">$${Number(t.price).toLocaleString()}・${t.created_at.slice(0,10)} ${ST[t.status]||''}</div></div>`).join('')
     : '<p class="hint">還沒有投稿，看到好康快來爆料！</p>';
-  const { data: ws } = await c.from('watchlist').select('title,price_now,created_at').eq('user_id', _uid).order('created_at', {ascending:false}).limit(20);
+  const { data: ws } = await c.from('watchlist').select('deal_key,title,price_now,created_at').eq('user_id', _uid).order('created_at', {ascending:false}).limit(20);
+  /* 回頭熟客視角（2026-10-21）：直接比對 Supabase 最新價，追蹤清單一眼看出降價了沒 */
+  let nowMap = {};
+  try {
+    const { data: dl } = await c.from('deals').select('url,price');
+    (dl || []).forEach(d => { nowMap[String(d.url || '').split('?')[0].split('#')[0].trim()] = Number(d.price) || 0; });
+  } catch (e) { /* 讀不到就退回只顯示追蹤時價格 */ }
+  function priceNote(w) {
+    const now = nowMap[String(w.deal_key || '').split('?')[0].split('#')[0].trim()];
+    const then = Number(w.price_now) || 0;
+    if (now === undefined) return `<span class="hint">追蹤時 $${then.toLocaleString()}</span>`;
+    if (!now) return '<span style="color:#888">已下架</span>';
+    if (now < then) return `<span style="color:#1b8a3a;font-weight:bold">🔻 降價 $${(then - now).toLocaleString()}（現 $${now.toLocaleString()}）</span>`;
+    if (now > then) return `<span style="color:#c0392b">🔺 漲價 $${(now - then).toLocaleString()}（現 $${now.toLocaleString()}）</span>`;
+    return `<span class="hint">價格不變 $${now.toLocaleString()}</span>`;
+  }
   document.getElementById('watches').innerHTML = ws && ws.length
-    ? ws.map(w => `<div class="tiplist"><div>${w.title}</div><div class="hint">追蹤時 $${Number(w.price_now).toLocaleString()}・<a href="search.html?q=${encodeURIComponent(w.title)}" style="color:#c2185b">🔍 查最新價</a>・<a href="#" onclick="unwatch('${w.title.replace(/'/g,"")}');return false" style="color:#c2185b">取消追蹤</a></div></div>`).join('')
+    ? ws.map(w => `<div class="tiplist"><div>${w.title}</div><div class="hint">${priceNote(w)}・<a href="search.html?q=${encodeURIComponent(w.title)}" style="color:#c2185b">🔍 查最新價</a>・<a href="#" onclick="unwatch('${w.title.replace(/'/g,"")}');return false" style="color:#c2185b">取消追蹤</a></div></div>`).join('')
     : '<p class="hint">還沒追蹤任何商品，看到卡片上的 🔔 按下去就對了！</p>';
 }
 async function unwatch(title){
