@@ -65,7 +65,7 @@ function cardHTML(d){
   const key = d.u.split(/[?#]/)[0];
   const p = snum(d.p), m = snum(d.m);
   let badge = `<span class="badge good">好價</span>`, was = "", saveHtml = "";
-  if (m > p) {
+  if (m > p && d.bv) {
     const off = Math.round((1 - p / m) * 100);
     badge = `<span class="badge">-${off}%</span>`;
     was = `<span class="was">對照 $${m.toLocaleString()}</span>`;

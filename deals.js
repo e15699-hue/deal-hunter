@@ -72,10 +72,17 @@
     return isFinite(t) ? t : 0;
   }
   // 排序純函式：回傳新陣列，Array.prototype.sort 為穩定排序，同鍵維持原順序
+  function verifiedBench(d) {
+    // 折扣只認多平台比價：對照價來自其他賣場平均價或歷史均價才算真折扣，
+    // 不比單一平台自標價（2026-10-21 使用者定版：單平台折價水分太大）
+    return !!d && (d.benchmark_src === 'avg_others' || d.benchmark_src === 'history_avg');
+  }
+
   function sortDeals(list, mode) {
     var arr = list.slice();
     if (mode === 'rec') return arr;
     function disc(d) {
+      if (!verifiedBench(d)) return -9999; // 未經多平台比價驗證的不以折扣排序
       var p = num(d.price), m = num(d.market_price);
       return m > 0 ? (m - p) / m : -9999; // 沒有市價的排最後
     }
@@ -120,7 +127,7 @@
     var price = Number(d.price) || 0;
     var market = Number(d.market_price) || 0;
     var badge, was, saveHtml;
-    if (market > price) {
+    if (market > price && verifiedBench(d)) {
       var off = Math.round((1 - price / market) * 100);
       var save = market - price;
       // 蝦皮/momo 式：折扣 % 大標籤＋現省金額
@@ -162,7 +169,7 @@
 
   function flashHTML(d) {
     var price = Number(d.price) || 0, market = Number(d.market_price) || 0;
-    var off = market > price ? '下殺 ' + Math.round((1 - price / market) * 100) + '%' : 'Bug 價';
+    var off = (market > price && verifiedBench(d)) ? '下殺 ' + Math.round((1 - price / market) * 100) + '%' : '特賣價';
     var base = _catFilter ? '../' : '';
     var href = base + 'flash/' + flashSlugOf(d) + '.html';
     return '<article class="flash"><h3><a href="' + href + '">⚡ ' + esc(d.name) + '</a></h3>'
