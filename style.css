@@ -441,3 +441,46 @@ footer .disclosure{color:#787f8a}
   section.deal-sec .card{position:relative}
   section.deal-sec .card .badge{position:absolute;top:10px;left:10px;z-index:2;box-shadow:0 2px 6px rgba(0,0,0,.25)}
 }
+
+/* ===== v5 細節檢修（2026-10-22 使用者指示：導覽改 4Gamers 式左側固定欄＋細節全修）=====
+   桌機：左側固定導覽欄（捲動不動）＋內容右移；上方功能列/分類列在桌機由左欄取代。
+   右欄改放折扣排行（.layout 欄位順序對調）。手機/平板維持 v3/v4 行為。 */
+.rail{display:none}
+@media(min-width:1024px){
+  body.has-rail{padding-left:212px}
+  .rail{display:flex;flex-direction:column;position:fixed;left:0;top:0;bottom:0;width:212px;background:#1d2026;color:#cfd3da;z-index:95;overflow-y:auto;padding-bottom:14px;box-shadow:2px 0 10px rgba(20,10,16,.12)}
+  .rail-brand{display:flex;align-items:center;gap:9px;padding:15px 16px 13px;text-decoration:none;background:linear-gradient(135deg,#d81b60,#f06292);color:#fff;flex:none}
+  .rail-brand svg{width:34px;height:34px;flex:none}
+  .rail-brand .rw{line-height:1.2}
+  .rail-brand .rw b{font-size:1.12rem;font-weight:900;letter-spacing:1px;display:block}
+  .rail-brand .rw small{font-size:.56rem;letter-spacing:2px;opacity:.85;font-weight:700}
+  .rail-sec{padding:15px 16px 5px;font-size:.68rem;letter-spacing:2.5px;color:#7d838e;font-weight:900;flex:none}
+  .rail a.rl{display:flex;align-items:center;gap:9px;padding:9px 16px;color:#cfd3da;text-decoration:none;font-size:.92rem;font-weight:600;border-left:3px solid transparent;flex:none}
+  .rail a.rl:hover{background:#262a31;color:#fff}
+  .rail a.rl.on{background:#262a31;color:#fff;border-left-color:#d81b60}
+  .rail-note{margin:14px 16px 0;font-size:.72rem;line-height:1.6;color:#7d838e;flex:none}
+  /* 桌機導覽精簡：功能 pills 與分類 chips 由左欄取代，頁首品牌也移入左欄 */
+  body.has-rail .feature-nav{display:none}
+  body.has-rail nav.cats{display:none}
+  body.has-rail header .brand{display:none}
+  body.has-rail header{justify-content:space-between}
+  body.has-rail header .searchbar{margin:0;flex:0 1 560px}
+  /* hero 瘦身成資訊細條，不再是獨立大區塊 */
+  .hero-inner{padding:8px 28px}
+  .hero-title{font-size:1rem;letter-spacing:1px}
+  .hero-newbie{padding:5px 14px;font-size:.78rem}
+  /* 版面改右欄：內容左、側欄（排行）右 */
+  .layout{grid-template-columns:minmax(0,1fr) 300px}
+  .layout .content{order:1}
+  .layout .sidebar{order:2;top:16px}
+  /* 區塊標題統一：拿掉漸層框，改白底＋粉紅下線 */
+  .floor-head{background:#fff;border:none;border-bottom:2px solid #f3c3d3;border-radius:0;box-shadow:none;padding:10px 2px;margin:6px 0 14px}
+  .floor-tt h2{font-size:1.3rem;color:#26282e}
+  .content section>h2{border-bottom:2px solid #f3c3d3;padding-bottom:8px}
+  /* 間距節奏統一 */
+  .layout section{margin-bottom:26px}
+  .mosaic{margin-top:16px}
+  /* 徽章修正：只有折扣徽章疊圖，免運徽章留在標題列（v4 兩者相疊的 bug） */
+  section.deal-sec .card .badge{position:static;box-shadow:none}
+  section.deal-sec .card .badge:not(.ship){position:absolute;top:10px;left:10px;z-index:2;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+}

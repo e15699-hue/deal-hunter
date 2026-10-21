@@ -116,3 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* 底部導覽列目前頁面高亮（v3 框架，2026-10-21） */
 (function(){try{var p=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('.tabbar a').forEach(function(a){var h=(a.getAttribute('href')||'').split('/').pop();if(h&&h===p)a.classList.add('on');});}catch(e){}})();
+
+/* 左側導覽欄目前頁面高亮（v5，2026-10-22） */
+(function(){try{var p=location.pathname;document.querySelectorAll('.rail a.rl').forEach(function(a){var h=a.getAttribute('href')||'';if(h&&p.endsWith(h))a.classList.add('on');});}catch(e){}})();
