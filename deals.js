@@ -78,11 +78,17 @@
     return !!d && (d.benchmark_src === 'avg_others' || d.benchmark_src === 'history_avg');
   }
 
+  function isExpiring(d) {
+    // 即期品判定（2026-10-21 使用者定版）：名稱有「即期」字眼或 expiring 旗標者進專區
+    return !!d && (!!d.expiring || String(d.name || '').indexOf('即期') >= 0);
+  }
+
   function listableDeal(d) {
     // 上架閘門（2026-10-21 使用者嚴格定版）：沒跨平台比價證明、或比完沒有比較便宜的
-    // 商品一律不上架；快訊（flash）為即時驗證的標錯價／限時特價，獨立成立。
+    // 商品一律不上架；快訊（flash）為即時驗證的標錯價／限時特價，獨立成立；
+    // 即期品經雷達驗證價格後進專區。
     if (!d) return false;
-    if (d.flash) return true;
+    if (d.flash || isExpiring(d)) return true;
     return verifiedBench(d) && num(d.market_price) > num(d.price);
   }
 
@@ -175,6 +181,19 @@
       + btn + '</div></div></div>';
   }
 
+  function expiringHTML(d) {
+    var price = Number(d.price) || 0, market = Number(d.market_price) || 0;
+    var off = market > price ? '下殺 ' + Math.round((1 - price / market) * 100) + '%' : '即期特價';
+    var base = _catFilter ? '../' : '';
+    var href = base + 'flash/' + flashSlugOf(d) + '.html';
+    return '<article class="flash exp"><h3><a href="' + href + '">⏳ ' + esc(d.name) + '</a></h3>'
+      + '<div class="fprice">$' + price.toLocaleString()
+      + ' <span class="foff">(' + off + ')</span></div>'
+      + '<div class="time">📰 來源：' + esc(d.source) + '・發現時間：' + esc(d.found_at) + '</div>'
+      + '<p class="fexc">' + esc(d.note) + '</p>'
+      + '<div style="margin-top:8px"><a class="btn flashbtn" href="' + href + '">看消息 →</a></div></article>';
+  }
+
   function flashHTML(d) {
     var price = Number(d.price) || 0, market = Number(d.market_price) || 0;
     var off = (market > price && verifiedBench(d)) ? '下殺 ' + Math.round((1 - price / market) * 100) + '%' : '特賣價';
@@ -241,18 +260,31 @@
     if (catFilter) ensureSortbar(main);
     else { var oldBar = main.querySelector('.sortbar'); if (oldBar) oldBar.remove(); }
 
-    // 快訊區（維持發現順序，不參與排序）
-    var flash = deals.filter(function (d) { return d.flash; }).slice(0, 5);
-    var flashSec = main.querySelector('.flash-sec');
+    // 快訊區（維持發現順序，不參與排序；即期品不混快訊，獨立成專區）
+    var flash = deals.filter(function (d) { return d.flash && !isExpiring(d); }).slice(0, 5);
+    var flashSec = main.querySelector('.flash-sec:not(.expiring-sec)');
     if (flash.length) {
       var fhtml = '<section class="flash-sec"><h2>⚡ 特賣消息・清場快訊</h2>\n' + flash.map(flashHTML).join('\n') + '\n</section>';
       if (flashSec) flashSec.outerHTML = fhtml;
       else main.insertAdjacentHTML('afterbegin', fhtml);
     } /* 抓到的資料無快閃時保留靜態快照的快閃區（同步延遲時也不讓快閃消失，2026-10-20 事故防呆） */
 
-    // 分組（不含 flash；stockup／推薦／贊助一律回到所屬樓層，與靜態快照一致）
+    // 即期品專區（2026-10-21 使用者定版：即期品獨立成區，不混快訊與商品列）
+    var exp = deals.filter(isExpiring);
+    var expSec = main.querySelector('.expiring-sec');
+    if (exp.length && !_catFilter) {
+      var ehtml = '<section class="flash-sec expiring-sec"><h2>⏳ 即期品專區</h2>\n'
+        + exp.slice(0, 5).map(expiringHTML).join('\n')
+        + (exp.length > 5 ? '\n<p class="expmore"><a href="expiring.html">看全部即期品 →</a></p>' : '')
+        + '\n</section>';
+      if (expSec) expSec.outerHTML = ehtml;
+      else if (flashSec) flashSec.insertAdjacentHTML('afterend', ehtml);
+      else main.insertAdjacentHTML('afterbegin', ehtml);
+    }
+
+    // 分組（不含 flash 與即期品；stockup／推薦／贊助一律回到所屬樓層，與靜態快照一致）
     var order = [], byCat = {};
-    deals.filter(function (d) { return !d.flash; }).forEach(function (d) {
+    deals.filter(function (d) { return !d.flash && !isExpiring(d); }).forEach(function (d) {
       var c = d.category || '其他';
       if (!byCat[c]) { byCat[c] = []; order.push(c); }
       byCat[c].push(d);
