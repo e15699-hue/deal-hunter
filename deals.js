@@ -168,7 +168,9 @@
     var nowTxt = '$' + price.toLocaleString();
     // 免運標示（學生視角：低價小物先看有沒有免運；與 render.py 同步）
     var shipTxt = String(d.name || '') + ' ' + String(d.note || '');
-    var shipHtml = shipTxt.indexOf('免運') >= 0 ? '<span class="badge ship">🚚 免運</span>' : '';
+    var shipM = shipTxt.match(/滿\s*\$?\s*([0-9,]+)\s*免運/);
+    var shipHtml = shipM ? '<span class="badge ship">🚚 滿$' + shipM[1] + '免運</span>'
+      : (shipTxt.indexOf('免運') >= 0 ? '<span class="badge ship">🚚 免運</span>' : '');
     // 來源/賣家去重：相同時只顯示來源（與 render.py 同步）
     var src = String(d.source || '').trim(), sel = String(d.seller || '').trim();
     var norm = function (s) { return s.toLowerCase().replace(/[\s　]/g, ''); };
@@ -317,7 +319,9 @@
     var nowTxt = '$' + price.toLocaleString();
     // 免運標示（學生視角：低價小物先看有沒有免運；與 render.py 同步）
     var shipTxt = String(d.name || '') + ' ' + String(d.note || '');
-    var shipHtml = shipTxt.indexOf('免運') >= 0 ? '<span class="badge ship">🚚 免運</span>' : '';
+    var shipM = shipTxt.match(/滿\s*\$?\s*([0-9,]+)\s*免運/);
+    var shipHtml = shipM ? '<span class="badge ship">🚚 滿$' + shipM[1] + '免運</span>'
+      : (shipTxt.indexOf('免運') >= 0 ? '<span class="badge ship">🚚 免運</span>' : '');
     // 來源/賣家去重：相同時只顯示來源（與 render.py 同步）
     var src = String(d.source || '').trim(), sel = String(d.seller || '').trim();
     var norm = function (s) { return s.toLowerCase().replace(/[\s　]/g, ''); };
