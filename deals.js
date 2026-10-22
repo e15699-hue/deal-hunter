@@ -75,7 +75,15 @@
   function verifiedBench(d) {
     // 折扣只認多平台比價：對照價來自其他賣場平均價或歷史均價才算真折扣，
     // 不比單一平台自標價（2026-10-21 使用者定版：單平台折價水分太大）
-    return !!d && (d.benchmark_src === 'avg_others' || d.benchmark_src === 'history_avg');
+    if (!d) return false;
+    if (d.benchmark_src === 'avg_others' || d.benchmark_src === 'history_avg') return true;
+    // Supabase deals 表無 benchmark_src 欄位（同步時已先過上架閘門，見 pipeline/supabase_sync.py）：
+    // 欄位缺失時以後備規則判斷——有市價、售價為正且確實比較便宜才算驗證過。
+    // 注意：benchmark_src 存在但非 avg_others/history_avg（如 list_fallback）仍判 false，不放行。
+    // （2026-10-22 17:06 輪修復：此前 Supabase 列一律缺此欄位，導致前端 listableDeal
+    //  把全部正常商品濾掉、首頁重繪後只剩 2 筆快訊／即期品。）
+    if (d.benchmark_src == null) return num(d.market_price) > num(d.price) && num(d.price) > 0;
+    return false;
   }
 
   function isExpiring(d) {
