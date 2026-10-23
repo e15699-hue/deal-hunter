@@ -64,7 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
     var ub = document.querySelector('.userbar');
     if (ub) { ub.appendChild(b); }
     else {
-      b.style.cssText = 'position:fixed;right:12px;bottom:12px;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,.25)';
+      /* 2026-10-23 會員功能移除後 .userbar 已不存在，走此分支：
+         固定於右下角、疊在 #toTop（bottom:16px＋44px 高）上方，避免重疊 */
+      b.style.cssText = 'position:fixed;right:12px;bottom:70px;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,.25)';
       document.body.appendChild(b);
     }
     apply();
