@@ -145,6 +145,21 @@
     return bar;
   }
 
+  // 賣場短名（2026-10-23 新手視角改善：按鈕寫明去哪個賣場，第一次點外部連結更安心）
+  function shopShort(d) {
+    var s = String(d.seller || '') + ' ' + String(d.source || '');
+    if (/momo/i.test(s)) return 'momo';
+    if (/pchome/i.test(s)) return 'PChome';
+    if (/yahoo/i.test(s)) return 'Yahoo購物';
+    if (/蝦皮/.test(s)) return '蝦皮';
+    if (/7-?11|7-ELEVEN/i.test(s)) return '7-11';
+    if (/博客來/.test(s)) return '博客來';
+    if (/家樂福/.test(s)) return '家樂福';
+    if (/全聯/.test(s)) return '全聯';
+    if (/酷澎|coupang/i.test(s)) return '酷澎';
+    return '';
+  }
+
   function cardHTML(d) {
     var price = Number(d.price) || 0;
     var market = Number(d.market_price) || 0;
@@ -165,7 +180,9 @@
     var btn = '';
     if (/^https?:/.test(url)) {
       var key = esc(dealKey(url)), title = esc(d.name);
-      btn = '<div class="btnrow"><a class="btn" href="' + esc(url) + '" target="_blank" rel="noopener" title="跳到 momo、PChome、蝦皮等大網站結帳，本站不經手付款">' + '去看看 →' + '</a></div>';
+      var shop = shopShort(d);
+      var btnTxt = shop ? '去 ' + shop + ' 看看 →' : '去看看 →';
+      btn = '<div class="btnrow"><a class="btn" href="' + esc(url) + '" target="_blank" rel="noopener" title="跳到 momo、PChome、蝦皮等大網站結帳，本站不經手付款">' + btnTxt + '</a></div>';
     }
     var img = String(d.image || '').trim();
     var pic = /^https?:/.test(img)
@@ -314,7 +331,9 @@
     var btn = '';
     if (/^https?:/.test(url)) {
       var key = esc(dealKey(url)), title = esc(d.name);
-      btn = '<div class="btnrow"><a class="btn" href="' + esc(url) + '" target="_blank" rel="noopener" title="跳到 momo、PChome、蝦皮等大網站結帳，本站不經手付款">' + '去看看 →' + '</a></div>';
+      var shop = shopShort(d);
+      var btnTxt = shop ? '去 ' + shop + ' 看看 →' : '去看看 →';
+      btn = '<div class="btnrow"><a class="btn" href="' + esc(url) + '" target="_blank" rel="noopener" title="跳到 momo、PChome、蝦皮等大網站結帳，本站不經手付款">' + btnTxt + '</a></div>';
     }
     var img = String(d.image || '').trim();
     var pic = /^https?:/.test(img)
