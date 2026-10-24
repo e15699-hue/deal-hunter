@@ -7,19 +7,22 @@ import json, subprocess, sys, os, hashlib, urllib.request, time
 ROOT = os.path.dirname(os.path.abspath(__file__))
 REPO_PREFIX = "life"
 BANNED = ("PLACEHOLDER", "__INDEX__")
-FILES = [
+import glob as _glob
+BASE_FILES = [
     "index.html", "search.html", "style.css", "sitemap.xml", "robots.txt", "README.md", "build.py", "push_preview.py",
+    "map.html", "map_template.html",
     "home/index.html", "home/quote.html", "home/designer.html",
     "home/cabinet.html", "home/process.html", "home/contract.html",
     "daily/index.html", "daily/outage.html", "daily/vegprice.html", "daily/garbage.html",
     "kids/index.html", "kids/guide.html", "kids/vs.html", "kids/price.html", "kids/faq.html",
     "senior/index.html", "health/index.html", "study/index.html", "ai/index.html", "car/index.html",
-    "daily/outages/index.json", "daily/outages/tc.json", "daily/outages/tc2.json",
-    "daily/outages/ch.json", "daily/outages/kh.json", "daily/outages/kh2.json",
-    "daily/outages/pt.json", "daily/outages/fs.json",
-    "tools/fetch_outages.py",
+    "tools/fetch_outages.py", "tools/fetch_water.py", "tools/fetch_trails.py",
+    "tools/geocode.py", "tools/geocode_cache.json", "tools/trail_catalog.json",
     "img/credits.json", "img/CREDITS.md",
 ]
+# 停電分片（20 區處，檔名隨資料量動態增減）與地圖快照一律動態納入，不再手寫清單
+FILES = BASE_FILES + sorted(os.path.relpath(p, ROOT) for p in _glob.glob(os.path.join(ROOT, "daily", "outages", "*.json"))) \
+    + sorted(os.path.relpath(p, ROOT) for p in _glob.glob(os.path.join(ROOT, "map", "*.json")))
 BATCH_MAX = 58000  # bytes（content 合計上限，保守低於單次參數上限）
 
 def load():
@@ -36,7 +39,8 @@ def load():
     assert "OiKID" in contents["kids/guide.html"] and "親子學習" in contents["kids/index.html"], "親子學習頻道內容檢查"
     assert '<img' in contents["index.html"] and '<img' in contents["home/quote.html"], "圖片標準：首頁與文章頁必須有圖"
     for rel, c in contents.items():
-        if rel.endswith(".html"):
+        if rel.endswith(".html") and rel not in ("map.html", "map_template.html"):
+            # map.html 與其母版 map_template.html 為國家資訊地圖獨立工具頁（App WebView 嵌入用、載入輕量優先；地圖本身即為視覺主體），豁免圖片標準
             assert '<img' in c, f"{rel} 缺圖，不符合圖片標準"
     print("assert 全過，共", len(contents), "檔")
     return contents
@@ -54,7 +58,7 @@ def batches(contents):
 def push(batch, contents):
     args = {
         "owner": "e15699-hue", "repo": "deal-hunter", "branch": "main",
-        "message": "好康生活：新增親子學習頻道（兒童線上英文整理 4 篇）＋全站圖片改用台灣場景實圖",
+        "message": "好康生活：新增國家資訊地圖（步道／停電／停水圖層）＋停電擴至全台 20 區處",
         "files": [{"path": f"{REPO_PREFIX}/{p}", "content": contents[p]} for p in batch],
     }
     r = subprocess.run(

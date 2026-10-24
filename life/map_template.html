@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>國家資訊地圖｜好康生活</title>
+<meta name="description" content="國家資訊地圖：山區步道開放／封鎖、停電、停水等政府公開資訊，一張地圖直接查結果，不用再轉到政府網站。">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;color:#212121;background:#FFF7F9;line-height:1.7;font-size:16px}
+a{color:#D81B60;text-decoration:none}
+.top{background:linear-gradient(135deg,#D81B60,#F06292);color:#fff;padding:12px 16px;position:sticky;top:0;z-index:1000}
+.top .in{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.top h1{font-size:20px}
+.top a.home{color:#fff;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:16px}
+p.note{color:#616161;font-size:14px;margin:8px 0}
+.layers{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.layers label{display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid #F3D9E2;border-radius:999px;padding:9px 14px;cursor:pointer;font-size:16px;min-height:44px}
+.layers label:has(input:checked){border-color:#D81B60;background:#FCE4EC;font-weight:700}
+.layers input{width:18px;height:18px;accent-color:#D81B60}
+.searchbar{display:flex;gap:8px;margin:12px 0}
+.searchbar input{flex:1;padding:12px 14px;border:2px solid #F06292;border-radius:999px;font-size:16px;min-width:0}
+.searchbar button{background:#D81B60;color:#fff;border:none;padding:12px 20px;border-radius:999px;font-size:16px;cursor:pointer;white-space:nowrap}
+#map{height:62vh;min-height:380px;border-radius:14px;border:1px solid #F3D9E2;z-index:1}
+.mk{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff;font-weight:900;border:2px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.35)}
+.mk small{font-size:10px}
+.badge{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:1px 9px;margin-right:6px}
+.b-open{background:#E8F5E9;color:#2E7D32}.b-closed{background:#FFEBEE;color:#C62828}
+.b-unk{background:#EEEEEE;color:#757575}.b-out{background:#FFF3E0;color:#E65100}
+.b-water{background:#E3F2FD;color:#1565C0}
+h2.sec{font-size:20px;margin:24px 0 10px;padding-left:10px;border-left:5px solid #D81B60}
+.item{background:#fff;border:1px solid #F3D9E2;border-radius:12px;padding:13px 15px;margin:9px 0;cursor:pointer}
+.item:hover{border-color:#F06292}
+.item b{font-size:17px}
+.item p{color:#616161;font-size:14px;margin-top:2px}
+.item .src{font-size:12px;color:#9E9E9E}
+.stat{font-size:14px;color:#616161;margin:8px 0}
+footer{border-top:1px solid #F3D9E2;background:#fff;padding:20px 16px;color:#616161;font-size:14px;margin-top:28px}
+@media(max-width:640px){#map{height:56vh;min-height:320px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="in">
+<a class="home" href="./">← 回好康生活</a>
+<h1>🗺️ 國家資訊地圖</h1>
+</div></div>
+<div class="wrap">
+<p class="note">政府公開資訊一張圖查完：<b>山區步道開放／封鎖、停電、停水</b>，結果直接顯示在這裡，不用再轉到政府網站慢慢翻。資料為官方公告快照，實際內容以官方發布為準。</p>
+<div class="layers" id="layers">
+<label><input type="checkbox" id="l-trails" checked> 🏔️ 步道開放／封鎖</label>
+<label><input type="checkbox" id="l-outages" checked> 💡 停電</label>
+<label><input type="checkbox" id="l-water" checked> 💧 停水／降壓</label>
+</div>
+<div class="searchbar"><input id="q" type="text" placeholder="搜尋：步道名、縣市、區鄉鎮、路名（例如：嘉明湖、北屯、工業區一路）"><button id="go">搜尋</button></div>
+<p class="stat" id="stat">資料載入中…</p>
+<div id="map"></div>
+<p class="note" id="mapnote" style="display:none">地圖圖資載入失敗，以下仍可用清單查詢（清單不受地圖影響）。</p>
+<h2 class="sec">查詢結果</h2>
+<div id="list"></div>
+<p class="note">資料來源：<br>
+🏔️ 步道：林業及自然保育署「台灣山林悠遊網」各步道頁面即時狀態（開放／暫停開放）<br>
+💡 停電：台灣電力公司各區營業處「計畫性工作停電公告」（未來 14 天，依鄉鎮市區彙總）<br>
+💧 停水：台灣自來水公司「停水公告查詢系統」官方 API（進行中公告，範圍多邊形取中心點）<br>
+突發停電請撥台電 1911；停水問題請撥台水 1910。未來其他政府公告（例如菜價、垃圾車異動）也會照同一格式新增為圖層。</p>
+</div>
+<footer><p><b>國家資訊地圖</b> 是 <a href="./">好康生活</a>（<a href="https://howkang.com.tw/" target="_blank" rel="noopener">好康網</a>姊妹站）的查詢工具。本頁可獨立開啟、嵌入 App WebView 使用；網址參數 <code>?layers=trails,outages,water</code> 可預選圖層，<code>?q=關鍵字</code> 可預帶搜尋。</p></footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const FW = s => (s||'').replace(/[０-９]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0));
+const params = new URLSearchParams(location.search);
+const LAYERS = {trails:{label:'🏔️ 步道',file:'map/trails.json',on:true},
+                outages:{label:'💡 停電',file:'map/outages_map.json',on:true},
+                water:{label:'💧 停水',file:'map/water.json',on:true}};
+if (params.get('layers') || params.get('layer')) {
+  const want = (params.get('layers') || params.get('layer')).split(',').map(s=>s.trim());
+  Object.keys(LAYERS).forEach(k => { LAYERS[k].on = want.includes(k); });
+}
+let map = null, groups = {}, waterPoly = null, DATA = {};
+const listEl = document.getElementById('list'), statEl = document.getElementById('stat');
+function badge(cls, txt){ return '<span class="badge '+cls+'">'+txt+'</span>'; }
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+function mkIcon(emoji, bg, num){
+  return L.divIcon({className:'', iconSize:[30,30], iconAnchor:[15,15],
+    html:'<div class="mk" style="background:'+bg+'">'+emoji+(num!=null?'<small>'+num+'</small>':'')+'</div>'});
+}
+function normTrailStatus(raw){
+  const t = (raw||'');
+  if (/暫停|封閉|休園|整修|不開放/.test(t)) return {cls:'b-closed', txt:'封鎖／暫停開放'};
+  if (/開放/.test(t)) return {cls:'b-open', txt:'開放'};
+  return {cls:'b-unk', txt:'查無最新公告'};
+}
+function render(){
+  const q = FW(document.getElementById('q').value.trim());
+  const match = s => !q || FW(s).includes(q);
+  let html = '', shown = 0;
+  const layers = [
+    {key:'trails', title:'🏔️ 步道開放／封鎖'},
+    {key:'outages', title:'💡 停電（依鄉鎮市區彙總）'},
+    {key:'water', title:'💧 停水／降壓'},
+  ];
+  layers.forEach(L => {
+    if (!LAYERS[L.key].on) return;
+    const d = DATA[L.key];
+    if (!d) { html += '<p class="stat">'+L.title+'：資料載入失敗，請稍後再試。</p>'; return; }
+    let items = [];
+    if (L.key === 'trails') items = (d.items||[]).filter(it => match(it.name + it.county + (it.unit||'')));
+    if (L.key === 'outages') items = (d.districts||[]).filter(it => match(it.county + it.district + (it.branches||[]).join('')));
+    if (L.key === 'water') items = (d.items||[]).filter(it => match(it.region + it.county + it.district + it.reason));
+    if (!items.length) { html += '<p class="stat">'+L.title+'：沒有符合「'+esc(q)+'」的結果。</p>'; return; }
+    html += '<h3 style="margin-top:16px">'+L.title+'（'+items.length+'）</h3>';
+    items.slice(0, 100).forEach(it => {
+      let title = '', meta = '', src = '';
+      if (L.key === 'trails') {
+        const st = normTrailStatus(it.status_raw);
+        title = badge(st.cls, st.txt) + esc(it.name);
+        meta = esc(it.county) + (it.unit ? '・' + esc(it.unit) : '') + '｜資料更新：' + esc(it.updated_at||'');
+        src = '來源：<a href="'+esc(it.source_url)+'" target="_blank" rel="noopener">台灣山林悠遊網步道頁</a>';
+      } else if (L.key === 'outages') {
+        title = badge('b-out','停電公告 '+it.count+' 筆') + esc(it.county + it.district);
+        meta = '最早：' + esc(it.earliest) + '｜' + esc((it.branches||[]).join('、')) + '｜' + esc((it.samples||[]).slice(0,1).join(''));
+        src = '來源：<a href="https://service.taipower.com.tw/" target="_blank" rel="noopener">台電各區營業處計畫性停電公告</a>';
+      } else {
+        title = badge('b-water', it.kind + '・' + it.plan) + esc((it.county||'') + (it.district||''));
+        meta = esc(it.start) + ' → ' + esc(it.end) + '｜' + esc(it.reason) + (it.households ? '｜影響戶數約 ' + esc(it.households) : '');
+        src = '範圍：' + esc(it.region) + '<br>來源：<a href="'+esc(it.source_url)+'" target="_blank" rel="noopener">台水停水公告查詢系統</a>';
+      }
+      const idx = shown++;
+      html += '<div class="item" data-layer="'+L.key+'" data-i="'+idx+'"><b>'+title+'</b><p>'+meta+'</p><p class="src">'+src+'</p></div>';
+      it._idx = idx;
+    });
+  });
+  listEl.innerHTML = html || '<p class="stat">請至少開啟一個圖層。</p>';
+  listEl.querySelectorAll('.item').forEach(el => el.addEventListener('click', () => {
+    const key = el.dataset.layer;
+    const items = key==='trails' ? (DATA.trails.items||[]) : key==='outages' ? (DATA.outages.districts||[]) : (DATA.water.items||[]);
+    const it = items.find(x => String(x._idx) === el.dataset.i);
+    if (it && it.lat != null && map) {
+      map.setView([it.lat, it.lng], Math.max(map.getZoom(), 12));
+      if (key === 'water' && it.polygon && it.polygon.length) {
+        if (waterPoly) map.removeLayer(waterPoly);
+        waterPoly = L.polygon(it.polygon.map(p => [p[1], p[0]]), {color:'#1565C0', weight:2, fillOpacity:.15}).addTo(map);
+      }
+    }
+  }));
+  const parts = [];
+  if (DATA.trails) parts.push('步道 ' + DATA.trails.count + ' 條（更新 ' + DATA.trails.generated_at + '）');
+  if (DATA.outages) parts.push('停電 ' + DATA.outages.total_items + ' 筆、' + DATA.outages.districts.length + ' 區（更新 ' + DATA.outages.generated_at + '）');
+  if (DATA.water) parts.push('停水 ' + DATA.water.count + ' 筆（更新 ' + DATA.water.generated_at + '）');
+  statEl.textContent = parts.length ? '資料整理時間：' + parts.join('｜') : '資料載入失敗，請稍後再試。';
+}
+function drawMarkers(){
+  if (!map) return;
+  Object.values(groups).forEach(g => g.clearLayers());
+  if (waterPoly) { map.removeLayer(waterPoly); waterPoly = null; }
+  const q = FW(document.getElementById('q').value.trim());
+  const match = s => !q || FW(s).includes(q);
+  if (LAYERS.trails.on && DATA.trails) (DATA.trails.items||[]).forEach(it => {
+    if (it.lat == null || !match(it.name + it.county)) return;
+    const st = normTrailStatus(it.status_raw);
+    const bg = st.cls==='b-open' ? '#2E7D32' : st.cls==='b-closed' ? '#C62828' : '#9E9E9E';
+    L.marker([it.lat, it.lng], {icon: mkIcon('🏔️', bg)})
+      .bindPopup('<b>'+esc(it.name)+'</b><br>'+st.txt+'<br>'+esc(it.county)+(it.unit?'・'+esc(it.unit):'')+(it.geo_approx?'<br><small>座標為登山口／鄰近地點概略位置</small>':'')+'<br><a href="'+esc(it.source_url)+'" target="_blank" rel="noopener">台灣山林悠遊網步道頁</a>')
+      .addTo(groups.trails);
+  });
+  if (LAYERS.outages.on && DATA.outages) (DATA.outages.districts||[]).forEach(it => {
+    if (it.lat == null || !match(it.county + it.district)) return;
+    L.marker([it.lat, it.lng], {icon: mkIcon('💡', '#E65100', it.count > 99 ? '99+' : it.count)})
+      .bindPopup('<b>'+esc(it.county + it.district)+'</b><br>停電公告 '+it.count+' 筆<br>最早：'+esc(it.earliest)+'<br>'+esc((it.branches||[]).join('、')))
+      .addTo(groups.outages);
+  });
+  if (LAYERS.water.on && DATA.water) (DATA.water.items||[]).forEach(it => {
+    if (it.lat == null || !match(it.region + it.county + it.district + it.reason)) return;
+    const mk = L.marker([it.lat, it.lng], {icon: mkIcon('💧', '#1565C0')})
+      .bindPopup('<b>'+esc((it.county||'')+(it.district||''))+' '+it.kind+'</b><br>'+esc(it.start)+' → '+esc(it.end)+'<br>'+esc(it.reason)+'<br><a href="'+esc(it.source_url)+'" target="_blank" rel="noopener">台水停水公告查詢系統</a>')
+      .addTo(groups.water);
+    mk.on('click', () => {
+      if (it.polygon && it.polygon.length) {
+        if (waterPoly) map.removeLayer(waterPoly);
+        waterPoly = L.polygon(it.polygon.map(p => [p[1], p[0]]), {color:'#1565C0', weight:2, fillOpacity:.15}).addTo(map);
+      }
+    });
+  });
+}
+function refresh(){ render(); drawMarkers(); }
+async function load(){
+  const jobs = Object.entries(LAYERS).map(async ([k, v]) => {
+    try { const r = await fetch(v.file); DATA[k] = await r.json(); }
+    catch(e){ DATA[k] = null; }
+  });
+  await Promise.all(jobs);
+  // 套用圖層開關
+  document.getElementById('l-trails').checked = LAYERS.trails.on;
+  document.getElementById('l-outages').checked = LAYERS.outages.on;
+  document.getElementById('l-water').checked = LAYERS.water.on;
+  if (typeof L !== 'undefined') {
+    map = L.map('map').setView([23.7, 121.0], 8);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18, attribution:'© OpenStreetMap 貢獻者'}).addTo(map);
+    groups = {trails: L.layerGroup().addTo(map), outages: L.layerGroup().addTo(map), water: L.layerGroup().addTo(map)};
+    const qp = params.get('lat'), qg = params.get('lng'), qz = params.get('z');
+    if (qp && qg) map.setView([parseFloat(qp), parseFloat(qg)], qz ? parseInt(qz, 10) : 12);
+  } else {
+    document.getElementById('mapnote').style.display = 'block';
+    document.getElementById('map').style.display = 'none';
+  }
+  const qs = params.get('q');
+  if (qs) document.getElementById('q').value = qs;
+  refresh();
+}
+['l-trails','l-outages','l-water'].forEach(id => document.getElementById(id).addEventListener('change', e => {
+  LAYERS[id.slice(2)].on = e.target.checked;
+  refresh();
+}));
+document.getElementById('go').addEventListener('click', refresh);
+document.getElementById('q').addEventListener('keydown', e => { if (e.key === 'Enter') refresh(); });
+load();
+</script>
+</body>
+</html>
