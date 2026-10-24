@@ -1,0 +1,51 @@
+:root{--brand:#D81B60;--brand2:#F06292;--ink:#212121;--sub:#616161;--bg:#FFF7F9;--card:#fff;--line:#F3D9E2;--radius:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:var(--bg);line-height:1.75;font-size:17px}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+header.site{background:linear-gradient(135deg,#D81B60,#F06292);color:#fff;padding:14px 16px;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(216,27,96,.25)}
+.hwrap{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.logo{font-size:24px;font-weight:900;color:#fff;letter-spacing:1px}
+.logo small{display:block;font-size:12px;font-weight:400;opacity:.9;letter-spacing:0}
+nav.main{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+nav.main a{color:#fff;font-size:15px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.14)}
+nav.main a:hover{background:rgba(255,255,255,.3);text-decoration:none}
+nav.main a.on{background:#fff;color:var(--brand);font-weight:700}
+main{max-width:1080px;margin:0 auto;padding:24px 16px 48px}
+.hero{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;margin-bottom:24px}
+.hero h1{font-size:30px;line-height:1.4;margin-bottom:8px}
+.hero p{color:var(--sub)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;display:block;color:var(--ink)}
+.card:hover{text-decoration:none;border-color:var(--brand2);box-shadow:0 4px 16px rgba(216,27,96,.12)}
+.card .ico{font-size:34px}
+.card h3{font-size:20px;margin:6px 0}
+.card p{color:var(--sub);font-size:15px}
+.badge{display:inline-block;font-size:12px;padding:2px 10px;border-radius:999px;background:#FCE4EC;color:var(--brand);font-weight:700;margin-bottom:6px}
+.badge.soon{background:#EEEEEE;color:#757575}
+h2.sec{font-size:22px;margin:28px 0 12px;padding-left:10px;border-left:5px solid var(--brand)}
+article.post{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px}
+article.post h1{font-size:27px;line-height:1.45;margin-bottom:6px}
+.meta{color:var(--sub);font-size:14px;margin-bottom:18px}
+article.post h2{font-size:21px;margin:24px 0 8px;color:#AD1457}
+article.post h3{font-size:18px;margin:16px 0 6px}
+article.post p{margin:8px 0}
+article.post ul,article.post ol{margin:8px 0 8px 22px}
+article.post li{margin:4px 0}
+.tip{background:#FFF5F8;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:16px 0}
+.tip b{color:var(--brand)}
+.note{font-size:14px;color:var(--sub)}
+table.cmp{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px}
+table.cmp th,table.cmp td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+table.cmp th{background:#FCE4EC}
+.toolbox{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.toolbox label{font-weight:700;display:block;margin:12px 0 4px}
+.toolbox input,.toolbox select{width:100%;max-width:420px;padding:10px;border:1px solid #E0A8BC;border-radius:8px;font-size:16px}
+.btn{display:inline-block;background:var(--brand);color:#fff;border:none;padding:10px 22px;border-radius:999px;font-size:16px;cursor:pointer;margin-top:14px}
+.btn:hover{background:#AD1457}
+.result{margin-top:18px}
+.result .item{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;background:#FFFBFC}
+footer.site{border-top:1px solid var(--line);background:#fff;padding:24px 16px;color:var(--sub);font-size:14px}
+.fwrap{max-width:1080px;margin:0 auto}
+.crumb{font-size:14px;color:var(--sub);margin-bottom:12px}
+@media(max-width:640px){.hero h1{font-size:24px}article.post{padding:20px 16px}nav.main{margin-left:0}}
