@@ -48,4 +48,23 @@ table.cmp th{background:#FCE4EC}
 footer.site{border-top:1px solid var(--line);background:#fff;padding:24px 16px;color:var(--sub);font-size:14px}
 .fwrap{max-width:1080px;margin:0 auto}
 .crumb{font-size:14px;color:var(--sub);margin-bottom:12px}
-@media(max-width:640px){.hero h1{font-size:24px}article.post{padding:20px 16px}nav.main{margin-left:0}}
+.searchbar{display:flex;gap:8px;max-width:640px;margin:14px 0 6px}
+.searchbar input{flex:1;padding:12px 14px;border:2px solid var(--brand2);border-radius:999px;font-size:17px;min-width:0}
+.searchbar button{background:var(--brand);color:#fff;border:none;padding:12px 22px;border-radius:999px;font-size:16px;cursor:pointer;white-space:nowrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chips span{font-size:14px;color:var(--sub);padding-top:4px}
+.chips a{background:#FCE4EC;color:#AD1457;padding:5px 12px;border-radius:999px;font-size:14px}
+.chips a:hover{text-decoration:none;background:#F8BBD0}
+.alertbar{background:#FFF3E0;border:1px solid #FFCC80;border-radius:var(--radius);padding:14px 18px;margin-bottom:20px;font-size:16px}
+.feed{display:flex;flex-direction:column;gap:12px}
+.feeditem{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:block;color:var(--ink)}
+.feeditem:hover{text-decoration:none;border-color:var(--brand2);box-shadow:0 4px 14px rgba(216,27,96,.10)}
+.feeditem h3{font-size:19px;margin:2px 0 4px}
+.feeditem p{color:var(--sub);font-size:15px}
+.tag{display:inline-block;font-size:12px;font-weight:700;color:var(--brand);background:#FCE4EC;border-radius:6px;padding:1px 8px;margin-right:6px}
+.fmeta{font-size:13px;color:#9E9E9E;margin-top:6px}
+.ranklist{counter-reset:rk;list-style:none}
+.ranklist li{counter-increment:rk;padding:9px 0;border-bottom:1px dashed var(--line);display:flex;gap:10px;align-items:baseline}
+.ranklist li::before{content:counter(rk);background:var(--brand);color:#fff;font-weight:900;border-radius:8px;min-width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:14px}
+.more{display:inline-block;margin-top:10px;font-weight:700}
+@media(max-width:640px){.hero h1{font-size:24px}article.post{padding:20px 16px}nav.main{margin-left:0;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}nav.main a{white-space:nowrap}.searchbar button{padding:12px 16px}}
