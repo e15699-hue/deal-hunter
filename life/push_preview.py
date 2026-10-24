@@ -12,6 +12,7 @@ FILES = [
     "home/index.html", "home/quote.html", "home/designer.html",
     "home/cabinet.html", "home/process.html", "home/contract.html",
     "daily/index.html", "daily/outage.html", "daily/vegprice.html", "daily/garbage.html",
+    "kids/index.html", "kids/guide.html", "kids/vs.html", "kids/price.html", "kids/faq.html",
     "senior/index.html", "health/index.html", "study/index.html", "ai/index.html", "car/index.html",
     "daily/outages/index.json", "daily/outages/tc.json", "daily/outages/tc2.json",
     "daily/outages/ch.json", "daily/outages/kh.json", "daily/outages/kh2.json",
@@ -32,6 +33,7 @@ def load():
     assert "好康生活" in contents["index.html"]
     assert "outages/index.json" in contents["daily/outage.html"]
     assert "報價單" in contents["home/quote.html"]
+    assert "OiKID" in contents["kids/guide.html"] and "親子學習" in contents["kids/index.html"], "親子學習頻道內容檢查"
     assert '<img' in contents["index.html"] and '<img' in contents["home/quote.html"], "圖片標準：首頁與文章頁必須有圖"
     for rel, c in contents.items():
         if rel.endswith(".html"):
@@ -52,7 +54,7 @@ def batches(contents):
 def push(batch, contents):
     args = {
         "owner": "e15699-hue", "repo": "deal-hunter", "branch": "main",
-        "message": "好康生活：全站補圖（文章免費圖庫實圖＋卡片縮圖，含圖片出處標示）",
+        "message": "好康生活：新增親子學習頻道（點子 #35 兒童線上英文整理：頻道頁＋總對照／OiKID vs TutorABC Junior／價格退費／FAQ 共 4 篇）",
         "files": [{"path": f"{REPO_PREFIX}/{p}", "content": contents[p]} for p in batch],
     }
     r = subprocess.run(
