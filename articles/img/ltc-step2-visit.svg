@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="步驟二：照管專員到府評估">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<circle cx="90" cy="70" r="34" fill="#F48FB1" opacity="0.55"/>
+<g transform="translate(120,120)">
+<path d="M20 130 L170 20 L320 130" fill="none" stroke="#AD1457" stroke-width="16" stroke-linecap="round"/>
+<rect x="55" y="128" width="230" height="150" rx="10" fill="#FFFFFF"/>
+<rect x="140" y="185" width="60" height="93" rx="6" fill="#F06292"/>
+<rect x="80" y="160" width="44" height="40" rx="6" fill="#F8BBD0"/>
+<rect x="216" y="160" width="44" height="40" rx="6" fill="#F8BBD0"/>
+</g>
+<g transform="translate(520,140)">
+<circle cx="45" cy="30" r="26" fill="#F4A261"/>
+<path d="M45 60c-24 0-38 16-38 40v60h76V100c0-24-14-40-38-40z" fill="#D81B60"/>
+<rect x="70" y="95" width="86" height="110" rx="8" fill="#FFFFFF" stroke="#AD1457" stroke-width="5"/>
+<rect x="96" y="82" width="36" height="18" rx="6" fill="#AD1457"/>
+<g stroke="#F48FB1" stroke-width="7" stroke-linecap="round"><line x1="86" y1="128" x2="140" y2="128"/><line x1="86" y1="152" x2="140" y2="152"/><line x1="86" y1="176" x2="122" y2="176"/></g>
+<path d="M92 118l6 7 10-12" fill="none" stroke="#2E7D32" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="translate(-14,22)"/>
+</g>
+<text x="400" y="70" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="42" font-weight="900" fill="#AD1457">照管專員到你家評估</text>
+<text x="400" y="385" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="28" fill="#6D4C5E">確認長照需要等級（第 2–8 級）與給付額度</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/>
+<text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">步驟 2／4　到府評估</text>
+</svg>

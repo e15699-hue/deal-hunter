@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="步驟四：長照服務開始，安心在家">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<g transform="translate(250,95)">
+<path d="M20 120 L150 15 L280 120" fill="none" stroke="#AD1457" stroke-width="15" stroke-linecap="round"/>
+<rect x="48" y="118" width="204" height="130" rx="10" fill="#FFFFFF"/>
+<path d="M150 205c-6-20-44-26-44-2 0 16 22 26 44 40 22-14 44-24 44-40 0-24-38-18-44 2z" fill="#D81B60" transform="translate(0,-28)"/>
+</g>
+<g transform="translate(560,150)">
+<circle cx="40" cy="28" r="24" fill="#F4A261"/>
+<path d="M40 56c-22 0-34 14-34 36v52h68V92c0-22-12-36-34-36z" fill="#D81B60"/>
+<path d="M96 96c-3-14-30-16-30 0 0 10 13 17 30 26 17-9 30-16 30-26 0-16-27-14-30 0z" fill="#F06292"/>
+</g>
+<text x="400" y="70" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="42" font-weight="900" fill="#AD1457">服務開始，安心在家</text>
+<text x="400" y="382" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="28" fill="#6D4C5E">由長照特約單位依計畫到家提供服務</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/>
+<text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">步驟 4／4　接受長照服務</text>
+</svg>

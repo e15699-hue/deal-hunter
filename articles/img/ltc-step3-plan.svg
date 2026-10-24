@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="步驟三：與個案管理員擬定照顧計畫">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<circle cx="705" cy="80" r="36" fill="#F48FB1" opacity="0.5"/>
+<g transform="translate(255,55)">
+<rect x="0" y="18" width="290" height="330" rx="16" fill="#FFFFFF" stroke="#AD1457" stroke-width="6"/>
+<rect x="95" y="0" width="100" height="40" rx="12" fill="#D81B60"/>
+<text x="145" y="82" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="32" font-weight="900" fill="#AD1457">照顧計畫</text>
+<g font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="27" fill="#4A4A4A">
+<text x="88" y="140">居家服務</text>
+<text x="88" y="198">交通接送</text>
+<text x="88" y="256">輔具補助</text>
+<text x="88" y="314">喘息服務</text>
+</g>
+<g fill="none" stroke="#2E7D32" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path d="M34 128l10 11 18-20"/>
+<path d="M34 186l10 11 18-20"/>
+<path d="M34 244l10 11 18-20"/>
+<path d="M34 302l10 11 18-20"/>
+</g>
+</g>
+<g transform="translate(585,250) rotate(28)">
+<rect x="0" y="0" width="26" height="130" rx="8" fill="#F4A261"/>
+<path d="M0 130 L13 162 L26 130 Z" fill="#FFE0B2"/>
+<path d="M9 152 L13 162 L17 152 Z" fill="#4A4A4A"/>
+</g>
+<text x="140" y="150" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="34" font-weight="700" fill="#880E4F">跟個案管理員</text>
+<text x="140" y="200" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="34" font-weight="700" fill="#880E4F">一起討論、一起決定</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/>
+<text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">步驟 3／4　擬定照顧計畫</text>
+</svg>

@@ -42,6 +42,14 @@ td{border-bottom:1px solid #f8bbd0;padding:8px 10px}
 .abtn.ghost{background:transparent;color:#fff;border:2px solid #fff}
 .more{margin:16px 0}
 .more a{color:#c2185b;font-weight:bold;text-decoration:none}
+.steps{display:grid;gap:18px;margin:16px 0}
+.step-card{background:#fff;border:1.5px solid #f8bbd0;border-radius:16px;overflow:hidden}
+.step-card figure{margin:0;background:#fce4ec}
+.step-card figure img{width:100%;height:auto;display:block}
+.step-body{padding:14px 18px 16px}
+.step-body h3{color:#ad1457;font-size:1.08rem;margin:0 0 6px}
+.step-no{display:inline-block;background:#d81b60;color:#fff;border-radius:999px;padding:2px 12px;font-size:.82rem;margin-right:8px;vertical-align:2px}
+.step-body p{margin:0}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7X1WC7S646"></script>
@@ -101,12 +109,12 @@ td{border-bottom:1px solid #f8bbd0;padding:8px 10px}
 <div class="hl"><div class="big">長照專線 1966</div><div class="sub">市話、手機直撥，前 5 分鐘免費；透過語音選單選擇語言、地區與縣市後接通當地服務。人不在長輩身邊也可以代為申請——可以幫住在不同縣市的親友申請當地的長照服務。</div></div>
 
 <h2>申請四步驟</h2>
-<ol>
-<li><strong>申請長照服務</strong>：撥打 1966，或親洽居住地縣市政府的長期照顧管理中心（照管中心）；住院期間也可以洽詢醫院的出院準備服務小組。</li>
-<li><strong>到府評估</strong>：照管中心派照管專員到家評估，確認長照需要等級（第 2–8 級）及可使用的服務給付額度。</li>
-<li><strong>擬定照顧計畫</strong>：與個案管理員討論需要哪些服務項目，擬定照顧計畫並連結服務單位。</li>
-<li><strong>接受長照服務</strong>：由長照服務特約單位依計畫提供服務。</li>
-</ol>
+<div class="steps">
+<section class="step-card"><figure><img src="img/ltc-step1-call.svg" alt="步驟一：撥打 1966 長照專線" loading="lazy"></figure><div class="step-body"><h3><span class="step-no">步驟 1</span>申請長照服務</h3><p>撥打 1966，或親洽居住地縣市政府的長期照顧管理中心（照管中心）；住院期間也可以洽詢醫院的出院準備服務小組。</p></div></section>
+<section class="step-card"><figure><img src="img/ltc-step2-visit.svg" alt="步驟二：照管專員到府評估" loading="lazy"></figure><div class="step-body"><h3><span class="step-no">步驟 2</span>到府評估</h3><p>照管中心派照管專員到家評估，確認長照需要等級（第 2–8 級）及可使用的服務給付額度。</p></div></section>
+<section class="step-card"><figure><img src="img/ltc-step3-plan.svg" alt="步驟三：與個案管理員擬定照顧計畫" loading="lazy"></figure><div class="step-body"><h3><span class="step-no">步驟 3</span>擬定照顧計畫</h3><p>與個案管理員討論需要哪些服務項目，擬定照顧計畫並連結服務單位。</p></div></section>
+<section class="step-card"><figure><img src="img/ltc-step4-service.svg" alt="步驟四：接受長照服務" loading="lazy"></figure><div class="step-body"><h3><span class="step-no">步驟 4</span>接受長照服務</h3><p>由長照服務特約單位依計畫提供服務。</p></div></section>
+</div>
 
 <h2>誰可以申請長照服務</h2>
 <p>對象是預期或已達<strong>六個月以上無法生活自理</strong>的民眾，經評估符合長照需要等級<strong>第 2 級以上</strong>，且屬於下列之一：</p>
