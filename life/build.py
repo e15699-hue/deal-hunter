@@ -182,7 +182,7 @@ def head(title, desc, depth, active=None, extra=""):
 <body>
 <header class="site"><div class="hwrap">
 <a class="logo" href="{up}">好康生活<small>新聞不報、但你天天要查的生活大小事</small></a>
-<nav class="main"><a href="{up}search.html">🔍 搜尋</a>{nav}</nav>
+<nav class="main"><a href="{up}map.html">🗺️ 國家資訊地圖</a><a href="{up}search.html">🔍 搜尋</a>{nav}</nav>
 </div></header>
 <main>
 """
@@ -213,6 +213,7 @@ PAGES = [
     ("home/cabinet.html", "居家裝修", "系統櫃怎麼計價？一尺多少錢才合理", "系統櫃 一尺 計價 板材 抽屜 五金 衣櫃", "約 4 分鐘"),
     ("home/process.html", "居家裝修", "裝修施工流程順序：為什麼不能跳著做", "施工流程 順序 拆除 水電 泥作 木作 油漆 工期 裝修", "約 5 分鐘"),
     ("home/contract.html", "居家裝修", "裝修合約注意事項：簽下去之前逐條檢查", "合約 保固 驗收 尾款 追加 減帳 裝修", "約 5 分鐘"),
+    ("map.html", "民生查詢", "國家資訊地圖：步道開放、停電、停水一張圖查完", "國家資訊地圖 地圖 停電 停水 步道 開放 封鎖 山區 登山", "查詢工具"),
     ("daily/outage.html", "民生查詢", "停水停電查詢", "停電 停水 台電 台水 計畫性停電 1911 跳電", "查詢工具"),
     ("daily/vegprice.html", "民生查詢", "菜價行情查詢", "菜價 批發市場 行情 蔬菜 農業部 買菜", "查詢工具"),
     ("daily/garbage.html", "民生查詢", "垃圾車時間查詢", "垃圾車 清運時間 環保局 倒垃圾 樂圾車", "查詢工具"),
@@ -268,10 +269,15 @@ def page_index():
 <h1>新聞不報、但你天天要查的生活大小事</h1>
 <p>停水停電、菜價、裝修報價、長輩手機問題……官方都有公布，卻散在十幾個網站、格式又難查。先搜尋看看，你要查的可能已經整理好了。</p>
 <form class="searchbar" action="search.html" method="get"><input name="q" type="text" placeholder="想查什麼？例如：停電、菜價、報價單"><button type="submit">搜尋</button></form>
-<div class="chips"><span>大家都在查：</span><a href="daily/outage.html">停電查詢</a><a href="daily/vegprice.html">今天菜價</a><a href="daily/garbage.html">垃圾車時間</a><a href="home/quote.html">裝修報價單</a><a href="home/cabinet.html">系統櫃價格</a><a href="kids/guide.html">兒童英文怎麼挑</a></div>
+<div class="chips"><span>大家都在查：</span><a href="map.html">國家資訊地圖</a><a href="daily/outage.html">停電查詢</a><a href="daily/vegprice.html">今天菜價</a><a href="daily/garbage.html">垃圾車時間</a><a href="home/quote.html">裝修報價單</a><a href="home/cabinet.html">系統櫃價格</a><a href="kids/guide.html">兒童英文怎麼挑</a></div>
 {fig("hero_home", "")}
 </div>
 <div class="alertbar">🌧️ <b>天氣與連假提醒：</b>颱風、停班停課與連假期間，垃圾清運與停水停電安排幾乎每次都會變動，出門前先看 <a href="daily/garbage.html">垃圾車時間查詢</a> 與 <a href="daily/outage.html">停水停電查詢</a> 的官方公告整理。</div>
+<h2 class="sec">🗺️ 國家資訊地圖</h2>
+<div class="hero">
+<p><b>步道開放／封鎖、停電、停水，一張地圖直接查結果</b>——政府公開資訊分門別類標在地圖上，圖層可勾選、可複選，點標記就看得到狀態與摘要，不用再轉到政府網站慢慢翻。手機打開就能用，之後 App 也會用同一張圖。</p>
+<p style="margin-top:10px"><a href="map.html"><b>打開國家資訊地圖 →</b></a></p>
+</div>
 <h2 class="sec">頻道總覽</h2>
 <div class="grid">{cards}</div>
 <h2 class="sec">最新整理</h2>
@@ -316,6 +322,7 @@ def page_daily_channel():
 <p>停水、停電、菜價、垃圾車——這些公告官方都有發布，卻分散在不同單位的網站裡，手機上尤其難查。這個頻道把官方公開資料整理成好查的工具頁，資料來源都標得清清楚楚，實際內容以官方公告為準。</p></div>
 <h2 class="sec">查詢工具</h2>
 <div class="grid">
+<a class="card" href="../map.html"><div class="ico">🗺️</div><h3>國家資訊地圖</h3><p>步道開放／封鎖、停電、停水一張圖查完：圖層可勾選複選，點標記看狀態與摘要，結果直接顯示、不用轉到政府網站。</p></a>
 <a class="card" href="outage.html">{thumb("outage", "../", "thumb")}<div class="ico">💡</div><h3>停水停電查詢</h3><p>台電計畫性停電公告即時查詢（官方開放資料）；停水公告整理自來水公司查詢入口與看懂公告的方法。</p></a>
 <a class="card" href="vegprice.html">{thumb("vegprice", "../", "thumb")}<div class="ico">🥬</div><h3>菜價行情查詢</h3><p>農產品批發市場交易行情（農業部開放資料）：查今天各市場的蔬菜批發價，出門買菜前先看一眼。</p></a>
 <a class="card" href="garbage.html">{thumb("garbage", "../", "thumb")}<div class="ico">🚛</div><h3>垃圾車時間查詢</h3><p>各縣市垃圾清運時間與即時位置的官方查詢入口總整理，照縣市找，不用再翻里辦公室公告。</p></a>
@@ -712,11 +719,26 @@ def kids_articles():
 
 # ---------------- 民生查詢工具頁 ----------------
 TAIPOWER_LINKS = [
+    ("基隆區營業處", "https://service.taipower.com.tw/branch/d101/xcnotice?xsmsid=0M242581316312033070"),
+    ("北市區營業處", "https://service.taipower.com.tw/branch/d102/xcnotice?xsmsid=0M242581312773778160"),
+    ("桃園區營業處", "https://service.taipower.com.tw/branch/d103/xcnotice?xsmsid=0M242581312675626779"),
+    ("新竹區營業處", "https://service.taipower.com.tw/branch/d104/xcnotice?xsmsid=0M242581313964252236"),
     ("台中區營業處", "https://service.taipower.com.tw/branch/d105/xcnotice?xsmsid=0M242581317628413301"),
     ("彰化區營業處", "https://service.taipower.com.tw/branch/d106/xcnotice?xsmsid=0M242581314418510444"),
+    ("嘉義區營業處", "https://service.taipower.com.tw/branch/d107/xcnotice?xsmsid=0M242581317006659586"),
+    ("台南區營業處", "https://service.taipower.com.tw/branch/d108/xcnotice?xsmsid=0M242581311248677644"),
     ("高雄區營業處", "https://service.taipower.com.tw/branch/d109/xcnotice?xsmsid=0M242581310382588530"),
     ("屏東區營業處", "https://service.taipower.com.tw/branch/d110/xcnotice?xsmsid=0M242581319136855888"),
+    ("台東區營業處", "https://service.taipower.com.tw/branch/d111/xcnotice?xsmsid=0M242581313752905496"),
+    ("花蓮區營業處", "https://service.taipower.com.tw/branch/d112/xcnotice?xsmsid=0M242581312305799678"),
+    ("宜蘭區營業處", "https://service.taipower.com.tw/branch/d113/xcnotice?xsmsid=0M242581316816175510"),
+    ("澎湖區營業處", "https://service.taipower.com.tw/branch/d114/xcnotice?xsmsid=0M242581315569736204"),
+    ("北南區營業處", "https://service.taipower.com.tw/branch/d115/xcnotice?xsmsid=0M242581317718023029"),
+    ("北北區營業處", "https://service.taipower.com.tw/branch/d116/xcnotice?xsmsid=0M242581312941137933"),
+    ("北西區營業處", "https://service.taipower.com.tw/branch/d117/xcnotice?xsmsid=0M242581310300276906"),
+    ("南投區營業處", "https://service.taipower.com.tw/branch/d118/xcnotice?xsmsid=0M242581317452513865"),
     ("鳳山區營業處", "https://service.taipower.com.tw/branch/d119/xcnotice?xsmsid=0M242581312415567180"),
+    ("雲林區營業處", "https://service.taipower.com.tw/branch/d120/xcnotice?xsmsid=0M242581310910082112"),
 ]
 
 def page_outage():
@@ -735,7 +757,7 @@ def page_outage():
 <button class="btn" id="go">查詢</button>
 <p class="note" id="stat">資料載入中…</p>
 <div class="result" id="res"></div>
-<p class="note">資料來源：台灣電力公司各區營業處「計畫性工作停電公告」。本頁為定期整理的快照（整理時間見上方），最新與完整資訊請以台電官方公告為準；目前涵蓋台中、彰化、高雄、屏東、鳳山 5 個區營業處，其他區處陸續加入中。官方原頁：__LINKS__</p>
+<p class="note">資料來源：台灣電力公司各區營業處「計畫性工作停電公告」。本頁為定期整理的快照（整理時間見上方），最新與完整資訊請以台電官方公告為準；目前涵蓋全台 20 個區營業處。官方原頁：__LINKS__</p>
 </div>
 
 <h2 class="sec">突然停電怎麼辦（非計畫性）</h2>
@@ -751,7 +773,7 @@ def page_outage():
 
 <h2 class="sec">停水查詢：看台水公告</h2>
 <div class="hero">
-<p>停水公告由台灣自來水公司發布在「台水停水資訊網」（wateroff.water.gov.tw），可以依地址查詢自家是否在停水範圍；台水也有官方 LINE「停水公告查詢系統」，訂閱並輸入住址後，有停水會提前推播通知——這是目前最不會漏掉停水消息的方法，建議長輩也一起訂閱。</p>
+<p>停水公告由台灣自來水公司發布在「停水公告查詢系統」（web.water.gov.tw/wateroff），可以依地址查詢自家是否在停水範圍；進行中的停水公告，本站已直接整理在 <a href="../map.html?layers=water">國家資訊地圖・停水圖層</a>，不用再自己翻官方系統。台水也有官方 LINE「停水公告查詢系統」，訂閱並輸入住址後，有停水會提前推播通知——這是目前最不會漏掉停水消息的方法，建議長輩也一起訂閱。</p>
 <h3 style="margin-top:14px">停水前，台水提醒的 5 件事</h3>
 <ol style="margin:8px 0 8px 22px">
 <li><b>提前 6 小時完成儲水</b>，避免大家集中在停水前大量取水，管線末端反而提前沒水。</li>
@@ -852,6 +874,15 @@ def page_garbage():
     body = body.replace("__FIG_GARBAGE__", fig("garbage", "../"))
     w("daily/garbage.html", head("垃圾車時間查詢", "各縣市垃圾車清運時間與即時位置的官方查詢方式總整理：新北樂圾車、基隆垃圾車來了、台中清運大車隊等。", 1, "daily") + body + foot(1))
 
+# ---------------- 國家資訊地圖（獨立嵌入頁） ----------------
+def page_map():
+    """地圖頁母版為 map_template.html（自給自足：內聯樣式＋Leaflet CDN，不依賴整站框架，
+    App WebView 可直接套用 map.html；網址參數 ?layers=trails,outages,water 可預選圖層）。"""
+    src = os.path.join(ROOT, "map_template.html")
+    with open(src, encoding="utf-8") as f:
+        html = f.read()
+    w("map.html", html)
+
 # ---------------- 主程式 ----------------
 def main():
     with open(os.path.join(ROOT, "style.css"), "w", encoding="utf-8") as f:
@@ -870,7 +901,8 @@ def main():
     page_outage()
     page_vegprice()
     page_garbage()
-    urls = ["", "search.html", "home/", "daily/", "daily/outage.html", "daily/vegprice.html", "daily/garbage.html", "kids/"] \
+    page_map()
+    urls = ["", "search.html", "map.html", "home/", "daily/", "daily/outage.html", "daily/vegprice.html", "daily/garbage.html", "kids/"] \
         + [f"home/{s}.html" for s, _t, _d in HOME_ARTICLES] \
         + [f"kids/{s}.html" for s, _t, _d in KIDS_ARTICLES] \
         + [f"{s}/" for s, _i, _n, _d, live in CHANNELS if not live]
