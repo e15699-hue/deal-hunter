@@ -8,7 +8,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 REPO_PREFIX = "life"
 BANNED = ("PLACEHOLDER", "__INDEX__")
 FILES = [
-    "index.html", "style.css", "sitemap.xml", "robots.txt", "README.md", "build.py", "push_preview.py",
+    "index.html", "search.html", "style.css", "sitemap.xml", "robots.txt", "README.md", "build.py", "push_preview.py",
     "home/index.html", "home/quote.html", "home/designer.html",
     "home/cabinet.html", "home/process.html", "home/contract.html",
     "daily/index.html", "daily/outage.html", "daily/vegprice.html", "daily/garbage.html",

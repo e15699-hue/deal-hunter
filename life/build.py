@@ -70,7 +70,26 @@ table.cmp th{background:#FCE4EC}
 footer.site{border-top:1px solid var(--line);background:#fff;padding:24px 16px;color:var(--sub);font-size:14px}
 .fwrap{max-width:1080px;margin:0 auto}
 .crumb{font-size:14px;color:var(--sub);margin-bottom:12px}
-@media(max-width:640px){.hero h1{font-size:24px}article.post{padding:20px 16px}nav.main{margin-left:0}}
+.searchbar{display:flex;gap:8px;max-width:640px;margin:14px 0 6px}
+.searchbar input{flex:1;padding:12px 14px;border:2px solid var(--brand2);border-radius:999px;font-size:17px;min-width:0}
+.searchbar button{background:var(--brand);color:#fff;border:none;padding:12px 22px;border-radius:999px;font-size:16px;cursor:pointer;white-space:nowrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chips span{font-size:14px;color:var(--sub);padding-top:4px}
+.chips a{background:#FCE4EC;color:#AD1457;padding:5px 12px;border-radius:999px;font-size:14px}
+.chips a:hover{text-decoration:none;background:#F8BBD0}
+.alertbar{background:#FFF3E0;border:1px solid #FFCC80;border-radius:var(--radius);padding:14px 18px;margin-bottom:20px;font-size:16px}
+.feed{display:flex;flex-direction:column;gap:12px}
+.feeditem{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:block;color:var(--ink)}
+.feeditem:hover{text-decoration:none;border-color:var(--brand2);box-shadow:0 4px 14px rgba(216,27,96,.10)}
+.feeditem h3{font-size:19px;margin:2px 0 4px}
+.feeditem p{color:var(--sub);font-size:15px}
+.tag{display:inline-block;font-size:12px;font-weight:700;color:var(--brand);background:#FCE4EC;border-radius:6px;padding:1px 8px;margin-right:6px}
+.fmeta{font-size:13px;color:#9E9E9E;margin-top:6px}
+.ranklist{counter-reset:rk;list-style:none}
+.ranklist li{counter-increment:rk;padding:9px 0;border-bottom:1px dashed var(--line);display:flex;gap:10px;align-items:baseline}
+.ranklist li::before{content:counter(rk);background:var(--brand);color:#fff;font-weight:900;border-radius:8px;min-width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:14px}
+.more{display:inline-block;margin-top:10px;font-weight:700}
+@media(max-width:640px){.hero h1{font-size:24px}article.post{padding:20px 16px}nav.main{margin-left:0;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}nav.main a{white-space:nowrap}.searchbar button{padding:12px 16px}}
 """
 
 def head(title, desc, depth, active=None, extra=""):
@@ -92,7 +111,7 @@ def head(title, desc, depth, active=None, extra=""):
 <body>
 <header class="site"><div class="hwrap">
 <a class="logo" href="{up}">好康生活<small>新聞不報、但你天天要查的生活大小事</small></a>
-<nav class="main">{nav}</nav>
+<nav class="main"><a href="{up}search.html">🔍 搜尋</a>{nav}</nav>
 </div></header>
 <main>
 """
@@ -116,6 +135,47 @@ def w(relpath, html):
     print("wrote", relpath, len(html), "bytes")
 
 
+# ---------------- 站內搜尋索引 ----------------
+PAGES = [
+    ("home/quote.html", "居家裝修", "裝修報價單怎麼看？先搞懂這 5 件事", "報價單 估價 追加工程 付款比例 一式 單價 裝修", "約 5 分鐘"),
+    ("home/designer.html", "居家裝修", "設計師怎麼挑？從丈量到簽約的檢查清單", "設計師 設計費 丈量費 監工費 圖面 裝修", "約 5 分鐘"),
+    ("home/cabinet.html", "居家裝修", "系統櫃怎麼計價？一尺多少錢才合理", "系統櫃 一尺 計價 板材 抽屜 五金 衣櫃", "約 4 分鐘"),
+    ("home/process.html", "居家裝修", "裝修施工流程順序：為什麼不能跳著做", "施工流程 順序 拆除 水電 泥作 木作 油漆 工期 裝修", "約 5 分鐘"),
+    ("home/contract.html", "居家裝修", "裝修合約注意事項：簽下去之前逐條檢查", "合約 保固 驗收 尾款 追加 減帳 裝修", "約 5 分鐘"),
+    ("daily/outage.html", "民生查詢", "停水停電查詢", "停電 停水 台電 台水 計畫性停電 1911 跳電", "查詢工具"),
+    ("daily/vegprice.html", "民生查詢", "菜價行情查詢", "菜價 批發市場 行情 蔬菜 農業部 買菜", "查詢工具"),
+    ("daily/garbage.html", "民生查詢", "垃圾車時間查詢", "垃圾車 清運時間 環保局 倒垃圾 樂圾車", "查詢工具"),
+]
+
+def page_search():
+    data = json.dumps([{"u": u, "c": c, "t": t, "k": k} for u, c, t, k, _m in PAGES], ensure_ascii=False)
+    body = """
+<p class="crumb"><a href="./">首頁</a> ／ 搜尋</p>
+<div class="hero"><h1>🔍 查生活大小事</h1>
+<p>輸入你想查的事情，例如「停電」「報價單」「垃圾車」。</p>
+<div class="searchbar"><input id="q" type="text" placeholder="想查什麼？"><button id="go">搜尋</button></div>
+</div>
+<div class="feed" id="res" style="margin-top:16px"></div>
+<script>
+const PAGES = __DATA__;
+const res = document.getElementById('res');
+function run() {
+  const q = document.getElementById('q').value.trim();
+  const hit = PAGES.filter(p => !q || (p.t + p.k + p.c).includes(q));
+  res.innerHTML = hit.length
+    ? hit.map(p => '<a class="feeditem" href="' + p.u + '"><span class="tag">' + p.c + '</span><h3>' + p.t + '</h3></a>').join('')
+    : '<p>目前站內還沒有這題的整理。先看看<a href="daily/outage.html">停水停電查詢</a>或<a href="home/">居家裝修</a>，或到姊妹站好康網找好康。</p>';
+}
+const qs = new URLSearchParams(location.search).get('q');
+if (qs) { document.getElementById('q').value = qs; }
+run();
+document.getElementById('go').addEventListener('click', run);
+document.getElementById('q').addEventListener('keydown', e => { if (e.key === 'Enter') run(); });
+</script>
+"""
+    body = body.replace("__DATA__", data)
+    w("search.html", head("搜尋", "在好康生活站內搜尋：停電、菜價、垃圾車、裝修報價單、系統櫃、合約等生活大小事。", 0) + body + foot(0))
+
 # ---------------- 首頁 ----------------
 def page_index():
     cards = ""
@@ -124,13 +184,21 @@ def page_index():
             cards += f'<a class="card" href="{slug}/"><span class="badge">已上線</span><div class="ico">{ico}</div><h3>{name}</h3><p>{desc}</p></a>'
         else:
             cards += f'<div class="card"><span class="badge soon">籌備中</span><div class="ico">{ico}</div><h3>{name}</h3><p>{desc}</p></div>'
+    feed = ""
+    for u, c, t, _k, m in PAGES:
+        feed += f'<a class="feeditem" href="{u}"><span class="tag">{c}</span><h3>{t}</h3><p class="fmeta">閱讀時間 {m}</p></a>'
     body = f"""
 <div class="hero">
 <h1>新聞不報、但你天天要查的生活大小事</h1>
-<p>停水停電、菜價、裝修報價、長輩手機問題……這些資訊官方都有公布，卻散在十幾個網站、格式又難查。好康生活把每一類整理成一個頻道：一頁看懂、手機友善、隨查隨有。</p>
+<p>停水停電、菜價、裝修報價、長輩手機問題……官方都有公布，卻散在十幾個網站、格式又難查。先搜尋看看，你要查的可能已經整理好了。</p>
+<form class="searchbar" action="search.html" method="get"><input name="q" type="text" placeholder="想查什麼？例如：停電、菜價、報價單"><button type="submit">搜尋</button></form>
+<div class="chips"><span>大家都在查：</span><a href="daily/outage.html">停電查詢</a><a href="daily/vegprice.html">今天菜價</a><a href="daily/garbage.html">垃圾車時間</a><a href="home/quote.html">裝修報價單</a><a href="home/cabinet.html">系統櫃價格</a></div>
 </div>
+<div class="alertbar">🌧️ <b>天氣與連假提醒：</b>颱風、停班停課與連假期間，垃圾清運與停水停電安排幾乎每次都會變動，出門前先看 <a href="daily/garbage.html">垃圾車時間查詢</a> 與 <a href="daily/outage.html">停水停電查詢</a> 的官方公告整理。</div>
 <h2 class="sec">頻道總覽</h2>
 <div class="grid">{cards}</div>
+<h2 class="sec">最新整理</h2>
+<div class="feed">{feed}</div>
 <h2 class="sec">這個站怎麼來的</h2>
 <div class="hero">
 <p>好康生活是 <a href="https://howkang.com.tw/" target="_blank" rel="noopener">好康網</a> 的姊妹站。我們發現：大家每天 Google 的問題，一大半不是「哪裡便宜」，而是「這件事到底怎麼辦」。所以我們把這些題目分門別類做成功課與查詢工具，慢慢補齊每一個頻道——先求正確、好查，再求多。</p>
@@ -149,14 +217,15 @@ HOME_ARTICLES = [
 
 def page_home_channel():
     items = ""
+    meta = {u.split("/")[-1].replace(".html", ""): m for u, _c, _t, _k, m in PAGES}
     for slug, t, d in HOME_ARTICLES:
-        items += f'<a class="card" href="{slug}.html"><h3>{t}</h3><p>{d}</p></a>'
+        items += f'<a class="feeditem" href="{slug}.html"><h3>{t}</h3><p>{d}</p><p class="fmeta">閱讀時間 {meta.get(slug, "約 5 分鐘")}</p></a>'
     body = f"""
 <p class="crumb"><a href="../">首頁</a> ／ 居家裝修</p>
 <div class="hero"><h1>🏠 居家裝修</h1>
 <p>裝修是大多數人一生花費前幾名的大事，偏偏資訊最不透明。我們只做一件事：把報價、流程、材料、合約這些「行內常識」寫成白話文，讓你做決定之前心裡有底。本站只提供知識整理，不評論、不推薦任何店家。</p></div>
 <h2 class="sec">裝修前必讀</h2>
-<div class="grid">{items}</div>
+<div class="feed">{items}</div>
 <h2 class="sec">延伸：租屋看房</h2>
 <div class="hero"><p>還沒買房、先租屋？看房時該檢查的壁癌、水壓、手機訊號、隔音與合約陷阱，我們整理在之後的「租屋看房防雷」專題中（籌備中）。</p></div>
 """
@@ -198,7 +267,12 @@ def article(slug, title, desc, body_html):
 {body_html}
 <div class="tip"><b>看完接著讀：</b> <a href="./">回居家裝修頻道</a> 看其他篇：報價單、設計師、系統櫃、施工流程、合約，五篇一起看，裝修前功課就做滿了。</div>
 </article>
+<h2 class="sec">熱門閱讀</h2>
+<div class="hero"><ol class="ranklist">__HOT__</ol></div>
 """
+    others = [(u.split("/")[-1], t) for u, c, t, _k, _m in PAGES if c == "居家裝修" and not u.endswith(slug + ".html")]
+    hot = "".join(f'<li><a href="{u}">{t}</a></li>' for u, t in others)
+    body = body.replace("__HOT__", hot)
     w(f"home/{slug}.html", head(title, desc, 1, "home") + body + foot(1))
 
 def articles():
@@ -397,6 +471,8 @@ def page_outage():
 </div>
 <script>
 const FW = s => s.replace(/[０-９]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0));
+const qp = new URLSearchParams(location.search).get('q');
+if (qp) document.getElementById('q').value = qp;
 let DATA = null;
 fetch('outages/index.json').then(r => r.json()).then(async idx => {
   const sel = document.getElementById('b');
@@ -407,6 +483,7 @@ fetch('outages/index.json').then(r => r.json()).then(async idx => {
   const items = parts.flat().sort((a, b) => a.date < b.date ? -1 : 1);
   DATA = { generated_at: idx.generated_at, count: items.length, items };
   document.getElementById('stat').textContent = '資料整理時間：' + idx.generated_at + '｜未來 14 天共 ' + items.length + ' 筆公告｜輸入關鍵字開始查詢（地區文字為節錄，全文見台電官方頁）';
+  if (qp) document.getElementById('go').click();
 }).catch(() => { document.getElementById('stat').textContent = '資料載入失敗，請改至台電官方公告頁查詢。'; });
 document.getElementById('go').addEventListener('click', () => {
   const res = document.getElementById('res');
@@ -486,6 +563,7 @@ def main():
         f.write(CSS.strip() + "\n")
     print("wrote style.css")
     page_index()
+    page_search()
     page_home_channel()
     page_daily_channel()
     for slug, _i, _n, _d, live in CHANNELS:
@@ -495,7 +573,7 @@ def main():
     page_outage()
     page_vegprice()
     page_garbage()
-    urls = ["", "home/", "daily/", "daily/outage.html", "daily/vegprice.html", "daily/garbage.html"] \
+    urls = ["", "search.html", "home/", "daily/", "daily/outage.html", "daily/vegprice.html", "daily/garbage.html"] \
         + [f"home/{s}.html" for s, _t, _d in HOME_ARTICLES] \
         + [f"{s}/" for s, _i, _n, _d, live in CHANNELS if not live]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' \
