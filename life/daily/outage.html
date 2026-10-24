@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>停水停電查詢｜好康生活</title>
+<meta name="description" content="台電計畫性停電公告整理成可搜尋工具，輸入路名就知道近期會不會停電；停水查詢與停水前準備一次看懂。">
+<link rel="stylesheet" href="../style.css">
+
+</head>
+<body>
+<header class="site"><div class="hwrap">
+<a class="logo" href="../">好康生活<small>新聞不報、但你天天要查的生活大小事</small></a>
+<nav class="main"><a href="../home/">🏠 居家裝修</a><a href="../daily/" class="on">💧 民生查詢</a><a href="../senior/">👵 銀髮 3C</a><a href="../health/">🏥 健康查詢</a><a href="../study/">📚 學習考照</a><a href="../ai/">🤖 AI 工具</a><a href="../car/">🚗 愛車生活</a></nav>
+</div></header>
+<main>
+
+<p class="crumb"><a href="../">首頁</a> ／ <a href="./">民生查詢</a> ／ 停水停電查詢</p>
+<div class="hero"><h1>💡 停水停電查詢</h1>
+<p>「計畫性停電」是台電為了施工、換變壓器、遷移線路排定的停電（不是缺電限電），公告其實都有，只是藏在各區營業處的網頁裡很難查。下面這個工具把台電官方公告整理成可以打字搜尋的列表：輸入你家附近的路名或區名，就能看近期會不會停電。</p></div>
+
+<h2 class="sec">計畫性停電查詢（台電官方公告整理）</h2>
+<div class="toolbox">
+<label for="q">輸入路名、區名或鄉鎮（例如：西屯、工業區一路、左營）</label>
+<input id="q" type="text" placeholder="輸入關鍵字後按查詢">
+<label for="b">區營業處</label>
+<select id="b"><option value="">全部區處</option></select>
+<button class="btn" id="go">查詢</button>
+<p class="note" id="stat">資料載入中…</p>
+<div class="result" id="res"></div>
+<p class="note">資料來源：台灣電力公司各區營業處「計畫性工作停電公告」。本頁為定期整理的快照（整理時間見上方），最新與完整資訊請以台電官方公告為準；目前涵蓋台中、彰化、高雄、屏東、鳳山 5 個區營業處，其他區處陸續加入中。官方原頁：<a href="https://service.taipower.com.tw/branch/d105/xcnotice?xsmsid=0M242581317628413301" target="_blank" rel="noopener">台中區營業處</a>、<a href="https://service.taipower.com.tw/branch/d106/xcnotice?xsmsid=0M242581314418510444" target="_blank" rel="noopener">彰化區營業處</a>、<a href="https://service.taipower.com.tw/branch/d109/xcnotice?xsmsid=0M242581310382588530" target="_blank" rel="noopener">高雄區營業處</a>、<a href="https://service.taipower.com.tw/branch/d110/xcnotice?xsmsid=0M242581319136855888" target="_blank" rel="noopener">屏東區營業處</a>、<a href="https://service.taipower.com.tw/branch/d119/xcnotice?xsmsid=0M242581312415567180" target="_blank" rel="noopener">鳳山區營業處</a></p>
+</div>
+
+<h2 class="sec">突然停電怎麼辦（非計畫性）</h2>
+<div class="hero">
+<p>不在上方公告裡、卻突然沒電，通常是設備故障或天災造成的突發停電，不會事先公告。可以這樣處理：</p>
+<ul style="margin:8px 0 8px 22px">
+<li>先看鄰居家有沒有電，確認是自家跳電還是整區停電。</li>
+<li>整區停電：撥台電客服 <b>1911</b> 通報或詢問復電進度，並上台電官網「停電查詢」系統看搶修狀態。</li>
+<li>看到電線掉落或外露，<b>不要碰觸</b>，立刻打 1911 通知台電。</li>
+<li>停電時先拔掉精密電器插頭（電腦、電視），復電瞬間的電壓波動比較傷機器；冰箱門盡量不要開，食物保冷可以撐比較久。</li>
+</ul>
+</div>
+
+<h2 class="sec">停水查詢：看台水公告</h2>
+<div class="hero">
+<p>停水公告由台灣自來水公司發布在「台水停水資訊網」（wateroff.water.gov.tw），可以依地址查詢自家是否在停水範圍；台水也有官方 LINE「停水公告查詢系統」，訂閱並輸入住址後，有停水會提前推播通知——這是目前最不會漏掉停水消息的方法，建議長輩也一起訂閱。</p>
+<h3 style="margin-top:14px">停水前，台水提醒的 5 件事</h3>
+<ol style="margin:8px 0 8px 22px">
+<li><b>提前 6 小時完成儲水</b>，避免大家集中在停水前大量取水，管線末端反而提前沒水。</li>
+<li><b>關閉抽水機、加壓馬達</b>電源，避免缺水空轉損壞甚至引發火災；電熱水器也要依安全規範處理。</li>
+<li>進水口低於地面的建築，停水期間<b>關閉總表前制水閥</b>，降低虹吸污染風險。</li>
+<li>用橡皮管接水時，<b>管口不要浸在水裡</b>，避免虹吸造成二次污染。</li>
+<li>復水後先開水閥<b>排氣</b>再正常用水；管線末端或地勢較高處，水壓恢復會比較慢。</li>
+</ol>
+<p class="note">（整理自台灣自來水公司停水宣導資訊。）</p>
+</div>
+<script>
+const FW = s => s.replace(/[０-９]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0));
+let DATA = null;
+fetch('outages/index.json').then(r => r.json()).then(async idx => {
+  const sel = document.getElementById('b');
+  [...new Set(idx.branches.map(b => b.name))].forEach(n => { const o = document.createElement('option'); o.value = n; o.textContent = n; sel.appendChild(o); });
+  const parts = await Promise.all(idx.branches.map(b =>
+    fetch('outages/' + b.file).then(r => r.json()).then(d => d.items.map(it => ({...it, branch: d.branch}))).catch(() => [])
+  ));
+  const items = parts.flat().sort((a, b) => a.date < b.date ? -1 : 1);
+  DATA = { generated_at: idx.generated_at, count: items.length, items };
+  document.getElementById('stat').textContent = '資料整理時間：' + idx.generated_at + '｜未來 14 天共 ' + items.length + ' 筆公告｜輸入關鍵字開始查詢（地區文字為節錄，全文見台電官方頁）';
+}).catch(() => { document.getElementById('stat').textContent = '資料載入失敗，請改至台電官方公告頁查詢。'; });
+document.getElementById('go').addEventListener('click', () => {
+  const res = document.getElementById('res');
+  if (!DATA) { res.innerHTML = '<p>資料尚未載入完成，請稍候再試。</p>'; return; }
+  const q = FW(document.getElementById('q').value.trim());
+  const b = document.getElementById('b').value;
+  let items = DATA.items.filter(it => (!b || it.branch === b) && (!q || FW(it.area).includes(q) || it.branch.includes(q)));
+  if (!items.length) { res.innerHTML = '<p>查無符合的公告——代表目前公告期間內，你查詢的範圍沒有計畫性停電（突發停電請見下方說明）。</p>'; return; }
+  const MAX = 50;
+  res.innerHTML = '<p>共 ' + items.length + ' 筆' + (items.length > MAX ? '（只顯示前 ' + MAX + ' 筆，請縮小關鍵字）' : '') + '</p>' +
+    items.slice(0, MAX).map(it =>
+      '<div class="item"><b>' + it.date + '｜' + it.time + '</b>（' + it.branch + (it.reason ? '・' + it.reason : '') + '）<br>' + it.area + '</div>'
+    ).join('');
+});
+</script>
+</main>
+<footer class="site"><div class="fwrap">
+<p><b>好康生活</b> 是 <a href="https://howkang.com.tw/" target="_blank" rel="noopener">好康網</a> 的姊妹站：好康網幫你找省錢好康，好康生活幫你查生活大小事。</p>
+<p style="margin-top:8px">本站內容為生活資訊整理，實際公告與價格以各官方單位發布為準。</p>
+</div></footer>
+</body>
+</html>
