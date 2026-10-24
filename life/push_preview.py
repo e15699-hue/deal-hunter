@@ -17,6 +17,7 @@ FILES = [
     "daily/outages/ch.json", "daily/outages/kh.json", "daily/outages/kh2.json",
     "daily/outages/pt.json", "daily/outages/fs.json",
     "tools/fetch_outages.py",
+    "img/credits.json", "img/CREDITS.md",
 ]
 BATCH_MAX = 58000  # bytes（content 合計上限，保守低於單次參數上限）
 
@@ -31,6 +32,10 @@ def load():
     assert "好康生活" in contents["index.html"]
     assert "outages/index.json" in contents["daily/outage.html"]
     assert "報價單" in contents["home/quote.html"]
+    assert '<img' in contents["index.html"] and '<img' in contents["home/quote.html"], "圖片標準：首頁與文章頁必須有圖"
+    for rel, c in contents.items():
+        if rel.endswith(".html"):
+            assert '<img' in c, f"{rel} 缺圖，不符合圖片標準"
     print("assert 全過，共", len(contents), "檔")
     return contents
 
@@ -47,7 +52,7 @@ def batches(contents):
 def push(batch, contents):
     args = {
         "owner": "e15699-hue", "repo": "deal-hunter", "branch": "main",
-        "message": "好康生活 Phase 1 預覽：站體＋居家裝修5篇＋民生查詢（停電快照工具）",
+        "message": "好康生活：全站補圖（文章免費圖庫實圖＋卡片縮圖，含圖片出處標示）",
         "files": [{"path": f"{REPO_PREFIX}/{p}", "content": contents[p]} for p in batch],
     }
     r = subprocess.run(

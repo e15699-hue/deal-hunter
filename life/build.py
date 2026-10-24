@@ -19,6 +19,51 @@ CHANNELS = [
 ]
 CH = {c[0]: c for c in CHANNELS}
 
+# ---------------- 圖片（2026-10-24 使用者標準：文章／商品盡量要有圖片） ----------------
+# 文章圖一律用免費圖庫實圖（Wikimedia Commons，授權與作者記錄在 img/credits.json）；
+# 商品圖日後一律用官方／賣場實圖，不用圖庫圖或生成圖充數。
+try:
+    IMG_META = json.load(open(os.path.join(ROOT, "img", "credits.json"), encoding="utf-8"))
+except FileNotFoundError:
+    IMG_META = {}
+IMG_ALT = {
+    "hero_home": "裝修完成的現代客廳實景",
+    "quote": "裝修丈量用的捲尺與工具箱",
+    "designer": "室內設計展示空間實景",
+    "cabinet": "安裝完成的白色廚房櫃體",
+    "process": "工人正在進行室內裝修施工",
+    "contract": "合約文件與簽名筆特寫",
+    "outage": "電力維修人員在電線桿上作業",
+    "vegprice": "傳統市場的蔬菜攤位",
+    "garbage": "街道上的垃圾清運車",
+    "senior": "長輩參加手機教學課程",
+    "health": "藥局門市外觀",
+    "study": "在窗邊書桌前讀書",
+    "ai": "桌面型 AI 機器人",
+    "car": "技師正在檢查汽車引擎",
+}
+CHANNEL_IMG = {"home": "hero_home", "daily": "outage", "senior": "senior", "health": "health", "study": "study", "ai": "ai", "car": "car"}
+PAGE_IMG = {"home/quote.html": "quote", "home/designer.html": "designer", "home/cabinet.html": "cabinet",
+            "home/process.html": "process", "home/contract.html": "contract", "daily/outage.html": "outage",
+            "daily/vegprice.html": "vegprice", "daily/garbage.html": "garbage"}
+SLUG_IMG = {"quote": "quote", "designer": "designer", "cabinet": "cabinet", "process": "process", "contract": "contract"}
+
+def _credit(key):
+    m = IMG_META.get(key, {})
+    artist = m.get("artist") or "Wikimedia Commons 貢獻者"
+    return f'照片：{artist}／{m.get("license", "")}，來源 <a href="{m.get("page", "")}" target="_blank" rel="noopener">Wikimedia Commons</a>'
+
+def fig(key, prefix):
+    """文章／頁面主圖（含出處標示）。"""
+    if key not in IMG_META:
+        return ""
+    return f'<figure class="fig"><img src="{prefix}img/{key}.jpg" alt="{IMG_ALT.get(key, "")}" loading="lazy"><figcaption>{_credit(key)}</figcaption></figure>'
+
+def thumb(key, prefix, cls="fthumb"):
+    if key not in IMG_META:
+        return ""
+    return f'<img class="{cls}" src="{prefix}img/{key}.jpg" alt="{IMG_ALT.get(key, "")}" loading="lazy">'
+
 CSS = """
 :root{--brand:#D81B60;--brand2:#F06292;--ink:#212121;--sub:#616161;--bg:#FFF7F9;--card:#fff;--line:#F3D9E2;--radius:14px}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -89,6 +134,14 @@ footer.site{border-top:1px solid var(--line);background:#fff;padding:24px 16px;c
 .ranklist li{counter-increment:rk;padding:9px 0;border-bottom:1px dashed var(--line);display:flex;gap:10px;align-items:baseline}
 .ranklist li::before{content:counter(rk);background:var(--brand);color:#fff;font-weight:900;border-radius:8px;min-width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:14px}
 .more{display:inline-block;margin-top:10px;font-weight:700}
+.fig{margin:14px 0}
+.fig img{width:100%;height:auto;max-height:420px;object-fit:cover;object-position:center;border-radius:12px;display:block}
+.fig figcaption{font-size:12px;color:var(--sub);margin-top:6px}
+.card img.thumb{width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:12px;display:block}
+.feeditem{display:flex;gap:14px;align-items:center}
+.feeditem .fthumb{width:120px;height:88px;object-fit:cover;border-radius:10px;flex:none}
+.feeditem .ftxt{min-width:0}
+@media(max-width:640px){.feeditem .fthumb{width:96px;height:74px}}
 @media(max-width:640px){.hero h1{font-size:24px}article.post{padding:20px 16px}nav.main{margin-left:0;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}nav.main a{white-space:nowrap}.searchbar button{padding:12px 16px}}
 """
 
@@ -148,7 +201,7 @@ PAGES = [
 ]
 
 def page_search():
-    data = json.dumps([{"u": u, "c": c, "t": t, "k": k} for u, c, t, k, _m in PAGES], ensure_ascii=False)
+    data = json.dumps([{"u": u, "c": c, "t": t, "k": k, "i": ("img/" + PAGE_IMG[u] + ".jpg" if u in PAGE_IMG else "")} for u, c, t, k, _m in PAGES], ensure_ascii=False)
     body = """
 <p class="crumb"><a href="./">首頁</a> ／ 搜尋</p>
 <div class="hero"><h1>🔍 查生活大小事</h1>
@@ -163,7 +216,7 @@ function run() {
   const q = document.getElementById('q').value.trim();
   const hit = PAGES.filter(p => !q || (p.t + p.k + p.c).includes(q));
   res.innerHTML = hit.length
-    ? hit.map(p => '<a class="feeditem" href="' + p.u + '"><span class="tag">' + p.c + '</span><h3>' + p.t + '</h3></a>').join('')
+    ? hit.map(p => '<a class="feeditem" href="' + p.u + '">' + (p.i ? '<img class="fthumb" src="' + p.i + '" alt="">' : '') + '<div class="ftxt"><span class="tag">' + p.c + '</span><h3>' + p.t + '</h3></div></a>').join('')
     : '<p>目前站內還沒有這題的整理。先看看<a href="daily/outage.html">停水停電查詢</a>或<a href="home/">居家裝修</a>，或到姊妹站好康網找好康。</p>';
 }
 const qs = new URLSearchParams(location.search).get('q');
@@ -180,19 +233,21 @@ document.getElementById('q').addEventListener('keydown', e => { if (e.key === 'E
 def page_index():
     cards = ""
     for slug, ico, name, desc, live in CHANNELS:
+        timg = thumb(CHANNEL_IMG.get(slug, ""), "", "thumb")
         if live:
-            cards += f'<a class="card" href="{slug}/"><span class="badge">已上線</span><div class="ico">{ico}</div><h3>{name}</h3><p>{desc}</p></a>'
+            cards += f'<a class="card" href="{slug}/">{timg}<span class="badge">已上線</span><div class="ico">{ico}</div><h3>{name}</h3><p>{desc}</p></a>'
         else:
-            cards += f'<div class="card"><span class="badge soon">籌備中</span><div class="ico">{ico}</div><h3>{name}</h3><p>{desc}</p></div>'
+            cards += f'<div class="card">{timg}<span class="badge soon">籌備中</span><div class="ico">{ico}</div><h3>{name}</h3><p>{desc}</p></div>'
     feed = ""
     for u, c, t, _k, m in PAGES:
-        feed += f'<a class="feeditem" href="{u}"><span class="tag">{c}</span><h3>{t}</h3><p class="fmeta">閱讀時間 {m}</p></a>'
+        feed += f'<a class="feeditem" href="{u}">{thumb(PAGE_IMG.get(u, ""), "")}<div class="ftxt"><span class="tag">{c}</span><h3>{t}</h3><p class="fmeta">閱讀時間 {m}</p></div></a>'
     body = f"""
 <div class="hero">
 <h1>新聞不報、但你天天要查的生活大小事</h1>
 <p>停水停電、菜價、裝修報價、長輩手機問題……官方都有公布，卻散在十幾個網站、格式又難查。先搜尋看看，你要查的可能已經整理好了。</p>
 <form class="searchbar" action="search.html" method="get"><input name="q" type="text" placeholder="想查什麼？例如：停電、菜價、報價單"><button type="submit">搜尋</button></form>
 <div class="chips"><span>大家都在查：</span><a href="daily/outage.html">停電查詢</a><a href="daily/vegprice.html">今天菜價</a><a href="daily/garbage.html">垃圾車時間</a><a href="home/quote.html">裝修報價單</a><a href="home/cabinet.html">系統櫃價格</a></div>
+{fig("hero_home", "")}
 </div>
 <div class="alertbar">🌧️ <b>天氣與連假提醒：</b>颱風、停班停課與連假期間，垃圾清運與停水停電安排幾乎每次都會變動，出門前先看 <a href="daily/garbage.html">垃圾車時間查詢</a> 與 <a href="daily/outage.html">停水停電查詢</a> 的官方公告整理。</div>
 <h2 class="sec">頻道總覽</h2>
@@ -219,11 +274,12 @@ def page_home_channel():
     items = ""
     meta = {u.split("/")[-1].replace(".html", ""): m for u, _c, _t, _k, m in PAGES}
     for slug, t, d in HOME_ARTICLES:
-        items += f'<a class="feeditem" href="{slug}.html"><h3>{t}</h3><p>{d}</p><p class="fmeta">閱讀時間 {meta.get(slug, "約 5 分鐘")}</p></a>'
+        items += f'<a class="feeditem" href="{slug}.html">{thumb(SLUG_IMG.get(slug, ""), "../")}<div class="ftxt"><h3>{t}</h3><p>{d}</p><p class="fmeta">閱讀時間 {meta.get(slug, "約 5 分鐘")}</p></div></a>'
     body = f"""
 <p class="crumb"><a href="../">首頁</a> ／ 居家裝修</p>
 <div class="hero"><h1>🏠 居家裝修</h1>
-<p>裝修是大多數人一生花費前幾名的大事，偏偏資訊最不透明。我們只做一件事：把報價、流程、材料、合約這些「行內常識」寫成白話文，讓你做決定之前心裡有底。本站只提供知識整理，不評論、不推薦任何店家。</p></div>
+<p>裝修是大多數人一生花費前幾名的大事，偏偏資訊最不透明。我們只做一件事：把報價、流程、材料、合約這些「行內常識」寫成白話文，讓你做決定之前心裡有底。本站只提供知識整理，不評論、不推薦任何店家。</p>
+{fig("hero_home", "../")}</div>
 <h2 class="sec">裝修前必讀</h2>
 <div class="feed">{items}</div>
 <h2 class="sec">延伸：租屋看房</h2>
@@ -232,15 +288,15 @@ def page_home_channel():
     w("home/index.html", head("居家裝修", "裝修報價單、設計師挑選、系統櫃計價、施工流程、合約注意事項——裝修前必讀的白話知識整理。", 1, "home") + body + foot(1))
 
 def page_daily_channel():
-    body = """
+    body = f"""
 <p class="crumb"><a href="../">首頁</a> ／ 民生查詢</p>
 <div class="hero"><h1>💧 民生查詢</h1>
 <p>停水、停電、菜價、垃圾車——這些公告官方都有發布，卻分散在不同單位的網站裡，手機上尤其難查。這個頻道把官方公開資料整理成好查的工具頁，資料來源都標得清清楚楚，實際內容以官方公告為準。</p></div>
 <h2 class="sec">查詢工具</h2>
 <div class="grid">
-<a class="card" href="outage.html"><div class="ico">💡</div><h3>停水停電查詢</h3><p>台電計畫性停電公告即時查詢（官方開放資料）；停水公告整理自來水公司查詢入口與看懂公告的方法。</p></a>
-<a class="card" href="vegprice.html"><div class="ico">🥬</div><h3>菜價行情查詢</h3><p>農產品批發市場交易行情（農業部開放資料）：查今天各市場的蔬菜批發價，出門買菜前先看一眼。</p></a>
-<a class="card" href="garbage.html"><div class="ico">🚛</div><h3>垃圾車時間查詢</h3><p>各縣市垃圾清運時間與即時位置的官方查詢入口總整理，照縣市找，不用再翻里辦公室公告。</p></a>
+<a class="card" href="outage.html">{thumb("outage", "../", "thumb")}<div class="ico">💡</div><h3>停水停電查詢</h3><p>台電計畫性停電公告即時查詢（官方開放資料）；停水公告整理自來水公司查詢入口與看懂公告的方法。</p></a>
+<a class="card" href="vegprice.html">{thumb("vegprice", "../", "thumb")}<div class="ico">🥬</div><h3>菜價行情查詢</h3><p>農產品批發市場交易行情（農業部開放資料）：查今天各市場的蔬菜批發價，出門買菜前先看一眼。</p></a>
+<a class="card" href="garbage.html">{thumb("garbage", "../", "thumb")}<div class="ico">🚛</div><h3>垃圾車時間查詢</h3><p>各縣市垃圾清運時間與即時位置的官方查詢入口總整理，照縣市找，不用再翻里辦公室公告。</p></a>
 </div>
 """
     w("daily/index.html", head("民生查詢", "停水停電、菜價行情、垃圾車時間——官方公開資訊整理成好查的一頁。", 1, "daily") + body + foot(1))
@@ -251,6 +307,7 @@ def page_soon(slug):
 <p class="crumb"><a href="../">首頁</a> ／ {name}</p>
 <div class="hero"><h1>{ico} {name}</h1>
 <p>{desc}</p>
+{fig(CHANNEL_IMG.get(slug, ""), "../")}
 <p style="margin-top:12px"><span class="badge soon">籌備中</span></p>
 <p>這個頻道正在準備中。我們會先把內容做到正確、好查再上線，不搶快。先去看看已經上線的 <a href="../home/">居家裝修</a> 與 <a href="../daily/">民生查詢</a>，或到姊妹站 <a href="https://howkang.com.tw/" target="_blank" rel="noopener">好康網</a> 找今天的好康。</p></div>
 """
@@ -264,6 +321,7 @@ def article(slug, title, desc, body_html):
 <article class="post">
 <h1>{title}</h1>
 <p class="meta">好康生活・居家裝修頻道｜本篇為知識整理，不評論、不推薦任何店家；價格資訊為市場常見範圍，實際以各地行情與正式報價為準。</p>
+{fig(SLUG_IMG.get(slug, ""), "../")}
 {body_html}
 <div class="tip"><b>看完接著讀：</b> <a href="./">回居家裝修頻道</a> 看其他篇：報價單、設計師、系統櫃、施工流程、合約，五篇一起看，裝修前功課就做滿了。</div>
 </article>
@@ -431,7 +489,7 @@ def page_outage():
     body = """
 <p class="crumb"><a href="../">首頁</a> ／ <a href="./">民生查詢</a> ／ 停水停電查詢</p>
 <div class="hero"><h1>💡 停水停電查詢</h1>
-<p>「計畫性停電」是台電為了施工、換變壓器、遷移線路排定的停電（不是缺電限電），公告其實都有，只是藏在各區營業處的網頁裡很難查。下面這個工具把台電官方公告整理成可以打字搜尋的列表：輸入你家附近的路名或區名，就能看近期會不會停電。</p></div>
+<p>「計畫性停電」是台電為了施工、換變壓器、遷移線路排定的停電（不是缺電限電），公告其實都有，只是藏在各區營業處的網頁裡很難查。下面這個工具把台電官方公告整理成可以打字搜尋的列表：輸入你家附近的路名或區名，就能看近期會不會停電。</p>__FIG_OUTAGE__</div>
 
 <h2 class="sec">計畫性停電查詢（台電官方公告整理）</h2>
 <div class="toolbox">
@@ -500,14 +558,14 @@ document.getElementById('go').addEventListener('click', () => {
 });
 </script>
 """
-    body = body.replace("__LINKS__", links)
+    body = body.replace("__LINKS__", links).replace("__FIG_OUTAGE__", fig("outage", "../"))
     w("daily/outage.html", head("停水停電查詢", "台電計畫性停電公告整理成可搜尋工具，輸入路名就知道近期會不會停電；停水查詢與停水前準備一次看懂。", 1, "daily") + body + foot(1))
 
 def page_vegprice():
     body = """
 <p class="crumb"><a href="../">首頁</a> ／ <a href="./">民生查詢</a> ／ 菜價行情查詢</p>
 <div class="hero"><h1>🥬 菜價行情查詢</h1>
-<p>菜價每天都在變，但一般人只看得到市場零售價。其實農業部每天都公布各批發市場的「交易行情」——哪種菜今天量多價跌、哪種菜正在貴，看批發行情就知道。這一頁先教你看懂行情、去哪裡查，自動整理功能正在建置中。</p></div>
+<p>菜價每天都在變，但一般人只看得到市場零售價。其實農業部每天都公布各批發市場的「交易行情」——哪種菜今天量多價跌、哪種菜正在貴，看批發行情就知道。這一頁先教你看懂行情、去哪裡查，自動整理功能正在建置中。</p>__FIG_VEG__</div>
 
 <h2 class="sec">批發價和你買的價錢，差在哪？</h2>
 <div class="hero">
@@ -529,13 +587,14 @@ def page_vegprice():
 <p class="note">建置說明：官方資料端點（data.moa.gov.tw）於建置期間連線不穩定，我們改採「每日快照整理」方式開發，完成後本頁會標示資料日期與來源，不會用過期或來路不明的數字充數。</p>
 </div>
 """
+    body = body.replace("__FIG_VEG__", fig("vegprice", "../"))
     w("daily/vegprice.html", head("菜價行情查詢", "農業部農產品批發市場交易行情怎麼看：批發價與零售價差別、去哪查官方行情、颱風後菜價怎麼判斷。", 1, "daily") + body + foot(1))
 
 def page_garbage():
     body = """
 <p class="crumb"><a href="../">首頁</a> ／ <a href="./">民生查詢</a> ／ 垃圾車時間查詢</p>
 <div class="hero"><h1>🚛 垃圾車時間查詢</h1>
-<p>垃圾車沒有全國統一的查詢系統——每個縣市（甚至每個鄉鎮）都有自己的清運路線與時間，由各縣市環保局或公所管理。這一頁把主要縣市的官方查詢方式整理在一起，照你住的縣市對號入座。</p></div>
+<p>垃圾車沒有全國統一的查詢系統——每個縣市（甚至每個鄉鎮）都有自己的清運路線與時間，由各縣市環保局或公所管理。這一頁把主要縣市的官方查詢方式整理在一起，照你住的縣市對號入座。</p>__FIG_GARBAGE__</div>
 
 <h2 class="sec">主要縣市官方查詢方式</h2>
 <div class="hero">
@@ -555,6 +614,7 @@ def page_garbage():
 <p class="note">舉例：2026 年 10 月 24 日颱風停班停課當天，台中市全日停收、台北市晚間恢復正常收運、新北市午後加班收運——同一天三個城市三種安排，這就是為什麼要以官方公告為準。（資料來源：各縣市環保局當日公告）</p>
 </div>
 """
+    body = body.replace("__FIG_GARBAGE__", fig("garbage", "../"))
     w("daily/garbage.html", head("垃圾車時間查詢", "各縣市垃圾車清運時間與即時位置的官方查詢方式總整理：新北樂圾車、基隆垃圾車來了、台中清運大車隊等。", 1, "daily") + body + foot(1))
 
 # ---------------- 主程式 ----------------
