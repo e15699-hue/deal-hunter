@@ -15,6 +15,7 @@ BASE_FILES = [
     "home/cabinet.html", "home/process.html", "home/contract.html",
     "daily/index.html", "daily/outage.html", "daily/vegprice.html", "daily/garbage.html",
     "kids/index.html", "kids/guide.html", "kids/vs.html", "kids/price.html", "kids/faq.html",
+    "pets/index.html", "pets/guide.html", "pets/diet.html", "pets/vaccine.html", "pets/faq.html",
     "senior/index.html", "health/index.html", "study/index.html", "ai/index.html", "car/index.html",
     "tools/fetch_outages.py", "tools/fetch_water.py", "tools/fetch_trails.py",
     "tools/geocode.py", "tools/geocode_cache.json", "tools/trail_catalog.json",
@@ -37,6 +38,7 @@ def load():
     assert "outages/index.json" in contents["daily/outage.html"]
     assert "報價單" in contents["home/quote.html"]
     assert "OiKID" in contents["kids/guide.html"] and "親子學習" in contents["kids/index.html"], "親子學習頻道內容檢查"
+    assert "不做個別診斷" in contents["pets/index.html"] and "寵物照護" in contents["pets/guide.html"], "寵物照護頻道內容檢查"
     assert '<img' in contents["index.html"] and '<img' in contents["home/quote.html"], "圖片標準：首頁與文章頁必須有圖"
     for rel, c in contents.items():
         if rel.endswith(".html") and rel not in ("map.html", "map_template.html"):
@@ -58,7 +60,7 @@ def batches(contents):
 def push(batch, contents):
     args = {
         "owner": "e15699-hue", "repo": "deal-hunter", "branch": "main",
-        "message": "好康生活：新增國家資訊地圖（步道／停電／停水圖層）＋停電擴至全台 20 區處",
+        "message": "好康生活：新增寵物照護頻道（頻道頁＋4 篇）",
         "files": [{"path": f"{REPO_PREFIX}/{p}", "content": contents[p]} for p in batch],
     }
     r = subprocess.run(
