@@ -23,7 +23,7 @@ BASE_FILES = [
 ]
 # 停電分片（20 區處，檔名隨資料量動態增減）與地圖快照一律動態納入，不再手寫清單
 FILES = BASE_FILES + sorted(os.path.relpath(p, ROOT) for p in _glob.glob(os.path.join(ROOT, "daily", "outages", "*.json"))) \
-    + sorted(os.path.relpath(p, ROOT) for p in _glob.glob(os.path.join(ROOT, "map", "*.json")))
+    + sorted(os.path.relpath(p, ROOT) for p in _glob.glob(os.path.join(ROOT, "map", "**", "*.json"), recursive=True))
 BATCH_MAX = 58000  # bytes（content 合計上限，保守低於單次參數上限）
 
 def load():

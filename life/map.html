@@ -53,9 +53,10 @@ footer{border-top:1px solid #F3D9E2;background:#fff;padding:20px 16px;color:#616
 <label><input type="checkbox" id="l-outages" checked> 💡 停電</label>
 <label><input type="checkbox" id="l-water" checked> 💧 停水／降壓</label>
 </div>
-<div class="searchbar"><input id="q" type="text" placeholder="搜尋：步道名、縣市、區鄉鎮、路名（例如：嘉明湖、北屯、工業區一路）"><button id="go">搜尋</button></div>
+<div class="searchbar"><input id="q" type="text" placeholder="搜尋：步道名、縣市、區鄉鎮、路名（例如：嘉明湖、北屯、工業區一路）"><button id="go">搜尋</button><button id="locate" style="background:#fff;color:#D81B60;border:2px solid #D81B60">📍 定位查附近</button></div>
 <p class="stat" id="stat">資料載入中…</p>
 <div id="map"></div>
+<p class="note" id="geonote" style="display:none"></p>
 <p class="note" id="mapnote" style="display:none">地圖圖資載入失敗，以下仍可用清單查詢（清單不受地圖影響）。</p>
 <h2 class="sec">查詢結果</h2>
 <div id="list"></div>
@@ -65,7 +66,7 @@ footer{border-top:1px solid #F3D9E2;background:#fff;padding:20px 16px;color:#616
 💧 停水：台灣自來水公司「停水公告查詢系統」官方 API（進行中公告，範圍多邊形取中心點）<br>
 突發停電請撥台電 1911；停水問題請撥台水 1910。未來其他政府公告（例如菜價、垃圾車異動）也會照同一格式新增為圖層。</p>
 </div>
-<footer><p><b>國家資訊地圖</b> 是 <a href="./">好康生活</a>（<a href="https://howkang.com.tw/" target="_blank" rel="noopener">好康網</a>姊妹站）的查詢工具。本頁可獨立開啟、嵌入 App WebView 使用；網址參數 <code>?layers=trails,outages,water</code> 可預選圖層，<code>?q=關鍵字</code> 可預帶搜尋。</p></footer>
+<footer><p><b>國家資訊地圖</b> 是 <a href="./">好康生活</a>（<a href="https://howkang.com.tw/" target="_blank" rel="noopener">好康網</a>姊妹站）的查詢工具。本頁可獨立開啟、嵌入 App WebView 使用；網址參數 <code>?layers=trails,outages,water</code> 可預選圖層，<code>?q=關鍵字</code> 可預帶搜尋，<code>?lat=&lng=&z=</code> 可定位到指定座標，<code>?near=1</code> 可開啟即自動定位（App 定位入口共用同一頁）。點停電標記會框出所在鄉鎮市區範圍並畫出公告路段線（路段線以開放街圖路網為準，僅供示意）。</p></footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const FW = s => (s||'').replace(/[０-９]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0));
@@ -78,6 +79,136 @@ if (params.get('layers') || params.get('layer')) {
   Object.keys(LAYERS).forEach(k => { LAYERS[k].on = want.includes(k); });
 }
 let map = null, groups = {}, waterPoly = null, DATA = {};
+// ---- 幾何框架（區域框＋路段線，未來 App 定位共用） ----
+// 區域框：map/boundaries/<縣市>.json（鄉鎮市區界線，顯示用簡化），點標記時才依縣市分檔載入，不一次全載。
+// 路段線：優先讀 map/roads_cache.json 快取，查無才即時查開放街圖 Overpass（僅供示意，非精確門牌範圍）。
+// 框線一次只顯示一組：新選取會清掉舊框線；定位（?near=1 或定位按鈕）走同一套顯示流程。
+let areaLayer = null, roadLayers = [], geoIndex = null, boundCache = {}, roadsCache = null;
+const geonoteEl = document.getElementById('geonote');
+function geonote(t){ if (!geonoteEl) return; if (!t) { geonoteEl.style.display = 'none'; return; } geonoteEl.style.display = 'block'; geonoteEl.textContent = t; }
+function clearGeo(){
+  if (areaLayer && map) { map.removeLayer(areaLayer); areaLayer = null; }
+  roadLayers.forEach(l => { if (map) map.removeLayer(l); });
+  roadLayers = [];
+  if (waterPoly && map) { map.removeLayer(waterPoly); waterPoly = null; }
+}
+function stemTown(s){ return String(s||'').replace(/\s+/g,'').replace(/\([^)]*\)/g,'').replace(/[市鎮鄉區]$/,''); }
+async function fetchJSON(u){ try { const r = await fetch(u); if (!r.ok) return null; return await r.json(); } catch(e){ return null; } }
+async function loadRoadsCache(){ if (roadsCache === null) { const d = await fetchJSON('map/roads_cache.json'); roadsCache = (d && d.roads) || {}; } return roadsCache; }
+function centroid(rings){
+  let sx = 0, sy = 0, n = 0;
+  (rings[0]||[]).forEach(p => { sx += p[0]; sy += p[1]; n++; });
+  return n ? [sy/n, sx/n] : null;
+}
+function distKm(aLat, aLng, bLat, bLng){
+  const R = 6371, dLa = (bLat-aLat)*Math.PI/180, dLo = (bLng-aLng)*Math.PI/180;
+  const h = Math.sin(dLa/2)*Math.sin(dLa/2) + Math.cos(aLat*Math.PI/180)*Math.cos(bLat*Math.PI/180)*Math.sin(dLo/2)*Math.sin(dLo/2);
+  return 2*R*Math.asin(Math.sqrt(h));
+}
+async function findTownFeature(county, district, lat, lng){
+  if (geoIndex === null) geoIndex = await fetchJSON('map/boundaries/index.json') || {};
+  const stem = stemTown(district);
+  const counties = new Set();
+  Object.entries(geoIndex).forEach(([town, cs]) => { if (stemTown(town) === stem) cs.forEach(c => counties.add(c)); });
+  if (stemTown(county)) counties.add(String(county).replace(/\s+/g,''));
+  if (String(county).replace(/\s+/g,'') === '桃園市') counties.add('桃園縣');
+  let best = null, bestD = 1e9;
+  for (const c of counties) {
+    if (!boundCache[c]) boundCache[c] = await fetchJSON('map/boundaries/' + encodeURIComponent(c) + '.json');
+    const feats = (boundCache[c] && boundCache[c].features) || [];
+    feats.forEach(f => {
+      if (stemTown(f.town) !== stem) return;
+      const cen = centroid(f.rings);
+      const d = (cen && lat != null) ? distKm(lat, lng, cen[0], cen[1]) : 0;
+      if (d < bestD) { bestD = d; best = f; }
+    });
+  }
+  return best;
+}
+async function showArea(it){
+  if (!map || it.lat == null) return;
+  geonote('範圍載入中…');
+  const f = await findTownFeature(it.county, it.district, it.lat, it.lng);
+  if (!f) { geonote('找不到該區界線資料，僅顯示標記位置（範圍以公告文字為準）。'); return; }
+  if (areaLayer) map.removeLayer(areaLayer);
+  areaLayer = L.polygon(f.rings.map(r => r.map(p => [p[1], p[0]])), {color:'#D81B60', weight:3, fillOpacity:.12}).addTo(map);
+  geonote('已框出範圍：' + (it.county||'') + (it.district||'') + '（界線為顯示用簡化，實際以官方公告文字為準）');
+}
+function drawRoadLine(line, name){
+  const pl = L.polyline(line, {color:'#E65100', weight:4, opacity:.9}).addTo(map);
+  pl.bindPopup('<b>' + esc(name) + '</b><br><small>路段示意線（開放街圖路網，僅供參考）</small>');
+  roadLayers.push(pl);
+}
+async function overpassRoad(name, lat, lng){
+  const q = '[out:json][timeout:25];way["name"="' + name + '"]["highway"](around:10000,' + lat + ',' + lng + ');out geom;';
+  const r = await fetch('https://overpass-api.de/api/interpreter', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:'data=' + encodeURIComponent(q)});
+  if (!r.ok) return null;
+  const d = await r.json();
+  let best = null;
+  (d.elements||[]).forEach(el => {
+    const g = el.geometry || [];
+    if (g.length >= 2) { const line = g.map(p => [p.lat, p.lon]); if (!best || line.length > best.length) best = line; }
+  });
+  return best;
+}
+async function showRoads(it){
+  if (!map || it.lat == null) return;
+  const roads = (it.roads || []).slice(0, 3);
+  if (!roads.length) return;
+  const cache = await loadRoadsCache();
+  let drawn = 0, tried = 0;
+  for (const name of roads) {
+    const key = (String(it.county||'').replace(/\s+/g,'')) + '|' + (String(it.district||'').replace(/\s+/g,'')) + '|' + name;
+    let line = cache[key] || null;
+    if (!line) {
+      tried++;
+      try { line = await overpassRoad(name, it.lat, it.lng); } catch(e){ line = null; }
+    }
+    if (line) { drawRoadLine(line, name); drawn++; }
+  }
+  if (tried && !drawn) geonote('已框出範圍，但公告路段線查無開放街圖資料，範圍以公告文字為準。');
+}
+async function selectOutage(it){
+  if (!map || it.lat == null) return;
+  clearGeo();
+  map.setView([it.lat, it.lng], Math.max(map.getZoom(), 12));
+  await showArea(it);
+  await showRoads(it);
+}
+async function showNearby(lat, lng){
+  if (!map) return;
+  map.setView([lat, lng], 13);
+  const cands = [];
+  if (LAYERS.outages.on && DATA.outages) (DATA.outages.districts||[]).forEach(it => { if (it.lat != null) cands.push({k:'outages', it, d: distKm(lat, lng, it.lat, it.lng)}); });
+  if (LAYERS.water.on && DATA.water) (DATA.water.items||[]).forEach(it => { if (it.lat != null) cands.push({k:'water', it, d: distKm(lat, lng, it.lat, it.lng)}); });
+  if (LAYERS.trails.on && DATA.trails) (DATA.trails.items||[]).forEach(it => { if (it.lat != null) cands.push({k:'trails', it, d: distKm(lat, lng, it.lat, it.lng)}); });
+  cands.sort((a, b) => a.d - b.d);
+  const near = cands.filter(c => c.d <= 8).slice(0, 1);
+  if (!near.length) { geonote('附近 8 公里內沒有符合圖層的公告項目。'); return; }
+  const {k, it} = near[0];
+  clearGeo();
+  if (k === 'outages') {
+    document.getElementById('q').value = (it.county||'') + (it.district||'');
+    refresh();
+    await showArea(it);
+    await showRoads(it);
+  } else if (k === 'water') {
+    map.setView([it.lat, it.lng], 13);
+    if (it.polygon && it.polygon.length) waterPoly = L.polygon(it.polygon.map(p => [p[1], p[0]]), {color:'#1565C0', weight:2, fillOpacity:.15}).addTo(map);
+    geonote('最近的公告在 ' + (it.county||'') + (it.district||'') + '（約 ' + near[0].d.toFixed(1) + ' 公里）。');
+  } else {
+    map.setView([it.lat, it.lng], 13);
+    geonote('最近的步道：' + (it.name||'') + '（約 ' + near[0].d.toFixed(1) + ' 公里）。');
+  }
+}
+function doLocate(){
+  if (!navigator.geolocation) { geonote('此裝置或瀏覽器不支援定位，請改用搜尋。'); return; }
+  geonote('定位中…（App 內請允許定位權限）');
+  navigator.geolocation.getCurrentPosition(
+    pos => showNearby(pos.coords.latitude, pos.coords.longitude),
+    () => geonote('無法取得定位（可能未授權或訊號不佳），請改用搜尋。'),
+    {timeout: 10000, maximumAge: 60000});
+}
 const listEl = document.getElementById('list'), statEl = document.getElementById('stat');
 function badge(cls, txt){ return '<span class="badge '+cls+'">'+txt+'</span>'; }
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
@@ -137,9 +268,10 @@ function render(){
     const items = key==='trails' ? (DATA.trails.items||[]) : key==='outages' ? (DATA.outages.districts||[]) : (DATA.water.items||[]);
     const it = items.find(x => String(x._idx) === el.dataset.i);
     if (it && it.lat != null && map) {
+      if (key === 'outages') { selectOutage(it); return; }
+      clearGeo();
       map.setView([it.lat, it.lng], Math.max(map.getZoom(), 12));
       if (key === 'water' && it.polygon && it.polygon.length) {
-        if (waterPoly) map.removeLayer(waterPoly);
         waterPoly = L.polygon(it.polygon.map(p => [p[1], p[0]]), {color:'#1565C0', weight:2, fillOpacity:.15}).addTo(map);
       }
     }
@@ -166,9 +298,10 @@ function drawMarkers(){
   });
   if (LAYERS.outages.on && DATA.outages) (DATA.outages.districts||[]).forEach(it => {
     if (it.lat == null || !match(it.county + it.district)) return;
-    L.marker([it.lat, it.lng], {icon: mkIcon('💡', '#E65100', it.count > 99 ? '99+' : it.count)})
-      .bindPopup('<b>'+esc(it.county + it.district)+'</b><br>停電公告 '+it.count+' 筆<br>最早：'+esc(it.earliest)+'<br>'+esc((it.branches||[]).join('、')))
+    const mk = L.marker([it.lat, it.lng], {icon: mkIcon('💡', '#E65100', it.count > 99 ? '99+' : it.count)})
+      .bindPopup('<b>'+esc(it.county + it.district)+'</b><br>停電公告 '+it.count+' 筆<br>最早：'+esc(it.earliest)+'<br>'+esc((it.branches||[]).join('、')) + '<br><small>點標記可框出範圍與路段線</small>')
       .addTo(groups.outages);
+    mk.on('click', () => selectOutage(it));
   });
   if (LAYERS.water.on && DATA.water) (DATA.water.items||[]).forEach(it => {
     if (it.lat == null || !match(it.region + it.county + it.district + it.reason)) return;
@@ -177,7 +310,7 @@ function drawMarkers(){
       .addTo(groups.water);
     mk.on('click', () => {
       if (it.polygon && it.polygon.length) {
-        if (waterPoly) map.removeLayer(waterPoly);
+        clearGeo();
         waterPoly = L.polygon(it.polygon.map(p => [p[1], p[0]]), {color:'#1565C0', weight:2, fillOpacity:.15}).addTo(map);
       }
     });
@@ -216,12 +349,14 @@ async function load(){
   const qs = params.get('q');
   if (qs) document.getElementById('q').value = qs;
   refresh();
+  if (params.get('near') === '1') doLocate();
 }
 ['l-trails','l-outages','l-water'].forEach(id => document.getElementById(id).addEventListener('change', e => {
   LAYERS[id.slice(2)].on = e.target.checked;
   refresh();
 }));
 document.getElementById('go').addEventListener('click', refresh);
+document.getElementById('locate').addEventListener('click', doLocate);
 document.getElementById('q').addEventListener('keydown', e => { if (e.key === 'Enter') refresh(); });
 load();
 </script>
