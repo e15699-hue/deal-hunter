@@ -193,5 +193,60 @@
   "h": 3326,
   "kb": 163,
   "remote": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/A_boy_and_a_girl_looking_at_the_tablet.jpg/1280px-A_boy_and_a_girl_looking_at_the_tablet.jpg"
+ },
+ "pets": {
+  "file": "pets.jpg",
+  "title": "Hunde gras.jpg",
+  "artist": "Dominik Waas",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Hunde_gras.jpg",
+  "w": 1024,
+  "h": 768,
+  "kb": 353,
+  "remote": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Hunde_gras.jpg/1024px-Hunde_gras.jpg"
+ },
+ "petguide": {
+  "file": "petguide.jpg",
+  "title": "Fort Polk Soldiers, veterinary staff band together to rescue kitten - 200727-A-NY219-581.jpg",
+  "artist": "Chuck Cannon",
+  "license": "Public domain (US Army)",
+  "page": "https://commons.wikimedia.org/wiki/File:Fort_Polk_Soldiers,_veterinary_staff_band_together_to_rescue_kitten_-_200727-A-NY219-581.jpg",
+  "w": 1190,
+  "h": 1587,
+  "kb": 1640,
+  "remote": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Fort_Polk_Soldiers%2C_veterinary_staff_band_together_to_rescue_kitten_-_200727-A-NY219-581.jpg/1024px-Fort_Polk_Soldiers%2C_veterinary_staff_band_together_to_rescue_kitten_-_200727-A-NY219-581.jpg"
+ },
+ "petdiet": {
+  "file": "petdiet.jpg",
+  "title": "Chewing some dog food (8619258895).jpg",
+  "artist": "Butko (Flickr2Commons transfer)",
+  "license": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Chewing_some_dog_food_(8619258895).jpg",
+  "w": 3872,
+  "h": 2592,
+  "kb": 4010,
+  "remote": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Chewing_some_dog_food_%288619258895%29.jpg/1280px-Chewing_some_dog_food_%288619258895%29.jpg"
+ },
+ "petvaccine": {
+  "file": "petvaccine.jpg",
+  "title": "US Navy 070810-N-4954I-120 Lt. Col. Raveesh Chhajed, a veterinarian from the Indian Army, gives a family cat a rabies vaccination while onlookers gather to see the procedure.jpg",
+  "artist": "Bryan M. Ilyankoff (US Navy)",
+  "license": "Public domain (US Navy)",
+  "page": "https://commons.wikimedia.org/wiki/File:US_Navy_070810-N-4954I-120_Lt._Col._Raveesh_Chhajed,_a_veterinarian_from_the_Indian_Army,_gives_a_family_cat_a_rabies_vaccination_while_onlookers_gather_to_see_the_procedure.jpg",
+  "w": 2100,
+  "h": 1500,
+  "kb": 722,
+  "remote": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/US_Navy_070810-N-4954I-120_Lt._Col._Raveesh_Chhajed%2C_a_veterinarian_from_the_Indian_Army%2C_gives_a_family_cat_a_rabies_vaccination_while_onlookers_gather_to_see_the_procedure.jpg/1280px-US_Navy_070810-N-4954I-120_Lt._Col._Raveesh_Chhajed%2C_a_veterinarian_from_the_Indian_Army%2C_gives_a_family_cat_a_rabies_vaccination_while_onlookers_gather_to_see_the_procedure.jpg"
+ },
+ "petfaq": {
+  "file": "petfaq.jpg",
+  "title": "Dog eyes on ball - Flickr - sonstroem.jpg",
+  "artist": "Eric Sonstroem",
+  "license": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Dog_eyes_on_ball_-_Flickr_-_sonstroem.jpg",
+  "w": 2815,
+  "h": 3806,
+  "kb": 8520,
+  "remote": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Dog_eyes_on_ball_-_Flickr_-_sonstroem.jpg/1280px-Dog_eyes_on_ball_-_Flickr_-_sonstroem.jpg"
  }
 }

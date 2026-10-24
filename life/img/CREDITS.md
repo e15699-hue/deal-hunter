@@ -21,3 +21,8 @@
 | engvs | A chemistry distance lesson during the COVID-19 pandemic in Italy.jpg | Valentina Domenici 77 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:A_chemistry_distance_lesson_during_the_COVID-19_pandemic_in_Italy.jpg |
 | engprice | Piggy-bank-968302.jpg | stevepb | CC0 | https://commons.wikimedia.org/wiki/File:Piggy-bank-968302.jpg |
 | engfaq | A boy and a girl looking at the tablet.jpg | Shixart1985 | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:A_boy_and_a_girl_looking_at_the_tablet.jpg |
+| pets | Hunde gras.jpg | Dominik Waas | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Hunde_gras.jpg |
+| petguide | Fort Polk Soldiers, veterinary staff band together to rescue kitten - 200727-A-NY219-581.jpg | Chuck Cannon | Public domain (US Army) | https://commons.wikimedia.org/wiki/File:Fort_Polk_Soldiers,_veterinary_staff_band_together_to_rescue_kitten_-_200727-A-NY219-581.jpg |
+| petdiet | Chewing some dog food (8619258895).jpg | Butko (Flickr2Commons transfer) | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Chewing_some_dog_food_(8619258895).jpg |
+| petvaccine | US Navy 070810-N-4954I-120 cat rabies vaccination.jpg | Bryan M. Ilyankoff (US Navy) | Public domain (US Navy) | https://commons.wikimedia.org/wiki/File:US_Navy_070810-N-4954I-120_Lt._Col._Raveesh_Chhajed,_a_veterinarian_from_the_Indian_Army,_gives_a_family_cat_a_rabies_vaccination_while_onlookers_gather_to_see_the_procedure.jpg |
+| petfaq | Dog eyes on ball - Flickr - sonstroem.jpg | Eric Sonstroem | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Dog_eyes_on_ball_-_Flickr_-_sonstroem.jpg |
