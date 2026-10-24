@@ -11,6 +11,7 @@ BASE = "https://life.howkang.com.tw"
 CHANNELS = [
     ("home",   "🏠", "居家裝修", "報價單、施工流程、材料與合約——裝修前先做功課，不怕被當盤子。", True),
     ("daily",  "💧", "民生查詢", "停水停電、菜價行情、垃圾車時間——官方資訊分散難查，我們幫你整理成一頁。", True),
+    ("kids",   "👨‍👩‍👧", "親子學習", "兒童線上英文怎麼挑——師資、教材、價格、退費，先看懂各家規則再決定，不當冤大頭。", True),
     ("senior", "👵", "銀髮 3C", "長輩手機教學、防詐騙——字大、步驟清楚，子女也能直接傳給爸媽看。", False),
     ("health", "🏥", "健康查詢", "假日夜間看診、藥局營業時間——急著找醫生時不用再一間一間打電話。", False),
     ("study",  "📚", "學習考照", "技術士考照刷題與考試資訊——公開題庫整理好，照著練就對了。", False),
@@ -41,28 +42,40 @@ IMG_ALT = {
     "study": "在窗邊書桌前讀書",
     "ai": "桌面型 AI 機器人",
     "car": "技師正在檢查汽車引擎",
+    "kids": "小女孩戴著耳機用平板上課",
+    "engguide": "孩子們在電腦教室裡學習",
+    "engvs": "老師在家透過筆電進行遠距教學",
+    "engprice": "存錢筒與硬幣",
+    "engfaq": "兩個孩子一起看平板學習",
 }
-CHANNEL_IMG = {"home": "hero_home", "daily": "outage", "senior": "senior", "health": "health", "study": "study", "ai": "ai", "car": "car"}
+CHANNEL_IMG = {"home": "hero_home", "daily": "outage", "kids": "kids", "senior": "senior", "health": "health", "study": "study", "ai": "ai", "car": "car"}
 PAGE_IMG = {"home/quote.html": "quote", "home/designer.html": "designer", "home/cabinet.html": "cabinet",
             "home/process.html": "process", "home/contract.html": "contract", "daily/outage.html": "outage",
-            "daily/vegprice.html": "vegprice", "daily/garbage.html": "garbage"}
+            "daily/vegprice.html": "vegprice", "daily/garbage.html": "garbage",
+            "kids/guide.html": "engguide", "kids/vs.html": "engvs", "kids/price.html": "engprice", "kids/faq.html": "engfaq"}
 SLUG_IMG = {"quote": "quote", "designer": "designer", "cabinet": "cabinet", "process": "process", "contract": "contract"}
+KIDS_SLUG_IMG = {"guide": "engguide", "vs": "engvs", "price": "engprice", "faq": "engfaq"}
 
 def _credit(key):
     m = IMG_META.get(key, {})
     artist = m.get("artist") or "Wikimedia Commons 貢獻者"
     return f'照片：{artist}／{m.get("license", "")}，來源 <a href="{m.get("page", "")}" target="_blank" rel="noopener">Wikimedia Commons</a>'
 
+def _src(key, prefix):
+    """圖片來源：credits.json 有 remote 欄位時用遠端圖庫原圖網址（推送工具僅支援 UTF-8 文字檔，二進位圖檔無法進 repo，故新圖採 Wikimedia Commons 直連並標出處）；否則用本機 img/ 路徑。"""
+    m = IMG_META.get(key, {})
+    return m.get("remote") or f"{prefix}img/{key}.jpg"
+
 def fig(key, prefix):
     """文章／頁面主圖（含出處標示）。"""
     if key not in IMG_META:
         return ""
-    return f'<figure class="fig"><img src="{prefix}img/{key}.jpg" alt="{IMG_ALT.get(key, "")}" loading="lazy"><figcaption>{_credit(key)}</figcaption></figure>'
+    return f'<figure class="fig"><img src="{_src(key, prefix)}" alt="{IMG_ALT.get(key, "")}" loading="lazy"><figcaption>{_credit(key)}</figcaption></figure>'
 
 def thumb(key, prefix, cls="fthumb"):
     if key not in IMG_META:
         return ""
-    return f'<img class="{cls}" src="{prefix}img/{key}.jpg" alt="{IMG_ALT.get(key, "")}" loading="lazy">'
+    return f'<img class="{cls}" src="{_src(key, prefix)}" alt="{IMG_ALT.get(key, "")}" loading="lazy">'
 
 CSS = """
 :root{--brand:#D81B60;--brand2:#F06292;--ink:#212121;--sub:#616161;--bg:#FFF7F9;--card:#fff;--line:#F3D9E2;--radius:14px}
@@ -198,10 +211,14 @@ PAGES = [
     ("daily/outage.html", "民生查詢", "停水停電查詢", "停電 停水 台電 台水 計畫性停電 1911 跳電", "查詢工具"),
     ("daily/vegprice.html", "民生查詢", "菜價行情查詢", "菜價 批發市場 行情 蔬菜 農業部 買菜", "查詢工具"),
     ("daily/garbage.html", "民生查詢", "垃圾車時間查詢", "垃圾車 清運時間 環保局 倒垃圾 樂圾車", "查詢工具"),
+    ("kids/guide.html", "親子學習", "兒童線上英文怎麼挑？6 家平台對照表一次看懂", "兒童英文 線上英文 OiKID TutorABC 51Talk Native Camp Etalking WUWOW 比較 試聽 挑選", "約 6 分鐘"),
+    ("kids/vs.html", "親子學習", "OiKID vs TutorABC Junior：兩家差在哪、適合誰", "OiKID TutorABC Junior tutorJr 比較 差別 師資 價格 退費", "約 5 分鐘"),
+    ("kids/price.html", "親子學習", "兒童線上英文價格與退費規則整理", "價格 學費 退費 堂數 月費 點數 分期 兒童英文 簽約", "約 5 分鐘"),
+    ("kids/faq.html", "親子學習", "兒童線上英文家長常見問題 FAQ", "FAQ 試聽 幾歲開始 固定老師 退費 設備 旁聽 兒童英文", "約 5 分鐘"),
 ]
 
 def page_search():
-    data = json.dumps([{"u": u, "c": c, "t": t, "k": k, "i": ("img/" + PAGE_IMG[u] + ".jpg" if u in PAGE_IMG else "")} for u, c, t, k, _m in PAGES], ensure_ascii=False)
+    data = json.dumps([{"u": u, "c": c, "t": t, "k": k, "i": ((IMG_META.get(PAGE_IMG[u], {}).get("remote") or ("img/" + PAGE_IMG[u] + ".jpg")) if u in PAGE_IMG else "")} for u, c, t, k, _m in PAGES], ensure_ascii=False)
     body = """
 <p class="crumb"><a href="./">首頁</a> ／ 搜尋</p>
 <div class="hero"><h1>🔍 查生活大小事</h1>
@@ -246,7 +263,7 @@ def page_index():
 <h1>新聞不報、但你天天要查的生活大小事</h1>
 <p>停水停電、菜價、裝修報價、長輩手機問題……官方都有公布，卻散在十幾個網站、格式又難查。先搜尋看看，你要查的可能已經整理好了。</p>
 <form class="searchbar" action="search.html" method="get"><input name="q" type="text" placeholder="想查什麼？例如：停電、菜價、報價單"><button type="submit">搜尋</button></form>
-<div class="chips"><span>大家都在查：</span><a href="daily/outage.html">停電查詢</a><a href="daily/vegprice.html">今天菜價</a><a href="daily/garbage.html">垃圾車時間</a><a href="home/quote.html">裝修報價單</a><a href="home/cabinet.html">系統櫃價格</a></div>
+<div class="chips"><span>大家都在查：</span><a href="daily/outage.html">停電查詢</a><a href="daily/vegprice.html">今天菜價</a><a href="daily/garbage.html">垃圾車時間</a><a href="home/quote.html">裝修報價單</a><a href="home/cabinet.html">系統櫃價格</a><a href="kids/guide.html">兒童英文怎麼挑</a></div>
 {fig("hero_home", "")}
 </div>
 <div class="alertbar">🌧️ <b>天氣與連假提醒：</b>颱風、停班停課與連假期間，垃圾清運與停水停電安排幾乎每次都會變動，出門前先看 <a href="daily/garbage.html">垃圾車時間查詢</a> 與 <a href="daily/outage.html">停水停電查詢</a> 的官方公告整理。</div>
@@ -475,6 +492,219 @@ def articles():
 """)
 
 
+# ---------------- 親子學習頻道（點子 #35 兒童線上英文整理，2026-10-24 使用者拍板） ----------------
+# 誠實紅線：本站尚未實際上過這些平台的課，內容一律為「公開資訊整理」並標查閱日期，
+# 不寫假實測心得；「實測心得」欄位等日後真的試聽再補。文內平台連結先連官網（聯盟連結待帳號核准後替換）。
+OFFICIAL_LINKS = {
+    "OiKID": "https://www.oikid.com/",
+    "TutorABC Junior": "https://www.tutorabc.com/",
+    "Native Camp": "https://nativecamp.net/zh-tw",
+    "51Talk": "https://tw.51talk.com/",
+    "Etalking Kids": "https://www.etalking.com.tw/",
+    "WUWOW Jr": "https://www.wuwow.tw/",
+}
+
+def off(name):
+    return f'<a href="{OFFICIAL_LINKS[name]}" target="_blank" rel="noopener">{name} 官網</a>'
+
+KIDS_ARTICLES = [
+    ("guide", "兒童線上英文怎麼挑？6 家平台對照表一次看懂", "師資、教材、上課型態、收費方式——先看懂 4 個挑選維度，再用一張對照表把 6 家平台的公開資訊攤開比。"),
+    ("vs", "OiKID vs TutorABC Junior：兩家差在哪、適合誰", "一家是台灣本土專做兒童，一家是大品牌兒少線。從師資、選老師、教材、價格公開度到退費，逐項對照，幫你判斷哪家適合你家孩子。"),
+    ("price", "兒童線上英文價格與退費規則整理", "為什麼官網都查不到完整價目？三種收費方式怎麼比、各家有公開的價格資訊、退費規則，以及簽約前一定要問清楚的 6 件事。"),
+    ("faq", "兒童線上英文家長常見問題 FAQ", "幾歲可以開始、菲師好不好、能不能固定老師、試聽要注意什麼、兄弟姊妹能不能共用——家長最常問的 10 個問題一次整理。"),
+]
+
+def page_kids_channel():
+    items = ""
+    meta = {u.split("/")[-1].replace(".html", ""): m for u, _c, _t, _k, m in PAGES}
+    for slug, t, d in KIDS_ARTICLES:
+        items += f'<a class="feeditem" href="{slug}.html">{thumb(KIDS_SLUG_IMG.get(slug, ""), "../")}<div class="ftxt"><h3>{t}</h3><p>{d}</p><p class="fmeta">閱讀時間 {meta.get(slug, "約 5 分鐘")}</p></div></a>'
+    offcards = ""
+    offdesc = {
+        "OiKID": "台灣本土兒童專科，3–15 歲，一對一＋團體課。",
+        "TutorABC Junior": "TutorABC 兒少品牌（tutorJr），4–18 歲，牛津／國家地理授權教材。",
+        "Native Camp": "月費吃到飽、免預約立即上課，有兒童教材，全齡可用。",
+        "51Talk": "菲律賓外師為主、一對一短時高頻，3–15 歲。",
+        "Etalking Kids": "英美加澳外師、一對一進度班，4–12 歲，美國小學教材。",
+        "WUWOW Jr": "一對一＋點數制，4–12 歲，有 7 天鑑賞期。",
+    }
+    for name, url in OFFICIAL_LINKS.items():
+        offcards += f'<a class="card" href="{url}" target="_blank" rel="noopener"><h3>{name}</h3><p>{offdesc[name]}</p></a>'
+    body = f"""
+<p class="crumb"><a href="../">首頁</a> ／ 親子學習</p>
+<div class="hero"><h1>👨‍👩‍👧 親子學習</h1>
+<p>第一個主題是「兒童線上英文」。家長挑平台最頭痛的不是選擇太少，而是每家的師資講法、收費方式、退費規則都寫在不同地方，官網還常常不標價。這個頻道把各平台的公開資訊整理成對照表與白話說明，讓你先做完功課、再帶孩子去試聽。</p>
+{fig("kids", "../")}
+<p class="note" style="margin-top:10px">本站的做法：只整理公開資訊並標明查閱日期，不假裝上過課。日後實際試聽各平台後，會再補上標明日期的「實測心得」欄位。</p></div>
+<h2 class="sec">先讀這 4 篇</h2>
+<div class="feed">{items}</div>
+<h2 class="sec">平台官網快速連結</h2>
+<div class="grid">{offcards}</div>
+"""
+    w("kids/index.html", head("親子學習", "兒童線上英文怎麼挑：6 家平台師資、教材、價格、退費對照整理，OiKID、TutorABC Junior、Native Camp、51Talk、Etalking Kids、WUWOW Jr。", 1, "kids") + body + foot(1))
+
+def kids_article(slug, title, desc, body_html):
+    body = f"""
+<p class="crumb"><a href="../">首頁</a> ／ <a href="./">親子學習</a> ／ {title}</p>
+<article class="post">
+<h1>{title}</h1>
+<p class="meta">好康生活・親子學習頻道｜本篇為公開資訊整理（2026-10-24 查閱各平台官網與公開資料），不是實際上課心得；價格與規則以各平台官網與正式合約為準。</p>
+{fig(KIDS_SLUG_IMG.get(slug, ""), "../")}
+{body_html}
+<div class="tip"><b>看完接著讀：</b> <a href="./">回親子學習頻道</a> 看其他篇：總對照表、OiKID vs TutorABC Junior、價格與退費、家長 FAQ，四篇一起看，挑平台的功課就做滿了。</div>
+</article>
+<h2 class="sec">熱門閱讀</h2>
+<div class="hero"><ol class="ranklist">__HOT__</ol></div>
+"""
+    others = [(u.split("/")[-1], t) for u, c, t, _k, _m in PAGES if c == "親子學習" and not u.endswith(slug + ".html")]
+    hot = "".join(f'<li><a href="{u}">{t}</a></li>' for u, t in others)
+    body = body.replace("__HOT__", hot)
+    w(f"kids/{slug}.html", head(title, desc, 1, "kids") + body + foot(1))
+
+def kids_articles():
+    kids_article("guide", "兒童線上英文怎麼挑？6 家平台對照表一次看懂",
+    "OiKID、TutorABC Junior、Native Camp、51Talk、Etalking Kids、WUWOW Jr 六家兒童線上英文的師資、教材、上課型態、收費與試聽對照，先看懂 4 個挑選維度再對號入座。",
+    """
+<p>幫孩子挑線上英文，資訊多到眼花：每家都說自家師資好、教材棒，但收費方式和退費規則卻很少直接寫在官網上。與其一家一家慢慢翻，先用這篇把「挑選的維度」和「6 家平台的公開資訊」一次看懂，再帶孩子去試聽驗證。</p>
+<h2>先搞懂 4 個挑選維度</h2>
+<ol>
+<li><b>師資型態</b>：母語外師（英美加澳）、雙語師（中英）、菲律賓外師是三種主流。沒有哪種絕對最好，差別在口音環境、互動方式與價格帶，先想清楚你最在意的是什麼。</li>
+<li><b>教材系統</b>：有分級系統（如對應 CEFR、美國 CCSS、劍橋或台灣 108 課綱）的教材，學習路徑比較清楚；用國際出版社授權教材（牛津、國家地理等）的，內容來源明確。</li>
+<li><b>上課型態</b>：一對一專注度高；小班有同儕互動；免預約制彈性最大但老師不固定。低年級孩子多半需要一對一的引導。</li>
+<li><b>收費方式</b>：堂數套裝制、月費訂閱制、點數制三種，邏輯完全不同（細節見本頻道「價格與退費」專篇）。只比單堂價格，很容易比錯。</li>
+</ol>
+<h2>6 家平台對照表（公開資訊整理）</h2>
+<table class="cmp"><tr><th>平台</th><th>師資</th><th>上課型態</th><th>適合年齡</th><th>收費方式</th><th>免費試聽</th></tr>
+<tr><td><b>OiKID</b></td><td>母語外師＋雙語師，可自選老師</td><td>一對一 25 分鐘＋團體主題課</td><td>3–15 歲</td><td>堂數套裝（官網未公開定價）</td><td>有，1 堂一對一</td></tr>
+<tr><td><b>TutorABC Junior</b></td><td>母語外師＋雙語師，系統媒合</td><td>一對一／1 對 4 小班，25 或 45 分鐘</td><td>4–18 歲</td><td>套裝制，兒少約 $300/堂起（官網）</td><td>有，免費體驗課</td></tr>
+<tr><td><b>Native Camp</b></td><td>140 多國講師（含母語講師認定）</td><td>一對一，免預約立即上課，5–25 分鐘</td><td>全齡（有兒童教材）</td><td>月費吃到飽，年繳平均 $1,999/月（官網）</td><td>有，7 天免費體驗</td></tr>
+<tr><td><b>51Talk</b></td><td>菲律賓外師為主＋歐美外師</td><td>一對一 25 分鐘，短時高頻</td><td>3–15 歲</td><td>堂數套裝（官網未公開定價）</td><td>有，1 堂一對一</td></tr>
+<tr><td><b>Etalking Kids</b></td><td>英美加澳外師（證照認證）</td><td>一對一進度班 25 分鐘</td><td>4–12 歲</td><td>官網未公開，需洽詢</td><td>有，免費試讀＋分級測驗</td></tr>
+<tr><td><b>WUWOW Jr</b></td><td>美、菲、南非外師，部分雙語</td><td>一對一 25 分鐘</td><td>4–12 歲</td><td>點數制（官網未公開完整價目）</td><td>有，體驗課＋程度分析</td></tr></table>
+<p class="note">資料來源：各平台官網與公開資料，2026-10-24 查閱。標「官網未公開」者，代表官網沒有放完整價目，需預約試聽後由顧問報價——這是這個行業的常態，不是單一平台的問題。</p>
+<h2>依你家的情況對號入座</h2>
+<ul>
+<li><b>想要母語外師＋有系統的教材路徑</b>：先看 TutorABC Junior（牛津、國家地理授權教材，4 歲一路到 18 歲）、OiKID（自編教材對應美國 CCSS 與台灣課綱，專做 3–15 歲）、Etalking Kids（美國小學課本＋CEFR 分級，進度班制）。</li>
+<li><b>預算優先、想讓孩子高頻開口</b>：51Talk（菲師一對一、短時高頻）和 Native Camp（月費吃到飽、上越多越划算）是兩個不同方向的省錢解法。</li>
+<li><b>不想綁長約、想隨時停</b>：Native Camp 是月費訂閱制，可隨時退會；WUWOW Jr 有 7 天鑑賞期全額退費（依公開資訊，簽約前以合約為準）。</li>
+<li><b>家有兩個孩子</b>：OiKID 有雙寶共用方案（一個方案兩寶分配堂數）；Native Camp 一個帳號只能一人使用，家庭成員要另外辦家庭方案。</li>
+<li><b>孩子坐不住、時間很難固定</b>：Native Camp 免預約、5 分鐘也能上；其他平台多為預約制，先確認取消與改期規則（TutorABC 官網載明開課前 4 小時可免費改期）。</li>
+</ul>
+<h2>最後一關：一定要試聽</h2>
+<p>對照表只能幫你縮小範圍，適不適合，孩子坐上去上 25 分鐘就知道。建議至少試聽 2 家，觀察：孩子願不願意開口、老師會不會等孩子回答、教材畫面清不清楚。試聽前先看本頻道的「價格與退費」篇，把簽約前要問的問題列好；常見疑問則收在「家長 FAQ」篇。</p>
+<div class="tip"><b>本站聲明：</b>本篇所有資訊皆為公開資料整理，我們還沒有實際上過這些平台的課，所以不寫「實測心得」。日後實際試聽後，會在各篇補上標明日期的實測欄位。平台連結：__OFFICIALS__。</div>
+""".replace("__OFFICIALS__", "、".join(off(n) for n in OFFICIAL_LINKS)))
+
+    kids_article("vs", "OiKID vs TutorABC Junior：兩家差在哪、適合誰",
+    "OiKID 與 TutorABC Junior（tutorJr）逐項對照：品牌背景、師資與選老師方式、教材、上課型態、價格公開度、退費與試聽，幫你判斷哪家適合你家孩子。",
+    """
+<p>家長做功課時最常撞在一起比較的，就是這兩家：一家是台灣本土、專做兒童的 OiKID；一家是大型線上教育品牌 TutorABC 旗下的兒少線 TutorABC Junior（就是以前常聽到的 tutorJr）。兩家都主打母語外師與系統教材，但組織方式差很多。這篇不下「誰比較好」的結論，而是把差異攤開，讓你對照自家需求選。</p>
+<h2>逐項對照</h2>
+<table class="cmp"><tr><th>項目</th><th>OiKID</th><th>TutorABC Junior</th></tr>
+<tr><td>品牌背景</td><td>2016 年創立於台北，專做兒童線上英文</td><td>TutorABC 旗下兒少品牌，成人與兒少課程都有</td></tr>
+<tr><td>適合年齡</td><td>3–15 歲</td><td>4–18 歲（幼兒 Kids 線主打 4–6 歲）</td></tr>
+<tr><td>師資</td><td>英美加澳等母語外師＋中英雙語師，具 TEFL／TESOL 認證</td><td>全球外師＋雙語師，官網載明師資錄取率約 3–5%、具教學證照</td></tr>
+<tr><td>選老師方式</td><td>家長可自選老師、可固定（熱門老師要提早約）</td><td>系統依程度與需求媒合（DCGS），課後可以訂選喜歡的老師</td></tr>
+<tr><td>教材</td><td>自編教材，對應美國 CCSS 課綱與台灣課綱，8 級分級</td><td>牛津、劍橋、國家地理等出版社授權教材，CEFR 分級</td></tr>
+<tr><td>上課型態</td><td>一對一精品課 25 分鐘＋「摩天輪」團體主題課</td><td>一對一（25／45 分鐘）＋1 對 4 小班；24 小時可訂課</td></tr>
+<tr><td>家長功能</td><td>課程錄影回放、親子陪讀</td><td>家長遠端旁聽、課後錄影回放、學習紀錄查詢</td></tr>
+<tr><td>價格公開度</td><td>官網未公開定價，試聽後由顧問依方案報價</td><td>官網 FAQ 載明兒少約 $300/堂起，實際依專案報價</td></tr>
+<tr><td>退費</td><td>官網未公開細則，簽約前需向顧問確認計算方式</td><td>官網載明：依合約啟用時間與已使用堂數計算退款</td></tr>
+<tr><td>免費試聽</td><td>1 堂一對一體驗課</td><td>免費體驗課（先註冊做問卷與程度測驗，顧問再安排）</td></tr></table>
+<p class="note">資料來源：兩平台官網與公開資料，2026-10-24 查閱；未公開的項目不猜測、不引用來路不明的數字。</p>
+<h2>適合誰</h2>
+<h3>比較適合 OiKID 的情況</h3>
+<ul>
+<li>孩子年齡在 3–15 歲，想要「專做兒童」的平台介面與教材節奏。</li>
+<li>希望自己挑老師、固定老師，陪孩子慢慢建立熟悉感。</li>
+<li>家有兩個孩子，想用雙寶共用方案分配堂數。</li>
+<li>喜歡有團體主題課讓孩子換個上課氣氛。</li>
+</ul>
+<h3>比較適合 TutorABC Junior 的情況</h3>
+<ul>
+<li>希望教材是國際出版社授權（牛津、國家地理），並且一路從幼兒學到高中（4–18 歲）不用換平台。</li>
+<li>作息不固定，需要 24 小時都能訂課。</li>
+<li>想讓孩子偶爾上小班課跟同儕互動，或家長想用旁聽功能掌握上課狀況。</li>
+<li>之後可能接檢定（全民英檢、多益等）或升學加強課程，同品牌內有對應課程線。</li>
+</ul>
+<h2>試聽時，觀察這 5 件事</h2>
+<ol>
+<li>孩子卡住時，老師是直接給答案，還是會等、會換個方式引導？</li>
+<li>25 分鐘裡，孩子實際開口的次數多不多？</li>
+<li>教材畫面與互動方式，孩子跟不跟得上、會不會分心？</li>
+<li>下課後孩子願不願意「再上一次」？這是最誠實的指標。</li>
+<li>顧問報價時，把總價、堂數、使用期限、退費算法一次問清楚（清單見「價格與退費」篇）。</li>
+</ol>
+<div class="tip"><b>本站聲明：</b>本篇為公開資訊整理，我們尚未實際上過這兩家的課，不寫假心得。日後實際試聽後，會補上標明日期的實測欄位。先去官網看看：__OFFICIALS__。</div>
+""".replace("__OFFICIALS__", off("OiKID") + "、" + off("TutorABC Junior")))
+
+    kids_article("price", "兒童線上英文價格與退費規則整理",
+    "兒童線上英文三種收費方式（堂數套裝、月費訂閱、點數制）怎麼比、各平台有公開的價格資訊、退費規則整理，以及簽約前必問的 6 件事。",
+    """
+<p>兒童線上英文最讓家長困惑的就是價格：打開官網，多半只看到「預約免費試聽」，看不到完整價目。這不是單一平台的問題，而是這個行業普遍採「試聽後由顧問依方案報價」的模式。所以這篇做兩件事：把有公開的資訊整理出來；沒公開的，教你簽約前問到答案再簽。</p>
+<h2>三種收費方式，先看懂再比價</h2>
+<h3>1. 堂數套裝制（OiKID、TutorABC Junior、51Talk、Etalking Kids）</h3>
+<p>一次買一個堂數包（如 100 堂），在期限內上完。比價重點不是總價，而是：期限多長（上不完會不會過期）、單堂換算時「贈送堂數」算不算進去、請假與停課規則。買越多單價越低，但前提是孩子真的會持續上。</p>
+<h3>2. 月費訂閱制（Native Camp）</h3>
+<p>每月固定費用、堂數吃到飽，不綁長約。比價重點是：你家一個月實際能上幾堂？上得少，單堂成本反而高；預約指定老師的金幣是另外付費的，要一起算。</p>
+<h3>3. 點數制（WUWOW Jr）</h3>
+<p>買點數、依課程類型扣點。比價重點是：想上的課型一堂扣幾點、點數有沒有期限、最低要買多少點。</p>
+<h2>各平台價格公開資訊對照</h2>
+<table class="cmp"><tr><th>平台</th><th>公開的價格資訊</th><th>備註</th></tr>
+<tr><td>TutorABC Junior</td><td>官網 FAQ：兒少課程約 $300/堂起</td><td>實際費用依專案報價，簽約前請顧問出完整試算</td></tr>
+<tr><td>Native Camp</td><td>官網：月費制吃到飽，年繳折扣平均每月 $1,999</td><td>月繳金額以官網公告為準；預約金幣另購</td></tr>
+<tr><td>OiKID</td><td>官網未公開定價</td><td>家長公開彙整：套裝總價約 $62,400 起、精品課換算約 $380–450/堂（非官方數字，僅供抓預算，實際以顧問報價為準）</td></tr>
+<tr><td>51Talk</td><td>官網未公開定價</td><td>家長公開彙整：套裝平均約 $250/堂，買越多越便宜（非官方數字，僅供參考）</td></tr>
+<tr><td>Etalking Kids</td><td>官網未公開定價</td><td>需預約試讀後洽詢顧問</td></tr>
+<tr><td>WUWOW Jr</td><td>官網未公開完整價目</td><td>家長公開彙整：單堂約 $300–650（非官方數字，僅供參考）</td></tr></table>
+<h2>退費規則整理</h2>
+<table class="cmp"><tr><th>平台</th><th>退費規則（公開資訊）</th></tr>
+<tr><td>TutorABC Junior</td><td>官網載明：依合約啟用時間、已使用堂數計算退款</td></tr>
+<tr><td>Native Camp</td><td>月費制，可隨時線上退會、不綁長約；注意退會即終止使用，且 7 天體驗期滿未取消會自動轉付費</td></tr>
+<tr><td>WUWOW Jr</td><td>公開資訊：7 天鑑賞期內可全額退費；提供停課（最長半年）與課程轉讓，細節以合約為準</td></tr>
+<tr><td>OiKID</td><td>官網未公開細則，簽約前務必向顧問索取退費計算方式並留存合約</td></tr>
+<tr><td>51Talk</td><td>官網未公開細則，同上</td></tr>
+<tr><td>Etalking Kids</td><td>官網 FAQ 未載明，同上</td></tr></table>
+<p>提醒：線上課程的退費多半依合約約定與補習服務相關規定計算，「已上堂數」常以定價（而非折扣後單價）計算，這是簽約前最值得問清楚的一條。</p>
+<h2>簽約前必問的 6 件事</h2>
+<ol>
+<li>總價多少？含幾堂？其中幾堂是贈送的？贈課在退費時怎麼算？</li>
+<li>使用期限多長？到期沒上完怎麼辦？能不能申請展延或停課？</li>
+<li>退費公式是什麼？請顧問直接試算一個例子（例如上 20 堂後退費能拿回多少）。</li>
+<li>分期是跟平台分，還是向銀行／融資公司貸款？提前清償或退費時，分期怎麼處理？</li>
+<li>請假、改期、取消的規則（最晚幾小時前、扣不扣堂數）？</li>
+<li>合約能不能帶回家看完再簽？合理的業者不會要求當場簽約付款。</li>
+</ol>
+<div class="tip"><b>一句話總結：</b>不要用「最低單堂價」做決定。用「總價 ÷ 你家真的會上完的堂數」估成本，再把退費規則問到有數字，才是完整的比價。本站連結皆連向各平台官網，無合作關係揭露需求；日後若有合作連結，會在連結旁清楚標示。</div>
+""")
+
+    kids_article("faq", "兒童線上英文家長常見問題 FAQ",
+    "兒童線上英文 FAQ：幾歲可以開始、母語外師與菲師怎麼選、能不能固定老師、試聽注意事項、設備需求、兄弟姊妹共用與退費，10 個家長最常問的問題。",
+    """
+<p>挑兒童線上英文時，家長問的問題其實高度重複。這篇把 10 個最常見的問題一次整理，答案都來自各平台的公開資訊；需要細節的，會指到本頻道的專篇。</p>
+<h3>Q1：幾歲可以開始上線上英文？</h3>
+<p>各平台的招生下限多在 3–4 歲（OiKID 3 歲、TutorABC Junior 與 Etalking Kids、WUWOW Jr 約 4 歲）。但能不能「坐得住 25 分鐘、願意跟螢幕裡的老師互動」比年齡更關鍵，建議先用免費試聽測試孩子的反應，再決定要不要開始。</p>
+<h3>Q2：一定要選母語外師嗎？菲律賓老師好嗎？</h3>
+<p>兩種都有人選，差別在學習目標與預算：母語外師的口音環境最接近英語母語國家；菲律賓外師的課程價格帶較低、一對一堂數可以排得更密，對「先敢開口、多練習」的目標很實用。與其糾結國籍，不如試聽時實際聽老師的發音與引導方式，並確認平台的師資認證（如 TESOL／TEFL）與篩選機制。</p>
+<h3>Q3：可以固定同一位老師嗎？</h3>
+<p>各家機制不同：OiKID 可自選老師、可固定（熱門老師要提早預約）；TutorABC Junior 以系統媒合為主、課後可訂選喜歡的老師；Etalking Kids 是進度班制，由平台依進度安排；Native Camp 是免預約制，老師不固定，想指定老師要用金幣預約。孩子比較慢熟的，優先考慮能固定老師的平台。</p>
+<h3>Q4：試聽真的免費嗎？要注意什麼？</h3>
+<p>本篇整理的 6 家都有免費試聽或試讀（多為 1 堂一對一；Native Camp 是 7 天體驗期）。兩個提醒：①Native Camp 的 7 天體驗需綁定付款方式做驗證，期滿前沒取消會自動轉付費，記得設提醒；②試聽後顧問來電說明方案是正常流程，不用有壓力，先把問題清單準備好再談價格。</p>
+<h3>Q5：上課需要什麼設備？</h3>
+<p>電腦或平板＋穩定網路＋耳機麥克風就能上。低年級孩子建議用螢幕較大的設備（筆電或平板），教材看得清楚、操作也簡單；Etalking 官網建議使用有線網路確保連線品質。上課前先做一次設備與環境測試，多數平台試聽前都會協助確認。</p>
+<h3>Q6：一週上幾堂比較好？</h3>
+<p>常見的安排是每週 2–3 堂、每次 25 分鐘的「短時高頻」，比一週一次長時間更容易維持語感與習慣。實際頻率還是要配合孩子的作息與其他才藝，先求穩定持續，再求堂數。</p>
+<h3>Q7：家長可以旁聽或看上課回放嗎？</h3>
+<p>多數平台提供課程錄影回放（OiKID、51Talk、Etalking Kids 都有）；TutorABC Junior 有家長遠端旁聽功能；WUWOW Jr 提供家長匿名旁觀。選平台時可以把「看不看得到上課狀況」列入比較，低年級尤其重要。</p>
+<h3>Q8：兄弟姊妹可以共用一個帳號或方案嗎？</h3>
+<p>OiKID 有雙寶共用方案，一個方案的堂數可由兩個孩子分配使用；Native Camp 明確規定一個帳號只能一人使用，家人要用需另辦家庭方案；其他平台多為一人一帳號，購買前先向顧問確認。</p>
+<h3>Q9：買了之後不適合，退費怎麼算？</h3>
+<p>各家規則差異大：TutorABC 官網載明依合約啟用時間與已使用堂數計算；WUWOW Jr 有 7 天鑑賞期；Native Camp 月費制可隨時退會。其他平台官網未公開細則，簽約前務必問清楚（完整整理與必問清單見「價格與退費」篇）。</p>
+<h3>Q10：線上英文跟實體補習班怎麼選？</h3>
+<p>沒有標準答案，看家庭條件：線上省下接送時間、排課彈性大、一對一開口機會多；實體有同儕氛圍與老師現場管理。也有家庭採混合制（平日線上維持頻率、假日實體或活動課）。先想清楚你家最缺的是「時間彈性」還是「同儕環境」，再對照本頻道的總對照表挑平台。</p>
+<div class="tip"><b>還沒決定？</b>先看 <a href="guide.html">總對照表</a> 縮小到 2 家，各帶孩子試聽一次——孩子的反應會幫你做最後的決定。本站各篇皆為公開資訊整理，實際試聽心得日後補上。</div>
+""")
+
 # ---------------- 民生查詢工具頁 ----------------
 TAIPOWER_LINKS = [
     ("台中區營業處", "https://service.taipower.com.tw/branch/d105/xcnotice?xsmsid=0M242581317628413301"),
@@ -626,15 +856,18 @@ def main():
     page_search()
     page_home_channel()
     page_daily_channel()
+    page_kids_channel()
     for slug, _i, _n, _d, live in CHANNELS:
         if not live:
             page_soon(slug)
     articles()
+    kids_articles()
     page_outage()
     page_vegprice()
     page_garbage()
-    urls = ["", "search.html", "home/", "daily/", "daily/outage.html", "daily/vegprice.html", "daily/garbage.html"] \
+    urls = ["", "search.html", "home/", "daily/", "daily/outage.html", "daily/vegprice.html", "daily/garbage.html", "kids/"] \
         + [f"home/{s}.html" for s, _t, _d in HOME_ARTICLES] \
+        + [f"kids/{s}.html" for s, _t, _d in KIDS_ARTICLES] \
         + [f"{s}/" for s, _i, _n, _d, live in CHANNELS if not live]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' \
         + "".join(f"<url><loc>{BASE}/{u}</loc></url>\n" for u in urls) + "</urlset>\n"
