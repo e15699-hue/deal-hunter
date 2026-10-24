@@ -139,17 +139,26 @@ function drawRoadLine(line, name){
   pl.bindPopup('<b>' + esc(name) + '</b><br><small>路段示意線（開放街圖路網，僅供參考）</small>');
   roadLayers.push(pl);
 }
+const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter', 'https://overpass.private.coffee/api/interpreter'];
 async function overpassRoad(name, lat, lng){
   const q = '[out:json][timeout:25];way["name"="' + name + '"]["highway"](around:10000,' + lat + ',' + lng + ');out geom;';
-  const r = await fetch('https://overpass-api.de/api/interpreter', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:'data=' + encodeURIComponent(q)});
-  if (!r.ok) return null;
-  const d = await r.json();
-  let best = null;
-  (d.elements||[]).forEach(el => {
-    const g = el.geometry || [];
-    if (g.length >= 2) { const line = g.map(p => [p.lat, p.lon]); if (!best || line.length > best.length) best = line; }
-  });
-  return best;
+  for (const ep of OVERPASS) {
+    try {
+      const ctl = new AbortController();
+      const t = setTimeout(() => ctl.abort(), 15000);
+      const r = await fetch(ep, {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:'data=' + encodeURIComponent(q), signal: ctl.signal});
+      clearTimeout(t);
+      if (!r.ok) continue;
+      const d = await r.json();
+      let best = null;
+      (d.elements||[]).forEach(el => {
+        const g = el.geometry || [];
+        if (g.length >= 2) { const line = g.map(p => [p.lat, p.lon]); if (!best || line.length > best.length) best = line; }
+      });
+      if (best) return best;
+    } catch(e){ /* 換下一個鏡像站 */ }
+  }
+  return null;
 }
 async function showRoads(it){
   if (!map || it.lat == null) return;

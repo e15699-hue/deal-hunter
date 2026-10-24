@@ -51,23 +51,36 @@ def extract_roads(samples):
     return [r for r, _ in cnt.most_common(6)]
 
 
+OVERPASS = ["https://overpass-api.de/api/interpreter",
+            "https://overpass.kumi.systems/api/interpreter",
+            "https://overpass.private.coffee/api/interpreter"]
+
+
 def overpass_road(name, lat, lng, timeout=40):
     q = (f'[out:json][timeout:25];'
          f'way["name"="{name}"]["highway"](around:10000,{lat},{lng});'
          f'out geom;')
-    req = urllib.request.Request("https://overpass-api.de/api/interpreter",
-                                 data=urllib.parse.urlencode({"data": q}).encode(),
-                                 headers={"User-Agent": "HowkangLife/1.0"})
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-        d = json.load(resp)
-    best = None
-    for el in d.get("elements", []):
-        geom = el.get("geometry") or []
-        if len(geom) >= 2:
-            line = [[g["lat"], g["lon"]] for g in geom]
-            if best is None or len(line) > len(best):
-                best = line
-    return best
+    last_err = None
+    for ep in OVERPASS:
+        try:
+            req = urllib.request.Request(ep,
+                                         data=urllib.parse.urlencode({"data": q}).encode(),
+                                         headers={"User-Agent": "HowkangLife/1.0"})
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                d = json.load(resp)
+            best = None
+            for el in d.get("elements", []):
+                geom = el.get("geometry") or []
+                if len(geom) >= 2:
+                    line = [[g["lat"], g["lon"]] for g in geom]
+                    if best is None or len(line) > len(best):
+                        best = line
+            if best:
+                return best
+            return None
+        except Exception as e:
+            last_err = e
+    raise RuntimeError(f"overpass all endpoints failed: {last_err}")
 
 
 def main():
@@ -112,7 +125,7 @@ def main():
                 if key in cache or done >= precompute:
                     continue
                 try:
-                    line = overpass_road(road, dist["lat"], dist["lng"])
+                    line = overpass_road(road, dist["lat"], dist["lng"], timeout=15)
                     if line:
                         cache[key] = line
                         print(f"cached {key} ({len(line)} pts)")
