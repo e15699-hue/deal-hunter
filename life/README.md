@@ -11,7 +11,7 @@
 
 ## 架構
 - `build.py`：母版產生器，改頁面改這裡，執行 `python3 build.py` 產出全站靜態檔（相對路徑，根目錄與 /life/ 子路徑都能跑）。
-- `tools/fetch_outages.py`：抓台電全台 20 個區營業處計畫性停電公告，產出 `daily/outages.json`（完整版）、`daily/outages/` 網站精簡快照（未來 14 天、每片 ≤55KB）與 `map/outages_map.json`（地圖用鄉鎮市區彙總）。
+- `tools/fetch_outages.py`：抓台電全台 20 個區營業處計畫性停電公告，產出 `daily/outages.json`（完整版）、`daily/outages/` 網站精簡快照（未來 14 天、每片 ≤55KB）與 `map/outages_{north,central,south,east}.json`（地圖用鄉鎮市區彙總，依縣市分 4 片以符合推送單檔上限，地圖頁合併讀取）。
 - 🗺️ **國家資訊地圖**（2026-10-24 使用者指示，點子 #37 整併）：母版 `map_template.html`（獨立頁，不依賴整站框架，App WebView 可直接套用 `map.html`；網址參數 `?layers=trails,outages,water` 預選圖層、`?q=` 預帶搜尋），`build.py` 的 page_map() 負責產出。圖層資料統一格式（類別、名稱、地點、狀態、來源、更新時間），未來新政府公告照同格式新增圖層即可。
   - 圖層與腳本：🏔️ 步道 `tools/fetch_trails.py`（山林悠遊網步道頁即時狀態＋Nominatim 座標快取；目錄 `tools/trail_catalog.json`）；💡 停電 `tools/fetch_outages.py`（見上）；💧 停水 `tools/fetch_water.py`（台水停水公告 API，範圍多邊形取中心點＋簡化外框）。
   - 座標一律來自官方範圍或 OSM 回傳，不手寫；狀態抓不到時標「查無最新公告」，不編造。

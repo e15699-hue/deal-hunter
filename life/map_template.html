@@ -71,7 +71,7 @@ footer{border-top:1px solid #F3D9E2;background:#fff;padding:20px 16px;color:#616
 const FW = s => (s||'').replace(/[０-９]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0));
 const params = new URLSearchParams(location.search);
 const LAYERS = {trails:{label:'🏔️ 步道',file:'map/trails.json',on:true},
-                outages:{label:'💡 停電',file:'map/outages_map.json',on:true},
+                outages:{label:'💡 停電',files:['map/outages_north.json','map/outages_central.json','map/outages_south.json','map/outages_east.json'],on:true},
                 water:{label:'💧 停水',file:'map/water.json',on:true}};
 if (params.get('layers') || params.get('layer')) {
   const want = (params.get('layers') || params.get('layer')).split(',').map(s=>s.trim());
@@ -186,7 +186,16 @@ function drawMarkers(){
 function refresh(){ render(); drawMarkers(); }
 async function load(){
   const jobs = Object.entries(LAYERS).map(async ([k, v]) => {
-    try { const r = await fetch(v.file); DATA[k] = await r.json(); }
+    try {
+      if (v.files) {  // 停電分 4 個地區分片（單檔過大無法推送），讀取後合併
+        const parts = await Promise.all(v.files.map(async f => (await fetch(f)).json()));
+        DATA[k] = {generated_at: parts[0].generated_at, source: parts[0].source,
+                   total_items: parts.reduce((s, p) => s + (p.total_items||0), 0),
+                   districts: parts.flatMap(p => p.districts||[])};
+      } else {
+        const r = await fetch(v.file); DATA[k] = await r.json();
+      }
+    }
     catch(e){ DATA[k] = null; }
   });
   await Promise.all(jobs);

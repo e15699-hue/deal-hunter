@@ -160,12 +160,26 @@ def write_map_snapshot(payload):
                     "samples": b["samples"],
                     "lat": loc[0] if loc else None, "lng": loc[1] if loc else None})
     save_cache(cache)
-    with open(os.path.join(base, "outages_map.json"), "w", encoding="utf-8") as f:
-        json.dump({"source": payload["source"], "generated_at": payload["generated_at"],
-                   "total_items": sum(b["count"] for b in out),
-                   "districts": out}, f, ensure_ascii=False)
+    # 依縣市分 4 個分片（單檔 199KB 超過 push_files 單次上限，必須分片推送；地圖頁會合併讀取）
+    SHARDS = {"north": {"基隆市", "台北市", "新北市", "桃園市", "新竹市", "新竹縣", "宜蘭縣"},
+              "central": {"苗栗縣", "台中市", "彰化縣", "南投縣", "雲林縣"},
+              "south": {"嘉義市", "嘉義縣", "台南市", "高雄市", "屏東縣"},
+              "east": {"花蓮縣", "台東縣", "澎湖縣", "金門縣", "連江縣"}}
+    by_shard = {k: [] for k in SHARDS}
+    for d in out:
+        placed = False
+        for k, counties in SHARDS.items():
+            if d["county"] in counties:
+                by_shard[k].append(d); placed = True; break
+        if not placed:
+            by_shard["north"].append(d)
+    for k, ds in by_shard.items():
+        with open(os.path.join(base, f"outages_{k}.json"), "w", encoding="utf-8") as f:
+            json.dump({"source": payload["source"], "generated_at": payload["generated_at"],
+                       "total_items": sum(x["count"] for x in ds),
+                       "districts": ds}, f, ensure_ascii=False)
     located = sum(1 for b in out if b["lat"] is not None)
-    print(f"map snapshot: {len(out)} 區，{located} 區有座標 → map/outages_map.json", file=sys.stderr)
+    print(f"map snapshot: {len(out)} 區，{located} 區有座標 → map/outages_north/central/south/east.json", file=sys.stderr)
 
 def write_web_snapshot(payload):
     """網站用精簡快照：未來 14 天、每區處一檔、地區文字截 220 字（全文見台電官方頁）。
