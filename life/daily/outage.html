@@ -11,7 +11,7 @@
 <body>
 <header class="site"><div class="hwrap">
 <a class="logo" href="../">好康生活<small>新聞不報、但你天天要查的生活大小事</small></a>
-<nav class="main"><a href="../home/">🏠 居家裝修</a><a href="../daily/" class="on">💧 民生查詢</a><a href="../senior/">👵 銀髮 3C</a><a href="../health/">🏥 健康查詢</a><a href="../study/">📚 學習考照</a><a href="../ai/">🤖 AI 工具</a><a href="../car/">🚗 愛車生活</a></nav>
+<nav class="main"><a href="../search.html">🔍 搜尋</a><a href="../home/">🏠 居家裝修</a><a href="../daily/" class="on">💧 民生查詢</a><a href="../senior/">👵 銀髮 3C</a><a href="../health/">🏥 健康查詢</a><a href="../study/">📚 學習考照</a><a href="../ai/">🤖 AI 工具</a><a href="../car/">🚗 愛車生活</a></nav>
 </div></header>
 <main>
 
@@ -57,6 +57,8 @@
 </div>
 <script>
 const FW = s => s.replace(/[０-９]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0));
+const qp = new URLSearchParams(location.search).get('q');
+if (qp) document.getElementById('q').value = qp;
 let DATA = null;
 fetch('outages/index.json').then(r => r.json()).then(async idx => {
   const sel = document.getElementById('b');
@@ -67,6 +69,7 @@ fetch('outages/index.json').then(r => r.json()).then(async idx => {
   const items = parts.flat().sort((a, b) => a.date < b.date ? -1 : 1);
   DATA = { generated_at: idx.generated_at, count: items.length, items };
   document.getElementById('stat').textContent = '資料整理時間：' + idx.generated_at + '｜未來 14 天共 ' + items.length + ' 筆公告｜輸入關鍵字開始查詢（地區文字為節錄，全文見台電官方頁）';
+  if (qp) document.getElementById('go').click();
 }).catch(() => { document.getElementById('stat').textContent = '資料載入失敗，請改至台電官方公告頁查詢。'; });
 document.getElementById('go').addEventListener('click', () => {
   const res = document.getElementById('res');
