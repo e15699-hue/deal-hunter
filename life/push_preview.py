@@ -54,7 +54,7 @@ def batches(contents):
 def push(batch, contents):
     args = {
         "owner": "e15699-hue", "repo": "deal-hunter", "branch": "main",
-        "message": "好康生活：新增親子學習頻道（點子 #35 兒童線上英文整理：頻道頁＋總對照／OiKID vs TutorABC Junior／價格退費／FAQ 共 4 篇）",
+        "message": "好康生活：新增親子學習頻道（兒童線上英文整理 4 篇）＋全站圖片改用台灣場景實圖",
         "files": [{"path": f"{REPO_PREFIX}/{p}", "content": contents[p]} for p in batch],
     }
     r = subprocess.run(
