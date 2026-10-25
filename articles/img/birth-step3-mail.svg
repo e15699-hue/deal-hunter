@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="步驟三：郵寄或臨櫃送件">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<circle cx="700" cy="70" r="34" fill="#F48FB1" opacity="0.55"/>
+<circle cx="80" cy="390" r="46" fill="#F48FB1" opacity="0.4"/>
+<g transform="translate(130,100)">
+<rect x="0" y="0" width="280" height="200" rx="12" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/>
+<path d="M0 12 L140 110 L280 12" fill="none" stroke="#D81B60" stroke-width="8" stroke-linejoin="round"/>
+<rect x="100" y="90" width="80" height="60" rx="8" fill="#FCE4EC" stroke="#D81B60" stroke-width="4"/>
+<text x="140" y="130" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="28" font-weight="900" fill="#AD1457">申請書</text>
+</g>
+<text x="460" y="180" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="64" font-weight="900" fill="#AD1457">郵寄或臨櫃</text>
+<text x="460" y="240" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="34" font-weight="700" fill="#880E4F">下載申請書填妥後送件</text>
+<text x="460" y="295" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="30" fill="#6D4C5E">郵寄或親送勞保局辦事處</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/>
+<text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">步驟 3／3　郵寄或臨櫃</text>
+</svg>

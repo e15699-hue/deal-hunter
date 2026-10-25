@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="步驟二：確認適用稅率">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<circle cx="700" cy="70" r="34" fill="#F48FB1" opacity="0.55"/>
+<circle cx="80" cy="390" r="46" fill="#F48FB1" opacity="0.4"/>
+<g>
+<rect x="90" y="90" width="280" height="240" rx="16" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/>
+<text x="230" y="170" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="64" font-weight="900" fill="#D81B60">2‰</text>
+<text x="230" y="225" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="32" font-weight="700" fill="#880E4F">自用住宅用地</text>
+<text x="230" y="275" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="26" fill="#6D4C5E">自己住＋有設籍＋未出租</text>
+<rect x="430" y="90" width="280" height="240" rx="16" fill="#FFFFFF" stroke="#B0BEC5" stroke-width="6"/>
+<text x="570" y="170" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="52" font-weight="900" fill="#78909C">10‰～55‰</text>
+<text x="570" y="225" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="32" font-weight="700" fill="#546E7A">一般用地累進稅率</text>
+<text x="570" y="275" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="26" fill="#6D4C5E">未申請優惠就按這個算</text>
+</g>
+<text x="400" y="385" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="30" font-weight="700" fill="#AD1457">同一筆地價，稅額最多差 5 倍以上</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/>
+<text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">步驟 2／4　確認適用稅率</text>
+</svg>

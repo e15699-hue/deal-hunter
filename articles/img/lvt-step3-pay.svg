@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="步驟三：選對管道繳納">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<circle cx="700" cy="70" r="34" fill="#F48FB1" opacity="0.55"/>
+<circle cx="80" cy="390" r="46" fill="#F48FB1" opacity="0.4"/>
+<g transform="translate(130,80)">
+<rect x="0" y="0" width="170" height="280" rx="24" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/>
+<rect x="20" y="26" width="130" height="150" rx="12" fill="#FCE4EC"/>
+<text x="85" y="105" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="56" font-weight="900" fill="#D81B60">QR</text>
+<text x="85" y="145" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="22" fill="#880E4F">掃碼繳稅</text>
+<rect x="40" y="200" width="90" height="26" rx="13" fill="#D81B60"/>
+</g>
+<g transform="translate(360,110)">
+<rect x="0" y="0" width="260" height="180" rx="16" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/>
+<text x="130" y="70" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="44" font-weight="900" fill="#AD1457">超商繳稅</text>
+<text x="130" y="120" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="28" fill="#6D4C5E">稅額 3 萬元以下可繳</text>
+<text x="130" y="158" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" fill="#880E4F">記得拿收據聯＋小白單</text>
+</g>
+<text x="400" y="380" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="30" font-weight="700" fill="#AD1457">繳納期限：11 月 1 日～11 月 30 日</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/>
+<text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">步驟 3／4　選對管道繳納</text>
+</svg>
