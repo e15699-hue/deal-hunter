@@ -52,6 +52,7 @@ footer{border-top:1px solid #F3D9E2;background:#fff;padding:20px 16px;color:#616
 <label><input type="checkbox" id="l-trails" checked> 🏔️ 步道開放／封鎖</label>
 <label><input type="checkbox" id="l-outages" checked> 💡 停電</label>
 <label><input type="checkbox" id="l-water" checked> 💧 停水／降壓</label>
+<label><input type="checkbox" id="l-blocks" checked> 🗺️ 鄉鎮區塊（直接點地圖上的區）</label>
 </div>
 <div class="searchbar"><input id="q" type="text" placeholder="搜尋：步道名、縣市、區鄉鎮、路名（例如：嘉明湖、北屯、工業區一路）"><button id="go">搜尋</button><button id="locate" style="background:#fff;color:#D81B60;border:2px solid #D81B60">📍 定位查附近</button></div>
 <p class="stat" id="stat">資料載入中…</p>
@@ -66,7 +67,7 @@ footer{border-top:1px solid #F3D9E2;background:#fff;padding:20px 16px;color:#616
 💧 停水：台灣自來水公司「停水公告查詢系統」官方 API（進行中公告，範圍多邊形取中心點）<br>
 突發停電請撥台電 1911；停水問題請撥台水 1910。未來其他政府公告（例如菜價、垃圾車異動）也會照同一格式新增為圖層。</p>
 </div>
-<footer><p><b>國家資訊地圖</b> 是 <a href="./">好康生活</a>（<a href="https://howkang.com.tw/" target="_blank" rel="noopener">好康網</a>姊妹站）的查詢工具。本頁可獨立開啟、嵌入 App WebView 使用；網址參數 <code>?layers=trails,outages,water</code> 可預選圖層，<code>?q=關鍵字</code> 可預帶搜尋，<code>?lat=&lng=&z=</code> 可定位到指定座標，<code>?near=1</code> 可開啟即自動定位（App 定位入口共用同一頁）。點停電標記會框出所在鄉鎮市區範圍並畫出公告路段線（路段線以開放街圖路網為準，僅供示意）。</p></footer>
+<footer><p><b>國家資訊地圖</b> 是 <a href="./">好康生活</a>（<a href="https://howkang.com.tw/" target="_blank" rel="noopener">好康網</a>姊妹站）的查詢工具。本頁可獨立開啟、嵌入 App WebView 使用；網址參數 <code>?layers=trails,outages,water</code> 可預選圖層，<code>?q=關鍵字</code> 可預帶搜尋，<code>?lat=&lng=&z=</code> 可定位到指定座標，<code>?near=1</code> 可開啟即自動定位（App 定位入口共用同一頁）。點停電標記會框出所在鄉鎮市區範圍並畫出公告路段線（路段線以開放街圖路網為準，僅供示意）。地圖一打開停在北回歸線一帶；直接點地圖上的鄉鎮區塊就能選到那一區，不用打字；地圖範圍只限台灣，無法滑到國外。</p></footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const FW = s => (s||'').replace(/[０-９]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0));
@@ -140,6 +141,7 @@ function drawRoadLine(line, name){
   roadLayers.push(pl);
 }
 const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter', 'https://overpass.private.coffee/api/interpreter'];
+let overpassReached = false; // 本輪是否有任一查詢站回應（用來區分「查無資料」與「連不上服務」）
 async function overpassRoad(name, lat, lng){
   const q = '[out:json][timeout:25];way["name"="' + name + '"]["highway"](around:10000,' + lat + ',' + lng + ');out geom;';
   for (const ep of OVERPASS) {
@@ -148,6 +150,7 @@ async function overpassRoad(name, lat, lng){
       const t = setTimeout(() => ctl.abort(), 15000);
       const r = await fetch(ep, {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:'data=' + encodeURIComponent(q), signal: ctl.signal});
       clearTimeout(t);
+      overpassReached = true;
       if (!r.ok) continue;
       const d = await r.json();
       let best = null;
@@ -164,6 +167,7 @@ async function showRoads(it){
   if (!map || it.lat == null) return;
   const roads = (it.roads || []).slice(0, 3);
   if (!roads.length) return;
+  overpassReached = false;
   const cache = await loadRoadsCache();
   let drawn = 0, tried = 0;
   for (const name of roads) {
@@ -175,7 +179,7 @@ async function showRoads(it){
     }
     if (line) { drawRoadLine(line, name); drawn++; }
   }
-  if (tried && !drawn) geonote('已框出範圍，但公告路段線查無開放街圖資料，範圍以公告文字為準。');
+  if (tried && !drawn) geonote(overpassReached ? '已框出範圍，但公告路段在開放街圖查無資料，範圍以公告文字為準。' : '已框出範圍，但路段查詢服務目前連不上，範圍以公告文字為準。');
 }
 async function selectOutage(it){
   if (!map || it.lat == null) return;
@@ -208,6 +212,48 @@ async function showNearby(lat, lng){
   } else {
     map.setView([it.lat, it.lng], 13);
     geonote('最近的步道：' + (it.name||'') + '（約 ' + near[0].d.toFixed(1) + ' 公里）。');
+  }
+}
+// ---- 地圖區塊點選（不用打字，直接點鄉鎮區塊） ----
+// 區塊圖層依目前視野內的縣市分檔載入（map/boundaries/bboxes.json 判斷視野交集），手機不一次全載。
+// 點區塊＝選到那一區：粗框＋清單過濾到該區；有停電公告就一併畫路段線，沒有就只顯示範圍。
+let blocksOn = true, blockGroups = {}, blockBboxes = null;
+async function loadBlocks(){
+  if (!map || !blocksOn) return;
+  if (blockBboxes === null) blockBboxes = await fetchJSON('map/boundaries/bboxes.json') || {};
+  const b = map.getBounds();
+  const w = b.getWest(), s = b.getSouth(), e = b.getEast(), n = b.getNorth();
+  for (const [county, bb] of Object.entries(blockBboxes)) {
+    if (blockGroups[county]) continue;
+    if (bb.maxLng < w || bb.minLng > e || bb.maxLat < s || bb.minLat > n) continue;
+    if (!boundCache[county]) boundCache[county] = await fetchJSON('map/boundaries/' + encodeURIComponent(county) + '.json');
+    const feats = (boundCache[county] && boundCache[county].features) || [];
+    const g = L.layerGroup();
+    feats.forEach(f => {
+      const poly = L.polygon(f.rings.map(r => r.map(p => [p[1], p[0]])),
+        {color:'#D81B60', weight:1, fillColor:'#D81B60', fillOpacity:0.06});
+      poly.on('click', ev => selectTown(county, f.town, ev.latlng));
+      poly.bindTooltip(f.town, {sticky: true, direction: 'top'});
+      poly.addTo(g);
+    });
+    g.addTo(map);
+    blockGroups[county] = g;
+  }
+}
+async function selectTown(county, town, latlng){
+  if (!map) return;
+  clearGeo();
+  const q = document.getElementById('q');
+  q.value = county + town;
+  refresh();
+  const it = {county: county, district: town, lat: latlng.lat, lng: latlng.lng};
+  await showArea(it);
+  const outs = (DATA.outages?.districts||[]).filter(x => (x.county||'').trim() === county.trim() && (x.district||'').trim() === town.trim());
+  if (outs.length) {
+    outs.sort((a, b) => (b.count||0) - (a.count||0));
+    await showRoads(outs[0]);
+  } else {
+    geonote('已框出範圍：' + county + town + '（本區目前沒有停電公告，範圍僅供參考）');
   }
 }
 function doLocate(){
@@ -346,9 +392,10 @@ async function load(){
   document.getElementById('l-outages').checked = LAYERS.outages.on;
   document.getElementById('l-water').checked = LAYERS.water.on;
   if (typeof L !== 'undefined') {
-    map = L.map('map').setView([23.7, 121.0], 8);
+    map = L.map('map', {maxBounds: [[21.7, 117.9], [26.5, 122.2]], maxBoundsViscosity: 1.0, minZoom: 7}).setView([23.44, 120.95], 8); // 預設視野：北回歸線一帶（北緯約 23.44 度，台灣中部）
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18, attribution:'© OpenStreetMap 貢獻者'}).addTo(map);
     groups = {trails: L.layerGroup().addTo(map), outages: L.layerGroup().addTo(map), water: L.layerGroup().addTo(map)};
+    map.on('moveend', loadBlocks);
     const qp = params.get('lat'), qg = params.get('lng'), qz = params.get('z');
     if (qp && qg) map.setView([parseFloat(qp), parseFloat(qg)], qz ? parseInt(qz, 10) : 12);
   } else {
@@ -358,12 +405,22 @@ async function load(){
   const qs = params.get('q');
   if (qs) document.getElementById('q').value = qs;
   refresh();
+  loadBlocks();
   if (params.get('near') === '1') doLocate();
 }
 ['l-trails','l-outages','l-water'].forEach(id => document.getElementById(id).addEventListener('change', e => {
   LAYERS[id.slice(2)].on = e.target.checked;
   refresh();
 }));
+document.getElementById('l-blocks').addEventListener('change', e => {
+  blocksOn = e.target.checked;
+  if (!blocksOn) {
+    Object.values(blockGroups).forEach(g => { if (map) map.removeLayer(g); });
+    blockGroups = {};
+  } else {
+    loadBlocks();
+  }
+});
 document.getElementById('go').addEventListener('click', refresh);
 document.getElementById('locate').addEventListener('click', doLocate);
 document.getElementById('q').addEventListener('keydown', e => { if (e.key === 'Enter') refresh(); });

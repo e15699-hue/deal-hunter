@@ -94,6 +94,15 @@ def main():
             index.setdefault(ft["town"], []).append(county)
     with open(os.path.join(OUT, "index.json"), "w", encoding="utf-8") as f:
         json.dump(index, f, ensure_ascii=False, separators=(",", ":"))
+    # 區塊點選用：每縣市外接矩形，供地圖頁判斷視野交集後才載入該縣市檔（手機輕量）
+    bboxes = {}
+    for county, feats in by_county.items():
+        xs = [pt[0] for ft in feats for ring in ft["rings"] for pt in ring]
+        ys = [pt[1] for ft in feats for ring in ft["rings"] for pt in ring]
+        bboxes[county] = {"minLng": round(min(xs), 4), "maxLng": round(max(xs), 4),
+                          "minLat": round(min(ys), 4), "maxLat": round(max(ys), 4)}
+    with open(os.path.join(OUT, "bboxes.json"), "w", encoding="utf-8") as f:
+        json.dump(bboxes, f, ensure_ascii=False, separators=(",", ":"))
     print(f"counties: {len(by_county)}, towns: {len(index)}, total: {total//1024} KB, vertices {n_in} -> {n_out}")
 
 
