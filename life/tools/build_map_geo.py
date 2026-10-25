@@ -55,6 +55,55 @@ OVERPASS = ["https://overpass-api.de/api/interpreter",
             "https://overpass.kumi.systems/api/interpreter",
             "https://overpass.private.coffee/api/interpreter"]
 
+# 與 fetch_outages.py 相同的縣市分片對照（合併後依此把各區放回正確分片）
+SHARDS = {"north": {"基隆市", "台北市", "新北市", "桃園市", "新竹市", "新竹縣", "宜蘭縣"},
+          "central": {"苗栗縣", "台中市", "彰化縣", "南投縣", "雲林縣"},
+          "south": {"嘉義市", "嘉義縣", "台南市", "高雄市", "屏東縣"},
+          "east": {"花蓮縣", "台東縣", "澎湖縣", "金門縣", "連江縣"}}
+
+
+def merge_outages_files():
+    """同區合併：把 4 個停電分片中重複的 (縣市, 鄉鎮區) 合為一區。
+    重複來源有二：①縣市前導空白（" 台中市" 分片對不上被丟進 north 預設檔）②同區多區處
+    （舊版 key 含區處時同一區會被拆成多筆）。合併後筆數相加、最早日期取最小、區處聯集、
+    範例去重串接、座標取第一個非空（重複筆座標經實測皆相同）；合併區依縣市放回正確分片。"""
+    files = sorted(glob.glob(os.path.join(ROOT, "map", "outages_*.json")))
+    merged, order = {}, []
+    before = 0
+    for fp in files:
+        d = json.load(open(fp, encoding="utf-8"))
+        for dist in d.get("districts", []):
+            before += 1
+            key = ((dist.get("county") or "").strip(), (dist.get("district") or "").strip())
+            if key not in merged:
+                nd = dict(dist); nd["county"], nd["district"] = key
+                nd["branches"] = sorted(set(dist.get("branches") or []))
+                nd["samples"] = list(dist.get("samples") or [])
+                merged[key] = nd; order.append(key)
+            else:
+                m = merged[key]
+                m["count"] = (m.get("count") or 0) + (dist.get("count") or 0)
+                dates = [x for x in (m.get("earliest"), dist.get("earliest")) if x]
+                m["earliest"] = min(dates) if dates else m.get("earliest")
+                m["branches"] = sorted(set(m.get("branches") or []) | set(dist.get("branches") or []))
+                seen = set(m["samples"])
+                for s in dist.get("samples") or []:
+                    if s not in seen:
+                        m["samples"].append(s); seen.add(s)
+                if m.get("lat") is None and dist.get("lat") is not None:
+                    m["lat"], m["lng"] = dist.get("lat"), dist.get("lng")
+    by_shard = {k: [] for k in SHARDS}
+    for key in order:
+        placed = False
+        for k, counties in SHARDS.items():
+            if key[0] in counties:
+                by_shard[k].append(merged[key]); placed = True; break
+        if not placed:
+            by_shard["north"].append(merged[key])
+    for k in by_shard:
+        by_shard[k].sort(key=lambda x: (x["county"], x["district"]))
+    return files, by_shard, [merged[k] for k in order], before
+
 
 def overpass_road(name, lat, lng, timeout=40):
     q = (f'[out:json][timeout:25];'
@@ -97,20 +146,16 @@ def main():
             cache = json.load(open(cache_path, encoding="utf-8")).get("roads", {})
         except Exception:
             cache = {}
-    files = sorted(glob.glob(os.path.join(ROOT, "map", "outages_*.json")))
-    districts = []
+    files, by_shard, districts, before = merge_outages_files()
+    for dist in districts:
+        dist["roads"] = extract_roads(dist.get("samples"))
     for fp in files:
+        shard = os.path.basename(fp).replace("outages_", "").replace(".json", "")
         d = json.load(open(fp, encoding="utf-8"))
-        changed = False
-        for dist in d.get("districts", []):
-            roads = extract_roads(dist.get("samples"))
-            if roads != dist.get("roads"):
-                dist["roads"] = roads
-                changed = True
-            districts.append(dist)
-        if changed:
-            json.dump(d, open(fp, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
-    print(f"outage districts: {len(districts)}, with roads: {sum(1 for x in districts if x.get('roads'))}")
+        d["districts"] = by_shard[shard]
+        d["total_items"] = sum(x.get("count") or 0 for x in by_shard[shard])
+        json.dump(d, open(fp, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+    print(f"outage districts: {before} -> {len(districts)} (merged), with roads: {sum(1 for x in districts if x.get('roads'))}")
     if precompute > 0:
         # 優先順序：台中市（使用者所在地）＋公告筆數多者先補
         ordered = sorted(districts, key=lambda x: (0 if (x.get("county") or "").strip() == "台中市" else 1, -(x.get("count") or 0)))

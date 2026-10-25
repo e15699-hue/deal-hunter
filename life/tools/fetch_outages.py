@@ -128,17 +128,20 @@ def write_map_snapshot(payload):
             continue
         area = (r["area"] or "").replace("臺", "台")
         area = re.sub(r"^[^\u4e00-\u9fa5]+", "", area)  # 去掉開頭標點（避免縣市誤含「，」）
-        m = re.search(r"(.{2,3}[縣市])(.{1,5}?[區鄉鎮市])", area)
+        # 縣市正則限用中文字元：舊版 .{2,3} 會把「短暫停電 台中市」裡的前導空白一起吃進縣市，
+        # 變成 " 台中市"、分片對不上而被丟進 north 預設檔，造成同區雙標記重疊（2026-10-25 修復）。
+        m = re.search(r"([\u4e00-\u9fa5]{2,3}[縣市])([\u4e00-\u9fa5]{1,5}?[區鄉鎮市])", area)
         if m:
-            county, district = m.group(1), m.group(2)
+            county, district = m.group(1).strip(), m.group(2).strip()
         else:
             # 部分公告 area 開頭直接就是區名（無縣市前綴），用區處所屬縣市補縣市
-            m2 = re.match(r"(.{1,5}?[區鄉鎮市])", area)
+            m2 = re.match(r"([\u4e00-\u9fa5]{1,5}?[區鄉鎮市])", area)
             if m2:
-                county, district = BRANCH_CITY.get(r["branch"], ""), m2.group(1)
+                county, district = BRANCH_CITY.get(r["branch"], ""), m2.group(1).strip()
             else:
                 county, district = BRANCH_CITY.get(r["branch"], ""), ""
-        key = (county, district, r["branch"])
+        # 同區多區處共用同一標記：key 不含區處，跨區處公告合併為一區（分支列入 branches）。
+        key = (county, district)
         b = buckets.setdefault(key, {"county": county, "district": district, "branches": set(),
                                      "count": 0, "earliest": r["date"], "samples": []})
         b["branches"].add(r["branch"])
