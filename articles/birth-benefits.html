@@ -42,6 +42,14 @@ td{border-bottom:1px solid #f8bbd0;padding:8px 10px}
 .abtn.ghost{background:transparent;color:#fff;border:2px solid #fff}
 .more{margin:16px 0}
 .more a{color:#c2185b;font-weight:bold;text-decoration:none}
+.steps{display:grid;gap:18px;margin:16px 0}
+.step-card{background:#fff;border:1.5px solid #f8bbd0;border-radius:16px;overflow:hidden}
+.step-card figure{margin:0;background:#fce4ec}
+.step-card figure img{width:100%;height:auto;display:block}
+.step-body{padding:14px 18px 16px}
+.step-body h3{color:#ad1457;font-size:1.08rem;margin:0 0 6px}
+.step-no{display:inline-block;background:#d81b60;color:#fff;border-radius:999px;padding:2px 12px;font-size:.82rem;margin-right:8px;vertical-align:2px}
+.step-body p{margin:0}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7X1WC7S646"></script>
@@ -131,11 +139,11 @@ td{border-bottom:1px solid #f8bbd0;padding:8px 10px}
 <p>同時符合兩種以上社會保險生育給付（或軍公教生育補助）資格時，<strong>只能擇一請領</strong>——但農保不在此限。實務建議：先試算各邊金額（例如勞保按投保薪資算出的 2 個月 vs 國保的 10 萬元），選金額高的那邊申請，申請前也可先打電話向勞保局確認。</p>
 
 <h2>申請三步驟</h2>
-<ol>
-<li><strong>戶政事務所一站式：</strong>辦理新生兒出生登記時，可併同申請生育給付／生育補助，一次辦完最省事。</li>
-<li><strong>線上申辦：</strong>勞保局 e 化服務系統（edesk.bli.gov.tw）線上申請，用自然人憑證登入。</li>
-<li><strong>郵寄或臨櫃：</strong>下載申請書填妥後郵寄或親送勞保局各地辦事處。</li>
-</ol>
+<div class="steps">
+<section class="step-card"><figure><img src="img/birth-step1-hh.svg" alt="步驟一：戶政事務所一站式" loading="lazy"></figure><div class="step-body"><h3><span class="step-no">步驟 1</span>戶政事務所一站式</h3><p>辦理新生兒出生登記時，可併同申請生育給付／生育補助，一次辦完最省事。</p></div></section>
+<section class="step-card"><figure><img src="img/birth-step2-online.svg" alt="步驟二：線上申辦" loading="lazy"></figure><div class="step-body"><h3><span class="step-no">步驟 2</span>線上申辦</h3><p>勞保局 e 化服務系統（edesk.bli.gov.tw）線上申請，用自然人憑證登入。</p></div></section>
+<section class="step-card"><figure><img src="img/birth-step3-mail.svg" alt="步驟三：郵寄或臨櫃" loading="lazy"></figure><div class="step-body"><h3><span class="step-no">步驟 3</span>郵寄或臨櫃</h3><p>下載申請書填妥後郵寄或親送勞保局各地辦事處。</p></div></section>
+</div>
 <p>有疑問可洽勞保局國民年金組：02-23961266 轉分機 2377（縣市政府公告所載諮詢電話）。</p>
 
 <p class="more">📖 延伸閱讀：<a href="childcare-allowance.html">育兒津貼 2026：自己帶小孩每月領 5,000 元起</a> ／ <a href="parental-leave-allowance.html">育嬰留職停薪津貼：請育嬰假每月領投保薪資 8 成</a>——領完生育給付，別忘了接著申請這兩筆。</p>
