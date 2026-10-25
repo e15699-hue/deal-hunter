@@ -396,6 +396,14 @@ async function load(){
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18, attribution:'© OpenStreetMap 貢獻者'}).addTo(map);
     groups = {trails: L.layerGroup().addTo(map), outages: L.layerGroup().addTo(map), water: L.layerGroup().addTo(map)};
     map.on('moveend', loadBlocks);
+    // 台灣範圍限制：maxBounds 在縮小檢視時擋不住視野邊緣看到國外，補一道中心點夾鉗——
+    // 中心永遠留在台澎金馬一帶（緯度 21.8～26.4、經度 118.15～122.1；經度下限 118.15 可含金門、排除廈門市區），拖出去放開後會彈回。
+    map.on('moveend', () => {
+      const c = map.getCenter();
+      const la = Math.max(21.8, Math.min(26.4, c.lat));
+      const ln = Math.max(118.15, Math.min(122.1, c.lng));
+      if (la !== c.lat || ln !== c.lng) map.setView([la, ln], map.getZoom(), {animate: false});
+    });
     const qp = params.get('lat'), qg = params.get('lng'), qz = params.get('z');
     if (qp && qg) map.setView([parseFloat(qp), parseFloat(qg)], qz ? parseInt(qz, 10) : 12);
   } else {
