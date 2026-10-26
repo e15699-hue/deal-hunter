@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="步驟三：向送托單位提出申請">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<circle cx="700" cy="70" r="34" fill="#F48FB1" opacity="0.55"/><circle cx="80" cy="390" r="46" fill="#F48FB1" opacity="0.4"/>
+<g transform="translate(110,100)">
+<rect x="0" y="0" width="260" height="210" rx="16" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/>
+<rect x="24" y="24" width="140" height="20" rx="10" fill="#D81B60"/>
+<rect x="24" y="64" width="212" height="14" rx="7" fill="#F8BBD0"/><rect x="24" y="92" width="212" height="14" rx="7" fill="#F8BBD0"/><rect x="24" y="120" width="170" height="14" rx="7" fill="#F8BBD0"/>
+<text x="24" y="180" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="30" font-weight="700" fill="#880E4F">申請表＋契約書</text>
+</g>
+<text x="410" y="180" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="62" font-weight="900" fill="#AD1457">向送托單位申請</text>
+<text x="410" y="240" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="32" font-weight="700" fill="#880E4F">托嬰中心或居家托育服務中心</text>
+<text x="410" y="292" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="28" fill="#6D4C5E">不是戶籍地公所，別跑錯</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/><text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">步驟 3／4　向送托單位提出申請</text>
+</svg>

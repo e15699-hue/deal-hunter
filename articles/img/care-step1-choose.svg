@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="步驟一：選定公共化或準公共送托單位">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<circle cx="700" cy="70" r="34" fill="#F48FB1" opacity="0.55"/><circle cx="80" cy="390" r="46" fill="#F48FB1" opacity="0.4"/>
+<g transform="translate(110,100)">
+<rect x="0" y="0" width="240" height="200" rx="16" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/>
+<rect x="24" y="24" width="120" height="20" rx="10" fill="#D81B60"/>
+<rect x="24" y="64" width="192" height="14" rx="7" fill="#F8BBD0"/><rect x="24" y="92" width="192" height="14" rx="7" fill="#F8BBD0"/><rect x="24" y="120" width="150" height="14" rx="7" fill="#F8BBD0"/>
+<circle cx="190" cy="160" r="26" fill="#D81B60"/><text x="190" y="170" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="32" font-weight="900" fill="#FFFFFF">✓</text>
+</g>
+<text x="400" y="180" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="62" font-weight="900" fill="#AD1457">選定送托單位</text>
+<text x="400" y="240" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="32" font-weight="700" fill="#880E4F">公共化或準公共、要簽約</text>
+<text x="400" y="292" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="28" fill="#6D4C5E">每週托育 30 小時以上</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/><text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">步驟 1／4　選定送托單位</text>
+</svg>

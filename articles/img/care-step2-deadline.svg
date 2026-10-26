@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="步驟二：送托日起十五日內備齊文件">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<circle cx="700" cy="70" r="34" fill="#F48FB1" opacity="0.55"/><circle cx="80" cy="390" r="46" fill="#F48FB1" opacity="0.4"/>
+<g transform="translate(110,95)">
+<rect x="0" y="0" width="250" height="220" rx="16" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/>
+<rect x="0" y="0" width="250" height="52" rx="16" fill="#D81B60"/>
+<text x="125" y="38" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="28" font-weight="900" fill="#FFFFFF">送托日起算</text>
+<text x="125" y="150" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="96" font-weight="900" fill="#AD1457">15 日</text>
+<text x="125" y="195" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="26" font-weight="700" fill="#880E4F">內備齊文件</text>
+</g>
+<text x="410" y="180" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="62" font-weight="900" fill="#AD1457">記住 15 日期限</text>
+<text x="410" y="240" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="32" font-weight="700" fill="#880E4F">逾期提出，起算點延後</text>
+<text x="410" y="292" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="28" fill="#6D4C5E">等於少領，等於吃虧</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/><text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">步驟 2／4　十五日內備齊文件</text>
+</svg>
