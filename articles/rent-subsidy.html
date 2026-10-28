@@ -41,6 +41,14 @@ td{border-bottom:1px solid #f8bbd0;padding:8px 10px}
 .abtn{display:inline-block;background:#fff;color:#c2185b;font-weight:900;text-decoration:none;padding:11px 22px;border-radius:999px;margin:6px 4px 0}
 .abtn.ghost{background:transparent;color:#fff;border:2px solid #fff}
 .more{margin:16px 0}
+.steps{display:grid;gap:18px;margin:16px 0}
+.step-card{background:#fff;border:1.5px solid #f8bbd0;border-radius:16px;overflow:hidden}
+.step-card figure{margin:0;background:#fce4ec}
+.step-card figure img{width:100%;height:auto;display:block}
+.step-body{padding:14px 18px 16px}
+.step-body h3{color:#ad1457;font-size:1.08rem;margin:0 0 6px}
+.step-no{display:inline-block;background:#d81b60;color:#fff;border-radius:999px;padding:2px 12px;font-size:.82rem;margin-right:8px;vertical-align:2px}
+.step-body p{margin:0}
 .more a{color:#c2185b;font-weight:bold;text-decoration:none}
 </style>
 <!-- Google tag (gtag.js) -->
@@ -131,12 +139,12 @@ td{border-bottom:1px solid #f8bbd0;padding:8px 10px}
 <p>舉例：臺北市第 2 級（5,000 元）家庭，2026 年生下第 1 個小孩，新生兒加碼 2 倍，每月可領 10,000 元（仍以實際租金為上限核計）。分級與加碼倍數經核定後，於補貼期間內不變更。</p>
 
 <h2>怎麼申請（步驟）</h2>
-<ol>
-<li><strong>線上申請（主要管道）</strong>：至國土管理署「300 億元中央擴大租金補貼線上申請作業網站」填寫並上傳文件，<strong>資料存檔後一定要點「送出」才算完成申請</strong>。</li>
-<li><strong>郵寄</strong>：掛號郵寄至<strong>租賃地</strong>（不是戶籍地）的直轄市、縣（市）政府受理單位，以郵戳為憑。</li>
-<li><strong>臨櫃</strong>：於辦公日至租賃地縣市政府辦理。</li>
-<li><strong>舊戶免申請</strong>：114 年度核定戶且 114 年 8–12 月間有核撥紀錄，或 114/9/1–12/31 申請並經核定者，系統直接帶入 115 年度（但租約消滅後要補新租約）。</li>
-</ol>
+<div class="steps">
+<section class="step-card"><figure><img src="img/rent-step1-online.svg" alt="步驟一：線上申請" loading="lazy"></figure><div class="step-body"><h3><span class="step-no">步驟 1</span>線上申請（主要管道）</h3><p>至國土管理署「300 億元中央擴大租金補貼線上申請作業網站」填寫並上傳文件，<strong>資料存檔後一定要點「送出」才算完成申請</strong>。</p></div></section>
+<section class="step-card"><figure><img src="img/rent-step2-mail.svg" alt="步驟二：郵寄申請" loading="lazy"></figure><div class="step-body"><h3><span class="step-no">步驟 2</span>郵寄</h3><p>掛號郵寄至<strong>租賃地</strong>（不是戶籍地）的直轄市、縣（市）政府受理單位，以郵戳為憑。</p></div></section>
+<section class="step-card"><figure><img src="img/rent-step3-counter.svg" alt="步驟三：臨櫃申請" loading="lazy"></figure><div class="step-body"><h3><span class="step-no">步驟 3</span>臨櫃</h3><p>於辦公日至租賃地縣市政府辦理。</p></div></section>
+<section class="step-card"><figure><img src="img/rent-step4-old.svg" alt="步驟四：舊戶免申請" loading="lazy"></figure><div class="step-body"><h3><span class="step-no">步驟 4</span>舊戶免申請</h3><p>114 年度核定戶且 114 年 8–12 月間有核撥紀錄，或 114/9/1–12/31 申請並經核定者，系統直接帶入 115 年度（但租約消滅後要補新租約）。</p></div></section>
+</div>
 
 <h2>準備文件</h2>
 <ul>
