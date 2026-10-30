@@ -41,6 +41,14 @@ td{border-bottom:1px solid #f8bbd0;padding:8px 10px}
 .cta-box p{color:#ffe3ee}
 .abtn{display:inline-block;background:#fff;color:#c2185b;font-weight:900;text-decoration:none;padding:11px 22px;border-radius:999px;margin:6px 4px 0}
 .abtn.ghost{background:transparent;color:#fff;border:2px solid #fff}
+.steps{display:grid;gap:18px;margin:16px 0}
+.step-card{background:#fff;border:1.5px solid #f8bbd0;border-radius:16px;overflow:hidden}
+.step-card figure{margin:0;background:#fce4ec}
+.step-card figure img{width:100%;height:auto;display:block}
+.step-body{padding:14px 18px 16px}
+.step-body h3{color:#ad1457;font-size:1.08rem;margin:0 0 6px}
+.step-no{display:inline-block;background:#d81b60;color:#fff;border-radius:999px;padding:2px 12px;font-size:.82rem;margin-right:8px;vertical-align:2px}
+.step-body p{margin:0}
 .more{margin:16px 0}
 .more a{color:#c2185b;font-weight:bold;text-decoration:none}
 </style>
@@ -118,11 +126,12 @@ td{border-bottom:1px solid #f8bbd0;padding:8px 10px}
 <div class="note">⚠️ 退稅不會自動入帳，也沒人會通知你。買完家電先把「購買日 + 6 個月」寫進行事曆，安裝當天就把發票、保固卡收好，別等過期才想起來。</div>
 
 <h2>怎麼申請（步驟）</h2>
-<ol>
-<li><strong>線上申請</strong>：至財政部稅務入口網「購買節能電器退還減徵貨物稅專區」填寫買受人、憑證與電器產品資訊，上傳文件圖檔。</li>
-<li><strong>紙本申請</strong>：備妥文件，向任一國稅局臨櫃或郵寄辦理。</li>
-<li>審核通過後，退稅款匯入你指定的帳戶。</li>
-</ol>
+<div class="steps">
+<section class="step-card"><figure><img src="img/refund-step1-qualify.svg" alt="步驟一：確認資格" loading="lazy"></figure><div class="step-body"><h3><span class="step-no">步驟 1</span>確認資格</h3><p>先確認買的是新冷暖氣機、新電冰箱或新除濕機，且能源效率為第 1 級或第 2 級；只有這三種品項能退稅。</p></div></section>
+<section class="step-card"><figure><img src="img/refund-step2-docs.svg" alt="步驟二：備妥文件" loading="lazy"></figure><div class="step-body"><h3><span class="step-no">步驟 2</span>備妥文件</h3><p>發票或收據（須載明廠牌、品名、型號）、退稅帳戶存摺封面、保證書或保固卡；線上申請的自然人免附身分證影本。</p></div></section>
+<section class="step-card"><figure><img src="img/refund-step3-apply.svg" alt="步驟三：線上或紙本送件" loading="lazy"></figure><div class="step-body"><h3><span class="step-no">步驟 3</span>線上或紙本送件</h3><p><strong>購買日次日起 6 個月內</strong>一定要送出：線上至財政部稅務入口網退稅專區填寫上傳，或備妥文件向任一國稅局臨櫃、郵寄辦理。</p></div></section>
+<section class="step-card"><figure><img src="img/refund-step4-pay.svg" alt="步驟四：審核通過入帳" loading="lazy"></figure><div class="step-body"><h3><span class="step-no">步驟 4</span>審核通過入帳</h3><p>審核通過後，退稅款匯入你指定的帳戶。退稅不會自動入帳，沒申請就沒有這筆錢。</p></div></section>
+</div>
 
 <h2>準備文件</h2>
 <ul>
