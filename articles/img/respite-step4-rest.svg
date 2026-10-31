@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="步驟四：開始使用喘息服務、照顧者休息">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<circle cx="700" cy="70" r="34" fill="#F48FB1" opacity="0.55"/><circle cx="80" cy="390" r="46" fill="#F48FB1" opacity="0.4"/>
+<g transform="translate(110,95)">
+<rect x="0" y="0" width="250" height="210" rx="16" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/>
+<path d="M30 150 Q80 60 130 150 Q180 60 220 150" fill="none" stroke="#D81B60" stroke-width="10" stroke-linecap="round"/>
+<circle cx="125" cy="105" r="30" fill="#FCE4EC" stroke="#D81B60" stroke-width="5"/><text x="125" y="118" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="32" font-weight="900" fill="#AD1457">☾</text>
+<rect x="24" y="176" width="200" height="14" rx="7" fill="#F8BBD0"/>
+</g>
+<text x="400" y="180" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="58" font-weight="900" fill="#AD1457">開始使用喘息</text>
+<text x="400" y="240" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="32" font-weight="700" fill="#880E4F">居家、機構、社區可混搭</text>
+<text x="400" y="292" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="28" fill="#6D4C5E">照顧者趁這段時間休息</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/><text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">步驟 4／4　開始使用喘息服務</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="步驟三：向個管員提出喘息需求">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<circle cx="700" cy="70" r="34" fill="#F48FB1" opacity="0.55"/><circle cx="80" cy="390" r="46" fill="#F48FB1" opacity="0.4"/>
+<g transform="translate(110,90)">
+<circle cx="70" cy="100" r="52" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/><text x="70" y="118" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="44" font-weight="900" fill="#AD1457">👤</text>
+<circle cx="190" cy="100" r="52" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/><text x="190" y="118" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="44" font-weight="900" fill="#AD1457">👥</text>
+<rect x="30" y="180" width="200" height="18" rx="9" fill="#D81B60"/><rect x="30" y="208" width="160" height="14" rx="7" fill="#F8BBD0"/>
+</g>
+<text x="400" y="180" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="58" font-weight="900" fill="#AD1457">提出喘息需求</text>
+<text x="400" y="240" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="32" font-weight="700" fill="#880E4F">向 A 單位個管員提出</text>
+<text x="400" y="292" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="28" fill="#6D4C5E">共同擬定照顧服務計畫</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/><text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">步驟 3／4　向個管員提出喘息需求</text>
+</svg>
