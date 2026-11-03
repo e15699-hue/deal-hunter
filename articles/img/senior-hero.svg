@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="2026 重陽敬老金總整理主題圖">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<circle cx="700" cy="70" r="34" fill="#F48FB1" opacity="0.55"/><circle cx="80" cy="390" r="46" fill="#F48FB1" opacity="0.4"/>
+<g transform="translate(110,90)">
+<rect x="0" y="0" width="260" height="270" rx="24" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/>
+<text x="30" y="70" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="40" font-weight="900" fill="#D81B60">🎁 敬老禮金</text>
+<text x="30" y="140" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="36" font-weight="900" fill="#D81B60">📋 各縣市金額</text>
+<text x="30" y="210" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="36" font-weight="900" fill="#D81B60">⏰ 補領期限</text>
+</g>
+<text x="420" y="180" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="64" font-weight="900" fill="#AD1457">2026 重陽敬老金</text>
+<text x="420" y="240" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="32" font-weight="700" fill="#880E4F">沒領到怎麼補領，一次看懂</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/><text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">好康網文章分享・長照照護</text>
+</svg>
