@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="信用卡回饋主題圖：依消費場景挑卡">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<g transform="translate(120,110) rotate(-8)"><rect x="0" y="0" width="260" height="160" rx="20" fill="#D81B60"/><text x="24" y="48" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="30" font-weight="900" fill="#FFFFFF">超商 11%</text><text x="24" y="96" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" fill="#FCE4EC">小額加碼有上限</text></g>
+<g transform="translate(420,110) rotate(6)"><rect x="0" y="0" width="260" height="160" rx="20" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/><text x="24" y="48" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="30" font-weight="900" fill="#AD1457">網購 3.3%</text><text x="24" y="96" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" fill="#880E4F">無上限先看切換條件</text></g>
+<text x="400" y="360" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="40" font-weight="900" fill="#AD1457">先看錢花在哪，再挑回饋王</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/><text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">信用卡回饋分場景挑卡</text>
+</svg>
