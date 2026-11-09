@@ -1,218 +1,226 @@
 [
-  {
-    "category": "育兒補助",
-    "date": "2026-10-20",
-    "excerpt": "自己或家人照顧幼兒、沒有領托育補助的家庭，每月可領 5,000–7,000 元育兒津貼。資格、文件、申請步驟與追溯規則一次看懂，滿 2 歲自動銜接免重辦。",
-    "slug": "childcare-allowance",
-    "source_url": "https://orgws.kcg.gov.tw/001/KcgOrgUploadFiles/10/relfile/7330/130774/ab6bfd8a-056d-4324-a076-d058bb49993a.pdf",
-    "title": "育兒津貼申請教學：0–5 歲每月 5,000–7,000 元，自己帶小孩就能領"
-  },
-  {
-    "category": "租屋補助",
-    "date": "2026-10-20",
-    "excerpt": "300 億元中央擴大租金補貼 115 年度受理至 2026 年 12 月 31 日，金額表、加碼倍數、所得門檻與補件地雷一次整理，線上申請送出前先看這篇。",
-    "slug": "rent-subsidy",
-    "source_url": "https://has.nlma.gov.tw/house300e/",
-    "title": "租金補貼申請教學（115 年度）：每月 2,000–8,000 元，不用房東同意、隨到隨辦"
-  },
-  {
-    "category": "節能家電",
-    "date": "2026-10-20",
-    "excerpt": "經濟部住宅家電汰舊換新節能補助進入最後一年：汰換 1 級能效冷氣、冰箱每臺 3,000 元，搭配貨物稅退稅最高 5,000 元。條件、期間與 6 項文件一次看懂。",
-    "slug": "appliance-replacement-subsidy",
-    "source_url": "https://save3000.moeaea.gov.tw",
-    "title": "家電汰舊換新補助申請教學：冷氣、冰箱每臺 3,000 元，只到 2026 年底"
-  },
-  {
-    "category": "節能家電",
-    "date": "2026-10-20",
-    "excerpt": "買 1、2 級能效的新冷氣、冰箱、除濕機，不用汰舊也能退貨物稅，每臺最高 2,000 元。重點只有一個：購買後 6 個月內一定要申請，逾期就沒了。",
-    "slug": "appliance-tax-refund",
-    "source_url": "https://www.mof.gov.tw/Eng/singlehtml/f48d641f159a4866b1d31c0916fbcc71?cntId=a3f1cb986ddd429fb6b60aed4db2353f",
-    "title": "節能電器貨物稅退稅教學：免汰舊、每臺最高退 2,000 元（到 2029 年）"
-  },
-  {
-    "category": "長照照護",
-    "date": "2026-10-20",
-    "excerpt": "家裡長輩需要照顧，第一步不是自己研究服務項目，而是打 1966。申請四步驟、誰可以申請、四包錢給付額度與部分負擔，一篇搞懂。",
-    "slug": "ltc-how-to-apply",
-    "source_url": "https://1966.gov.tw/LTC/cp-6533-70777-207.html",
-    "title": "長照 2.0 申請教學：打 1966 專線、四步驟、在家就能評估"
-  },
-  {
-    "category": "省錢攻略",
-    "date": "2026-10-20",
-    "excerpt": "住宅電費是分段累進計價，超過級距的那一段最貴。用 2026 年 4 月上路的最新電價表教你算自家電費，再用三招把用電壓回便宜級距。",
-    "slug": "electricity-bill-tiers",
-    "source_url": "https://www.taipower.com.tw",
-    "title": "電費級距怎麼算才省？2026 最新電價表＋三招把度數壓回低級距"
-  },
-  {
-    "category": "省錢攻略",
-    "date": "2026-10-20",
-    "excerpt": "租金補貼、育兒津貼、家電補助、貨物稅退稅、長照服務……很多錢不是沒有，是沒人提醒你申請。這份清單一年勾兩次，把該領的一次盤點完。",
-    "slug": "family-money-checklist",
-    "source_url": "https://www.gov.tw/News_Content_26_586833",
-    "title": "家庭年度省錢檢查清單：12 個項目逐項勾，漏領的補助比你想的多"
-  },
-  {
-    "category": "長照照護",
-    "date": "2026-10-21",
-    "excerpt": "長照給付分「四包錢」：照顧及專業服務每月最高 36,180 元、交通接送每月最高 2,400 元、輔具 3 年 4 萬起、喘息每年最高 48,510 元。資格、自付比率、家有外籍看護怎麼用，數字全查證自衛福部長照專區。",
-    "slug": "ltc-benefits",
-    "source_url": "https://1966.gov.tw/LTC/cp-6533-70777-207.html",
-    "title": "長照四包錢金額表（2026）：照顧、交通、輔具、喘息額度與自付比率一次看懂"
-  },
-  {
-    "slug": "parental-leave-allowance",
-    "title": "育嬰留職停薪津貼 2026：請育嬰假，每月領投保薪資 8 成",
-    "category": "育兒補助",
-    "date": "2026-10-22",
-    "excerpt": "就業保險育嬰留職停薪津貼為前 6 個月平均月投保薪資 60% 加政府補助 20%，合計 8 成，每名子女每位家長最長 6 個月，父母可同時請領。資格、申請方式、文件一次看懂。",
-    "source_url": "https://www.bli.gov.tw/0101764.html"
-  },
-  {
-    "category": "省錢攻略",
-    "date": "2026-10-22",
-    "excerpt": "信用卡回饋沒有單一冠軍：超商最高 11%、網購 3.3% 無上限、海外先扣 1.5% 手續費再比、無腦刷 1.22% 現金無上限。照消費場景挑對卡，附加碼上限與登錄切換條件。",
-    "slug": "credit-card-cashback-guide",
-    "source_url": "https://www.money101.com.tw/blog/%E6%9C%80%E6%96%B0%E5%80%BC%E5%BE%97%E9%97%9C%E6%B3%A8%E4%BF%A1%E7%94%A8%E5%8D%A1",
-    "title": "2026 信用卡回饋哪張最高？分場景冠軍一次整理"
-  },
-  {
-    "slug": "senior-respect-gold-2026",
-    "title": "2026 重陽敬老金總整理：各縣市長輩能領多少、沒領到怎麼補領",
-    "category": "長照照護",
-    "date": "2026-10-23",
-    "excerpt": "2026 重陽節 10/18 已過：13 縣市敬老禮金金額、資格、發放方式與補領期限總整理。台北 1,500 元起、新北百歲 2 萬元，多數補發到 11–12 月底，桃園逾期不補發、新竹縣申請已截止。",
-    "source_url": "https://www.gov.tw/News_Content_37_908085"
-  },
-  {
-    "slug": "birth-benefits",
-    "title": "2026 生育給付大升級：國保、沒保險的媽媽每胎 10 萬元，勞保再加碼",
-    "category": "育兒補助",
-    "date": "2026-10-24",
-    "excerpt": "2026/1/1 起：國保生育給付 42,206 元＋政府加給 57,794 元＝每胎 10 萬元；沒保險的媽媽新增每胎 10 萬元生育補助；勞保另有加給。資格、金額、申請三步驟，數字查證自官方公告。",
-    "source_url": "https://www.bli.gov.tw/en/0016425.html"
-  },
-  {
-    "slug": "land-value-tax-2026",
-    "title": "115 年地價稅 11 月開徵：繳納期限、2‰ 自用住宅優惠、收到稅單先核對 3 件事",
-    "category": "省錢攻略",
-    "date": "2026-10-25",
-    "excerpt": "115 年地價稅 11 月 1 日開徵、繳納期限至 11 月 30 日。收到稅單先核對稅率欄：自用住宅用地 2‰、一般用地 10‰～55‰，同一筆地價稅額最多差 5 倍以上；超商繳稅、線上查繳與明年 9 月 22 日前申請優惠一次整理。",
-    "source_url": "https://www.etax.nat.gov.tw/etwmain/announcement/news/GBekRgm"
-  },
-  {
-    "category": "育兒補助",
-    "date": "2026-10-26",
-    "excerpt": "未滿 2 歲送托公共化每月 7,000 元起、準公共 13,000 元起，中低收入戶與低收入戶再加碼。資格、金額表、申請四步驟與送托 15 日期限一次看懂。",
-    "slug": "childcare-care-subsidy",
-    "source_url": "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg032004/ch08/type1/gov70/num16/images/AA.pdf",
-    "title": "托育補助申請教學：未滿 2 歲送托，每月最高 13,000–19,000 元，送托 15 日內一定要申請"
-  },
-  {
-    "slug": "november-subsidy-calendar-2026",
-    "title": "11 月補助行事曆：地價稅 11/30 前要繳、家電汰舊剩最後 2 個月，4 件事按截止日排好",
-    "category": "省錢攻略",
-    "date": "2026-10-27",
-    "excerpt": "11月1日地價稅開徵、繳到11月30日；家電汰舊換新發票只收到12月31日、申請到明年1月31日；貨物稅退稅購買後6個月內要申請。4件事按截止日排，附圖文三步驟。",
-    "source_url": "https://www.etax.nat.gov.tw/etwmain/announcement/news/GBekRgm"
-  },
-  {
-    "slug": "childcare-money-combo-2026",
-    "title": "育兒三筆錢能不能同時領？生育給付、育兒津貼、托育補助、育嬰留停對照表",
-    "category": "育兒補助",
-    "date": "2026-10-28",
-    "excerpt": "生育給付只能擇一、育兒津貼與托育補助二選一、育嬰留停 8 成可與托育補助同時領。生小孩前先看這張對照表，別讓該領的錢互相抵銷，附圖文三步驟。",
-    "source_url": "https://www.bli.gov.tw/en/0016425.html"
-  },
-  {
-    "slug": "appliance-subsidy-compare",
-    "title": "家電補助兩種怎麼領？汰舊換新 3,000 元 vs 貨物稅退稅最高 2,000 元，同一臺最高 5,000 元",
-    "category": "節能家電",
-    "date": "2026-10-29",
-    "excerpt": "買節能家電有兩筆錢：經濟部汰舊換新補助每臺 3,000 元、財政部貨物稅退稅每臺最高 2,000 元。兩筆分屬不同機關、要分別申請，但官方明文可以疊加，同一臺 1 級冷氣或冰箱最高合計 5,000 元，附退稅級距表與辦理順序。",
-    "source_url": "https://save3000.moeaea.gov.tw"
-  },
-  {
-    "slug": "house-tax-self-use-2026",
-    "title": "房屋稅自住 1.2% 怎麼保住？全國單一自住 1% 條件＋每年 3/22 前申報期限",
-    "category": "省錢攻略",
-    "date": "2026-10-30",
-    "excerpt": "同一間房自住 1.2%、沒申報變 2%～4.8%，稅差可達 4 倍。戶籍、出租、3 戶三關與 3/22 申報死線一次講清。",
-    "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340102"
-  },
-  {
-    "slug": "ltc-respite-service-2026",
-    "title": "長照喘息服務怎麼用？每年最高 48,510 元，讓主要照顧者好好休息",
-    "category": "長照照護",
-    "date": "2026-10-31",
-    "excerpt": "主要照顧者累了可以申請喘息服務：居家、機構、社區三種方式可混合配搭，每年額度 32,340 元起、第 7、8 級 48,510 元。申請四步驟、支付價格與額度換算一次看懂。",
-    "source_url": "https://1966.gov.tw/LTC/cp-6454-70075-207.html"
-  },
-  {
-    "slug": "rent-subsidy-bonus-2026",
-    "title": "租金補貼加碼怎麼算？新婚 1.5 倍、新生兒最高 3 倍，只取最高一項別算錯",
-    "category": "租屋補助",
-    "date": "2026-11-01",
-    "excerpt": "115 年度租金補貼基本金額先看級別、再乘加碼：單身青年 1.2 倍、新婚 1.5 倍、115 年起新生兒 2／2.5／3 倍、經濟弱勢 1.4 倍。官方規則：同時符合多種身分只取最高一項、以實際租金核計，三個試算一次看懂。",
-    "source_url": "https://has.nlma.gov.tw/house300e/"
-  },
-  {
-    "slug": "water-bill-tiers",
-    "title": "水費級距怎麼算才省？台水四段單價＋三個試算，超過的那段最貴",
-    "category": "省錢攻略",
-    "date": "2026-11-02",
-    "excerpt": "台灣自來水公司水費四段累進：每月抄表 1–10 度 7.35 元、11–30 度 9.45 元、31–50 度 11.55 元、51 度以上 12.075 元。看懂水費單組成、分段加總試算與三招省水，附圖文四步驟。",
-    "source_url": "https://www.water.gov.tw/ch/ServerFile/Get/37beec88-3c61-4beb-afd5-db4883b1357b?nodeId=4571"
-  },
-  {
-    "category": "育兒補助",
-    "date": "2026-11-03",
-    "excerpt": "2–6 歲幼兒園費用對照：公立第 1 胎每月最多 1,000 元、非營利 2,000 元、準公共 3,000 元；讀一般私立或自己帶，改領育兒津貼／就學補助每月 5,000–7,000 元。兩條路不能重複，附圖文四步驟。",
-    "slug": "kindergarten-fees-2026",
-    "source_url": "https://edu.law.moe.gov.tw/LawContent.aspx?media=print&id=GL001909",
-    "title": "2–6 歲幼兒園費用對照：公立 1,000／非營利 2,000／準公共 3,000 元上限＋私立領育兒津貼 5,000–7,000 元"
-  },
-  {
-    "slug": "ltc-assistive-device-2026",
-    "title": "長照輔具補助申請教學：3 年 4 萬起、第二組 6 萬怎麼選，租比買划算的 5 種情況",
-    "category": "長照照護",
-    "date": "2026-11-04",
-    "excerpt": "長照輔具及居家無障礙改善每 3 年一組額度：第一組 4 萬元、115 年 7 月 1 日起第二組 6 萬元，兩組擇一、選定 3 年內不能換。申請四步驟、限租賃品項與自付比率一次看懂。",
-    "source_url": "https://1966.gov.tw/LTC/cp-6453-69940-207.html"
-  },
-  {
-    "slug": "dehumidifier-energy-label-2026",
-    "title": "除濕機怎麼挑才省電？2026 新制 1 級門檻＋EF 值、年耗電量算法一次看懂",
-    "category": "節能家電",
-    "date": "2026-11-05",
-    "excerpt": "除濕機能效新基準自 2026 年 1 月 1 日生效：1 級門檻依公升數為 EF 2.24–2.98。看懂 EF 值、年耗電量公式與公告文號，再確認 1、2 級貨物稅退稅最高 2,000 元，附圖文四步驟。",
-    "source_url": "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg029223/ch04/type1/gov31/num11/Eg.pdf"
-  },
-  {
-    "slug": "health-insurance-premium-2026",
-    "title": "2026 健保費怎麼算？費率 5.17%、58 級對照、眷屬最多算 3 口，月薪 4 萬每月扣 622 元",
-    "category": "省錢攻略",
-    "date": "2026-11-06",
-    "excerpt": "健保費＝投保金額 × 5.17% × 30% ×（本人＋眷屬人數）。2026 年 58 級對照：月薪 4 萬自付 622 元、最低 458 元、最高 4,855 元；眷屬超過 3 口以 3 口計，第六類每月定額 826 元。",
-    "source_url": "https://www.nhi.gov.tw/ch/cp-19418-9eefb-2576-1.html"
-  },
-  {
-    "category": "長照照護",
-    "date": "2026-11-07",
-    "excerpt": "長輩住機構每月最高補助 1.5 萬元，115 年度最高 18 萬元：長照 4 級以上或中度以上身障證明就能申請，按月認列、住滿半個月就算 1 個月；第二階段受理只到 12 月 16 日。",
-    "slug": "ltc-residential-subsidy-2026",
-    "source_url": "https://ws.tycg.gov.tw/Download.ashx?u=LzAwMS9VcGxvYWQvNzQvcmVsZmlsZS8xMTg1OC8xODc0MzAwLzg5N2Y2NDY0LTJiZmMtNDYwNy05NmRhLTVmOGZhNzEzMDRkYi5wZGY%3D&n=5L2P5rCR6KOc5Yqp5ZWP562U6ZuGKOawkeecvueJiCkucGRm&icon=..pdf",
-    "title": "2026 長照住宿補助升級：每月最高 1.5 萬、115 年度最高 18 萬，第二階段申請只到 12/16"
-  },
-  {
-    "slug": "city-birth-subsidy-2026",
-    "title": "2026 各縣市生育津貼一次看：彰化第 3 胎 8 萬最高、台北第 1 胎 4 萬，6 縣市對照＋中央 10 萬",
-    "category": "育兒補助",
-    "date": "2026-11-08",
-    "excerpt": "2026 年生小孩，中央生育給付補足每胎 10 萬元之外，戶籍地縣市還有一筆生育津貼：台北第 1 胎 4 萬、彰化第 3 胎 8 萬。6 縣市金額、設籍天數、申請期限對照，報戶口那趟一次辦完。",
-    "source_url": "https://events.bli.gov.tw/Activities/202601_04/"
-  }
+ {
+  "category": "育兒補助",
+  "date": "2026-10-20",
+  "excerpt": "自己或家人照顧幼兒、沒有領托育補助的家庭，每月可領 5,000–7,000 元育兒津貼。資格、文件、申請步驟與追溯規則一次看懂，滿 2 歲自動銜接免重辦。",
+  "slug": "childcare-allowance",
+  "source_url": "https://orgws.kcg.gov.tw/001/KcgOrgUploadFiles/10/relfile/7330/130774/ab6bfd8a-056d-4324-a076-d058bb49993a.pdf",
+  "title": "育兒津貼申請教學：0–5 歲每月 5,000–7,000 元，自己帶小孩就能領"
+ },
+ {
+  "category": "租屋補助",
+  "date": "2026-10-20",
+  "excerpt": "300 億元中央擴大租金補貼 115 年度受理至 2026 年 12 月 31 日，金額表、加碼倍數、所得門檻與補件地雷一次整理，線上申請送出前先看這篇。",
+  "slug": "rent-subsidy",
+  "source_url": "https://has.nlma.gov.tw/house300e/",
+  "title": "租金補貼申請教學（115 年度）：每月 2,000–8,000 元，不用房東同意、隨到隨辦"
+ },
+ {
+  "category": "節能家電",
+  "date": "2026-10-20",
+  "excerpt": "經濟部住宅家電汰舊換新節能補助進入最後一年：汰換 1 級能效冷氣、冰箱每臺 3,000 元，搭配貨物稅退稅最高 5,000 元。條件、期間與 6 項文件一次看懂。",
+  "slug": "appliance-replacement-subsidy",
+  "source_url": "https://save3000.moeaea.gov.tw",
+  "title": "家電汰舊換新補助申請教學：冷氣、冰箱每臺 3,000 元，只到 2026 年底"
+ },
+ {
+  "category": "節能家電",
+  "date": "2026-10-20",
+  "excerpt": "買 1、2 級能效的新冷氣、冰箱、除濕機，不用汰舊也能退貨物稅，每臺最高 2,000 元。重點只有一個：購買後 6 個月內一定要申請，逾期就沒了。",
+  "slug": "appliance-tax-refund",
+  "source_url": "https://www.mof.gov.tw/Eng/singlehtml/f48d641f159a4866b1d31c0916fbcc71?cntId=a3f1cb986ddd429fb6b60aed4db2353f",
+  "title": "節能電器貨物稅退稅教學：免汰舊、每臺最高退 2,000 元（到 2029 年）"
+ },
+ {
+  "category": "長照照護",
+  "date": "2026-10-20",
+  "excerpt": "家裡長輩需要照顧，第一步不是自己研究服務項目，而是打 1966。申請四步驟、誰可以申請、四包錢給付額度與部分負擔，一篇搞懂。",
+  "slug": "ltc-how-to-apply",
+  "source_url": "https://1966.gov.tw/LTC/cp-6533-70777-207.html",
+  "title": "長照 2.0 申請教學：打 1966 專線、四步驟、在家就能評估"
+ },
+ {
+  "category": "省錢攻略",
+  "date": "2026-10-20",
+  "excerpt": "住宅電費是分段累進計價，超過級距的那一段最貴。用 2026 年 4 月上路的最新電價表教你算自家電費，再用三招把用電壓回便宜級距。",
+  "slug": "electricity-bill-tiers",
+  "source_url": "https://www.taipower.com.tw",
+  "title": "電費級距怎麼算才省？2026 最新電價表＋三招把度數壓回低級距"
+ },
+ {
+  "category": "省錢攻略",
+  "date": "2026-10-20",
+  "excerpt": "租金補貼、育兒津貼、家電補助、貨物稅退稅、長照服務……很多錢不是沒有，是沒人提醒你申請。這份清單一年勾兩次，把該領的一次盤點完。",
+  "slug": "family-money-checklist",
+  "source_url": "https://www.gov.tw/News_Content_26_586833",
+  "title": "家庭年度省錢檢查清單：12 個項目逐項勾，漏領的補助比你想的多"
+ },
+ {
+  "category": "長照照護",
+  "date": "2026-10-21",
+  "excerpt": "長照給付分「四包錢」：照顧及專業服務每月最高 36,180 元、交通接送每月最高 2,400 元、輔具 3 年 4 萬起、喘息每年最高 48,510 元。資格、自付比率、家有外籍看護怎麼用，數字全查證自衛福部長照專區。",
+  "slug": "ltc-benefits",
+  "source_url": "https://1966.gov.tw/LTC/cp-6533-70777-207.html",
+  "title": "長照四包錢金額表（2026）：照顧、交通、輔具、喘息額度與自付比率一次看懂"
+ },
+ {
+  "slug": "parental-leave-allowance",
+  "title": "育嬰留職停薪津貼 2026：請育嬰假，每月領投保薪資 8 成",
+  "category": "育兒補助",
+  "date": "2026-10-22",
+  "excerpt": "就業保險育嬰留職停薪津貼為前 6 個月平均月投保薪資 60% 加政府補助 20%，合計 8 成，每名子女每位家長最長 6 個月，父母可同時請領。資格、申請方式、文件一次看懂。",
+  "source_url": "https://www.bli.gov.tw/0101764.html"
+ },
+ {
+  "category": "省錢攻略",
+  "date": "2026-10-22",
+  "excerpt": "信用卡回饋沒有單一冠軍：超商最高 11%、網購 3.3% 無上限、海外先扣 1.5% 手續費再比、無腦刷 1.22% 現金無上限。照消費場景挑對卡，附加碼上限與登錄切換條件。",
+  "slug": "credit-card-cashback-guide",
+  "source_url": "https://www.money101.com.tw/blog/%E6%9C%80%E6%96%B0%E5%80%BC%E5%BE%97%E9%97%9C%E6%B3%A8%E4%BF%A1%E7%94%A8%E5%8D%A1",
+  "title": "2026 信用卡回饋哪張最高？分場景冠軍一次整理"
+ },
+ {
+  "slug": "senior-respect-gold-2026",
+  "title": "2026 重陽敬老金總整理：各縣市長輩能領多少、沒領到怎麼補領",
+  "category": "長照照護",
+  "date": "2026-10-23",
+  "excerpt": "2026 重陽節 10/18 已過：13 縣市敬老禮金金額、資格、發放方式與補領期限總整理。台北 1,500 元起、新北百歲 2 萬元，多數補發到 11–12 月底，桃園逾期不補發、新竹縣申請已截止。",
+  "source_url": "https://www.gov.tw/News_Content_37_908085"
+ },
+ {
+  "slug": "birth-benefits",
+  "title": "2026 生育給付大升級：國保、沒保險的媽媽每胎 10 萬元，勞保再加碼",
+  "category": "育兒補助",
+  "date": "2026-10-24",
+  "excerpt": "2026/1/1 起：國保生育給付 42,206 元＋政府加給 57,794 元＝每胎 10 萬元；沒保險的媽媽新增每胎 10 萬元生育補助；勞保另有加給。資格、金額、申請三步驟，數字查證自官方公告。",
+  "source_url": "https://www.bli.gov.tw/en/0016425.html"
+ },
+ {
+  "slug": "land-value-tax-2026",
+  "title": "115 年地價稅 11 月開徵：繳納期限、2‰ 自用住宅優惠、收到稅單先核對 3 件事",
+  "category": "省錢攻略",
+  "date": "2026-10-25",
+  "excerpt": "115 年地價稅 11 月 1 日開徵、繳納期限至 11 月 30 日。收到稅單先核對稅率欄：自用住宅用地 2‰、一般用地 10‰～55‰，同一筆地價稅額最多差 5 倍以上；超商繳稅、線上查繳與明年 9 月 22 日前申請優惠一次整理。",
+  "source_url": "https://www.etax.nat.gov.tw/etwmain/announcement/news/GBekRgm"
+ },
+ {
+  "category": "育兒補助",
+  "date": "2026-10-26",
+  "excerpt": "未滿 2 歲送托公共化每月 7,000 元起、準公共 13,000 元起，中低收入戶與低收入戶再加碼。資格、金額表、申請四步驟與送托 15 日期限一次看懂。",
+  "slug": "childcare-care-subsidy",
+  "source_url": "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg032004/ch08/type1/gov70/num16/images/AA.pdf",
+  "title": "托育補助申請教學：未滿 2 歲送托，每月最高 13,000–19,000 元，送托 15 日內一定要申請"
+ },
+ {
+  "slug": "november-subsidy-calendar-2026",
+  "title": "11 月補助行事曆：地價稅 11/30 前要繳、家電汰舊剩最後 2 個月，4 件事按截止日排好",
+  "category": "省錢攻略",
+  "date": "2026-10-27",
+  "excerpt": "11月1日地價稅開徵、繳到11月30日；家電汰舊換新發票只收到12月31日、申請到明年1月31日；貨物稅退稅購買後6個月內要申請。4件事按截止日排，附圖文三步驟。",
+  "source_url": "https://www.etax.nat.gov.tw/etwmain/announcement/news/GBekRgm"
+ },
+ {
+  "slug": "childcare-money-combo-2026",
+  "title": "育兒三筆錢能不能同時領？生育給付、育兒津貼、托育補助、育嬰留停對照表",
+  "category": "育兒補助",
+  "date": "2026-10-28",
+  "excerpt": "生育給付只能擇一、育兒津貼與托育補助二選一、育嬰留停 8 成可與托育補助同時領。生小孩前先看這張對照表，別讓該領的錢互相抵銷，附圖文三步驟。",
+  "source_url": "https://www.bli.gov.tw/en/0016425.html"
+ },
+ {
+  "slug": "appliance-subsidy-compare",
+  "title": "家電補助兩種怎麼領？汰舊換新 3,000 元 vs 貨物稅退稅最高 2,000 元，同一臺最高 5,000 元",
+  "category": "節能家電",
+  "date": "2026-10-29",
+  "excerpt": "買節能家電有兩筆錢：經濟部汰舊換新補助每臺 3,000 元、財政部貨物稅退稅每臺最高 2,000 元。兩筆分屬不同機關、要分別申請，但官方明文可以疊加，同一臺 1 級冷氣或冰箱最高合計 5,000 元，附退稅級距表與辦理順序。",
+  "source_url": "https://save3000.moeaea.gov.tw"
+ },
+ {
+  "slug": "house-tax-self-use-2026",
+  "title": "房屋稅自住 1.2% 怎麼保住？全國單一自住 1% 條件＋每年 3/22 前申報期限",
+  "category": "省錢攻略",
+  "date": "2026-10-30",
+  "excerpt": "同一間房自住 1.2%、沒申報變 2%～4.8%，稅差可達 4 倍。戶籍、出租、3 戶三關與 3/22 申報死線一次講清。",
+  "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340102"
+ },
+ {
+  "slug": "ltc-respite-service-2026",
+  "title": "長照喘息服務怎麼用？每年最高 48,510 元，讓主要照顧者好好休息",
+  "category": "長照照護",
+  "date": "2026-10-31",
+  "excerpt": "主要照顧者累了可以申請喘息服務：居家、機構、社區三種方式可混合配搭，每年額度 32,340 元起、第 7、8 級 48,510 元。申請四步驟、支付價格與額度換算一次看懂。",
+  "source_url": "https://1966.gov.tw/LTC/cp-6454-70075-207.html"
+ },
+ {
+  "slug": "rent-subsidy-bonus-2026",
+  "title": "租金補貼加碼怎麼算？新婚 1.5 倍、新生兒最高 3 倍，只取最高一項別算錯",
+  "category": "租屋補助",
+  "date": "2026-11-01",
+  "excerpt": "115 年度租金補貼基本金額先看級別、再乘加碼：單身青年 1.2 倍、新婚 1.5 倍、115 年起新生兒 2／2.5／3 倍、經濟弱勢 1.4 倍。官方規則：同時符合多種身分只取最高一項、以實際租金核計，三個試算一次看懂。",
+  "source_url": "https://has.nlma.gov.tw/house300e/"
+ },
+ {
+  "slug": "water-bill-tiers",
+  "title": "水費級距怎麼算才省？台水四段單價＋三個試算，超過的那段最貴",
+  "category": "省錢攻略",
+  "date": "2026-11-02",
+  "excerpt": "台灣自來水公司水費四段累進：每月抄表 1–10 度 7.35 元、11–30 度 9.45 元、31–50 度 11.55 元、51 度以上 12.075 元。看懂水費單組成、分段加總試算與三招省水，附圖文四步驟。",
+  "source_url": "https://www.water.gov.tw/ch/ServerFile/Get/37beec88-3c61-4beb-afd5-db4883b1357b?nodeId=4571"
+ },
+ {
+  "category": "育兒補助",
+  "date": "2026-11-03",
+  "excerpt": "2–6 歲幼兒園費用對照：公立第 1 胎每月最多 1,000 元、非營利 2,000 元、準公共 3,000 元；讀一般私立或自己帶，改領育兒津貼／就學補助每月 5,000–7,000 元。兩條路不能重複，附圖文四步驟。",
+  "slug": "kindergarten-fees-2026",
+  "source_url": "https://edu.law.moe.gov.tw/LawContent.aspx?media=print&id=GL001909",
+  "title": "2–6 歲幼兒園費用對照：公立 1,000／非營利 2,000／準公共 3,000 元上限＋私立領育兒津貼 5,000–7,000 元"
+ },
+ {
+  "slug": "ltc-assistive-device-2026",
+  "title": "長照輔具補助申請教學：3 年 4 萬起、第二組 6 萬怎麼選，租比買划算的 5 種情況",
+  "category": "長照照護",
+  "date": "2026-11-04",
+  "excerpt": "長照輔具及居家無障礙改善每 3 年一組額度：第一組 4 萬元、115 年 7 月 1 日起第二組 6 萬元，兩組擇一、選定 3 年內不能換。申請四步驟、限租賃品項與自付比率一次看懂。",
+  "source_url": "https://1966.gov.tw/LTC/cp-6453-69940-207.html"
+ },
+ {
+  "slug": "dehumidifier-energy-label-2026",
+  "title": "除濕機怎麼挑才省電？2026 新制 1 級門檻＋EF 值、年耗電量算法一次看懂",
+  "category": "節能家電",
+  "date": "2026-11-05",
+  "excerpt": "除濕機能效新基準自 2026 年 1 月 1 日生效：1 級門檻依公升數為 EF 2.24–2.98。看懂 EF 值、年耗電量公式與公告文號，再確認 1、2 級貨物稅退稅最高 2,000 元，附圖文四步驟。",
+  "source_url": "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg029223/ch04/type1/gov31/num11/Eg.pdf"
+ },
+ {
+  "slug": "health-insurance-premium-2026",
+  "title": "2026 健保費怎麼算？費率 5.17%、58 級對照、眷屬最多算 3 口，月薪 4 萬每月扣 622 元",
+  "category": "省錢攻略",
+  "date": "2026-11-06",
+  "excerpt": "健保費＝投保金額 × 5.17% × 30% ×（本人＋眷屬人數）。2026 年 58 級對照：月薪 4 萬自付 622 元、最低 458 元、最高 4,855 元；眷屬超過 3 口以 3 口計，第六類每月定額 826 元。",
+  "source_url": "https://www.nhi.gov.tw/ch/cp-19418-9eefb-2576-1.html"
+ },
+ {
+  "category": "長照照護",
+  "date": "2026-11-07",
+  "excerpt": "長輩住機構每月最高補助 1.5 萬元，115 年度最高 18 萬元：長照 4 級以上或中度以上身障證明就能申請，按月認列、住滿半個月就算 1 個月；第二階段受理只到 12 月 16 日。",
+  "slug": "ltc-residential-subsidy-2026",
+  "source_url": "https://ws.tycg.gov.tw/Download.ashx?u=LzAwMS9VcGxvYWQvNzQvcmVsZmlsZS8xMTg1OC8xODc0MzAwLzg5N2Y2NDY0LTJiZmMtNDYwNy05NmRhLTVmOGZhNzEzMDRkYi5wZGY%3D&n=5L2P5rCR6KOc5Yqp5ZWP562U6ZuGKOawkeecvueJiCkucGRm&icon=..pdf",
+  "title": "2026 長照住宿補助升級：每月最高 1.5 萬、115 年度最高 18 萬，第二階段申請只到 12/16"
+ },
+ {
+  "slug": "city-birth-subsidy-2026",
+  "title": "2026 各縣市生育津貼一次看：彰化第 3 胎 8 萬最高、台北第 1 胎 4 萬，6 縣市對照＋中央 10 萬",
+  "category": "育兒補助",
+  "date": "2026-11-08",
+  "excerpt": "2026 年生小孩，中央生育給付補足每胎 10 萬元之外，戶籍地縣市還有一筆生育津貼：台北第 1 胎 4 萬、彰化第 3 胎 8 萬。6 縣市金額、設籍天數、申請期限對照，報戶口那趟一次辦完。",
+  "source_url": "https://events.bli.gov.tw/Activities/202601_04/"
+ },
+ {
+  "slug": "income-tax-refund-2026",
+  "title": "2026 綜所稅退稅教學：第二批 10/30 已入帳、第三批 2027/1/20，4 步驟查入帳＋憑單 12/31 前要兌領",
+  "category": "省錢攻略",
+  "date": "2026-11-09",
+  "excerpt": "114 年度綜所稅退稅分三批：第一批 7/31、第二批 10/30 已入帳（8.2 萬件、14.3 億元）、第三批 2027/1/20。對照申報方式看自己是哪一批，4 步驟上網查撥付狀態，憑單兌領期限到 12/31。",
+  "source_url": "https://www.etax.nat.gov.tw/etwmain/etw133w1/b01"
+ }
 ]
