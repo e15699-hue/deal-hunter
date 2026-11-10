@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="步驟四：等通知查進度">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<circle cx="700" cy="70" r="34" fill="#F48FB1" opacity="0.55"/><circle cx="80" cy="390" r="46" fill="#F48FB1" opacity="0.4"/>
+<g transform="translate(130,95)">
+<circle cx="105" cy="115" r="95" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/>
+<circle cx="105" cy="115" r="8" fill="#D81B60"/>
+<line x1="105" y1="115" x2="105" y2="55" stroke="#D81B60" stroke-width="8" stroke-linecap="round"/>
+<line x1="105" y1="115" x2="150" y2="140" stroke="#D81B60" stroke-width="8" stroke-linecap="round"/>
+<text x="105" y="215" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="30" font-weight="900" fill="#AD1457">7 日內補正</text>
+</g>
+<text x="400" y="180" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="60" font-weight="900" fill="#AD1457">等通知查進度</text>
+<text x="400" y="240" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="30" font-weight="700" fill="#880E4F">補件通知只來一次、7 日內</text>
+<text x="400" y="292" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="28" fill="#6D4C5E">審查 3 個月內完成</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/><text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">步驟 4／4　等通知查進度</text>
+</svg>
