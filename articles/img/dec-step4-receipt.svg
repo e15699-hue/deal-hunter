@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="留存憑證備查">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<circle cx="700" cy="70" r="34" fill="#F48FB1" opacity="0.55"/><circle cx="80" cy="390" r="46" fill="#F48FB1" opacity="0.4"/>
+<g transform="translate(110,95)">
+<rect x="0" y="0" width="250" height="200" rx="16" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/>
+<rect x="0" y="0" width="250" height="52" rx="16" fill="#D81B60"/>
+<text x="125" y="38" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="28" font-weight="900" fill="#FFFFFF">繳款憑證</text>
+<rect x="28" y="72" width="194" height="14" rx="7" fill="#F8BBD0"/>
+<rect x="28" y="102" width="150" height="14" rx="7" fill="#F8BBD0"/>
+<rect x="28" y="132" width="194" height="14" rx="7" fill="#F8BBD0"/>
+<text x="125" y="185" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="26" font-weight="900" fill="#AD1457">收據聯＋小白單</text>
+<path d="M0 200 L20 214 L40 200 L60 214 L80 200 L100 214 L120 200 L140 214 L160 200 L180 214 L200 200 L220 214 L250 200 L250 214 L0 214 Z" fill="#FFFFFF" stroke="#D81B60" stroke-width="4"/>
+</g>
+<text x="410" y="180" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="52" font-weight="900" fill="#AD1457">留存憑證備查</text>
+<text x="410" y="240" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="30" font-weight="700" fill="#880E4F">兩張釘在一起保存 5 年</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/><text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">步驟 4／4　留存憑證備查</text>
+</svg>
