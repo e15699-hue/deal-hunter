@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="步驟四：檢查加衛教，記好下一次與塗氟">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<circle cx="700" cy="70" r="34" fill="#F48FB1" opacity="0.55"/><circle cx="80" cy="390" r="46" fill="#F48FB1" opacity="0.4"/>
+<g transform="translate(110,100)">
+<rect x="20" y="40" width="230" height="160" rx="12" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/>
+<rect x="110" y="10" width="50" height="40" rx="8" fill="#D81B60"/>
+<text x="135" y="120" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="40" font-weight="900" fill="#AD1457">檢查 ✓</text>
+<text x="135" y="168" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="26" font-weight="700" fill="#880E4F">衛教＋約下一次</text>
+</g>
+<text x="410" y="180" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="52" font-weight="900" fill="#AD1457">檢查＋衛教，記好下一次</text>
+<text x="410" y="240" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="30" font-weight="700" fill="#880E4F">醫師一對一衛教，結果寫進手冊</text>
+<text x="410" y="292" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="28" fill="#6D4C5E">順便約每半年 1 次的塗氟</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/><text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">步驟 4／4　檢查＋衛教，記好下一次</text>
+</svg>
