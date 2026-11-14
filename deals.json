@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13 03:21",
+  "updated_at": "2026-11-14 03:18",
   "deals": [
     {
       "name": "【BH】G33 Any Go輕步緩坡機(入門爬坡機/平板跑步機/健走機/慢走機/超慢跑/走步機/走路機)",
@@ -350,6 +350,28 @@
       "found_at": "2026-11-06"
     },
     {
+      "name": "CookPower 鍋寶 觸控健康減油氣炸鍋6L",
+      "price": 1504,
+      "market_price": 1785,
+      "list_price": 4990,
+      "benchmark_n": 3,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        1580,
+        1990
+      ],
+      "category": "家電",
+      "source": "momo",
+      "seller": "momo購物網",
+      "note": "momo 今日 $1,504（滿1件享8折、售價已折）；其他賣場 $1,580／$1,990，平均 $1,785，現省 $281（-15.7%）；鍋寶官網同款 11/13 為 $1,880。",
+      "url": "https://shopsquare.co/3U2aV",
+      "image": "https://i4.momoshop.com.tw/1791194174/goodsimg/0007/992/878/7992878_R_m.webp",
+      "has_affiliate": true,
+      "affiliate_network": "momo點點賺",
+      "recommended": false,
+      "orig_url": "https://s.momoshop.com.tw/s/b4TuriSg"
+    },
+    {
       "name": "LEGO 樂高 Botanicals 10369 梅花",
       "price": 736,
       "market_price": 860,
@@ -418,26 +440,29 @@
       "stockup": false
     },
     {
-      "name": "CookPower 鍋寶 觸控健康減油氣炸鍋6L",
-      "price": 1560,
-      "market_price": 1785,
-      "list_price": 4990,
+      "name": "SONY 索尼 WF-C710N 真無線降噪藍牙耳機 (公司貨 保固12個月）",
+      "price": 2790,
+      "market_price": 3140,
+      "list_price": 3140,
       "benchmark_n": 3,
       "benchmark_src": "avg_others",
       "also_prices": [
-        1580,
-        1990
+        2790,
+        3490
       ],
-      "category": "家電",
-      "source": "momo",
-      "seller": "momo購物網",
-      "note": "momo 11/13 單日滿1件83折，限時折後價 $1,560（11/09~11/11 雙11價 $1,449 已結束）；其他賣場 $1,580／$1,990，平均 $1,785，現省 $225（-12.6%）；鍋寶官網同款今日 $1,880。",
-      "url": "https://shopsquare.co/3U2aV",
-      "image": "https://i4.momoshop.com.tw/1791194174/goodsimg/0007/992/878/7992878_R_m.webp",
-      "has_affiliate": true,
-      "affiliate_network": "momo點點賺",
+      "category": "3C數位",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $2,790（本人 curl JSON-LD、InStock）；Sony Store 官網限時優惠價今日 $2,790（11/10~11/15、原價 $3,490）；酷澎粉色今日 $3,490（瀏覽器直驗、第三方賣家、僅剩 1 件）；平均 $3,140，現省 $350（-11.1%）",
+      "url": "https://24h.pchome.com.tw/prod/DYAQFN-A900IJW90",
+      "image": "https://img.pchome.com.tw/cs/items/DYAQFNA900IJW90/000001_1779449280.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
       "recommended": false,
-      "orig_url": "https://s.momoshop.com.tw/s/b4TuriSg"
+      "flash": false,
+      "found_at": "",
+      "expiring": false,
+      "stockup": false
     },
     {
       "name": "📦 EverClean藍鑽 4倍淨味貓砂 8.5kg 2入組（歷史低點！）",
