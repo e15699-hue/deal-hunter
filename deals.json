@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-14 03:18",
+  "updated_at": "2026-11-15 03:18",
   "deals": [
     {
       "name": "【BH】G33 Any Go輕步緩坡機(入門爬坡機/平板跑步機/健走機/慢走機/超慢跑/走步機/走路機)",
@@ -372,6 +372,31 @@
       "orig_url": "https://s.momoshop.com.tw/s/b4TuriSg"
     },
     {
+      "name": "【幫寶適】雙11必買6箱加碼 一級幫 拉拉褲M-3XL/黏貼型尿布S-XL 6箱",
+      "price": 5555,
+      "market_price": 6496,
+      "list_price": 8574,
+      "benchmark_n": 3,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        6399,
+        6594
+      ],
+      "category": "母嬰玩具",
+      "source": "momo",
+      "seller": "momo購物網",
+      "note": "momo 11/14~11/20 幫寶適限定獨家 $5,555（促銷價 $8,574，3組價＝6箱）；蝦皮 P&G 官方旗艦店同款 6箱組 $6,399／$6,594，平均 $6,497，現省 $942（-14.5%）",
+      "url": "https://shopsquare.co/3U2aV",
+      "image": "https://i2.momoshop.com.tw/1794565396/goodsimg/0015/658/867/15658867_R_m.webp",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "",
+      "expiring": false,
+      "stockup": false
+    },
+    {
       "name": "LEGO 樂高 Botanicals 10369 梅花",
       "price": 736,
       "market_price": 860,
@@ -461,6 +486,35 @@
       "recommended": false,
       "flash": false,
       "found_at": "",
+      "expiring": false,
+      "stockup": false
+    },
+    {
+      "name": "KIOXIA 鎧俠 Exceria G2 SSD M.2 2280 PCIe NVMe 2TB Gen3x4",
+      "price": 7900,
+      "market_price": 8850,
+      "list_price": 9900,
+      "benchmark_n": 7,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        7600,
+        8500,
+        8600,
+        8999,
+        9500,
+        9900
+      ],
+      "category": "3C數位",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $7,900（11/14 $9,900→今日降 $2,000，經典款G2 直接降2千）；其他賣場 $7,600／$8,500／$8,600／$8,999／$9,500／$9,900，平均 $8,850，現省 $950（-10.7%）",
+      "url": "https://24h.pchome.com.tw/prod/DRAHGT-A900JOQ0O",
+      "image": "https://img.pchome.com.tw/cs/items/DRAHGTA900JOQ0O/000001_1769655346.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-15",
       "expiring": false,
       "stockup": false
     },
