@@ -1,6 +1,34 @@
 {
-  "updated_at": "2026-11-15 03:18",
+  "updated_at": "2026-11-16 03:19",
   "deals": [
+    {
+      "name": "Joyoung 九陽 IH全自動智慧炒菜機(RC8 Pro)",
+      "price": 2111,
+      "market_price": 8830,
+      "list_price": 8999,
+      "benchmark_n": 6,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        8999,
+        8980,
+        8980,
+        9190,
+        7999
+      ],
+      "category": "家電",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 雙11限定破盤價今日 $2,111（檔期至 11/16，curl JSON-LD 直驗、InStock）；其他賣場 $8,999／$8,980／$8,980／$9,190／$7,999（好市多），平均 $8,830，現省 $6,719（-76.1%）",
+      "url": "https://24h.pchome.com.tw/prod/DMAGO0-A900KFABW",
+      "image": "https://img.pchome.com.tw/cs/items/DMAGO0A900KFABW/000001_1793332468.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": true,
+      "flash": false,
+      "found_at": "2026-11-16",
+      "expiring": false,
+      "stockup": false
+    },
     {
       "name": "【BH】G33 Any Go輕步緩坡機(入門爬坡機/平板跑步機/健走機/慢走機/超慢跑/走步機/走路機)",
       "price": 8911,
@@ -24,27 +52,6 @@
       "orig_url": "https://s.momoshop.com.tw/s/TrrhOOD2"
     },
     {
-      "name": "伊萊克斯 極致美味500 23L燒烤微波爐 EMG23D22NB（北歐藍）",
-      "price": 2911,
-      "market_price": 4240,
-      "list_price": 5690,
-      "benchmark_n": 3,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        3990,
-        4491
-      ],
-      "category": "家電",
-      "source": "PChome 24h",
-      "seller": "PChome 24h購物",
-      "note": "PChome 今日價 $2,911；momo 北歐藍今日 $3,990、Yahoo 藍色今日 $4,491，平均 $4,240，現省 $1,329（-31.3%）",
-      "url": "https://24h.pchome.com.tw/prod/DMBJB8-A900JV9CX",
-      "image": "https://cs-a.ecimg.tw/items/DMBJB8A900JV9CX/000001_1793350428.jpg",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": true
-    },
-    {
       "name": "【ANDYMAY2】72寬六層 升級全碳鋼免組裝折疊收納層架",
       "price": 799,
       "market_price": 1099,
@@ -64,28 +71,6 @@
       "affiliate_network": "",
       "recommended": false,
       "orig_url": "https://www.momoshop.com.tw/TP/TP0003045/goodsDetail/TP00030450000051?entpCode=TP0003045"
-    },
-    {
-      "name": "LEGO 樂高 漫威超級英雄系列 76340 2026 年驚喜月曆",
-      "price": 870,
-      "market_price": 1194,
-      "list_price": 1299,
-      "benchmark_n": 3,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        1169,
-        1220
-      ],
-      "category": "母嬰玩具",
-      "source": "PChome 24h",
-      "seller": "PChome 24h購物",
-      "note": "PChome 24h 今日 JSON-LD 直驗 $870（昨 $909，再降）；其他賣場 $1,169／$1,220，平均 $1,194，現省 $324（-27.1%）",
-      "url": "https://24h.pchome.com.tw/prod/DEDJ0O-A900KBA6F",
-      "image": "https://img.pchome.com.tw/cs/items/DEDJ0OA900KBA6F/000001_1789445050.jpg?width=480",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": true,
-      "found_at": "2026-11-06"
     },
     {
       "name": "【白帥帥】洗衣精補充包1650g×6包×2箱（五款任選）",
@@ -219,6 +204,32 @@
       "affiliate_network": ""
     },
     {
+      "name": "Logitech 羅技 M720 Triathlon 多工無線滑鼠（黑色）",
+      "price": 888,
+      "market_price": 1156,
+      "list_price": 1290,
+      "benchmark_n": 4,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        1290,
+        1090,
+        1088
+      ],
+      "category": "3C數位",
+      "source": "PChome 24h",
+      "seller": "PChome 24h",
+      "note": "PChome 今日 $888（curl JSON-LD 直驗、InStock）；momo 羅技官方旗艦館 $1,290、蝦皮鳥鵬電腦 $1,090、蝦皮龍龍3C $1,088，平均 $1,156，現省 $268（-23.2%）",
+      "url": "https://24h.pchome.com.tw/prod/DSAR0S-1900HRWXS",
+      "image": "https://img.pchome.com.tw/cs/items/DSAR0S1900HRWXS/000007_1787591611.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-16",
+      "expiring": false,
+      "stockup": false
+    },
+    {
       "name": "【NEW STAR】後背包 簡約機能防水多口袋收納筆電包包 男 女 男包 BK298(大容量 電腦包)",
       "price": 1119,
       "market_price": 1449,
@@ -261,6 +272,32 @@
       "affiliate_network": "",
       "recommended": false,
       "orig_url": "https://www.momoshop.com.tw/product/14953534"
+    },
+    {
+      "name": "Roborock 石頭科技 Qrevo L 掃拖機器人",
+      "price": 8911,
+      "market_price": 11292,
+      "list_price": 10999,
+      "benchmark_n": 4,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        10999,
+        11990,
+        10888
+      ],
+      "category": "家電",
+      "source": "PChome",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $8,911（curl JSON-LD 直驗、InStock；自動洗烘拖布／自動集塵／10000Pa）；他賣場現貨 $10,999／奇機通訊 $11,990／蝦皮 $10,888，平均 $11,292，現省 $2,381（-21.1%）",
+      "url": "https://24h.pchome.com.tw/prod/DMBT0G-A900J1M89",
+      "image": "https://img.pchome.com.tw/cs/items/DMBT0GA900J1M89/000001_1793500553.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-16",
+      "expiring": false,
+      "stockup": false
     },
     {
       "name": "愛戀花草 卡皮巴拉藍芽音響喇叭",
@@ -328,6 +365,29 @@
       "orig_url": "https://www.momoshop.com.tw/product/15698480"
     },
     {
+      "name": "LEGO 樂高 漫威超級英雄系列 76340 2026 年驚喜月曆",
+      "price": 974,
+      "market_price": 1169,
+      "list_price": 1299,
+      "benchmark_n": 4,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        1169,
+        1170,
+        1169
+      ],
+      "category": "母嬰玩具",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $974（昨 $870 已漲，curl JSON-LD 直驗、InStock）；momo $1,169／$1,170／$1,169，平均 $1,169，現省 $195（-16.7%）",
+      "url": "https://24h.pchome.com.tw/prod/DEDJ0O-A900KBA6F",
+      "image": "https://img.pchome.com.tw/cs/items/DEDJ0OA900KBA6F/000001_1789445050.jpg?width=480",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "found_at": "2026-11-06"
+    },
+    {
       "name": "Oral-B 歐樂B iO9 微磁電動牙刷（黑／白）",
       "price": 7911,
       "market_price": 9450,
@@ -370,6 +430,33 @@
       "affiliate_network": "momo點點賺",
       "recommended": false,
       "orig_url": "https://s.momoshop.com.tw/s/b4TuriSg"
+    },
+    {
+      "name": "Dyson V8 Cyclone SV55 無線吸塵器",
+      "price": 8999,
+      "market_price": 10572,
+      "list_price": 9900,
+      "benchmark_n": 5,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        10900,
+        10900,
+        10689,
+        9800
+      ],
+      "category": "家電",
+      "source": "PChome",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $8,999（curl JSON-LD 直驗、InStock）；博客來 $10,900、蝦皮商城恆隆行 $10,900、Yahoo $10,689、蝦皮 US3C 全新品 $9,800，平均 $10,572，現省 $1,573（-14.9%）",
+      "url": "https://24h.pchome.com.tw/prod/DMAX00-A900J52LH",
+      "image": "https://img.pchome.com.tw/cs/items/DMAX00A900J52LH/000001_1793869242.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-16",
+      "expiring": false,
+      "stockup": false
     },
     {
       "name": "【幫寶適】雙11必買6箱加碼 一級幫 拉拉褲M-3XL/黏貼型尿布S-XL 6箱",
@@ -519,24 +606,27 @@
       "stockup": false
     },
     {
-      "name": "📦 EverClean藍鑽 4倍淨味貓砂 8.5kg 2入組（歷史低點！）",
-      "price": 1219,
-      "market_price": 1361,
-      "list_price": 1432,
-      "benchmark_n": 4,
-      "benchmark_src": "history_avg",
-      "also_prices": [],
-      "category": "寵物生活",
-      "source": "momo",
-      "seller": "momo購物網",
-      "note": "90天歷史低點，比均價便宜約 10%｜2026-11-10 momo 直驗限時折後價 $1,219（昨 $1,229，再降；11/10~11/13 限時下殺↘1219），仍低於均價 $1,361，-10.4%",
-      "url": "https://www.momoshop.com.tw/product/4330946",
-      "image": "https://i4.momoshop.com.tw/1764124011/goodsimg/0004/330/946/4330946_R_m.webp",
+      "name": "伊萊克斯 極致美味500 23L燒烤微波爐 EMG23D22NB（北歐藍）",
+      "price": 3990,
+      "market_price": 4372,
+      "list_price": 5690,
+      "benchmark_n": 5,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        4491,
+        4499,
+        4399,
+        4099
+      ],
+      "category": "家電",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $3,990（昨 $2,911 已漲，curl JSON-LD 直驗、InStock）；Yahoo $4,491、蝦皮直營 $4,499、蝦皮公司貨 $4,399、蝦皮 $4,099，平均 $4,372，現省 $382（-8.7%）",
+      "url": "https://24h.pchome.com.tw/prod/DMBJB8-A900JV9CX",
+      "image": "https://cs-a.ecimg.tw/items/DMBJB8A900JV9CX/000001_1793350428.jpg",
       "has_affiliate": false,
       "affiliate_network": "",
-      "recommended": false,
-      "orig_url": "https://www.momoshop.com.tw/product/4330946",
-      "stockup": true
+      "recommended": false
     },
     {
       "name": "BRITA MAXTRA PRO濾芯－去水垢專家（10入裝）",
