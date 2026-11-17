@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16 03:19",
+  "updated_at": "2026-11-17 03:31",
   "deals": [
     {
       "name": "Joyoung 九陽 IH全自動智慧炒菜機(RC8 Pro)",
@@ -30,26 +30,30 @@
       "stockup": false
     },
     {
-      "name": "【BH】G33 Any Go輕步緩坡機(入門爬坡機/平板跑步機/健走機/慢走機/超慢跑/走步機/走路機)",
-      "price": 8911,
-      "market_price": 13800,
-      "list_price": 14800,
-      "benchmark_n": 3,
+      "name": "LooCa 石墨烯遠紅外線抗菌保暖冬被 1入-6x7尺（棉被★急速保暖）",
+      "price": 899,
+      "market_price": 1426,
+      "list_price": 1980,
+      "benchmark_n": 4,
       "benchmark_src": "avg_others",
       "also_prices": [
-        12800,
-        14800
+        1111,
+        1188,
+        1980
       ],
-      "category": "運動戶外",
+      "category": "居家生活",
       "source": "momo",
-      "seller": "momo購物網（BH品牌旗艦）",
-      "note": "momo限時折後價 $8,911（11/08 直驗，昨 $9,999 再降）；其他賣場 $12,800／$14,800，平均 $13,800，現省 $4,889（-35.4%）",
-      "url": "https://s.momoshop.com.tw/s/TrrhOOD2",
-      "image": "https://i1.momoshop.com.tw/1792427478/goodsimg/0013/523/463/13523463_R_m.webp",
-      "has_affiliate": true,
-      "affiliate_network": "momo點點賺",
+      "seller": "momo購物網（LooCa 品牌旗艦）",
+      "note": "momo 今日 $899（11/01~11/30 限時 9折，browser.open 直驗、InStock；促銷價 $999、市售價 $3,980）；蝦皮 LooCa 官方旗艦店 $1,111、東森 $1,188、LooCa 官方 $1,980，平均 $1,426，現省 $527（-37.0%）",
+      "url": "https://shopsquare.co/3U2aV",
+      "image": "https://i1.momoshop.com.tw/goodsimg/0009/410/433/9410433_R_m.webp",
+      "has_affiliate": false,
+      "affiliate_network": "",
       "recommended": false,
-      "orig_url": "https://s.momoshop.com.tw/s/TrrhOOD2"
+      "flash": false,
+      "found_at": "",
+      "expiring": false,
+      "stockup": false
     },
     {
       "name": "【ANDYMAY2】72寬六層 升級全碳鋼免組裝折疊收納層架",
@@ -163,47 +167,6 @@
       "stockup": false
     },
     {
-      "name": "📦 滿意寶寶 極上呵護輕巧褲 L-XXL 2箱組（歷史低點！）",
-      "price": 2175,
-      "market_price": 2855,
-      "list_price": 2974,
-      "benchmark_n": 7,
-      "benchmark_src": "history_avg",
-      "also_prices": [],
-      "category": "母嬰玩具",
-      "source": "momo",
-      "seller": "momo購物網",
-      "note": "90天歷史低點，比均價便宜約25%｜2026-11-09 momo 直驗限時折後價 $2,175（昨 $2,145，小漲但仍低於均價 $2,855，-23.8%）",
-      "url": "https://www.momoshop.com.tw/product/10419093",
-      "image": "https://i2.momoshop.com.tw/1793003095/goodsimg/0010/419/093/10419093_R_m.webp",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "orig_url": "https://www.momoshop.com.tw/product/10419093",
-      "stockup": true
-    },
-    {
-      "name": "LA ROCHE-POSAY 理膚寶水 MELA B3淡斑淨亮精華 30ml x2入組",
-      "price": 2994,
-      "market_price": 3910,
-      "list_price": 3910,
-      "benchmark_n": 2,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        4160,
-        3660
-      ],
-      "category": "美妝保養",
-      "source": "PChome 24h",
-      "seller": "PChome 24h",
-      "note": "PChome 24h 今日 $2,994（11/11 一日限定價、11/09–11/12 檔期、30ml×2 瓶、在售）；單瓶價換算：康是美今日 $1,830、LINE 購物單瓶 $2,080，兩瓶合計 $3,660／$4,160，平均 $3,910，現省 $916（-23.4%）。另註：酷澎今日有平行輸入單瓶 $734（簡體品名、無官方集點），非台灣公司貨，不計入比價。",
-      "url": "https://24h.pchome.com.tw/prod/DDCA10-1900KIPNT",
-      "image": "https://img.pchome.com.tw/cs/items/DDCA101900KIPNT/000007_1794326149.jpg",
-      "recommended": false,
-      "has_affiliate": false,
-      "affiliate_network": ""
-    },
-    {
       "name": "Logitech 羅技 M720 Triathlon 多工無線滑鼠（黑色）",
       "price": 888,
       "market_price": 1156,
@@ -274,32 +237,6 @@
       "orig_url": "https://www.momoshop.com.tw/product/14953534"
     },
     {
-      "name": "Roborock 石頭科技 Qrevo L 掃拖機器人",
-      "price": 8911,
-      "market_price": 11292,
-      "list_price": 10999,
-      "benchmark_n": 4,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        10999,
-        11990,
-        10888
-      ],
-      "category": "家電",
-      "source": "PChome",
-      "seller": "PChome 24h購物",
-      "note": "PChome 今日 $8,911（curl JSON-LD 直驗、InStock；自動洗烘拖布／自動集塵／10000Pa）；他賣場現貨 $10,999／奇機通訊 $11,990／蝦皮 $10,888，平均 $11,292，現省 $2,381（-21.1%）",
-      "url": "https://24h.pchome.com.tw/prod/DMBT0G-A900J1M89",
-      "image": "https://img.pchome.com.tw/cs/items/DMBT0GA900J1M89/000001_1793500553.jpg",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "flash": false,
-      "found_at": "2026-11-16",
-      "expiring": false,
-      "stockup": false
-    },
-    {
       "name": "愛戀花草 卡皮巴拉藍芽音響喇叭",
       "price": 709,
       "market_price": 898,
@@ -321,26 +258,29 @@
       "orig_url": "https://s.momoshop.com.tw/s/HL23iqoC"
     },
     {
-      "name": "LEGO 樂高 極速賽車系列 77254 Ferrari SF90 XX Stradale 跑車",
-      "price": 571,
-      "market_price": 720,
-      "list_price": 879,
+      "name": "Avene 雅漾 B3彈力透亮精華霜 50ml(抗老乳霜)",
+      "price": 1418,
+      "market_price": 1739,
+      "list_price": 1880,
       "benchmark_n": 3,
       "benchmark_src": "avg_others",
       "also_prices": [
-        615,
-        826
+        1598,
+        1880
       ],
-      "category": "母嬰玩具",
-      "source": "PChome 24h",
-      "seller": "PChome 24h購物",
-      "note": "PChome 今日價 $571；momo 今日 $615、Yahoo 今日 $826，平均 $720，現省 $149（-20.7%）",
-      "url": "https://24h.pchome.com.tw/prod/DEDJ05-A900JJZEC",
-      "image": "https://img.pchome.com.tw/cs/items/DEDJ05A900JJZEC/000001_1765857387.jpg?width=480",
+      "category": "美妝保養",
+      "source": "momo",
+      "seller": "momo購物網（Avene 官方直營）",
+      "note": "momo 官方直營今日 $1,418（11/14~11/18 85折，browser.open 直驗、InStock；促銷價 $1,880）；蝦皮 Avene 官方旗艦店 $1,598、蝦皮商城瑞昌藥局 $1,880，平均 $1,739，現省 $321（-18.5%）",
+      "url": "https://shopsquare.co/3U2aV",
+      "image": "https://i3.momoshop.com.tw/1700643986/goodsimg/0011/939/627/11939627_R_m.webp",
       "has_affiliate": false,
       "affiliate_network": "",
       "recommended": false,
-      "found_at": "2026-11-06"
+      "flash": false,
+      "found_at": "",
+      "expiring": false,
+      "stockup": false
     },
     {
       "name": "LEGO 樂高 Botanicals 快樂植物 10349",
@@ -363,6 +303,28 @@
       "affiliate_network": "",
       "recommended": false,
       "orig_url": "https://www.momoshop.com.tw/product/15698480"
+    },
+    {
+      "name": "LEGO 樂高 極速賽車系列 77254 Ferrari SF90 XX Stradale 跑車",
+      "price": 597,
+      "market_price": 720,
+      "list_price": 879,
+      "benchmark_n": 3,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        615,
+        826
+      ],
+      "category": "母嬰玩具",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $597（昨 $571 已漲，curl JSON-LD 直驗、InStock）；momo 今日 $615、Yahoo $826，平均 $720，現省 $123（-17.1%）",
+      "url": "https://24h.pchome.com.tw/prod/DEDJ05-A900JJZEC",
+      "image": "https://img.pchome.com.tw/cs/items/DEDJ05A900JJZEC/000001_1765857387.jpg?width=480",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "found_at": "2026-11-06"
     },
     {
       "name": "LEGO 樂高 漫威超級英雄系列 76340 2026 年驚喜月曆",
@@ -388,26 +350,29 @@
       "found_at": "2026-11-06"
     },
     {
-      "name": "Oral-B 歐樂B iO9 微磁電動牙刷（黑／白）",
-      "price": 7911,
-      "market_price": 9450,
-      "list_price": 10990,
+      "name": "Roborock 石頭科技 Qrevo Curv 2 Flow 搖滾巨星掃拖機器人",
+      "price": 17911,
+      "market_price": 21444,
+      "list_price": 24888,
       "benchmark_n": 3,
       "benchmark_src": "avg_others",
       "also_prices": [
-        7911,
-        10990
+        19999,
+        22888
       ],
-      "category": "食品日用",
-      "source": "PChome 24h",
-      "seller": "PChome 24h購物",
-      "note": "PChome 與 momo 今日皆 $7,911（momo 11/11~11/16 限時下殺、促銷價 $7,990）；Yahoo 同款 $10,990，平均 $9,450，現省 $1,539（-16.3%）。",
-      "url": "https://24h.pchome.com.tw/prod/DMBA0K-A900AVW2S",
-      "image": "https://img.pchome.com.tw/cs/items/DMBA0KA900AVW2S/000007_1793928678.jpg",
+      "category": "家電",
+      "source": "momo",
+      "seller": "momo購物網（Roborock 石頭科技）",
+      "note": "momo 今日 $17,911（11/14~11/17 石頭限時下殺，browser.open 直驗、InStock；促銷價 $24,888、市售價 $59,999）；PChome 今日 $19,999（curl JSON-LD 直驗、InStock）、蝦皮 Roborock 官方旗艦店預購 $22,888，平均 $21,443，現省 $3,532（-16.5%）。註：蝦皮官方為預購價",
+      "url": "https://shopsquare.co/3U2aV",
+      "image": "https://i4.momoshop.com.tw/1793945001/goodsimg/0014/500/250/14500250_R_m.webp",
       "has_affiliate": false,
       "affiliate_network": "",
       "recommended": false,
-      "found_at": "2026-11-06"
+      "flash": false,
+      "found_at": "",
+      "expiring": false,
+      "stockup": false
     },
     {
       "name": "CookPower 鍋寶 觸控健康減油氣炸鍋6L",
@@ -430,33 +395,6 @@
       "affiliate_network": "momo點點賺",
       "recommended": false,
       "orig_url": "https://s.momoshop.com.tw/s/b4TuriSg"
-    },
-    {
-      "name": "Dyson V8 Cyclone SV55 無線吸塵器",
-      "price": 8999,
-      "market_price": 10572,
-      "list_price": 9900,
-      "benchmark_n": 5,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        10900,
-        10900,
-        10689,
-        9800
-      ],
-      "category": "家電",
-      "source": "PChome",
-      "seller": "PChome 24h購物",
-      "note": "PChome 今日 $8,999（curl JSON-LD 直驗、InStock）；博客來 $10,900、蝦皮商城恆隆行 $10,900、Yahoo $10,689、蝦皮 US3C 全新品 $9,800，平均 $10,572，現省 $1,573（-14.9%）",
-      "url": "https://24h.pchome.com.tw/prod/DMAX00-A900J52LH",
-      "image": "https://img.pchome.com.tw/cs/items/DMAX00A900J52LH/000001_1793869242.jpg",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "flash": false,
-      "found_at": "2026-11-16",
-      "expiring": false,
-      "stockup": false
     },
     {
       "name": "【幫寶適】雙11必買6箱加碼 一級幫 拉拉褲M-3XL/黏貼型尿布S-XL 6箱",
@@ -482,28 +420,6 @@
       "found_at": "",
       "expiring": false,
       "stockup": false
-    },
-    {
-      "name": "LEGO 樂高 Botanicals 10369 梅花",
-      "price": 736,
-      "market_price": 860,
-      "list_price": 1099,
-      "benchmark_n": 2,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        769,
-        950
-      ],
-      "category": "母嬰玩具",
-      "source": "PChome 24h",
-      "seller": "PChome 24h購物",
-      "note": "PChome 24h 今日 JSON-LD 直驗 $736（昨 $769，再降）；其他賣場 $769／$950，平均 $860，現省 $124（-14.4%）",
-      "url": "https://24h.pchome.com.tw/prod/DEDJ11-A900HNU1Z",
-      "image": "https://img.pchome.com.tw/cs/items/DEDJ11A900HNU1Z/000001_1752742335.jpg?width=480",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "found_at": "2026-11-07"
     },
     {
       "name": "Apple AirPods 4 主動式降噪款（MXP93TA/A，台灣公司貨）",
@@ -552,6 +468,32 @@
       "stockup": false
     },
     {
+      "name": "Roborock 石頭科技 Qrevo L 掃拖機器人",
+      "price": 9999,
+      "market_price": 11292,
+      "list_price": 10999,
+      "benchmark_n": 4,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        10999,
+        11990,
+        10888
+      ],
+      "category": "家電",
+      "source": "PChome",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $9,999（昨 $8,911 已漲，curl JSON-LD 直驗、InStock）；他賣場現貨 $10,999／奇機通訊 $11,990／蝦皮 $10,888，平均 $11,292，現省 $1,293（-11.5%）",
+      "url": "https://24h.pchome.com.tw/prod/DMBT0G-A900J1M89",
+      "image": "https://img.pchome.com.tw/cs/items/DMBT0GA900J1M89/000001_1793500553.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-16",
+      "expiring": false,
+      "stockup": false
+    },
+    {
       "name": "SONY 索尼 WF-C710N 真無線降噪藍牙耳機 (公司貨 保固12個月）",
       "price": 2790,
       "market_price": 3140,
@@ -577,35 +519,6 @@
       "stockup": false
     },
     {
-      "name": "KIOXIA 鎧俠 Exceria G2 SSD M.2 2280 PCIe NVMe 2TB Gen3x4",
-      "price": 7900,
-      "market_price": 8850,
-      "list_price": 9900,
-      "benchmark_n": 7,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        7600,
-        8500,
-        8600,
-        8999,
-        9500,
-        9900
-      ],
-      "category": "3C數位",
-      "source": "PChome 24h",
-      "seller": "PChome 24h購物",
-      "note": "PChome 今日 $7,900（11/14 $9,900→今日降 $2,000，經典款G2 直接降2千）；其他賣場 $7,600／$8,500／$8,600／$8,999／$9,500／$9,900，平均 $8,850，現省 $950（-10.7%）",
-      "url": "https://24h.pchome.com.tw/prod/DRAHGT-A900JOQ0O",
-      "image": "https://img.pchome.com.tw/cs/items/DRAHGTA900JOQ0O/000001_1769655346.jpg",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "flash": false,
-      "found_at": "2026-11-15",
-      "expiring": false,
-      "stockup": false
-    },
-    {
       "name": "伊萊克斯 極致美味500 23L燒烤微波爐 EMG23D22NB（北歐藍）",
       "price": 3990,
       "market_price": 4372,
@@ -627,6 +540,28 @@
       "has_affiliate": false,
       "affiliate_network": "",
       "recommended": false
+    },
+    {
+      "name": "【BH】G33 Any Go輕步緩坡機(入門爬坡機/平板跑步機/健走機/慢走機/超慢跑/走步機/走路機)",
+      "price": 12800,
+      "market_price": 13800,
+      "list_price": 14800,
+      "benchmark_n": 3,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        12800,
+        14800
+      ],
+      "category": "運動戶外",
+      "source": "momo",
+      "seller": "momo購物網（BH品牌旗艦）",
+      "note": "momo 今日 $12,800（browser.open 直驗、InStock；11/08 限時價 $8,911 已結束）；迪卡儂 $12,800、東森 $14,800，平均 $13,800，現省 $1,000（-7.2%）",
+      "url": "https://s.momoshop.com.tw/s/TrrhOOD2",
+      "image": "https://i1.momoshop.com.tw/1792427478/goodsimg/0013/523/463/13523463_R_m.webp",
+      "has_affiliate": true,
+      "affiliate_network": "momo點點賺",
+      "recommended": false,
+      "orig_url": "https://s.momoshop.com.tw/s/TrrhOOD2"
     },
     {
       "name": "BRITA MAXTRA PRO濾芯－去水垢專家（10入裝）",
