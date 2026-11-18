@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="步驟四：上管理系統查型號核准紀錄">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCE4EC"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#bg)"/>
+<circle cx="700" cy="70" r="34" fill="#F48FB1" opacity="0.55"/><circle cx="80" cy="390" r="46" fill="#F48FB1" opacity="0.4"/>
+<g transform="translate(130,95)">
+<rect x="20" y="40" width="150" height="110" rx="14" fill="#FFFFFF" stroke="#D81B60" stroke-width="6"/>
+<rect x="38" y="62" width="114" height="10" rx="5" fill="#F8BBD0"/>
+<rect x="38" y="82" width="90" height="10" rx="5" fill="#F8BBD0"/>
+<rect x="38" y="102" width="114" height="10" rx="5" fill="#F48FB1"/>
+<circle cx="155" cy="180" r="52" fill="#FFFFFF" stroke="#D81B60" stroke-width="8"/>
+<line x1="192" y1="218" x2="225" y2="250" stroke="#D81B60" stroke-width="14" stroke-linecap="round"/>
+<text x="155" y="196" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="44" font-weight="900" fill="#D81B60">✓</text>
+</g>
+<text x="400" y="180" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="60" font-weight="900" fill="#AD1457">查型號</text>
+<text x="400" y="240" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="28" font-weight="700" fill="#880E4F">管理系統查核准紀錄</text>
+<text x="400" y="292" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="28" fill="#6D4C5E">除濕機 1 級 EF 2.24 起</text>
+<rect x="0" y="408" width="800" height="42" fill="#D81B60"/><text x="400" y="438" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">步驟 4／4　上網查型號</text>
+</svg>
