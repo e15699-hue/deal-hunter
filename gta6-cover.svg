@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#AD1457"/><stop offset=".55" stop-color="#D81B60"/><stop offset="1" stop-color="#F06292"/>
+</linearGradient></defs>
+<rect width="640" height="360" fill="url(#g)"/>
+<circle cx="90" cy="70" r="46" fill="#ffffff" opacity=".14"/>
+<circle cx="580" cy="300" r="70" fill="#ffffff" opacity=".12"/>
+<circle cx="540" cy="60" r="26" fill="#ffffff" opacity=".16"/>
+<text x="320" y="150" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="92" font-weight="900" fill="#ffffff">GTA 6</text>
+<text x="320" y="210" text-anchor="middle" font-family="sans-serif" font-size="30" font-weight="700" fill="#FFE4EC">11.19 上市・PS5 / Xbox</text>
+<text x="320" y="258" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#ffffff">212GB・先清容量再開玩</text>
+</svg>
