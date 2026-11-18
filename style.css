@@ -75,7 +75,7 @@ section.expiring-sec h2{color:#b7791f;border-left-color:#f9a825}
 .hero{max-width:none!important;padding:0!important;margin:0 auto 14px!important}
 .hero-inner{position:relative;width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;color:#fff;background:linear-gradient(135deg,#ad1457 0%,#d81b60 45%,#f06292 100%);overflow:hidden;padding:12px 24px}
 .hero-inner::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 20%,rgba(255,255,255,.14) 0 90px,transparent 91px),radial-gradient(circle at 85% 75%,rgba(255,255,255,.1) 0 130px,transparent 131px),radial-gradient(circle at 70% 15%,rgba(255,255,255,.08) 0 60px,transparent 61px)}
-.hero-title{font-size:1.12rem;font-weight:800;letter-spacing:2px;position:relative;white-space:nowrap;color:#fff}
+.hero-title{font-size:1.12rem;font-weight:800;letter-spacing:2px;position:relative;white-space:nowrap;color:#fff;margin:0}
 .hero-stats{position:relative;display:flex;gap:8px 22px;flex-wrap:wrap;font-size:.82rem;opacity:.96}
 .hero-stats a{color:inherit}
 .hero-stats b{font-size:.95rem}
