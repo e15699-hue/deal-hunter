@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-18 03:10",
+  "updated_at": "2026-11-19 11:09",
   "deals": [
     {
       "name": "Joyoung 九陽 IH全自動智慧炒菜機(RC8 Pro)",
@@ -167,6 +167,29 @@
       "stockup": false
     },
     {
+      "name": "LEGO 樂高 漫威超級英雄系列 76340 2026 年驚喜月曆",
+      "price": 883,
+      "market_price": 1169,
+      "list_price": 1299,
+      "benchmark_n": 4,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        1169,
+        1170,
+        1169
+      ],
+      "category": "母嬰玩具",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $883（昨 $974 再降，curl JSON-LD 直驗、InStock）；momo $1,169／$1,170／$1,169，平均 $1,169，現省 $286（-24.5%）",
+      "url": "https://24h.pchome.com.tw/prod/DEDJ0O-A900KBA6F",
+      "image": "https://img.pchome.com.tw/cs/items/DEDJ0OA900KBA6F/000001_1789445050.jpg?width=480",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "found_at": "2026-11-06"
+    },
+    {
       "name": "Logitech 羅技 M720 Triathlon 多工無線滑鼠（黑色）",
       "price": 888,
       "market_price": 1156,
@@ -327,29 +350,6 @@
       "found_at": "2026-11-06"
     },
     {
-      "name": "LEGO 樂高 漫威超級英雄系列 76340 2026 年驚喜月曆",
-      "price": 974,
-      "market_price": 1169,
-      "list_price": 1299,
-      "benchmark_n": 4,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        1169,
-        1170,
-        1169
-      ],
-      "category": "母嬰玩具",
-      "source": "PChome 24h",
-      "seller": "PChome 24h購物",
-      "note": "PChome 今日 $974（昨 $870 已漲，curl JSON-LD 直驗、InStock）；momo $1,169／$1,170／$1,169，平均 $1,169，現省 $195（-16.7%）",
-      "url": "https://24h.pchome.com.tw/prod/DEDJ0O-A900KBA6F",
-      "image": "https://img.pchome.com.tw/cs/items/DEDJ0OA900KBA6F/000001_1789445050.jpg?width=480",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "found_at": "2026-11-06"
-    },
-    {
       "name": "Roborock 石頭科技 Qrevo Curv 2 Flow 搖滾巨星掃拖機器人",
       "price": 17911,
       "market_price": 21444,
@@ -441,6 +441,31 @@
       "recommended": false,
       "has_affiliate": false,
       "affiliate_network": ""
+    },
+    {
+      "name": "LEGO 樂高 Botanicals 10369 梅花",
+      "price": 747,
+      "market_price": 860,
+      "list_price": 1099,
+      "benchmark_n": 3,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        769,
+        950
+      ],
+      "category": "母嬰玩具",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 24h 今日 JSON-LD 直驗 $747（11/17 $1,099 → 今日回落）；其他賣場 $769（momo，BigGo 今日）／$950（蝦皮現貨，BigGo 今日），平均 $860，現省 $113（-13.1%）",
+      "url": "https://24h.pchome.com.tw/prod/DEDJ11-A900HNU1Z",
+      "image": "https://img.pchome.com.tw/cs/items/DEDJ11A900HNU1Z/000001_1752742335.jpg?width=480",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-19",
+      "expiring": false,
+      "stockup": false
     },
     {
       "name": "伊萊克斯安心管家 800 SLIM 全能掃拖機器人 EFR82224",
@@ -543,23 +568,23 @@
     },
     {
       "name": "Pubu Pubook Mobile 6.13吋彩色閱讀器 + 飽讀Lifetime 電子書",
-      "price": 7911,
-      "market_price": 8535,
-      "list_price": 8890,
+      "price": 7970,
+      "market_price": 8640,
+      "list_price": 8390,
       "benchmark_n": 5,
       "benchmark_src": "avg_others",
       "also_prices": [
-        7970,
+        8390,
         8390,
         8890,
         8890
       ],
       "category": "3C數位",
-      "source": "PChome 24h",
-      "seller": "PChome 24h購物",
-      "note": "PChome 今日 $7,911（curl JSON-LD 直驗、InStock；「Pubook閱讀器驚喜折」至 11/18 今日截止，附 $1,000 購書禮券；網路價 $8,890）；momo 今日 $7,970（browser.open 直驗、InStock）、Pubu 官網 $8,390、誠品線上 $8,890、熊老闆 $8,890（Read with Pro 2026-11-17 查價），平均 $8,535，現省 $624（-7.3%）",
-      "url": "https://24h.pchome.com.tw/prod/DCBR1L-A900JTU5G",
-      "image": "https://img.pchome.com.tw/cs/items/DCBR1LA900JTU5G/000001_1773824736.jpg",
+      "source": "momo",
+      "seller": "momo購物網",
+      "note": "momo 今日 $7,970（browser.open 商品頁直驗、InStock；促銷價 $8,390 再 95折）；PChome 驚喜折 11/18 截止、今日漲回 $8,390（curl JSON-LD 直驗）、Pubu 官網 $8,390、誠品線上 $8,890、熊老闆 $8,890，平均 $8,640，現省 $670（-7.8%）",
+      "url": "https://shopsquare.co/3U2aV",
+      "image": "https://i1.momoshop.com.tw/1783001852/goodsimg/0015/006/415/15006415_OR_m.webp",
       "has_affiliate": false,
       "affiliate_network": "",
       "recommended": false,
