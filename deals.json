@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-20 03:19",
+  "updated_at": "2026-11-21 11:20",
   "deals": [
     {
       "name": "Joyoung 九陽 IH全自動智慧炒菜機(RC8 Pro)",
@@ -263,6 +263,31 @@
       "affiliate_network": "",
       "recommended": false,
       "found_at": "2026-11-06"
+    },
+    {
+      "name": "Meta Quest 3S VR 一體機 128GB（黑五官網 85 折）",
+      "price": 10362,
+      "market_price": 13505,
+      "list_price": 12210,
+      "benchmark_n": 3,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        12999,
+        14011
+      ],
+      "category": "3C數位",
+      "source": "Meta 台灣官網",
+      "seller": "Meta 台灣官網",
+      "note": "Meta 台灣官網今日 $313.99 美元（128GB，原價 $370，85 折，browser.open JSON-LD 直驗、InStock）；以匯率 33 換算約 NT$10,362；PChome 台規今日 $12,999（curl JSON-LD 直驗、InStock）、momo 今日 $14,011 起（browser.open 搜尋頁 JSON-LD 直驗、InStock），平均 $13,505，現省 $3,143（-23.3%）。注意：官網標價為美元，刷卡另計海外手續費；台灣購買須填自用切結書；官網機無台灣保固（PChome 台規才有一年保固）",
+      "url": "https://www.meta.com/tw/quest/quest-3s/",
+      "image": "https://img.pchome.com.tw/cs/items/DGBJAUA900IIDFQ/000001_1743243011.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-21",
+      "expiring": false,
+      "stockup": false
     },
     {
       "name": "Logitech 羅技 M720 Triathlon 多工無線滑鼠（黑色）",
@@ -594,31 +619,6 @@
       "stockup": false
     },
     {
-      "name": "Roborock 石頭科技 Qrevo Curv 2 Flow 搖滾巨星掃拖機器人",
-      "price": 18799,
-      "market_price": 20844,
-      "list_price": 24888,
-      "benchmark_n": 3,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        18799,
-        22888
-      ],
-      "category": "家電",
-      "source": "momo",
-      "seller": "momo購物網（Roborock 石頭科技）",
-      "note": "momo 今日 $18,799（browser.open 直驗、InStock；11/19~11/22 下殺，昨 $17,911 漲 $888）；PChome 今日亦 $18,799（curl JSON-LD 直驗）、蝦皮 Roborock 官方旗艦店預購 $22,888（11/14 驗證），平均 $20,844，現省 $2,045（-9.8%）。註：蝦皮價為 11/14 舊驗證，下輪重驗",
-      "url": "https://shopsquare.co/3U2aV",
-      "image": "https://i4.momoshop.com.tw/1793945001/goodsimg/0014/500/250/14500250_R_m.webp",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "flash": false,
-      "found_at": "",
-      "expiring": false,
-      "stockup": false
-    },
-    {
       "name": "伊萊克斯 極致美味500 23L燒烤微波爐 EMG23D22NB（北歐藍）",
       "price": 3990,
       "market_price": 4372,
@@ -640,6 +640,31 @@
       "has_affiliate": false,
       "affiliate_network": "",
       "recommended": false
+    },
+    {
+      "name": "Anker A1664 MagGo 超薄磁吸行動電源 10000mAh Qi2 30W",
+      "price": 1690,
+      "market_price": 1850,
+      "list_price": 1990,
+      "benchmark_n": 3,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        1809,
+        1890
+      ],
+      "category": "3C數位",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物（授權直營）",
+      "note": "PChome 授權直營今日 $1,690（curl JSON-LD 直驗、InStock；較昨日追蹤價 $1,990 降 $300）；蝦皮 Expert.3C $1,809（browser.open JSON-LD 直驗、InStock，4.93★／28 評，券後價）、PChome 另一賣場 $1,890（curl JSON-LD 直驗、InStock），平均 $1,850，現省 $160（-8.6%）。註：90 天最低曾 $1,590，現價非歷史低",
+      "url": "https://24h.pchome.com.tw/prod/DYAOFA-A900I84NN",
+      "image": "https://img.pchome.com.tw/cs/items/DYAOFAA900I84NN/000001_1789354232.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-21",
+      "expiring": false,
+      "stockup": false
     },
     {
       "name": "Pubu Pubook Mobile 6.13吋彩色閱讀器 + 飽讀Lifetime 電子書",
@@ -665,6 +690,31 @@
       "recommended": false,
       "flash": false,
       "found_at": "2026-11-18",
+      "expiring": false,
+      "stockup": false
+    },
+    {
+      "name": "Roborock 石頭科技 Qrevo Curv 2 Flow 搖滾巨星掃拖機器人",
+      "price": 17911,
+      "market_price": 19349,
+      "list_price": 24888,
+      "benchmark_n": 3,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        18799,
+        19899
+      ],
+      "category": "家電",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $17,911（curl JSON-LD 直驗、InStock）；momo 今日 $18,799（browser.open 直驗、11/19~11/22 下殺）、蝦皮 Roborock 官方旗艦店今日 $19,899（browser.open JSON-LD 直驗、InStock），平均 $19,349，現省 $1,438（-7.4%）。來源由 momo 改掛 PChome（更便宜）",
+      "url": "https://24h.pchome.com.tw/prod/DMBL1C-A900JA04J",
+      "image": "https://img.pchome.com.tw/cs/items/DMBL1CA900JA04J/000001_1794879550.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-17",
       "expiring": false,
       "stockup": false
     },
@@ -731,6 +781,31 @@
       "orig_url": "https://www.momoshop.com.tw/product/13188467",
       "stockup": true,
       "found_at": "2026-11-05"
+    },
+    {
+      "name": "MSI 微星 MPG 322URX QD-OLED 平面電競螢幕(32型/4K/240Hz/0.03ms/QD-OLED/HDMI2.1/DP2.1/Type-C)",
+      "price": 21755,
+      "market_price": 23272,
+      "list_price": 24888,
+      "benchmark_n": 3,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        22900,
+        23644
+      ],
+      "category": "3C數位",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $21,755（curl JSON-LD 直驗、InStock；昨 $22,900 降 $1,145）；momo 今日 $22,900（browser.open 商品頁直驗、有貨）、Yahoo 自營今日 $23,644（瀏覽器實開商品頁、活動折後 95 折、有貨），平均 $23,272，現省 $1,517（-6.5%）",
+      "url": "https://24h.pchome.com.tw/prod/DSABRH-1900KBBPT",
+      "image": "https://img.pchome.com.tw/cs/items/DSABRH1900KBBPT/000001_1794824991.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-21",
+      "expiring": false,
+      "stockup": false
     },
     {
       "name": "📦 幫寶適 2026全新一級幫 黏貼型/拉拉褲 1箱（歷史低點！）",
