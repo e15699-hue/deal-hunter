@@ -111,6 +111,67 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }catch(err){}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();})();
+/* 好康網：降價提醒收藏（2026-11-23 提案 2，學 BigGo 收藏＋降價提醒）
+   卡片上的 🔔 按鈕：點一下收藏（localStorage，hk_watch），再點取消，狀態留得住；
+   下次回來若現價比收藏時便宜，卡片自動顯示「📉 比你收藏時便宜 $X」。
+   不用 Supabase watchlist 表：該表 RLS 只開放 authenticated 寫入，匿名訪客無法使用；
+   也不發推播（本站無會員／無推播通道），提醒以回站顯示為準，文案不誇大。
+   事件委派掛在 document 上，靜態快照卡片與 deals.js 動態重繪的卡片都吃得到。 */
+(function () {
+  var KEY = 'hk_watch';
+  function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; } }
+  function save(w) { try { localStorage.setItem(KEY, JSON.stringify(w)); } catch (e) {} }
+  function paint() {
+    var w = load();
+    var btns = document.querySelectorAll('.watchbtn[data-watch]');
+    for (var i = 0; i < btns.length; i++) {
+      (function (b) {
+        var k = b.getAttribute('data-watch');
+        var on = !!w[k];
+        b.classList.toggle('on', on);
+        b.textContent = on ? '🔔 已收藏' : '🔔 提醒';
+        b.setAttribute('aria-label', on ? '取消降價提醒' : '設定降價提醒');
+        var card = b.closest ? b.closest('.card, .fp-card') : null;
+        if (card) {
+          var old = card.querySelector('.dropbadge');
+          if (old) old.remove();
+          var cur = Number(b.getAttribute('data-price')) || 0;
+          if (on && w[k] && w[k].price && cur > 0 && cur < w[k].price) {
+            var s = document.createElement('span');
+            s.className = 'dropbadge';
+            s.textContent = '📉 比你收藏時便宜 $' + (w[k].price - cur).toLocaleString();
+            var pr = card.querySelector('.price');
+            if (pr) pr.appendChild(s);
+          }
+        }
+      })(btns[i]);
+    }
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target && e.target.closest ? e.target.closest('.watchbtn[data-watch]') : null;
+    if (!b) return;
+    var w = load();
+    var k = b.getAttribute('data-watch');
+    if (w[k]) delete w[k];
+    else w[k] = { price: Number(b.getAttribute('data-price')) || 0, name: b.getAttribute('data-name') || '', at: Date.now() };
+    save(w);
+    paint();
+  });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', paint);
+  else paint();
+  // deals.js 動態重繪卡片後也要重漆狀態（防抖 200ms）
+  if (window.MutationObserver) {
+    var t = null;
+    var mo = new MutationObserver(function () {
+      if (t) clearTimeout(t);
+      t = setTimeout(paint, 200);
+    });
+    var start = function () { var m = document.querySelector('main.content'); if (m) mo.observe(m, { childList: true, subtree: true }); };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+    else start();
+  }
+})();
+
 /* 好康網：自家點擊紀錄（2026-11-19 上線）——附加到 shared/app.js 末尾
    每次開頁記一次 view、每次點連結記一次 click，寫入 Supabase site_clicks 表。
    只記站別、頁面、連結、來源頁，不記 IP、不寫 cookie、不含個資。
