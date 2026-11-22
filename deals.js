@@ -36,14 +36,23 @@
       if (HK_HIST) renderAll(); // 歷史價格載入後重繪一次補上標示
     }).catch(function () { HK_HIST = null; });
   }
+  // 歷史價標示（2026-11-23 提案 2，render.py／deals.js 共用規則）：
+  // 只有清洗過的真實歷史價才顯示，絕不編造。觀測點 <2 筆不顯示；
+  // 最高／最低差 >3 倍視為污染序列整組棄用；單點偏離現價 2 倍以上不計入；
+  // 最低價 < 現價顯示「歷史低 $X」；現價等於歷史最低且曾經更高 →「歷史新低價」。
   function histHTML(d, price) {
-    if (!HK_HIST) return '';
+    if (!HK_HIST || !price || price <= 0) return '';
     var recs = HK_HIST[dealKey(d.url || '')];
-    if (!recs || !recs.length) return '';
-    var lows = recs.map(function (r) { return Number(r.p) || 0; }).filter(function (p) { return p > 0; });
-    var low = lows.length ? Math.min.apply(null, lows) : 0;
-    if (low > 0 && low < price) return '<div class="hist">📉 歷史低 <b>$' + low.toLocaleString() + '</b></div>';
-    if (recs.length >= 2) return '<div class="hist">📉 <b>歷史新低價</b></div>';
+    if (!recs || recs.length < 2) return '';
+    var pts = recs.map(function (r) { return Number(r.p) || 0; }).filter(function (p) { return p > 0; });
+    if (pts.length < 2) return '';
+    var mx = Math.max.apply(null, pts), mn = Math.min.apply(null, pts);
+    if (mn <= 0 || mx / mn > 3) return '';
+    var valid = pts.filter(function (p) { return p >= 0.5 * price && p <= 2 * price; });
+    if (valid.length < 2) return '';
+    var low = Math.min.apply(null, valid);
+    if (low < price) return '<div class="hist">📉 歷史低 <b>$' + low.toLocaleString() + '</b></div>';
+    if (valid.some(function (p) { return p > price; })) return '<div class="hist hist-new">🔥 <b>歷史新低價</b></div>';
     return '';
   }
   var SORTS = [
@@ -182,7 +191,11 @@
       var key = esc(dealKey(url)), title = esc(d.name);
       var shop = shopShort(d);
       var btnTxt = shop ? '去 ' + shop + ' 看看 →' : '去看看 →';
-      btn = '<div class="btnrow"><a class="btn" href="' + esc(url) + '" target="_blank" rel="noopener" title="跳到 momo、PChome、蝦皮等大網站結帳，本站不經手付款">' + btnTxt + '</a></div>';
+      // 降價提醒收藏（2026-11-23 提案 2）：localStorage 收藏，狀態由 app.js 繪製
+      var watchBtn = price > 0
+        ? '<button type="button" class="watchbtn" data-watch="' + key + '" data-price="' + price + '" data-name="' + title + '" aria-label="設定降價提醒" title="收藏降價提醒">🔔</button>'
+        : '';
+      btn = '<div class="btnrow"><a class="btn" href="' + esc(url) + '" target="_blank" rel="noopener" title="跳到 momo、PChome、蝦皮等大網站結帳，本站不經手付款">' + btnTxt + '</a>' + watchBtn + '</div>';
     }
     var img = String(d.image || '').trim();
     var pic = /^https?:/.test(img)
