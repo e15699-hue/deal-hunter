@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-21 11:20",
+  "updated_at": "2026-11-22 11:18",
   "deals": [
     {
       "name": "Joyoung 九陽 IH全自動智慧炒菜機(RC8 Pro)",
@@ -76,6 +76,31 @@
       "recommended": false,
       "flash": false,
       "found_at": "2026-11-20",
+      "expiring": false,
+      "stockup": false
+    },
+    {
+      "name": "【BH】G33 Any Go輕步緩坡機(入門爬坡機/平板跑步機/健走機/慢走機/超慢跑/走步機/走路機)",
+      "price": 8465,
+      "market_price": 13800,
+      "list_price": 14800,
+      "benchmark_n": 3,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        12800,
+        14800
+      ],
+      "category": "運動戶外",
+      "source": "momo",
+      "seller": "momo購物網（BH品牌旗艦）",
+      "note": "momo 今日 $8,465（瀏覽器即時查價、InStock；11/21~11/23 限時特殺，11/21 22:00~11/23 01:00，滿1件享95折，促銷價 $8,911、市售價 $25,800）；PChome BH旗艦館同款今日 $12,800（curl JSON-LD 直驗、InStock）、Yahoo 自營今日 $14,800（瀏覽器實開商品頁、有貨），平均 $13,800，現省 $5,335（-38.7%）。註：限時價至 11/23 01:00 截止，下輪須重驗",
+      "url": "https://shopsquare.co/3U2aV",
+      "image": "https://i1.momoshop.com.tw/1792427478/goodsimg/0013/523/463/13523463_R_m.webp",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "",
       "expiring": false,
       "stockup": false
     },
@@ -214,6 +239,30 @@
       "affiliate_network": "",
       "recommended": false,
       "found_at": "2026-11-03 14:51"
+    },
+    {
+      "name": "GOO.N 大王 境內版柔觸肌黏貼型紙尿褲 XL 38片x4串（箱購）",
+      "price": 999,
+      "market_price": 1332,
+      "list_price": 1332,
+      "benchmark_n": 2,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        1332
+      ],
+      "category": "母嬰玩具",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $999（curl JSON-LD 直驗、InStock；黏貼型 NB~XL 4串箱購，選 XL 38片x4串）；大樹健康購物網同款 XL 38片x4包今日 $1,332（瀏覽器實開商品頁、有貨，原價 $1,596），現省 $333（-25.0%）。註：東森／momo 同款箱購價今日未驗到；PChome 頁為多尺寸選項，下單請選 XL",
+      "url": "https://24h.pchome.com.tw/prod/DAAO56-A900IT52Q",
+      "image": "https://img.pchome.com.tw/cs/items/DAAO56A900IT52Q/000001_1747034725.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-22",
+      "expiring": false,
+      "stockup": false
     },
     {
       "name": "New Balance 紐巴倫 復古鞋_中性_白綠色_BB550PTB-D楦",
@@ -404,6 +453,31 @@
       "affiliate_network": "momo點點賺",
       "recommended": false,
       "orig_url": "https://s.momoshop.com.tw/s/HL23iqoC"
+    },
+    {
+      "name": "【大家源】浴室起居兩用電暖器 TCY-860201（1200W、可壁掛／平放）",
+      "price": 1551,
+      "market_price": 1935,
+      "list_price": 2690,
+      "benchmark_n": 3,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        1890,
+        1980
+      ],
+      "category": "家電",
+      "source": "momo",
+      "seller": "momo購物網",
+      "note": "momo 今日 $1,551（browser.open 直驗、InStock；限時折後價，促銷價 $1,633、市售價 $2,690，滿1件享95折）；PChome 同款今日 $1,890（curl JSON-LD 直驗、InStock）、蝦皮 $1,980（2026/11/1 比價文＋unboxrank，未於今日重驗），平均 $1,935，現省 $384（-19.8%）。註：1200W、三段溫度、五段定時、防潑水，浴室／起居兩用",
+      "url": "https://shopsquare.co/3U2aV",
+      "image": "https://i4.momoshop.com.tw/1744434078/goodsimg/0011/927/655/11927655_R_m.webp",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-22",
+      "expiring": false,
+      "stockup": false
     },
     {
       "name": "Avene 雅漾 B3彈力透亮精華霜 50ml(抗老乳霜)",
@@ -717,28 +791,6 @@
       "found_at": "2026-11-17",
       "expiring": false,
       "stockup": false
-    },
-    {
-      "name": "【BH】G33 Any Go輕步緩坡機(入門爬坡機/平板跑步機/健走機/慢走機/超慢跑/走步機/走路機)",
-      "price": 12800,
-      "market_price": 13800,
-      "list_price": 14800,
-      "benchmark_n": 3,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        12800,
-        14800
-      ],
-      "category": "運動戶外",
-      "source": "momo",
-      "seller": "momo購物網（BH品牌旗艦）",
-      "note": "momo 今日 $12,800（browser.open 直驗、InStock；11/08 限時價 $8,911 已結束）；迪卡儂 $12,800、東森 $14,800，平均 $13,800，現省 $1,000（-7.2%）",
-      "url": "https://s.momoshop.com.tw/s/TrrhOOD2",
-      "image": "https://i1.momoshop.com.tw/1792427478/goodsimg/0013/523/463/13523463_R_m.webp",
-      "has_affiliate": true,
-      "affiliate_network": "momo點點賺",
-      "recommended": false,
-      "orig_url": "https://s.momoshop.com.tw/s/TrrhOOD2"
     },
     {
       "name": "BRITA MAXTRA PRO濾芯－去水垢專家（10入裝）",
