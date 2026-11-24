@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23 11:27",
+  "updated_at": "2026-11-24 03:24",
   "deals": [
     {
       "name": "Joyoung 九陽 IH全自動智慧炒菜機(RC8 Pro)",
@@ -30,31 +30,6 @@
       "stockup": false
     },
     {
-      "name": "TOMA-PRO 優格 經典系列狗飼料 7kg（幼犬／成犬／高齡五款任選）",
-      "price": 899,
-      "market_price": 1642,
-      "list_price": 1550,
-      "benchmark_n": 3,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        1162,
-        2121
-      ],
-      "category": "寵物生活",
-      "source": "momo",
-      "seller": "momo購物網",
-      "note": "momo 今日仍 $899（browser.open 直驗、InStock；11/18~11/23 下殺，今日最後一天）；PChome 同款今日 $1,162（curl JSON-LD 直驗、InStock）、Yahoo $2,121（2026-11-22 驗證值，今日未重驗），平均 $1,642，現省 $743（-45.2%）。註：舊 also 含 momo 自身價 $899 已修正",
-      "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=6993703",
-      "image": "https://i3.momoshop.com.tw/1787541107/goodsimg/0006/993/703/6993703_R_m.webp",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": true,
-      "flash": false,
-      "found_at": "2026-11-20",
-      "expiring": false,
-      "stockup": false
-    },
-    {
       "name": "NB 女刷毛連帽外套 美規 黑 WJ53509BK",
       "price": 1240,
       "market_price": 2090,
@@ -76,56 +51,6 @@
       "recommended": false,
       "flash": false,
       "found_at": "2026-11-20",
-      "expiring": false,
-      "stockup": false
-    },
-    {
-      "name": "【BH】G33 Any Go輕步緩坡機(入門爬坡機/平板跑步機/健走機/慢走機/超慢跑/走步機/走路機)",
-      "price": 8911,
-      "market_price": 14800,
-      "list_price": 14800,
-      "benchmark_n": 2,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        14800
-      ],
-      "category": "運動戶外",
-      "source": "momo",
-      "seller": "momo購物網（BH品牌旗艦）",
-      "note": "momo 今日 $8,911（browser.open 直驗、InStock；11/21~11/23 限時特殺已於 11/23 01:00 結束，95 折價 $8,465 失效，現為促銷價 $8,911、市售價 $25,800）；PChome 同款今日亦 $8,911（curl JSON-LD 直驗、InStock）；Yahoo 自營同款（非 Pro、獨立賣場）今日 $14,800（瀏覽器實開商品頁、有貨），現省 $5,889（-39.8%）。註：PChome 已同價，對照價僅採 Yahoo 單一他店價，下輪再補第 2 家",
-      "url": "https://s.momoshop.com.tw/s/TrrhOOD2",
-      "image": "https://i1.momoshop.com.tw/1792427478/goodsimg/0013/523/463/13523463_R_m.webp",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "flash": false,
-      "found_at": "",
-      "expiring": false,
-      "stockup": false
-    },
-    {
-      "name": "LooCa 石墨烯遠紅外線抗菌保暖冬被 1入-6x7尺（棉被★急速保暖）",
-      "price": 899,
-      "market_price": 1426,
-      "list_price": 1980,
-      "benchmark_n": 4,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        1111,
-        1188,
-        1980
-      ],
-      "category": "居家生活",
-      "source": "momo",
-      "seller": "momo購物網（LooCa 品牌旗艦）",
-      "note": "momo 今日 $899（11/01~11/30 限時 9折，browser.open 直驗、InStock；促銷價 $999、市售價 $3,980）；蝦皮 LooCa 官方旗艦店 $1,111、東森 $1,188、LooCa 官方 $1,980，平均 $1,426，現省 $527（-37.0%）",
-      "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=9410433",
-      "image": "https://i1.momoshop.com.tw/goodsimg/0009/410/433/9410433_R_m.webp",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "flash": false,
-      "found_at": "",
       "expiring": false,
       "stockup": false
     },
@@ -339,6 +264,30 @@
       "stockup": false
     },
     {
+      "name": "伊萊克斯安心管家 800 SLIM 全能掃拖機器人 EFR82224",
+      "price": 16900,
+      "market_price": 21900,
+      "list_price": 21900,
+      "benchmark_n": 2,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        21900
+      ],
+      "category": "家電",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $16,900（browser.open 直驗、JSON-LD、InStock，由 $17,789 降 $889）；momo 同款今日亦 $16,900（搜尋頁 JSON-LD 直驗、InStock、4.8★41評價）；伊萊克斯官網 $21,900（先前驗證值，今日 PChome 頁亦標示市售價 $21,900），現省 $5,000（-22.8%）。註：momo 已同價，對照價僅採官方單一他店價",
+      "url": "https://24h.pchome.com.tw/prod/DMBL5X-A900KINMB",
+      "image": "https://cs-a.ecimg.tw/items/DMBL5XA900KINMB/000001_1793598538.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-13",
+      "expiring": false,
+      "stockup": false
+    },
+    {
       "name": "【NEW STAR】後背包 簡約機能防水多口袋收納筆電包包 男 女 男包 BK298(大容量 電腦包)",
       "price": 1119,
       "market_price": 1449,
@@ -427,31 +376,6 @@
       "affiliate_network": "momo點點賺",
       "recommended": false,
       "orig_url": "https://s.momoshop.com.tw/s/HL23iqoC"
-    },
-    {
-      "name": "【大家源】浴室起居兩用電暖器 TCY-860201（1200W、可壁掛／平放）",
-      "price": 1551,
-      "market_price": 1935,
-      "list_price": 2690,
-      "benchmark_n": 3,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        1890,
-        1980
-      ],
-      "category": "家電",
-      "source": "momo",
-      "seller": "momo購物網",
-      "note": "momo 今日 $1,551（browser.open 直驗、InStock；限時折後價，促銷價 $1,633、市售價 $2,690，滿1件享95折）；PChome 同款今日 $1,890（curl JSON-LD 直驗、InStock）、蝦皮 $1,980（2026/11/1 比價文＋unboxrank，未於今日重驗），平均 $1,935，現省 $384（-19.8%）。註：1200W、三段溫度、五段定時、防潑水，浴室／起居兩用",
-      "url": "https://www.momoshop.com.tw/product/11927655",
-      "image": "https://i4.momoshop.com.tw/1744434078/goodsimg/0011/927/655/11927655_R_m.webp",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "flash": false,
-      "found_at": "2026-11-22",
-      "expiring": false,
-      "stockup": false
     },
     {
       "name": "TOMA-PRO 優格 經典系列貓飼料-成幼貓 雞肉+米 13.6kg（化毛高纖配方）",
@@ -570,6 +494,32 @@
       "orig_url": "https://s.momoshop.com.tw/s/b4TuriSg"
     },
     {
+      "name": "【大家源】浴室起居兩用電暖器 TCY-860201（1200W、可壁掛／平放）",
+      "price": 1551,
+      "market_price": 1826,
+      "list_price": 2690,
+      "benchmark_n": 4,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        1890,
+        1980,
+        1607
+      ],
+      "category": "家電",
+      "source": "momo",
+      "seller": "momo購物網",
+      "note": "momo 今日仍 $1,551（browser.open 直驗、InStock，限時折後價、促銷價 $1,633、市售價 $2,690）；Yahoo 同款今日 $1,607（商品頁 JSON-LD 直驗、InStock；11/23 掃描員 A 線索今日由本人親驗確認），原 also $1,890／$1,980（先前驗證值），平均 $1,826，現省 $275（-15.0%）。註：折扣由 -19.8% 修正為 -15.0%",
+      "url": "https://www.momoshop.com.tw/product/11927655",
+      "image": "https://i4.momoshop.com.tw/1744434078/goodsimg/0011/927/655/11927655_R_m.webp",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-22",
+      "expiring": false,
+      "stockup": false
+    },
+    {
       "name": "Apple AirPods 4 主動式降噪款（MXP93TA/A，台灣公司貨）",
       "price": 3684,
       "market_price": 4251,
@@ -612,31 +562,6 @@
       "recommended": false,
       "flash": false,
       "found_at": "2026-11-19",
-      "expiring": false,
-      "stockup": false
-    },
-    {
-      "name": "伊萊克斯安心管家 800 SLIM 全能掃拖機器人 EFR82224",
-      "price": 17789,
-      "market_price": 20400,
-      "list_price": 20400,
-      "benchmark_n": 3,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        21900,
-        18900
-      ],
-      "category": "家電",
-      "source": "PChome 24h",
-      "seller": "PChome 24h購物",
-      "note": "PChome 24h 今日 $17,789（JSON-LD 直驗、InStock）；伊萊克斯官網今日 $21,900（選購指南頁直驗、可加購物車）、momo 今日 $18,900（搜尋頁 JSON-LD、InStock、4.8★15評價），平均 $20,400，現省 $2,611（-12.8%）。",
-      "url": "https://24h.pchome.com.tw/prod/DMBL5X-A900KINMB",
-      "image": "https://cs-a.ecimg.tw/items/DMBL5XA900KINMB/000001_1793598538.jpg",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "flash": false,
-      "found_at": "2026-11-13",
       "expiring": false,
       "stockup": false
     },
@@ -883,6 +808,31 @@
       "stockup": false
     },
     {
+      "name": "TOMA-PRO 優格 經典系列狗飼料 7kg（幼犬／成犬／高齡五款任選）",
+      "price": 1134,
+      "market_price": 1162,
+      "list_price": 1350,
+      "benchmark_n": 3,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        1162,
+        1162
+      ],
+      "category": "寵物生活",
+      "source": "Yahoo購物中心",
+      "seller": "寵物宇宙官方旗艦店",
+      "note": "Yahoo 今日 $1,134（瀏覽器實開商品頁、活動折後價、原價 $1,350，寵物宇宙官方旗艦店、Yahoo自營標示、購買按鈕可點）；momo 今日漲至 $1,162（browser.open 直驗、InStock，11/18~11/23 下殺已結束）、PChome 同款今日 $1,162（搜尋 API 直驗），平均 $1,162，現省 $28（-2.4%）。註：主價改為最便宜的 Yahoo；取消站長推薦（折扣已非全站前二）",
+      "url": "https://tw.buy.yahoo.com/gdsale/TOMA-PRO-優格-經典系列-犬飼料-7公斤-8403380.html",
+      "image": "https://img.yec.tw/zp/MerchandiseImages/3422c6f584-Gd-8403380.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-20",
+      "expiring": false,
+      "stockup": false
+    },
+    {
       "name": "Maison Margiela 淡香水 100ml 任選 (溫暖壁爐/泡泡浴/航行物語/沙灘漫步/爵士俱樂部)★禮物/送禮推薦(國際航空版)",
       "price": 2099,
       "market_price": 2139,
@@ -901,27 +851,6 @@
       "has_affiliate": false,
       "affiliate_network": "",
       "recommended": false
-    },
-    {
-      "name": "SK-II 青春露 330ml 單瓶（正統公司貨）",
-      "price": 4740,
-      "market_price": 4780,
-      "list_price": 4780,
-      "benchmark_n": 2,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        4749,
-        4811
-      ],
-      "category": "美妝保養",
-      "source": "Yahoo購物中心",
-      "seller": "Yahoo購物中心自營",
-      "note": "Yahoo 自營公司貨今日 JSON-LD $4,740（昨 $4,711，小漲）；PChome 專櫃公司貨 $4,749、momo 專櫃公司貨 $4,811，平均 $4,780，現省 $40（-0.8%）",
-      "url": "https://tw.buy.yahoo.com/gdsale/SK-II-%E9%9D%92%E6%98%A5%E9%9C%B2-330ml-%E6%AD%A3%E7%B5%B1%E5%85%AC%E5%8F%B8%E8%B2%A8-12289508.html",
-      "image": "https://img.yec.tw/zp/MerchandiseImages/976268503F-Gd-12289508.jpg",
-      "recommended": false,
-      "has_affiliate": false,
-      "affiliate_network": ""
     }
   ]
 }
