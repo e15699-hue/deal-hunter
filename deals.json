@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24 03:24",
+  "updated_at": "2026-11-25 03:22",
   "deals": [
     {
       "name": "Joyoung 九陽 IH全自動智慧炒菜機(RC8 Pro)",
@@ -30,6 +30,28 @@
       "stockup": false
     },
     {
+      "name": "SanDisk 晟碟 Extreme PRO 雙用固態行動碟 2TB（USB-C＋USB-A 雙頭隨身碟）",
+      "price": 8888,
+      "market_price": 17471,
+      "list_price": 20999,
+      "benchmark_n": 5,
+      "benchmark_src": "history_avg",
+      "also_prices": [],
+      "category": "3C數位",
+      "source": "momo",
+      "seller": "momo購物網",
+      "note": "momo 今日 $8,888（browser.open 直驗、InStock，市售價 $20,999，11/25 當日自 $18,599 大降 52.2%，為比價站 61 天紀錄最低）；PChome 同款今日亦 $8,888（curl JSON-LD 直驗、InStock，兩大通路同步大降，依 EFR82224 前例不列入 also）；對照為比價站 61 天紀錄過去售價平均 $17,471（9/17 $14,999、10/7 $18,599、11/3 $17,488、11/13 $17,669、11/17 $18,599），現省 $8,583（-49.1%）。註：此品為 USB-C＋USB-A 雙頭隨身碟（讀 1000MB/s／寫 900MB/s），非外接 SSD；永久保固",
+      "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=13807571",
+      "image": "https://i3.momoshop.com.tw/1766564523/goodsimg/0013/807/571/13807571_R_m.webp",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": true,
+      "flash": false,
+      "found_at": "2026-11-25",
+      "expiring": false,
+      "stockup": false
+    },
+    {
       "name": "NB 女刷毛連帽外套 美規 黑 WJ53509BK",
       "price": 1240,
       "market_price": 2090,
@@ -43,7 +65,7 @@
       "category": "服飾鞋包",
       "source": "momo",
       "seller": "momo購物網",
-      "note": "momo 今日 $1,240（browser.open 直驗、InStock；市售價 $2,480）；PChome 同款 $2,480（curl JSON-LD 直驗）、momo 另一賣場 $1,700（browser.open 直驗），平均 $2,090，現省 $850（-40.7%）；註：momo 此價已維持約 49 天，屬常態低價而非新降價",
+      "note": "momo 今日 $1,240（browser.open 直驗、InStock；市售價 $2,480）；PChome 同款 $2,480（curl JSON-LD 直驗）、momo 另一賣場 $1,700（browser.open 直驗），平均 $2,090，現省 $850（-40.7%）；註：momo 此價已維持約 49 天，屬常態低價而非新降價｜2026-11-25 重驗：momo 仍 $1,240（browser.open 直驗、InStock）、PChome 同款 $2,480（比價站今日紀錄），also 有效，維持上架、不加推薦（常態低價）",
       "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=14889066",
       "image": "https://i1.momoshop.com.tw/1768528831/goodsimg/0014/889/066/14889066_R_m.webp",
       "has_affiliate": false,
@@ -51,6 +73,76 @@
       "recommended": false,
       "flash": false,
       "found_at": "2026-11-20",
+      "expiring": false,
+      "stockup": false
+    },
+    {
+      "name": "即期品【M.A.C】超持妝濾鏡粉底液 SPF25/PA++ 30ml(防曬)",
+      "price": 1140,
+      "market_price": 1900,
+      "list_price": 1900,
+      "benchmark_n": 2,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        1900
+      ],
+      "category": "美妝保養",
+      "source": "momo",
+      "seller": "momo購物網（M.A.C 官方直營）",
+      "note": "momo 官方直營今日限時折後價 $1,140（browser.open 直驗、InStock，11/25~11/30 獨家限定 6 折、促銷價 $1,900；最短效期至 2027/05/13）；M.A.C. 官網定價 $1,900（LINE 購物多筆 M.A.C 官網 $1,900 佐證），現省 $760（-40.0%）。註：即期品進即期品專區；單一 also（官網定價，依 EFR82224 前例）；化妝品官方通路",
+      "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=13500793",
+      "image": "https://i3.momoshop.com.tw/1795542003/goodsimg/0013/500/793/13500793_R_m.webp",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-25",
+      "expiring": true,
+      "stockup": false
+    },
+    {
+      "name": "雪碧 汽水 600mlx24入x2箱（共48瓶入）",
+      "price": 720,
+      "market_price": 1180,
+      "list_price": 1078,
+      "benchmark_n": 5,
+      "benchmark_src": "history_avg",
+      "also_prices": [],
+      "category": "食品日用",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $720（curl JSON-LD 直驗、InStock，網路價 $1,078，當日降 33.2%，為比價站 66 天紀錄最低）；查無他店同規格售價（momo 僅不同品）；對照為比價站 66 天紀錄過去售價平均 $1,180（9/19 $1,322、10/2 $1,392、10/6 $1,078、11/10 $1,029、11/17 $1,078），現省 $460（-39.0%）",
+      "url": "https://24h.pchome.com.tw/prod/DBABB0-1900A54UX",
+      "image": "https://cs-a.ecimg.tw/items/DBABB01900A54UX/000001_1781772206.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-25",
+      "expiring": false,
+      "stockup": false
+    },
+    {
+      "name": "【adidas 愛迪達】短袖上衣 女 亞規 POP ART T2 Q2 白 KC8604",
+      "price": 640,
+      "market_price": 998,
+      "list_price": 1490,
+      "benchmark_n": 2,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        998
+      ],
+      "category": "服飾鞋包",
+      "source": "momo",
+      "seller": "momo購物網",
+      "note": "momo 今日限時折後價 $640（browser.open 直驗、InStock，11/23~11/25 獨家 86 折、促銷價 $745、市售價 $1,490，今日最後一天）；PChome 同款今日 $998（curl JSON-LD 直驗、InStock），現省 $358（-35.9%）。註：單一 also（僅 PChome 一家他店有售，Yahoo／樂天／蝦皮／adidas 官網皆無同款，依 EFR82224 前例以單一他店價作對照）",
+      "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=15177308",
+      "image": "https://i4.momoshop.com.tw/1776821651/goodsimg/0015/177/308/15177308_R_m.webp",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-25",
       "expiring": false,
       "stockup": false
     },
@@ -190,29 +282,6 @@
       "stockup": false
     },
     {
-      "name": "LEGO 樂高 漫威超級英雄系列 76340 2026 年驚喜月曆",
-      "price": 883,
-      "market_price": 1169,
-      "list_price": 1299,
-      "benchmark_n": 4,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        1169,
-        1170,
-        1169
-      ],
-      "category": "母嬰玩具",
-      "source": "PChome 24h",
-      "seller": "PChome 24h購物",
-      "note": "PChome 今日 $883（昨 $974 再降，curl JSON-LD 直驗、InStock）；momo $1,169／$1,170／$1,169，平均 $1,169，現省 $286（-24.5%）",
-      "url": "https://24h.pchome.com.tw/prod/DEDJ0O-A900KBA6F",
-      "image": "https://img.pchome.com.tw/cs/items/DEDJ0OA900KBA6F/000001_1789445050.jpg?width=480",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "found_at": "2026-11-06"
-    },
-    {
       "name": "Meta Quest 3S VR 一體機 128GB（黑五官網 85 折）",
       "price": 10362,
       "market_price": 13505,
@@ -234,32 +303,6 @@
       "recommended": false,
       "flash": false,
       "found_at": "2026-11-21",
-      "expiring": false,
-      "stockup": false
-    },
-    {
-      "name": "Logitech 羅技 M720 Triathlon 多工無線滑鼠（黑色）",
-      "price": 888,
-      "market_price": 1156,
-      "list_price": 1290,
-      "benchmark_n": 4,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        1290,
-        1090,
-        1088
-      ],
-      "category": "3C數位",
-      "source": "PChome 24h",
-      "seller": "PChome 24h",
-      "note": "PChome 今日 $888（curl JSON-LD 直驗、InStock）；momo 羅技官方旗艦館 $1,290、蝦皮鳥鵬電腦 $1,090、蝦皮龍龍3C $1,088，平均 $1,156，現省 $268（-23.2%）",
-      "url": "https://24h.pchome.com.tw/prod/DSAR0S-1900HRWXS",
-      "image": "https://img.pchome.com.tw/cs/items/DSAR0S1900HRWXS/000007_1787591611.jpg",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "flash": false,
-      "found_at": "2026-11-16",
       "expiring": false,
       "stockup": false
     },
@@ -355,6 +398,32 @@
       "affiliate_network": "",
       "recommended": false,
       "orig_url": "https://www.momoshop.com.tw/product/14953534"
+    },
+    {
+      "name": "Roborock 石頭科技 Qrevo L 掃拖機器人",
+      "price": 8911,
+      "market_price": 11292,
+      "list_price": 10999,
+      "benchmark_n": 4,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        10999,
+        11990,
+        10888
+      ],
+      "category": "家電",
+      "source": "PChome",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $8,911（curl JSON-LD 直驗、InStock；昨 $9,999 再降 $1,088）；他賣場現貨 $10,999／奇機通訊 $11,990／蝦皮 $10,888，平均 $11,292，現省 $2,381（-21.1%）",
+      "url": "https://24h.pchome.com.tw/prod/DMBT0G-A900J1M89",
+      "image": "https://img.pchome.com.tw/cs/items/DMBT0GA900J1M89/000001_1793500553.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-16",
+      "expiring": false,
+      "stockup": false
     },
     {
       "name": "愛戀花草 卡皮巴拉藍芽音響喇叭",
@@ -472,6 +541,32 @@
       "found_at": "2026-11-06"
     },
     {
+      "name": "LEGO 樂高 漫威超級英雄系列 76340 2026 年驚喜月曆",
+      "price": 974,
+      "market_price": 1169,
+      "list_price": 1299,
+      "benchmark_n": 4,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        1169,
+        1170,
+        1169
+      ],
+      "category": "母嬰玩具",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $974（curl JSON-LD 直驗、InStock；昨 $883 回漲 $91）；momo $1,169／$1,170／$1,169，平均 $1,169，現省 $195（-16.7%）",
+      "url": "https://24h.pchome.com.tw/prod/DEDJ0O-A900KBA6F",
+      "image": "https://img.pchome.com.tw/cs/items/DEDJ0OA900KBA6F/000001_1789445050.jpg?width=480",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-06",
+      "expiring": false,
+      "stockup": false
+    },
+    {
       "name": "CookPower 鍋寶 觸控健康減油氣炸鍋6L",
       "price": 1504,
       "market_price": 1785,
@@ -539,57 +634,6 @@
       "recommended": false,
       "has_affiliate": false,
       "affiliate_network": ""
-    },
-    {
-      "name": "LEGO 樂高 Botanicals 10369 梅花",
-      "price": 747,
-      "market_price": 860,
-      "list_price": 1099,
-      "benchmark_n": 3,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        769,
-        950
-      ],
-      "category": "母嬰玩具",
-      "source": "PChome 24h",
-      "seller": "PChome 24h購物",
-      "note": "PChome 24h 今日 JSON-LD 直驗 $747（11/17 $1,099 → 今日回落）；其他賣場 $769（momo，BigGo 今日）／$950（蝦皮現貨，BigGo 今日），平均 $860，現省 $113（-13.1%）",
-      "url": "https://24h.pchome.com.tw/prod/DEDJ11-A900HNU1Z",
-      "image": "https://img.pchome.com.tw/cs/items/DEDJ11A900HNU1Z/000001_1752742335.jpg?width=480",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "flash": false,
-      "found_at": "2026-11-19",
-      "expiring": false,
-      "stockup": false
-    },
-    {
-      "name": "Roborock 石頭科技 Qrevo L 掃拖機器人",
-      "price": 9999,
-      "market_price": 11292,
-      "list_price": 10999,
-      "benchmark_n": 4,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        10999,
-        11990,
-        10888
-      ],
-      "category": "家電",
-      "source": "PChome",
-      "seller": "PChome 24h購物",
-      "note": "PChome 今日 $9,999（昨 $8,911 已漲，curl JSON-LD 直驗、InStock）；他賣場現貨 $10,999／奇機通訊 $11,990／蝦皮 $10,888，平均 $11,292，現省 $1,293（-11.5%）",
-      "url": "https://24h.pchome.com.tw/prod/DMBT0G-A900J1M89",
-      "image": "https://img.pchome.com.tw/cs/items/DMBT0GA900J1M89/000001_1793500553.jpg",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "flash": false,
-      "found_at": "2026-11-16",
-      "expiring": false,
-      "stockup": false
     },
     {
       "name": "SONY 索尼 WF-C710N 真無線降噪藍牙耳機 (公司貨 保固12個月）",
@@ -664,31 +708,6 @@
       "recommended": false
     },
     {
-      "name": "Anker A1664 MagGo 超薄磁吸行動電源 10000mAh Qi2 30W",
-      "price": 1690,
-      "market_price": 1850,
-      "list_price": 1990,
-      "benchmark_n": 3,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        1809,
-        1890
-      ],
-      "category": "3C數位",
-      "source": "PChome 24h",
-      "seller": "PChome 24h購物（授權直營）",
-      "note": "PChome 授權直營今日 $1,690（curl JSON-LD 直驗、InStock；較昨日追蹤價 $1,990 降 $300）；蝦皮 Expert.3C $1,809（browser.open JSON-LD 直驗、InStock，4.93★／28 評，券後價）、PChome 另一賣場 $1,890（curl JSON-LD 直驗、InStock），平均 $1,850，現省 $160（-8.6%）。註：90 天最低曾 $1,590，現價非歷史低",
-      "url": "https://24h.pchome.com.tw/prod/DYAOFA-A900I84NN",
-      "image": "https://img.pchome.com.tw/cs/items/DYAOFAA900I84NN/000001_1789354232.jpg",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "flash": false,
-      "found_at": "2026-11-21",
-      "expiring": false,
-      "stockup": false
-    },
-    {
       "name": "Pubu Pubook Mobile 6.13吋彩色閱讀器 + 飽讀Lifetime 電子書",
       "price": 7970,
       "market_price": 8640,
@@ -756,31 +775,6 @@
       "orig_url": "https://www.momoshop.com.tw/product/13188467",
       "stockup": true,
       "found_at": "2026-11-05"
-    },
-    {
-      "name": "MSI 微星 MPG 322URX QD-OLED 平面電競螢幕(32型/4K/240Hz/0.03ms/QD-OLED/HDMI2.1/DP2.1/Type-C)",
-      "price": 21755,
-      "market_price": 23272,
-      "list_price": 24888,
-      "benchmark_n": 3,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        22900,
-        23644
-      ],
-      "category": "3C數位",
-      "source": "PChome 24h",
-      "seller": "PChome 24h購物",
-      "note": "PChome 今日 $21,755（curl JSON-LD 直驗、InStock；昨 $22,900 降 $1,145）；momo 今日 $22,900（browser.open 商品頁直驗、有貨）、Yahoo 自營今日 $23,644（瀏覽器實開商品頁、活動折後 95 折、有貨），平均 $23,272，現省 $1,517（-6.5%）",
-      "url": "https://24h.pchome.com.tw/prod/DSABRH-1900KBBPT",
-      "image": "https://img.pchome.com.tw/cs/items/DSABRH1900KBBPT/000001_1794824991.jpg",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "flash": false,
-      "found_at": "2026-11-21",
-      "expiring": false,
-      "stockup": false
     },
     {
       "name": "Apple 蘋果 AirPods Pro 3",
