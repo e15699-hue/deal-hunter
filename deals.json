@@ -1,6 +1,30 @@
 {
-  "updated_at": "2026-11-25 03:22",
+  "updated_at": "2026-11-26 03:13",
   "deals": [
+    {
+      "name": "即期品【BANANAL】香氛潤澤修護髮油 100ml（花漾白麝香）",
+      "price": 111,
+      "market_price": 576,
+      "list_price": 590,
+      "benchmark_n": 2,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        576
+      ],
+      "category": "美妝保養",
+      "source": "蝦皮",
+      "seller": "Bananal 韓國品牌旗艦店",
+      "note": "蝦皮官方旗艦店今日 $111（browser.open 直驗、InStock，原價 $590，1.9 折）；Stylevana 同款 $18 美元約 NT$576（DermalGuide 2026-11-25 查價，白麝香 100ml），現省 $465（-80.7%）。註：即期品，效期至 2027.2.13、最低購買 2 罐（實付 $222 起）、較長備貨 2-3 工作日；官方旗艦店 4.98/5（180 則評價）；化妝品官方通路",
+      "url": "https://easymall.co/3U2aX",
+      "image": "https://down-tw.img.susercontent.com/file/tw-11134207-820la-mvb679q2f4shbc",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-26",
+      "expiring": true,
+      "stockup": false
+    },
     {
       "name": "Joyoung 九陽 IH全自動智慧炒菜機(RC8 Pro)",
       "price": 2111,
@@ -135,7 +159,7 @@
       "category": "服飾鞋包",
       "source": "momo",
       "seller": "momo購物網",
-      "note": "momo 今日限時折後價 $640（browser.open 直驗、InStock，11/23~11/25 獨家 86 折、促銷價 $745、市售價 $1,490，今日最後一天）；PChome 同款今日 $998（curl JSON-LD 直驗、InStock），現省 $358（-35.9%）。註：單一 also（僅 PChome 一家他店有售，Yahoo／樂天／蝦皮／adidas 官網皆無同款，依 EFR82224 前例以單一他店價作對照）",
+      "note": "momo 今日仍 $640（browser.open 直驗、InStock；11/23~11/26 獨家 86 折、促銷價 $745、市售價 $1,490，今日最後一天）；PChome 同款今日 $998（curl JSON-LD 直驗、InStock），現省 $358（-35.9%）。註：單一 also（僅 PChome 一家他店有售，依 EFR82224 前例以單一他店價作對照）｜2026-11-26 重驗：momo 仍 $640、PChome 同款 $998，also 有效，維持上架",
       "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=15177308",
       "image": "https://i4.momoshop.com.tw/1776821651/goodsimg/0015/177/308/15177308_R_m.webp",
       "has_affiliate": false,
@@ -143,6 +167,30 @@
       "recommended": false,
       "flash": false,
       "found_at": "2026-11-25",
+      "expiring": false,
+      "stockup": false
+    },
+    {
+      "name": "NOVOICE 諾維斯 豪華法蘭絨銀離子雙人電熱毯 NOV-H11",
+      "price": 999,
+      "market_price": 1390,
+      "list_price": 1980,
+      "benchmark_n": 2,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        1390
+      ],
+      "category": "家電",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日折扣價 $999（browser.open 直驗、InStock，網路價 $1,111，黑五延續價）；PChome 另一賣場同款 $1,390（curl JSON-LD 直驗），現省 $391（-28.1%）。原價 $1,980（PChome 暖冬專區）。註：150x180cm 雙人、200W、法蘭絨銀離子、可機洗（溫控器須移除）、12 小時定時",
+      "url": "https://24h.pchome.com.tw/prod/DMAZ10-1900KFFT4",
+      "image": "https://img.pchome.com.tw/cs/items/DMAZ101900KFFT4/000001_1795499489.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-26",
       "expiring": false,
       "stockup": false
     },
