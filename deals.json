@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-26 03:29",
+  "updated_at": "2026-11-27 03:19",
   "deals": [
     {
       "name": "即期品【BANANAL】香氛潤澤修護髮油 100ml（花漾白麝香）",
@@ -89,7 +89,7 @@
       "category": "服飾鞋包",
       "source": "momo",
       "seller": "momo購物網",
-      "note": "momo 今日仍 $640（browser.open 直驗、InStock；11/23~11/26 獨家 86 折、促銷價 $745、市售價 $1,490，今日最後一天）；PChome 同款今日 $998（折扣價，curl JSON-LD 直驗、InStock）與白亞版 $1,177（curl JSON-LD 直驗、InStock），平均 $1,088，現省 $448（-41.2%）。註：PChome JZ8T3 頁面另標網路價 $1,218，售價以折扣價 $998 為準｜2026-11-26 重驗：momo 仍 $640、PChome 同款 $998／$1,177，also 有效，維持上架",
+      "note": "momo 今日仍 $640（B browser.open 直驗、InStock；11/23~11/27 獨家 86 折、促銷價 $745、市售價 $1,490，今日最後一天）；PChome 同款今日 $998（curl JSON-LD 直驗、InStock）、亞版 $1,177，平均 $1,088，現省 $448（-41.2%）。註：also 為 PChome 兩賣場價｜2026-11-27 重驗：momo 仍 $640、PChome 同款 $998，also 有效，維持上架；明日 11/28 起預期漲回 $745，屆時更新價格續留",
       "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=15177308",
       "image": "https://i4.momoshop.com.tw/1776821651/goodsimg/0015/177/308/15177308_R_m.webp",
       "has_affiliate": false,
@@ -666,6 +666,31 @@
       "stockup": false
     },
     {
+      "name": "SONY 索尼 WF-C710N 真無線降噪藍牙耳機 (公司貨 保固12個月）",
+      "price": 2790,
+      "market_price": 3240,
+      "list_price": 3490,
+      "benchmark_n": 3,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        2990,
+        3490
+      ],
+      "category": "3C數位",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $2,790（B curl JSON-LD、InStock）；Sony Store 官網限時優惠價今日漲為 $2,990（原價 $3,490，11/10~11/15 的 $2,790 優惠已結束）；酷澎粉色 $3,490（第三方賣家、僅剩 1 件）；平均 $3,240，現省 $450（-13.9%）。註：momo 11/19 曾見 $2,590（vocus 整理），今日查不到 momo 商品頁，待明日複核｜2026-11-27 重驗：PChome 仍 $2,790、Sony 漲為 $2,990，維持上架",
+      "url": "https://24h.pchome.com.tw/prod/DYAQFN-A900IJW90",
+      "image": "https://img.pchome.com.tw/cs/items/DYAQFNA900IJW90/000001_1779449280.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "",
+      "expiring": false,
+      "stockup": false
+    },
+    {
       "name": "Apple AirPods 4 主動式降噪款（MXP93TA/A，台灣公司貨）",
       "price": 3684,
       "market_price": 4251,
@@ -687,27 +712,26 @@
       "affiliate_network": ""
     },
     {
-      "name": "SONY 索尼 WF-C710N 真無線降噪藍牙耳機 (公司貨 保固12個月）",
-      "price": 2790,
-      "market_price": 3140,
-      "list_price": 3140,
-      "benchmark_n": 3,
+      "name": "Xiaomi 小米 2K 電腦螢幕 A27Qi 2026(27型/2K/120Hz)",
+      "price": 3299,
+      "market_price": 3699,
+      "list_price": 3699,
+      "benchmark_n": 2,
       "benchmark_src": "avg_others",
       "also_prices": [
-        2790,
-        3490
+        3699
       ],
       "category": "3C數位",
       "source": "PChome 24h",
-      "seller": "PChome 24h購物",
-      "note": "PChome 今日 $2,790（本人 curl JSON-LD、InStock）；Sony Store 官網限時優惠價今日 $2,790（11/10~11/15、原價 $3,490）；酷澎粉色今日 $3,490（瀏覽器直驗、第三方賣家、僅剩 1 件）；平均 $3,140，現省 $350（-11.1%）",
-      "url": "https://24h.pchome.com.tw/prod/DYAQFN-A900IJW90",
-      "image": "https://img.pchome.com.tw/cs/items/DYAQFNA900IJW90/000001_1779449280.jpg",
+      "seller": "小米官方旗艦館",
+      "note": "PChome 小米官方旗艦館今日 $3,299（本人 browser.open 直驗、InStock，頁面原價 $3,699；JSON-LD $3,134 疑為券後價，以頁面顯示售價為準）；小米官網今日 $3,699（掃描員 C 今日驗），現省 $400（-10.8%）。註：單一 also（僅小米官網一家他店價，依 EFR82224 前例）；Yahoo 11/06 整理曾見 $3,299 但今日未驗到商品頁、且 Threads 截圖型號為舊款 P27QCA-RAGL，故不計入 also｜2026-11-27 新上架：27 吋 2K IPS、120Hz、Delta E<1、95% DCI-P3、型號 27QDA-RAGL，106 則評價 4.9 分",
+      "url": "https://24h.pchome.com.tw/prod/DSABVO-A900JMD8B",
+      "image": "https://img.pchome.com.tw/cs/items/DSABVOA900JMD8B/000001_1768285501.jpg",
       "has_affiliate": false,
       "affiliate_network": "",
       "recommended": false,
       "flash": false,
-      "found_at": "",
+      "found_at": "2026-11-27",
       "expiring": false,
       "stockup": false
     },
