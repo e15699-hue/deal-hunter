@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27 03:19",
+  "updated_at": "2026-11-28 11:27",
   "deals": [
     {
       "name": "即期品【BANANAL】香氛潤澤修護髮油 100ml（花漾白麝香）",
@@ -54,6 +54,30 @@
       "stockup": false
     },
     {
+      "name": "STAG PACIFICA 戶外乒乓球桌",
+      "price": 8999,
+      "market_price": 34100,
+      "list_price": 15599,
+      "benchmark_n": 2,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        34100
+      ],
+      "category": "運動戶外",
+      "source": "Costco 線上購物",
+      "seller": "Costco 好市多",
+      "note": "Costco 線上今日 $8,999（本人 curl 直驗 JSON-LD、LimitedAvailability，特價至 11/29；頁面原價 $15,599，現省 $6,600，-42.3%）；KETTLER 美國官網同款 Pacifica 4 人組（Item 7131-550、156 lbs、PRO-TEC4、4 拍 10 球）今日 $1,099.99 美元、InStock，約 NT$34,100（匯率約 31），現省約 $25,101（-73.6%，以美國官網價為對照）。註：單一 also（台灣查無其他賣場同款在售）；單價高、需戶外空間；評價指桌面較薄、彈跳偏死、兩半接縫不平，購買前請留意｜2026-11-28 新上架",
+      "url": "https://www.costco.com.tw/Sports-Lifestyle/Sports-Fitness/Team-Sports/STAG-Pacifica-Outdoor-Table-Tennis/p/2622001",
+      "image": "https://www.costco.com.tw/medias/sys_master/images/hba/hb5/454002090180638.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-28",
+      "expiring": false,
+      "stockup": false
+    },
+    {
       "name": "SanDisk 晟碟 Extreme PRO 雙用固態行動碟 2TB（USB-C＋USB-A 雙頭隨身碟）",
       "price": 8888,
       "market_price": 17471,
@@ -89,9 +113,9 @@
       "category": "服飾鞋包",
       "source": "momo",
       "seller": "momo購物網",
-      "note": "momo 今日仍 $640（B browser.open 直驗、InStock；11/23~11/27 獨家 86 折、促銷價 $745、市售價 $1,490，今日最後一天）；PChome 同款今日 $998（curl JSON-LD 直驗、InStock）、亞版 $1,177，平均 $1,088，現省 $448（-41.2%）。註：also 為 PChome 兩賣場價｜2026-11-27 重驗：momo 仍 $640、PChome 同款 $998，also 有效，維持上架；明日 11/28 起預期漲回 $745，屆時更新價格續留",
+      "note": "momo 今日仍 $640（B browser.open 直驗、InStock；11/23~11/30 獨家 86 折、促銷價 $745、市售價 $1,490，檔期延至 11/30，非昨日預期的今日漲回）；PChome 同款今日 $998（curl JSON-LD 直驗、InStock）、亞版 $1,177，平均 $1,088，現省 $448（-41.2%）。註：also 為 PChome 兩賣場價｜2026-11-28 重驗：momo 仍 $640、檔期延至 11/30，維持上架",
       "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=15177308",
-      "image": "https://i4.momoshop.com.tw/1776821651/goodsimg/0015/177/308/15177308_R_m.webp",
+      "image": "https://i1.momoshop.com.tw/1776821651/goodsimg/0015/177/308/15177308_R_m.webp",
       "has_affiliate": false,
       "affiliate_network": "",
       "recommended": false,
@@ -194,6 +218,31 @@
       "recommended": false,
       "flash": false,
       "found_at": "2026-11-26",
+      "expiring": false,
+      "stockup": false
+    },
+    {
+      "name": "TOMA-PRO 優格 經典系列貓飼料-成幼貓 雞肉+米 13.6kg（化毛高纖配方）",
+      "price": 1759,
+      "market_price": 2610,
+      "list_price": 2907,
+      "benchmark_n": 3,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        2314,
+        2907
+      ],
+      "category": "寵物生活",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $1,759（本人 curl JSON-LD 直驗、InStock，由 $2,098 回降 $339）；momo 同款 $2,314（11/24 驗證值，11/19~11/30 囤貨 75 折）、Yahoo $2,907（2026-11-22 驗證值），平均 $2,610，現省 $851（-32.6%）｜2026-11-28 重驗：PChome 降回 $1,759，維持上架",
+      "url": "https://24h.pchome.com.tw/prod/DEBV7O-A900IO2PP",
+      "image": "https://img.pchome.com.tw/cs/items/DEBV7OA900IO2PP/000001_1745565674.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-20",
       "expiring": false,
       "stockup": false
     },
@@ -498,31 +547,6 @@
       "orig_url": "https://s.momoshop.com.tw/s/HL23iqoC"
     },
     {
-      "name": "TOMA-PRO 優格 經典系列貓飼料-成幼貓 雞肉+米 13.6kg（化毛高纖配方）",
-      "price": 2098,
-      "market_price": 2610,
-      "list_price": 2907,
-      "benchmark_n": 3,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        2314,
-        2907
-      ],
-      "category": "寵物生活",
-      "source": "PChome 24h",
-      "seller": "PChome 24h購物",
-      "note": "PChome 今日 $2,098（curl JSON-LD 直驗、InStock，由 $1,759 漲 $339）；momo 同款今日 $2,314（browser.open 直驗、InStock，11/19~11/30 囤貨 75 折）、Yahoo $2,907（2026-11-22 驗證值，今日未重驗），平均 $2,610，現省 $512（-19.6%）。註：追蹤站稱 momo $1,711（2026-11-22 21:55）已過時，以今日直接開頁 $2,314 為準",
-      "url": "https://24h.pchome.com.tw/prod/DEBV7O-A900IO2PP",
-      "image": "https://img.pchome.com.tw/cs/items/DEBV7OA900IO2PP/000001_1745565674.jpg",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "flash": false,
-      "found_at": "2026-11-20",
-      "expiring": false,
-      "stockup": false
-    },
-    {
       "name": "Avene 雅漾 B3彈力透亮精華霜 50ml(抗老乳霜)",
       "price": 1418,
       "market_price": 1739,
@@ -666,31 +690,6 @@
       "stockup": false
     },
     {
-      "name": "SONY 索尼 WF-C710N 真無線降噪藍牙耳機 (公司貨 保固12個月）",
-      "price": 2790,
-      "market_price": 3240,
-      "list_price": 3490,
-      "benchmark_n": 3,
-      "benchmark_src": "avg_others",
-      "also_prices": [
-        2990,
-        3490
-      ],
-      "category": "3C數位",
-      "source": "PChome 24h",
-      "seller": "PChome 24h購物",
-      "note": "PChome 今日 $2,790（B curl JSON-LD、InStock）；Sony Store 官網限時優惠價今日漲為 $2,990（原價 $3,490，11/10~11/15 的 $2,790 優惠已結束）；酷澎粉色 $3,490（第三方賣家、僅剩 1 件）；平均 $3,240，現省 $450（-13.9%）。註：momo 11/19 曾見 $2,590（vocus 整理），今日查不到 momo 商品頁，待明日複核｜2026-11-27 重驗：PChome 仍 $2,790、Sony 漲為 $2,990，維持上架",
-      "url": "https://24h.pchome.com.tw/prod/DYAQFN-A900IJW90",
-      "image": "https://img.pchome.com.tw/cs/items/DYAQFNA900IJW90/000001_1779449280.jpg",
-      "has_affiliate": false,
-      "affiliate_network": "",
-      "recommended": false,
-      "flash": false,
-      "found_at": "",
-      "expiring": false,
-      "stockup": false
-    },
-    {
       "name": "Apple AirPods 4 主動式降噪款（MXP93TA/A，台灣公司貨）",
       "price": 3684,
       "market_price": 4251,
@@ -810,6 +809,31 @@
       "stockup": false
     },
     {
+      "name": "SONY 索尼 WF-C710N 真無線降噪藍牙耳機 (公司貨 保固12個月）",
+      "price": 2680,
+      "market_price": 2890,
+      "list_price": 3490,
+      "benchmark_n": 3,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        2790,
+        2990
+      ],
+      "category": "3C數位",
+      "source": "momo",
+      "seller": "momo購物網",
+      "note": "momo 今日 $2,680（B browser.open 直驗、InStock，限時折後價；促銷價 $2,690、市售價 $3,490）；PChome 同款今日 $2,790（curl JSON-LD、InStock）、Sony Store 官網限時優惠價 $2,990（原價 $3,490），平均 $2,890，現省 $210（-7.3%）。註：主價改為最便宜的 momo；11/19 vocus 文的 $2,590 已漲 $90｜2026-11-28 重驗：主價改 momo $2,680",
+      "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=13901382",
+      "image": "https://i2.momoshop.com.tw/1747285341/goodsimg/0013/901/382/13901382_R_m.webp",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "",
+      "expiring": false,
+      "stockup": false
+    },
+    {
       "name": "BRITA MAXTRA PRO濾芯－去水垢專家（10入裝）",
       "price": 1799,
       "market_price": 1938,
@@ -850,6 +874,30 @@
       "orig_url": "https://www.momoshop.com.tw/product/13188467",
       "stockup": true,
       "found_at": "2026-11-05"
+    },
+    {
+      "name": "MSI 微星 MPG 322URX QD-OLED 平面電競螢幕(32型/4K/240Hz/0.03ms/QD-OLED/HDMI2.1/DP2.1/Type-C)",
+      "price": 21755,
+      "market_price": 22900,
+      "list_price": 22900,
+      "benchmark_n": 2,
+      "benchmark_src": "avg_others",
+      "also_prices": [
+        22900
+      ],
+      "category": "3C數位",
+      "source": "PChome 24h",
+      "seller": "PChome 24h購物",
+      "note": "PChome 今日 $21,755（本人 curl JSON-LD 直驗、InStock，網路價 $22,900）；momo MSI 旗艦店今日 $22,900（瀏覽器親開商品頁、InStock，市售價 $26,888），現省 $1,145（-5.0%）。註：單一 also（僅 momo 一家他店今日價；B&H 美國官網 $849.99 美元今日為 BackOrder 未列入）；32 型 4K QD-OLED、240Hz、0.03ms、Delta E≦2、3 年烙印保固｜2026-11-28 新上架",
+      "url": "https://24h.pchome.com.tw/prod/DSABRH-1900KBBPT",
+      "image": "https://img.pchome.com.tw/cs/items/DSABRH1900KBBPT/000001_1794824991.jpg",
+      "has_affiliate": false,
+      "affiliate_network": "",
+      "recommended": false,
+      "flash": false,
+      "found_at": "2026-11-28",
+      "expiring": false,
+      "stockup": false
     },
     {
       "name": "Apple 蘋果 AirPods Pro 3",
